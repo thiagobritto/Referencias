@@ -1,31 +1,31 @@
-# Curso - [ ] Programador Web
-#### *UFRN & IMD* - #imdfic5-web
-Uiversidade Federal do Rio Grande do Norte
-Instituto Metrópole Digital
+# Curso - Programador Web
+### *UFRN & IMD* - imdfic5-web
+>Uiversidade Federal do Rio Grande do Norte
+>Instituto Metrópole Digital
 
 ## Lógica de Programação
-- [ ] Olá, Mundo! - [ ] Uma Introdução Ao Mundo Da Programação
-- [ ] Uga, Uga! - [ ] Instruções primitivas, variáveis e tipos de dados
-- [ ] Expressões e operadores
-- [ ] Representação de Algoritmos e Estruturas de Decisão Aninhadas
-- [ ] Exercícios com Estruturas de Decisão
-- [ ] Repetição Enquanto
-- [ ] Repetição para
-- [ ] Estruturas Aninhadas: ENQUANTO e PARA
-- [ ] Exercícios de Estruturas de Repetição PARA e ENQUANTO
-- [ ] Exercícios de Estruturas Aninhadas: enquanto e para
-- [ ] Estruturas de Dados Homogêneas - [ ] Vetores
-- [ ] Estruturas de Repetição – Exercícios
-- [ ] Estruturas de dados homogêneas – Matrizes
-- [ ] Funções, Procedimentos, Parâmetros e conceitos de bibliotecas
-- [ ] Exercícios com Matrizes e Funções 
+- [x] Olá, Mundo! - Uma Introdução Ao Mundo Da Programação
+- [x] Uga, Uga! - Instruções primitivas, variáveis e tipos de dados
+- [x] Expressões e operadores
+- [x] Representação de Algoritmos e Estruturas de Decisão Aninhadas
+- [x] Exercícios com Estruturas de Decisão
+- [x] Repetição Enquanto
+- [x] Repetição para
+- [x] Estruturas Aninhadas: ENQUANTO e PARA
+- [x] Exercícios de Estruturas de Repetição PARA e ENQUANTO
+- [x] Exercícios de Estruturas Aninhadas: enquanto e para
+- [x] Estruturas de Dados Homogêneas - Vetores
+- [x] Estruturas de Repetição – Exercícios
+- [x] Estruturas de dados homogêneas – Matrizes
+- [x] Funções, Procedimentos, Parâmetros e conceitos de bibliotecas
+- [x] Exercícios com Matrizes e Funções 
 
 ## Programação Estruturada
-- [ ] Introdução à linguagem Java e à Programação Estruturada
-- [ ] Tipos de dados, constantes e variáveis
-- [ ] Entrada e saída (E/S) via console
-- [ ] Comandos de seleção
-- [ ] Comandos de iteração
+- [x] Introdução à linguagem Java e à Programação Estruturada
+- [x] Tipos de dados, constantes e variáveis
+- [x] Entrada e saída (E/S) via console
+- [x] Comandos de seleção
+- [x] Comandos de iteração
 - [ ] Vetores e Matrizes
 - [ ] Manipulação de Strings
 - [ ] Funções e procedimentos
@@ -57,14 +57,14 @@ Instituto Metrópole Digital
 ## Conceitos de Banco de Dados
 - [ ] Introdução a Banco de Dados
 - [ ] Introdução à Linguagem SQL e Sistemas Gerenciadores de Banco de Dados
-- [ ] Linguagem SQL - [ ] criação, inserção e modificação de tabelas
-- [ ] Linguagem SQL - [ ] Consulta Simples de Tabelas
-- [ ] Linguagem SQL - [ ] Consulta Avançada de Tabelas
-- [ ] Linguagem SQL - [ ] Alteração de Estrutura de Tabelas e Ambientes de Múltiplas Tabelas
-- [ ] Linguagem SQL - [ ] Subconsultas e Visões
-- [ ] Linguagem SQL - [ ] Stored Procedures e Funções
-- [ ] Linguagem SQL - [ ] Segurança
-- [ ] Backup On- [ ]Line e Off- [ ]Line
+- [ ] Linguagem SQL - criação, inserção e modificação de tabelas
+- [ ] Linguagem SQL - Consulta Simples de Tabelas
+- [ ] Linguagem SQL - Consulta Avançada de Tabelas
+- [ ] Linguagem SQL - Alteração de Estrutura de Tabelas e Ambientes de Múltiplas Tabelas
+- [ ] Linguagem SQL - Subconsultas e Visões
+- [ ] Linguagem SQL - Stored Procedures e Funções
+- [ ] Linguagem SQL - Segurança
+- [ ] Backup On-Line e Off-Line
 
 ## Autoria Web
 - [ ] Linguagens e Ferramentas para o Desenvolvimento Web
@@ -75,7 +75,7 @@ Instituto Metrópole Digital
 - [ ] CSS: cores, tabelas e formulários
 - [ ] CSS: modelo de caixas, bordas, dimensões e posicionamento
 - [ ] Layout CSS, arquitetura da informação e conteúdo para web
-- [ ] Pré- [ ]produção, navegação, resolução x design e layout
+- [ ] Pré-produção, navegação, resolução x design e layout
 - [ ] Acessibilidade e manutenção
 
 ## Desenvolvimento Web I
@@ -88,8 +88,8 @@ Instituto Metrópole Digital
 - [ ] Introdução ao JSTL
 - [ ] JSTL – Internacionalização, Taglib functions e expression language
 - [ ] JavaScript: Introdução e Sintaxe
-- [ ] JavaScript: Acessando Objetos - [ ] Parte 1
-- [ ] JavaScript: Acessando Objetos - [ ] Parte 2
+- [ ] JavaScript: Acessando Objetos - Parte 1
+- [ ] JavaScript: Acessando Objetos - Parte 2
 - [ ] Desenvolvendo uma livraria virtual – Parte 1
 - [ ] Desenvolvendo uma livraria virtual – Parte 2
 - [ ] Desenvolvendo uma livraria virtual – Parte 3
@@ -109,5 +109,5 @@ Instituto Metrópole Digital
 - [ ] Projeto (Parte 2): Incorporando o Banco de Dados
 - [ ] Adotando o jQuery no Sistema da Livraria
 - [ ] Introdução ao Primefaces
-- [ ] Incorporando o Banco de Dados em Aplicações JSF - [ ] Parte 1
-- [ ] Incorporando o Banco de Dados em Aplicações JSF - [ ] Parte 2
+- [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 1
+- [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 2
