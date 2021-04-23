@@ -113,7 +113,7 @@
 - [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 1
 - [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 2
 
-#### Minhas notas
+### Minhas notas
 
 Disciplinas | Carga horária | Média final
 :---------- | :-----------: | :-----------:
