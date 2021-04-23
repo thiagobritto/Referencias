@@ -112,3 +112,15 @@
 - [ ] Introdução ao Primefaces
 - [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 1
 - [ ] Incorporando o Banco de Dados em Aplicações JSF - Parte 2
+
+#### Minhas notas
+
+         Disciplinas            | Carga horária |  Média final
+:------------------------------ | :-----------: | :-----------:
+Lógica de Programação           |     20hs      |      9
+Programação Estruturada         |      -        |      -
+Programação Orientada a Objetos |      -        |      -
+Conceitos de Banco de Dados     |      -        |      -
+Autoria Web                     |      -        |      -
+Desenvolvimento Web I           |      -        |      -
+Desenvolvimento Web II          |      -        |      -
