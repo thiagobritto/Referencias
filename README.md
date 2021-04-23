@@ -115,12 +115,12 @@
 
 #### Minhas notas
 
-         Disciplinas            | Carga horária |  Média final
-:------------------------------ | :-----------: | :-----------:
-Lógica de Programação           |     20hs      |      9
-Programação Estruturada         |      -        |      -
-Programação Orientada a Objetos |      -        |      -
-Conceitos de Banco de Dados     |      -        |      -
-Autoria Web                     |      -        |      -
-Desenvolvimento Web I           |      -        |      -
-Desenvolvimento Web II          |      -        |      -
+Disciplinas | Carga horária | Média final
+:---------- | :-----------: | :-----------:
+Lógica de Programação | 20hs | 9
+Programação Estruturada | - | -
+Programação Orientada a Objetos | - | -
+Conceitos de Banco de Dados | - | -
+Autoria Web | - | -
+Desenvolvimento Web I | - | -
+Desenvolvimento Web II | - | -
