@@ -1,6 +1,7 @@
-# Curso - Programador Web
+# Programador Web
 ### *UFRN & IMD* - imdfic5-web
->Uiversidade Federal do Rio Grande do Norte
+
+>Uiversidade Federal do Rio Grande do Norte **&**
 >Instituto Metrópole Digital
 
 ## Lógica de Programação
