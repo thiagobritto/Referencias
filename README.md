@@ -27,9 +27,9 @@
 - [x] Entrada e saída (E/S) via console
 - [x] Comandos de seleção
 - [x] Comandos de iteração
-- [ ] Vetores e Matrizes
-- [ ] Manipulação de Strings
-- [ ] Funções e procedimentos
+- [x] Vetores e Matrizes
+- [x] Manipulação de Strings
+- [x] Funções e procedimentos
 - [ ] Recursão
 - [ ] Jogo do labirinto parte 1 – uso de matriz
 - [ ] Jogo do labirinto parte 2 – recursão
