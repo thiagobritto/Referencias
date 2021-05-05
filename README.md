@@ -30,9 +30,9 @@
 - [x] Vetores e Matrizes
 - [x] Manipulação de Strings
 - [x] Funções e procedimentos
-- [ ] Recursão
-- [ ] Jogo do labirinto parte 1 – uso de matriz
-- [ ] Jogo do labirinto parte 2 – recursão
+- [x] Recursão
+- [x] Jogo do labirinto parte 1 – uso de matriz
+- [x] Jogo do labirinto parte 2 – recursão
 - [ ] Registros e enumerações
 - [ ] Desenvolvendo um jogo da velha
 - [ ] Adicionando novos recursos ao jogo da velha
