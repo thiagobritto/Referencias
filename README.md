@@ -33,14 +33,14 @@
 - [x] Recursão
 - [x] Jogo do labirinto parte 1 – uso de matriz
 - [x] Jogo do labirinto parte 2 – recursão
-- [ ] Registros e enumerações
-- [ ] Desenvolvendo um jogo da velha
-- [ ] Adicionando novos recursos ao jogo da velha
-- [ ] Interfaces Gráficas
+- [x] Registros e enumerações
+- [x] Desenvolvendo um jogo da velha
+- [x] Adicionando novos recursos ao jogo da velha
+- [x] Interfaces Gráficas
 
 ## Programação Orientada a Objetos
-- [ ] Introdução à Programação Orientada a Objetos
-- [ ] Classes, atributos e métodos
+- [x] Introdução à Programação Orientada a Objetos
+- [c] Classes, atributos e métodos
 - [ ] Objetos, construtores
 - [ ] Sistemas OO
 - [ ] Encapsulamento
@@ -118,7 +118,7 @@
 Disciplinas | Carga horária | Média final
 :---------- | :-----------: | :-----------:
 Lógica de Programação | 20hs | 9
-Programação Estruturada | - | -
+Programação Estruturada | 40hs | 9.2
 Programação Orientada a Objetos | - | -
 Conceitos de Banco de Dados | - | -
 Autoria Web | - | -
