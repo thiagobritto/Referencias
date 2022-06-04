@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>ensurepip — Inicialização do instalador do pip &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="venv— Criação de ambientes virtuais" href="venv.html" />
+    <link rel="prev" title="distutils — Criação e instalação de módulos do Python" href="distutils.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/ensurepip.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Inicialização do instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code></a><ul>
+<li><a class="reference internal" href="#command-line-interface">Interface de linha de comando</a></li>
+<li><a class="reference internal" href="#module-api">API do módulo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="distutils.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code> — Criação e instalação de módulos do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="venv.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code>— Criação de ambientes virtuais</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/ensurepip.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="venv.html" title="venv— Criação de ambientes virtuais"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="distutils.html" title="distutils — Criação e instalação de módulos do Python"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="distribution.html" accesskey="U">Empacotamento e Distribuição de Software</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Inicialização do instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-ensurepip">
+<span id="ensurepip-bootstrapping-the-pip-installer"></span><h1><a class="reference internal" href="#module-ensurepip" title="ensurepip: Bootstrapping the &quot;pip&quot; installer into an existing Python installation or virtual environment."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code></a> — Inicialização do instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code><a class="headerlink" href="#module-ensurepip" title="Link permanente para este título">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+<hr class="docutils" />
+<p>O pacote <a class="reference internal" href="#module-ensurepip" title="ensurepip: Bootstrapping the &quot;pip&quot; installer into an existing Python installation or virtual environment."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code></a> fornece suporte a fazer bootstrapping, ou seja, inicializar o instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code> em uma instalação existente do Python ou em um ambiente virtual. Essa abordagem de bootstrapping reflete o fato de que <code class="docutils literal notranslate"><span class="pre">pip</span></code> é um projeto independente com seu próprio ciclo de lançamento, e a última versão estável disponível é fornecida com manutenção e lançamentos de recursos do interpretador de referência CPython.</p>
+<p>Na maioria dos casos, os usuários finais do Python não precisam invocar esse módulo diretamente (como <code class="docutils literal notranslate"><span class="pre">pip</span></code> deve ser inicializado por padrão), mas pode ser necessário se a instalação do <code class="docutils literal notranslate"><span class="pre">pip</span></code> foi ignorada ao instalar o Python (ou ao criar um ambiente virtual) ou após desinstalar explicitamente <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este módulo <em>não</em> acessa a Internet. Todos os componentes necessários para iniciar o <code class="docutils literal notranslate"><span class="pre">pip</span></code> estão incluídos como partes internas do pacote.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../installing/index.html#installing-index"><span class="std std-ref">Instalando módulos Python</span></a></dt><dd><p>O guia do usuário final para instalar pacotes Python</p>
+</dd>
+<dt><span class="target" id="index-2"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0453"><strong>PEP 453</strong></a>: Inicialização explícita de pip em instalações Python</dt><dd><p>A justificativa e especificação originais para este módulo.</p>
+</dd>
+</dl>
+</div>
+<section id="command-line-interface">
+<h2>Interface de linha de comando<a class="headerlink" href="#command-line-interface" title="Link permanente para este título">¶</a></h2>
+<p>A interface da linha de comando é chamada usando a opção <code class="docutils literal notranslate"><span class="pre">-m</span></code> do interpretador.</p>
+<p>A invocação mais simples possível é:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ensurepip</span>
+</pre></div>
+</div>
+<p>This invocation will install <code class="docutils literal notranslate"><span class="pre">pip</span></code> if it is not already installed,
+but otherwise does nothing. To ensure the installed version of <code class="docutils literal notranslate"><span class="pre">pip</span></code>
+is at least as recent as the one available in <code class="docutils literal notranslate"><span class="pre">ensurepip</span></code>, pass the
+<code class="docutils literal notranslate"><span class="pre">--upgrade</span></code> option:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">ensurepip</span> <span class="o">--</span><span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>Por padrão, <code class="docutils literal notranslate"><span class="pre">pip</span></code> é instalado no ambiente virtual atual (se houver um ativo) ou nos pacotes de sites do sistema (se não houver um ambiente virtual ativo). O local da instalação pode ser controlado através de duas opções adicionais de linha de comando:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--root</span> <span class="pre">&lt;dir&gt;</span></code>: Instala <code class="docutils literal notranslate"><span class="pre">pip</span></code> em relação ao diretório raiz fornecido, em vez da raiz do ambiente virtual atualmente ativo (se houver) ou a raiz padrão da instalação atual do Python.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--user</span></code>: Instala <code class="docutils literal notranslate"><span class="pre">pip</span></code> no diretório de pacotes do site do usuário em vez de globalmente para a instalação atual do Python (essa opção não é permitida dentro de um ambiente virtual ativo).</p></li>
+</ul>
+<p>Por padrão, os scripts <code class="docutils literal notranslate"><span class="pre">pipX</span></code> e <code class="docutils literal notranslate"><span class="pre">pipX.Y</span></code> serão instalados (onde X.Y representa a versão do Python usada para invocar <code class="docutils literal notranslate"><span class="pre">ensurepip</span></code>). Os scripts instalados podem ser controlados através de duas opções adicionais de linha de comando:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--altinstall</span></code>: se uma instalação alternativa for solicitada, o script <code class="docutils literal notranslate"><span class="pre">pipX</span></code> <em>não</em> será instalado.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--default-pip</span></code>: se uma instalação “pip padrão” for solicitada, o script <code class="docutils literal notranslate"><span class="pre">pip</span></code> será instalado junto com os dois scripts comuns.</p></li>
+</ul>
+<p>Fornecer as duas opções de seleção de script acionará uma exceção.</p>
+</section>
+<section id="module-api">
+<h2>API do módulo<a class="headerlink" href="#module-api" title="Link permanente para este título">¶</a></h2>
+<p>O <a class="reference internal" href="#module-ensurepip" title="ensurepip: Bootstrapping the &quot;pip&quot; installer into an existing Python installation or virtual environment."><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code></a> expõe duas funções para uso programático:</p>
+<dl class="py function">
+<dt id="ensurepip.version">
+<code class="sig-prename descclassname">ensurepip.</code><code class="sig-name descname">version</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ensurepip.version" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Returns a string specifying the available version of pip that will be
+installed when bootstrapping an environment.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="ensurepip.bootstrap">
+<code class="sig-prename descclassname">ensurepip.</code><code class="sig-name descname">bootstrap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">upgrade</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">user</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">altinstall</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">default_pip</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">verbosity</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#ensurepip.bootstrap" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Inicializa <code class="docutils literal notranslate"><span class="pre">pip</span></code> no ambiente atual ou designado.</p>
+<p><em>root</em> especifica um diretório raiz alternativo para instalar em relação a. Se <em>root</em> for <code class="docutils literal notranslate"><span class="pre">None</span></code>, a instalação utilizará o local de instalação padrão para o ambiente atual.</p>
+<p><em>upgrade</em> indicates whether or not to upgrade an existing installation
+of an earlier version of <code class="docutils literal notranslate"><span class="pre">pip</span></code> to the available version.</p>
+<p><em>user</em> indica se é necessário usar o esquema do usuário em vez de instalar globalmente.</p>
+<p>Por padrão, os scripts <code class="docutils literal notranslate"><span class="pre">pipX</span></code> e <code class="docutils literal notranslate"><span class="pre">pipX.Y</span></code> serão instalados (onde X.Y significa a versão atual do Python).</p>
+<p>Se <em>altinstall</em> estiver definido, o <code class="docutils literal notranslate"><span class="pre">pipX</span></code> <em>não</em> será instalado.</p>
+<p>Se <em>default_pip</em> estiver definido, o <code class="docutils literal notranslate"><span class="pre">pip</span></code> será instalado além dos dois scripts comuns.</p>
+<p>Definir <em>altinstall</em> e <em>default_pip</em> acionará <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>.</p>
+<p><em>verbosity</em> controla o nível de saída para <a class="reference internal" href="sys.html#sys.stdout" title="sys.stdout"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stdout</span></code></a> da operação de inicialização.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">ensurepip.bootstrap</span></code> com o argumento <code class="docutils literal notranslate"><span class="pre">root</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O processo de inicialização tem efeitos colaterais em <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> e <code class="docutils literal notranslate"><span class="pre">os.environ</span></code>. Invocar a interface da linha de comando em um subprocesso permite que esses efeitos colaterais sejam evitados.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O processo de inicialização pode instalar módulos adicionais exigidos pelo <code class="docutils literal notranslate"><span class="pre">pip</span></code>, mas outro software não deve assumir que essas dependências sempre estarão presentes por padrão (como as dependências podem ser removidas em uma versão futura do <code class="docutils literal notranslate"><span class="pre">pip</span></code>).</p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Inicialização do instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code></a><ul>
+<li><a class="reference internal" href="#command-line-interface">Interface de linha de comando</a></li>
+<li><a class="reference internal" href="#module-api">API do módulo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="distutils.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">distutils</span></code> — Criação e instalação de módulos do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="venv.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code>— Criação de ambientes virtuais</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/ensurepip.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="venv.html" title="venv— Criação de ambientes virtuais"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="distutils.html" title="distutils — Criação e instalação de módulos do Python"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="distribution.html" >Empacotamento e Distribuição de Software</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">ensurepip</span></code> — Inicialização do instalador do <code class="docutils literal notranslate"><span class="pre">pip</span></code></a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

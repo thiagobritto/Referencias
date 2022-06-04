@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>16. Anexo &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Configurações e Uso do Python" href="../using/index.html" />
+    <link rel="prev" title="15. Aritmética de ponto flutuante: problemas e limitações" href="floatingpoint.html" />
+    <link rel="canonical" href="https://docs.python.org/3/tutorial/appendix.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">16. Anexo</a><ul>
+<li><a class="reference internal" href="#interactive-mode">16.1. Modo interativo</a><ul>
+<li><a class="reference internal" href="#error-handling">16.1.1. Tratamento de erros</a></li>
+<li><a class="reference internal" href="#executable-python-scripts">16.1.2. Scripts Python executáveis</a></li>
+<li><a class="reference internal" href="#the-interactive-startup-file">16.1.3. Arquivo de inicialização do modo interativo</a></li>
+<li><a class="reference internal" href="#the-customization-modules">16.1.4. Módulos de customização</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="floatingpoint.html"
+                        title="capítulo anterior"><span class="section-number">15. </span>Aritmética de ponto flutuante: problemas e limitações</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="../using/index.html"
+                        title="próximo capítulo">Configurações e Uso do Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/appendix.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../using/index.html" title="Configurações e Uso do Python"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="15. Aritmética de ponto flutuante: problemas e limitações"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">16. </span>Anexo</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="appendix">
+<span id="tut-appendix"></span><h1><span class="section-number">16. </span>Anexo<a class="headerlink" href="#appendix" title="Link permanente para este título">¶</a></h1>
+<section id="interactive-mode">
+<span id="tut-interac"></span><h2><span class="section-number">16.1. </span>Modo interativo<a class="headerlink" href="#interactive-mode" title="Link permanente para este título">¶</a></h2>
+<section id="error-handling">
+<span id="tut-error"></span><h3><span class="section-number">16.1.1. </span>Tratamento de erros<a class="headerlink" href="#error-handling" title="Link permanente para este título">¶</a></h3>
+<p>Quando um erro ocorre, o interpretador exibe uma mensagem de erro e um <em>stack trace</em> (rastreamento de pilha). Se estiver no modo interativo, ele volta para o prompt primário; se a entrada veio de um arquivo, a execução termina com um status de saída <em>nonzero</em> (diferente de zero) após a exibição do <em>stack trace</em>. (Exceções tratadas por uma cláusula <a class="reference internal" href="../reference/compound_stmts.html#except"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">except</span></code></a> numa declaração <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> não são consideradas erros, nesse contexto.) Alguns erros são irremediavelmente graves e causam términos de execução com status de saída <em>nonzero</em>; isso pode acontecer devido a inconsistências internas e em alguns casos por falta de memória. Todas as mensagens de erro são escritas no fluxo de erros padrão; a saída normal resultante da execução de comandos é escrita no canal de saída padrão.</p>
+<p>Digitar o caractere de interrupção (geralmente <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd></kbd> ou <kbd class="kbd docutils literal notranslate">Delete</kbd>) em prompts primários ou secundários causam a interrupção da entrada de dados e o retorno ao prompt primário. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> Digitar a interrupção durante a execução de um comando levanta a exceção <a class="reference internal" href="../library/exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a>, que pode ser tratada por uma declaração <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a>.</p>
+</section>
+<section id="executable-python-scripts">
+<span id="tut-scripts"></span><h3><span class="section-number">16.1.2. </span>Scripts Python executáveis<a class="headerlink" href="#executable-python-scripts" title="Link permanente para este título">¶</a></h3>
+<p>Em sistemas Unix similares ao BSD, scripts Python podem ser executados diretamente, tal como scripts shell, se tiverem a linha de código</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3.5</span>
+</pre></div>
+</div>
+<p>(assumindo que o interpretador está na <span class="target" id="index-4"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> do usuário) no começo do script e configurando o arquivo no modo executável. Os dois primeiros caracteres do arquivo devem ser <code class="docutils literal notranslate"><span class="pre">#!</span></code>. Em algumas plataformas, essa primeira linha deve terminar com uma quebra de linha em estilo Unix (<code class="docutils literal notranslate"><span class="pre">'\n'</span></code>), e não em estilo windows (<code class="docutils literal notranslate"><span class="pre">'\r\n'</span></code>). Note que o caractere <code class="docutils literal notranslate"><span class="pre">'#'</span></code> (em inglês chamado de <em>hash</em>, ou <em>pound</em> etc.), é usado em Python para marcar o início de um comentário.</p>
+<p>O script pode receber a permissão para atuar em modo executável através do comando <strong class="program">chmod</strong>.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>chmod +x myscript.py
+</pre></div>
+</div>
+<p>Em sistemas Windows, não existe a noção de um “modo executável”. O instalador Python associa automaticamente os arquivos <code class="docutils literal notranslate"><span class="pre">.py</span></code> com o <code class="docutils literal notranslate"><span class="pre">python.exe</span></code>, de forma que um clique duplo num arquivo Python o executará como um script. A extensão pode ser também <code class="docutils literal notranslate"><span class="pre">.pyw</span></code>, o que omite a janela de console que normalmente aparece.</p>
+</section>
+<section id="the-interactive-startup-file">
+<span id="tut-startup"></span><h3><span class="section-number">16.1.3. </span>Arquivo de inicialização do modo interativo<a class="headerlink" href="#the-interactive-startup-file" title="Link permanente para este título">¶</a></h3>
+<p>Quando se usa o Python no modo interativo, pode ser útil definir alguns comandos que sejam executados automaticamente toda vez que o interpretador for inicializado. Isso pode ser feito configurando-se uma variável de ambiente chamada <span class="target" id="index-5"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONSTARTUP"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONSTARTUP</span></code></a> para que ela aponte para o arquivo contendo esses comandos. Isso é similar ao recurso <code class="file docutils literal notranslate"><span class="pre">.profile</span></code> das shells Unix.</p>
+<p>Esse arquivo será lido apenas em sessões do modo interativo, e não quando Python lê comandos de um script, tampouco quando <code class="file docutils literal notranslate"><span class="pre">/dev/tty</span></code> é passado explicitamente como a origem dos comandos (neste caso, teremos um comportamento similar a uma sessão interativa padrão). Ele é executado no mesmo <em>namespace</em> (espaço de nomes) em que os comandos interativos são executados, de modo que os objetos que ele define ou importa possam ser usados sem qualificação na sessão interativa. Também é possível alterar os <em>prompts</em> <code class="docutils literal notranslate"><span class="pre">sys.ps1</span></code> e <code class="docutils literal notranslate"><span class="pre">sys.ps2</span></code> no mesmo arquivo.</p>
+<p>Caso deseje usar um arquivo de inicialização adicional a partir do atual diretório de trabalho, você pode programá-lo no arquivo de inicialização global usando um código parecido com <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">os.path.isfile('.pythonrc.py'):</span> <span class="pre">exec(open('.pythonrc.py').read())</span></code>. Se quiser usar o arquivo de inicialização num script, será necessário fazê-lo explicitamente no script:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;PYTHONSTARTUP&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">filename</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span> <span class="k">as</span> <span class="n">fobj</span><span class="p">:</span>
+        <span class="n">startup_file</span> <span class="o">=</span> <span class="n">fobj</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">startup_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="the-customization-modules">
+<span id="tut-customize"></span><h3><span class="section-number">16.1.4. </span>Módulos de customização<a class="headerlink" href="#the-customization-modules" title="Link permanente para este título">¶</a></h3>
+<p>Python oferece dois <em>hooks</em> que permitem sua customização: <code class="xref py py-mod docutils literal notranslate"><span class="pre">sitecustomize</span></code> e <code class="xref py py-mod docutils literal notranslate"><span class="pre">usercustomize</span></code>. Para entender como funcionam, primeiro você deve localizar o diretório site-packages do usuário. Inicie o Python e execute este código:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">site</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">site</span><span class="o">.</span><span class="n">getusersitepackages</span><span class="p">()</span>
+<span class="go">&#39;/home/user/.local/lib/python3.5/site-packages&#39;</span>
+</pre></div>
+</div>
+<p>Agora você pode criar um arquivo chamado <code class="file docutils literal notranslate"><span class="pre">usercustomize.py</span></code> neste diretório e colocar qualquer coisa que quiser dentro. Isto vai afetar toda invocação do Python, a menos que seja iniciado com a opção <a class="reference internal" href="../using/cmdline.html#cmdoption-s"><code class="xref std std-option docutils literal notranslate"><span class="pre">-s</span></code></a> para desabilitar a importação automática.</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">sitecustomize</span></code> funciona da mesma forma, mas normalmente é criado por um administrador do computador no diretório site-packages global e é importado antes de <code class="xref py py-mod docutils literal notranslate"><span class="pre">usercustomize</span></code>. Veja a documentação do módulo <a class="reference internal" href="../library/site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> para mais detalhes.</p>
+<p class="rubric">Notas de rodapé</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Um problema com a package GNU Readline pode impedir que isso aconteça.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">16. Anexo</a><ul>
+<li><a class="reference internal" href="#interactive-mode">16.1. Modo interativo</a><ul>
+<li><a class="reference internal" href="#error-handling">16.1.1. Tratamento de erros</a></li>
+<li><a class="reference internal" href="#executable-python-scripts">16.1.2. Scripts Python executáveis</a></li>
+<li><a class="reference internal" href="#the-interactive-startup-file">16.1.3. Arquivo de inicialização do modo interativo</a></li>
+<li><a class="reference internal" href="#the-customization-modules">16.1.4. Módulos de customização</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="floatingpoint.html"
+                        title="capítulo anterior"><span class="section-number">15. </span>Aritmética de ponto flutuante: problemas e limitações</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="../using/index.html"
+                        title="próximo capítulo">Configurações e Uso do Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/appendix.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../using/index.html" title="Configurações e Uso do Python"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="floatingpoint.html" title="15. Aritmética de ponto flutuante: problemas e limitações"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">16. </span>Anexo</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>copy — Operações de cópia profunda e cópia rasa &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="pprint — Impressão Bonita de Dados" href="pprint.html" />
+    <link rel="prev" title="types — Criação de tipos dinâmicos e nomes para tipos embutidos" href="types.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/copy.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="types.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">types</span></code> — Criação de tipos dinâmicos e nomes para tipos embutidos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="pprint.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pprint</span></code> — Impressão Bonita de Dados</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/copy.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="pprint.html" title="pprint — Impressão Bonita de Dados"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="types.html" title="types — Criação de tipos dinâmicos e nomes para tipos embutidos"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="datatypes.html" accesskey="U">Tipos de Dados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">copy</span></code> — Operações de cópia profunda e cópia rasa</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-copy">
+<span id="copy-shallow-and-deep-copy-operations"></span><h1><a class="reference internal" href="#module-copy" title="copy: Shallow and deep copy operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">copy</span></code></a> — Operações de cópia profunda e cópia rasa<a class="headerlink" href="#module-copy" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/copy.py">Lib/copy.py</a></p>
+<hr class="docutils" />
+<p>As instruções de atribuição no Python não copiam objetos, elas criam ligações entre um destino e um objeto. Para coleções que são mutáveis ​​ou contêm itens mutáveis, às vezes é necessária uma cópia para que seja possível alterar uma cópia sem alterar a outra. Este módulo fornece operações genéricas de cópia profunda e rasa (explicadas abaixo).</p>
+<p>Resumo da interface:</p>
+<dl class="py function">
+<dt id="copy.copy">
+<code class="sig-prename descclassname">copy.</code><code class="sig-name descname">copy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#copy.copy" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma cópia rasa de <em>x</em>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="copy.deepcopy">
+<code class="sig-prename descclassname">copy.</code><code class="sig-name descname">deepcopy</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="optional">[</span>, <em class="sig-param">memo</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#copy.deepcopy" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma cópia profunda  de <em>x</em>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="copy.Error">
+<em class="property">exception </em><code class="sig-prename descclassname">copy.</code><code class="sig-name descname">Error</code><a class="headerlink" href="#copy.Error" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Levantada para erros específicos do módulo.</p>
+</dd></dl>
+
+<p id="shallow-vs-deep-copy">A diferença entre cópia profunda e rasa é relevante apenas para objetos compostos (objetos que contêm outros objetos, como listas ou instâncias de classe):</p>
+<ul class="simple">
+<li><p>Uma <em>cópia rasa</em> constrói um novo objeto composto e então (na medida do possível) insere nele <em>referências</em> aos objetos encontrados no original.</p></li>
+<li><p>Uma <em>cópia profunda</em> constrói um novo objeto composto e então, recursivamente, insere nele <em>cópias</em> dos objetos encontrados no original.</p></li>
+</ul>
+<p>Frequentemente, existem dois problemas com operações de cópia profunda que não existem com operações de cópia rasa:</p>
+<ul class="simple">
+<li><p>Objetos recursivos (objetos compostos que, direta ou indiretamente, contêm uma referência a si mesmos) podem causar um laço recursivo.</p></li>
+<li><p>Como a cópia profunda copia tudo, ela pode copiar muito, como dados que devem ser compartilhados entre as cópias.</p></li>
+</ul>
+<p>A função <a class="reference internal" href="#copy.deepcopy" title="copy.deepcopy"><code class="xref py py-func docutils literal notranslate"><span class="pre">deepcopy()</span></code></a> evita esses problemas:</p>
+<ul class="simple">
+<li><p>mantendo um dicionário <code class="docutils literal notranslate"><span class="pre">memo</span></code> de objetos já copiados durante a passagem de cópia atual; e</p></li>
+<li><p>permitindo que as classes definidas pelo usuário substituam a operação de cópia ou o conjunto de componentes copiados.</p></li>
+</ul>
+<p>This module does not copy types like module, method, stack trace, stack frame,
+file, socket, window, or any similar types.  It does “copy” functions and
+classes (shallow and deeply), by returning the original object unchanged; this
+is compatible with the way these are treated by the <a class="reference internal" href="pickle.html#module-pickle" title="pickle: Convert Python objects to streams of bytes and back."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> module.</p>
+<p>Cópias rasas de dicionários podem ser feitas usando <a class="reference internal" href="stdtypes.html#dict.copy" title="dict.copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">dict.copy()</span></code></a>, e de listas atribuindo uma fatia de toda a lista, por exemplo, <code class="docutils literal notranslate"><span class="pre">lista_copiada</span> <span class="pre">=</span> <span class="pre">lista_original[:]</span></code>.</p>
+<p id="index-0">As classes podem usar as mesmas interfaces para controlar a cópia que usam para controlar o <em>pickling</em>. Veja a descrição do módulo <a class="reference internal" href="pickle.html#module-pickle" title="pickle: Convert Python objects to streams of bytes and back."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a> para informações sobre esses métodos. Na verdade, o módulo <a class="reference internal" href="#module-copy" title="copy: Shallow and deep copy operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">copy</span></code></a> usa as funções pickle registradas do módulo <a class="reference internal" href="copyreg.html#module-copyreg" title="copyreg: Register pickle support functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">copyreg</span></code></a>.</p>
+<p id="index-1">Para que uma classe defina sua própria implementação de cópia, ela pode definir métodos especiais <code class="xref py py-meth docutils literal notranslate"><span class="pre">__copy__()</span></code> e <code class="xref py py-meth docutils literal notranslate"><span class="pre">__deepcopy__()</span></code>. O primeiro é chamado para implementar a operação de cópia rasa; nenhum argumento adicional é passado. O último é chamado para implementar a operação de cópia profunda; é passado um argumento, o dicionário <code class="docutils literal notranslate"><span class="pre">memo</span></code>. Se a implementação de <code class="xref py py-meth docutils literal notranslate"><span class="pre">__deepcopy__()</span></code> precisa fazer uma cópia profunda de um componente, ela deve chamar a função <a class="reference internal" href="#copy.deepcopy" title="copy.deepcopy"><code class="xref py py-func docutils literal notranslate"><span class="pre">deepcopy()</span></code></a> com o componente como primeiro argumento e o dicionário de memorando como segundo argumento. O dicionário memo deve ser tratado como um objeto opaco.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt>Módulo <a class="reference internal" href="pickle.html#module-pickle" title="pickle: Convert Python objects to streams of bytes and back."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></dt><dd><p>Discussão dos métodos especiais usados ​​para dar suporte à recuperação e restauração do estado do objeto.</p>
+</dd>
+</dl>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="types.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">types</span></code> — Criação de tipos dinâmicos e nomes para tipos embutidos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="pprint.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pprint</span></code> — Impressão Bonita de Dados</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/copy.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="pprint.html" title="pprint — Impressão Bonita de Dados"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="types.html" title="types — Criação de tipos dinâmicos e nomes para tipos embutidos"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="datatypes.html" >Tipos de Dados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">copy</span></code> — Operações de cópia profunda e cópia rasa</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

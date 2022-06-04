@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>msvcrt — Rotinas úteis do tempo de execução do MS VC++ &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="winreg — Windows registry access" href="winreg.html" />
+    <link rel="prev" title="Serviços Específicos do MS Windows" href="windows.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/msvcrt.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code> — Rotinas úteis do tempo de execução do MS VC++</a><ul>
+<li><a class="reference internal" href="#file-operations">Operações com arquivos</a></li>
+<li><a class="reference internal" href="#console-i-o">E/S de console</a></li>
+<li><a class="reference internal" href="#other-functions">Outras funções</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="windows.html"
+                        title="capítulo anterior">Serviços Específicos do MS Windows</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="winreg.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winreg</span></code> — Windows registry access</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/msvcrt.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="winreg.html" title="winreg — Windows registry access"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="windows.html" title="Serviços Específicos do MS Windows"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="windows.html" accesskey="U">Serviços Específicos do MS Windows</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code> — Rotinas úteis do tempo de execução do MS VC++</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-msvcrt">
+<span id="msvcrt-useful-routines-from-the-ms-vc-runtime"></span><h1><a class="reference internal" href="#module-msvcrt" title="msvcrt: Miscellaneous useful routines from the MS VC++ runtime. (Windows)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code></a> — Rotinas úteis do tempo de execução do MS VC++<a class="headerlink" href="#module-msvcrt" title="Link permanente para este título">¶</a></h1>
+<hr class="docutils" />
+<p>Essas funções fornecem acesso a alguns recursos úteis nas plataformas Windows. Alguns módulos de nível superior usam essas funções para criar as implementações do Windows de seus serviços. Por exemplo, o módulo <a class="reference internal" href="getpass.html#module-getpass" title="getpass: Portable reading of passwords and retrieval of the userid."><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code></a> usa isso na implementação da função <a class="reference internal" href="getpass.html#module-getpass" title="getpass: Portable reading of passwords and retrieval of the userid."><code class="xref py py-func docutils literal notranslate"><span class="pre">getpass()</span></code></a>.</p>
+<p>Mais documentação sobre essas funções pode ser encontrada na documentação da API da plataforma.</p>
+<p>O módulo implementa as variantes normal e ampla de caracteres da API de E/S do console. A API normal lida apenas com caracteres ASCII e é de uso limitado para aplicativos internacionalizados. A API ampla de caracteres deve ser usada sempre que possível.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>As operações neste módulo agora levantam <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> onde <a class="reference internal" href="exceptions.html#IOError" title="IOError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IOError</span></code></a> foi levantado.</p>
+</div>
+<section id="file-operations">
+<span id="msvcrt-files"></span><h2>Operações com arquivos<a class="headerlink" href="#file-operations" title="Link permanente para este título">¶</a></h2>
+<dl class="py function">
+<dt id="msvcrt.locking">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">locking</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">mode</span></em>, <em class="sig-param"><span class="n">nbytes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.locking" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Bloqueia parte de um arquivo com base no descritor de arquivo <em>fd</em> no tempo de execução C. Levanta <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> em falha. A região bloqueada do arquivo se estende da posição atual do arquivo para <em>nbytes</em> bytes e pode continuar além do final do arquivo. <em>mode</em> deve ser uma das constantes <code class="xref py py-const docutils literal notranslate"><span class="pre">LK_*</span></code> listadas abaixo. Várias regiões em um arquivo podem estar bloqueadas ao mesmo tempo, mas não podem se sobrepor. Regiões adjacentes não são mescladas; eles devem ser desbloqueados individualmente.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">msvcrt.locking</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">fd</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code>, <code class="docutils literal notranslate"><span class="pre">nbytes</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="msvcrt.LK_LOCK">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">LK_LOCK</code><a class="headerlink" href="#msvcrt.LK_LOCK" title="Link permanente para esta definição">¶</a></dt>
+<dt id="msvcrt.LK_RLCK">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">LK_RLCK</code><a class="headerlink" href="#msvcrt.LK_RLCK" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Bloqueia os bytes especificados. Se os bytes não puderem ser bloqueados, o programa tentará imediatamente novamente após 1 segundo. Se, após 10 tentativas, os bytes não puderem ser bloqueados, <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> será levantado.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="msvcrt.LK_NBLCK">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">LK_NBLCK</code><a class="headerlink" href="#msvcrt.LK_NBLCK" title="Link permanente para esta definição">¶</a></dt>
+<dt id="msvcrt.LK_NBRLCK">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">LK_NBRLCK</code><a class="headerlink" href="#msvcrt.LK_NBRLCK" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Bloqueia os bytes especificados. Se os bytes não puderem ser bloqueados, <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> é levantado.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="msvcrt.LK_UNLCK">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">LK_UNLCK</code><a class="headerlink" href="#msvcrt.LK_UNLCK" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Desbloqueia os bytes especificados, que devem ter sido bloqueados anteriormente.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.setmode">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">setmode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.setmode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Defina o modo de conversão de final de linha para o descritor de arquivo <em>fd</em>. Para configurá-lo no modo de texto, <em>flags</em> deve ser <a class="reference internal" href="os.html#os.O_TEXT" title="os.O_TEXT"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_TEXT</span></code></a>; para binário, deve ser <a class="reference internal" href="os.html#os.O_BINARY" title="os.O_BINARY"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_BINARY</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.open_osfhandle">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">open_osfhandle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">flags</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.open_osfhandle" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Cria um descritor de arquivo em tempo de execução C a partir do identificador de arquivo <em>handle</em>. O parâmetro <em>flags</em> deve ser um OR bit a bit de <a class="reference internal" href="os.html#os.O_APPEND" title="os.O_APPEND"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_APPEND</span></code></a>, <a class="reference internal" href="os.html#os.O_RDONLY" title="os.O_RDONLY"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_RDONLY</span></code></a> e <a class="reference internal" href="os.html#os.O_TEXT" title="os.O_TEXT"><code class="xref py py-const docutils literal notranslate"><span class="pre">os.O_TEXT</span></code></a>. O descritor de arquivo retornado pode ser usado como um parâmetro para <a class="reference internal" href="os.html#os.fdopen" title="os.fdopen"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.fdopen()</span></code></a> para criar um objeto arquivo.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">msvcrt.open_osfhandle</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">handle</span></code>, <code class="docutils literal notranslate"><span class="pre">flags</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.get_osfhandle">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">get_osfhandle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.get_osfhandle" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o identificador de arquivo para o descritor de arquivo <em>fd</em>. Leva <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> se <em>fd</em> não for reconhecido.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">msvcrt.get_osfhandle</span></code> com argumento <code class="docutils literal notranslate"><span class="pre">fd</span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="console-i-o">
+<span id="msvcrt-console"></span><h2>E/S de console<a class="headerlink" href="#console-i-o" title="Link permanente para este título">¶</a></h2>
+<dl class="py function">
+<dt id="msvcrt.kbhit">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">kbhit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.kbhit" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se um pressionamento de tecla estiver aguardando para ser lido.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.getch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">getch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.getch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Lê um pressionamento de tecla e retorna o caractere resultante como uma sequência de bytes. Nada é ecoado no console. Essa chamada será bloqueada se um pressionamento de tecla ainda não estiver disponível, mas não esperará que <kbd class="kbd docutils literal notranslate">Enter</kbd> seja pressionado. Se a tecla pressionada for uma tecla de função especial, ela retornará <code class="docutils literal notranslate"><span class="pre">\000'</span></code> ou <code class="docutils literal notranslate"><span class="pre">'\xe0'</span></code>; a próxima chamada retornará o código da chave. A tecla <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">C</kbd></kbd> não pode ser lida com esta função.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.getwch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">getwch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.getwch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Variante com caractere largo de <a class="reference internal" href="#msvcrt.getch" title="msvcrt.getch"><code class="xref py py-func docutils literal notranslate"><span class="pre">getch()</span></code></a>, retornando um valor Unicode.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.getche">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">getche</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.getche" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Semelhante a <a class="reference internal" href="#msvcrt.getch" title="msvcrt.getch"><code class="xref py py-func docutils literal notranslate"><span class="pre">getch()</span></code></a>, mas o pressionamento de tecla será repetido se representar um caractere imprimível.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.getwche">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">getwche</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.getwche" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Variante com caractere largo de <a class="reference internal" href="#msvcrt.getche" title="msvcrt.getche"><code class="xref py py-func docutils literal notranslate"><span class="pre">getche()</span></code></a>, retornando um valor Unicode.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.putch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">putch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">char</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.putch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Imprime a string de bytes <em>char</em> no console sem armazenar em buffer.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.putwch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">putwch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unicode_char</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.putwch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Variante com caractere largo de <a class="reference internal" href="#msvcrt.putch" title="msvcrt.putch"><code class="xref py py-func docutils literal notranslate"><span class="pre">putch()</span></code></a>, retornando um valor Unicode.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.ungetch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">ungetch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">char</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.ungetch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz com que a string de bytes <em>char</em> seja “empurrada” para o buffer do console; será o próximo caractere lido por <a class="reference internal" href="#msvcrt.getch" title="msvcrt.getch"><code class="xref py py-func docutils literal notranslate"><span class="pre">getch()</span></code></a> ou <a class="reference internal" href="#msvcrt.getche" title="msvcrt.getche"><code class="xref py py-func docutils literal notranslate"><span class="pre">getche()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="msvcrt.ungetwch">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">ungetwch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">unicode_char</span></em><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.ungetwch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Variante com caractere largo de <a class="reference internal" href="#msvcrt.ungetch" title="msvcrt.ungetch"><code class="xref py py-func docutils literal notranslate"><span class="pre">ungetch()</span></code></a>, retornando um valor Unicode.</p>
+</dd></dl>
+
+</section>
+<section id="other-functions">
+<span id="msvcrt-other"></span><h2>Outras funções<a class="headerlink" href="#other-functions" title="Link permanente para este título">¶</a></h2>
+<dl class="py function">
+<dt id="msvcrt.heapmin">
+<code class="sig-prename descclassname">msvcrt.</code><code class="sig-name descname">heapmin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#msvcrt.heapmin" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Força o heap <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> a ser limpado e retorna os blocos não utilizados ao sistema operacional. Em caso de falha, isso levanta <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a>.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code> — Rotinas úteis do tempo de execução do MS VC++</a><ul>
+<li><a class="reference internal" href="#file-operations">Operações com arquivos</a></li>
+<li><a class="reference internal" href="#console-i-o">E/S de console</a></li>
+<li><a class="reference internal" href="#other-functions">Outras funções</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="windows.html"
+                        title="capítulo anterior">Serviços Específicos do MS Windows</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="winreg.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">winreg</span></code> — Windows registry access</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/msvcrt.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="winreg.html" title="winreg — Windows registry access"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="windows.html" title="Serviços Específicos do MS Windows"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="windows.html" >Serviços Específicos do MS Windows</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">msvcrt</span></code> — Rotinas úteis do tempo de execução do MS VC++</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

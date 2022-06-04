@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>email.utils: Utilitários diversos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="email.iterators: Iteradores" href="email.iterators.html" />
+    <link rel="prev" title="email.encoders: Encoders" href="email.encoders.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/email.utils.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="email.encoders.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code>: Encoders</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="email.iterators.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code>: Iteradores</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/email.utils.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="email.iterators.html" title="email.iterators: Iteradores"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="email.encoders.html" title="email.encoders: Encoders"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="netdata.html" >Manuseio de Dados na Internet</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="email.html" accesskey="U"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email</span></code> — Um e-mail e um pacote MIME manipulável</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code>: Utilitários diversos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-email.utils">
+<span id="email-utils-miscellaneous-utilities"></span><h1><a class="reference internal" href="#module-email.utils" title="email.utils: Miscellaneous email package utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code></a>: Utilitários diversos<a class="headerlink" href="#module-email.utils" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/email/utils.py">Lib/email/utils.py</a></p>
+<hr class="docutils" />
+<p>Existem alguns utilitários úteis fornecidos no <a class="reference internal" href="#module-email.utils" title="email.utils: Miscellaneous email package utilities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code></a> module:</p>
+<dl class="py function">
+<dt id="email.utils.localtime">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">localtime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.localtime" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a hora local como um objeto datetime com reconhecimento. Se chamado sem argumentos, retorne a hora atual. Caso contrário, o argumento <em>dt</em> deve ser uma instância: <a class="reference internal" href="datetime.html#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime</span></code></a> e é convertido para o fuso horário local de acordo com o banco de dados de fuso horário do sistema. Se <em>dt</em> é ingênuo (isto é, <code class="docutils literal notranslate"><span class="pre">dt.tzinfo</span></code> é <code class="docutils literal notranslate"><span class="pre">None</span></code>), presume-se que seja na hora local. Neste caso, um valor positivo ou zero para <em>isdst</em> faz com que <code class="docutils literal notranslate"><span class="pre">localtime</span></code> presuma inicialmente que o horário de verão (por exemplo, horário de verão) esteja ou não (respectivamente) em vigor pelo tempo especificado. Um valor negativo para <em>isdst</em> faz com que o <code class="docutils literal notranslate"><span class="pre">localtime</span></code> tente adivinhar se o horário de verão está em vigor pelo tempo especificado.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.make_msgid">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">make_msgid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">idstring</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">domain</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.make_msgid" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma string adequada para um cabeçalho <em class="mailheader">Message-ID</em> compatível com <span class="target" id="index-22"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>. O <em>idstring</em> opcional, se fornecido, é uma string usada para fortalecer a exclusividade do ID da mensagem. O <em>domain</em> Opcional, se dado, fornece a porção do msgid após o ‘&#64;’. O padrão é o nome do host local. Normalmente, não é necessário substituir esse padrão, mas pode ser útil em alguns casos, como um sistema distribuído de construção que usa um nome de domínio consistente em vários hosts.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.2: </span>Adicionada a palavra-chave <em>domain</em>.</p>
+</div>
+</dd></dl>
+
+<p>As funções restantes fazem parte da API de e-mail herdada (<code class="docutils literal notranslate"><span class="pre">Compat32</span></code>). Não há necessidade de usá-las diretamente com a nova API, pois a análise e a formatação fornecidas são feitas automaticamente pelo mecanismo de análise de cabeçalhos da nova API.</p>
+<dl class="py function">
+<dt id="email.utils.quote">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">quote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.quote" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Devolve uma nova string com barras invertidas em <em>str</em> substituídas por duas barras invertidas e aspas duplas substituídas por aspas duplas invertidas.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.unquote">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">unquote</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.unquote" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma nova string que é uma versão sem aspas de <em>str</em>. Se <em>str</em> terminar e começar com aspas duplas, elas serão removidas. Da mesma forma, se <em>str</em> termina e começa com colchetes angulares, eles são removidos.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.parseaddr">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">parseaddr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.parseaddr" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Analisa o endereço – que deve ser o valor de algum campo contendo endereço, como <em class="mailheader">To</em> ou <em class="mailheader">Cc</em> – em suas partes constituinte <em>realname</em> e <em>email address</em>. Retorna uma tupla daquela informação, a menos que a análise falhe, caso em que uma tupla de 2 de <code class="docutils literal notranslate"><span class="pre">('',</span> <span class="pre">'')</span></code> é retornada.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.formataddr">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">formataddr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pair</span></em>, <em class="sig-param"><span class="n">charset</span><span class="o">=</span><span class="default_value">'utf-8'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.formataddr" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O inverso de <a class="reference internal" href="#email.utils.parseaddr" title="email.utils.parseaddr"><code class="xref py py-meth docutils literal notranslate"><span class="pre">parseaddr()</span></code></a>, isto leva uma tupla de 2 do forma <code class="docutils literal notranslate"><span class="pre">(realname,</span> <span class="pre">email_address)</span></code> e retorna o valor de string adequado para um cabeçalho <em class="mailheader">To</em> ou <em class="mailheader">Cc</em> . Se o primeiro elemento de <em>pair</em> for falso, o segundo elemento será retornado sem modificações.</p>
+<p>O <em>charset</em> opcional é o conjunto de caracteres que será usado na codificação <span class="target" id="index-23"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2047.html"><strong>RFC 2047</strong></a> do <code class="docutils literal notranslate"><span class="pre">realname</span></code> se o <code class="docutils literal notranslate"><span class="pre">realname</span></code> contiver caracteres não-ASCII. Pode ser uma instância de <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> ou a <a class="reference internal" href="email.charset.html#email.charset.Charset" title="email.charset.Charset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Charset</span></code></a>. O padrão é <code class="docutils literal notranslate"><span class="pre">utf-8</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Adicionada a opção <em>charset</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.getaddresses">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">getaddresses</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fieldvalues</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.getaddresses" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Este método retorna uma lista de tuplas 2 do formulário retornado por <code class="docutils literal notranslate"><span class="pre">parseaddr()</span></code>. <em>fieldvalues</em> é uma sequência de valores do campo de cabeçalho que pode ser retornada por <a class="reference internal" href="email.compat32-message.html#email.message.Message.get_all" title="email.message.Message.get_all"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Message.get_all</span></code></a>. Aqui está um exemplo simples que recebe todos os destinatários de uma mensagem:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">email.utils</span> <span class="kn">import</span> <span class="n">getaddresses</span>
+
+<span class="n">tos</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="s1">&#39;to&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">ccs</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="s1">&#39;cc&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">resent_tos</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="s1">&#39;resent-to&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">resent_ccs</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">get_all</span><span class="p">(</span><span class="s1">&#39;resent-cc&#39;</span><span class="p">,</span> <span class="p">[])</span>
+<span class="n">all_recipients</span> <span class="o">=</span> <span class="n">getaddresses</span><span class="p">(</span><span class="n">tos</span> <span class="o">+</span> <span class="n">ccs</span> <span class="o">+</span> <span class="n">resent_tos</span> <span class="o">+</span> <span class="n">resent_ccs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.parsedate">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">parsedate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.parsedate" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Tenta analisar uma data de acordo com as regras em <span class="target" id="index-24"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>. no entanto, alguns mailers não seguem esse formato conforme especificado, portanto <a class="reference internal" href="#email.utils.parsedate" title="email.utils.parsedate"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate()</span></code></a> tenta adivinhar corretamente em tais casos. <em>date</em> é uma string contendo uma data <span class="target" id="index-25"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>, como <code class="docutils literal notranslate"><span class="pre">&quot;Mon,</span> <span class="pre">20</span> <span class="pre">Nov</span> <span class="pre">1995</span> <span class="pre">19:12:08</span> <span class="pre">-0500&quot;</span></code>. Se conseguir analisar a data, <a class="reference internal" href="#email.utils.parsedate" title="email.utils.parsedate"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate()</span></code></a> retorna uma 9-tupla que pode ser passada diretamente para <a class="reference internal" href="time.html#time.mktime" title="time.mktime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.mktime()</span></code></a>; caso contrário, <code class="docutils literal notranslate"><span class="pre">None</span></code> será retornado. Observe que os índices 6, 7 e 8 da tupla de resultados não são utilizáveis.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.parsedate_tz">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">parsedate_tz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.parsedate_tz" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Executa a mesma função que <a class="reference internal" href="#email.utils.parsedate" title="email.utils.parsedate"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate()</span></code></a>, mas retorna <code class="docutils literal notranslate"><span class="pre">None</span></code> ou uma tupla de 10; os primeiros 9 elementos formam uma tupla que pode ser passada diretamente para <a class="reference internal" href="time.html#time.mktime" title="time.mktime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.mktime()</span></code></a>, e o décimo é o deslocamento do fuso horário da data do UTC (que é o termo oficial para o horário de Greenwich) <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. Se a string de entrada não tem fuso horário, o último elemento da tupla retornado é <code class="docutils literal notranslate"><span class="pre">0</span></code>, que representa UTC. Observe que os índices 6, 7 e 8 da tupla de resultado não podem ser usados.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.parsedate_to_datetime">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">parsedate_to_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">date</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.parsedate_to_datetime" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O inverso de <a class="reference internal" href="#email.utils.format_datetime" title="email.utils.format_datetime"><code class="xref py py-func docutils literal notranslate"><span class="pre">format_datetime()</span></code></a>. Desempenha a mesma função que <a class="reference internal" href="#email.utils.parsedate" title="email.utils.parsedate"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate()</span></code></a>, mas em caso de sucesso retorna um <a class="reference internal" href="datetime.html#datetime.datetime" title="datetime.datetime"><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a>; caso contrário, <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> é levantada se <em>date</em> contiver um valor inválido, como uma hora maior que 23 ou uma diferença de fuso horário não entre -24 e 24 horas. Se a data de entrada tem um fuso horário de <code class="docutils literal notranslate"><span class="pre">-0000</span></code>, o <code class="docutils literal notranslate"><span class="pre">datetime</span></code> será um <code class="docutils literal notranslate"><span class="pre">datetime</span></code> ingênuo, e se a data estiver em conformidade com os RFCs representará um horário em UTC, mas sem indicação do fuso horário de origem real da mensagem de onde vem a data. Se a data de entrada tiver qualquer outro deslocamento de fuso horário válido, o <code class="docutils literal notranslate"><span class="pre">datetime</span></code> será um <code class="docutils literal notranslate"><span class="pre">datetime</span></code> consciente com o correspondente a <a class="reference internal" href="datetime.html#datetime.timezone" title="datetime.timezone"><code class="xref py py-class docutils literal notranslate"><span class="pre">timezone</span></code></a> <a class="reference internal" href="datetime.html#datetime.tzinfo" title="datetime.tzinfo"><code class="xref py py-class docutils literal notranslate"><span class="pre">tzinfo</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.mktime_tz">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">mktime_tz</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tuple</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.mktime_tz" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Transforma uma tupla de 10 conforme retornado por <a class="reference internal" href="#email.utils.parsedate_tz" title="email.utils.parsedate_tz"><code class="xref py py-func docutils literal notranslate"><span class="pre">parsedate_tz()</span></code></a> em um timestamp UTC (segundos desde a Era Unix). Se o item de fuso horário na tupla for <code class="docutils literal notranslate"><span class="pre">None</span></code>, considera a hora local.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.formatdate">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">formatdate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeval</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">localtime</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">usegmt</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.formatdate" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma string de data conforme <span class="target" id="index-26"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>. Por exemplo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">Fri</span><span class="p">,</span> <span class="mi">09</span> <span class="n">Nov</span> <span class="mi">2001</span> <span class="mi">01</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">47</span> <span class="o">-</span><span class="mi">0000</span>
+</pre></div>
+</div>
+<p>O <em>timeval</em> opcional, se fornecido, é um valor de tempo de ponto flutuante, conforme aceito por <a class="reference internal" href="time.html#time.gmtime" title="time.gmtime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.gmtime()</span></code></a> e <a class="reference internal" href="time.html#time.localtime" title="time.localtime"><code class="xref py py-func docutils literal notranslate"><span class="pre">time.localtime()</span></code></a>, caso contrário, o tempo atual é usado.</p>
+<p>Há um sinalizador opcional <em>localtime</em>, que, quando é <code class="docutils literal notranslate"><span class="pre">True</span></code>, interpreta <em>timeval</em> e retorna uma data relativa ao fuso horário local em vez do UTC, levando em consideração o horário de verão. O padrão é <code class="docutils literal notranslate"><span class="pre">False</span></code>, o que significa que o UTC é usado.</p>
+<p>O <em>usegmt</em> opcional é um sinalizador que quando <code class="docutils literal notranslate"><span class="pre">True</span></code>, produz uma string de data com o fuso horário como uma string ascii <code class="docutils literal notranslate"><span class="pre">GMT</span></code>, ao invés de um numérico <code class="docutils literal notranslate"><span class="pre">-0000</span></code>. Isso é necessário para alguns protocolos (como HTTP). Isso se aplica apenas quando <em>localtime</em> for <code class="docutils literal notranslate"><span class="pre">False</span></code>. O padrão é <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.format_datetime">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">format_datetime</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dt</span></em>, <em class="sig-param"><span class="n">usegmt</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.format_datetime" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Como <code class="docutils literal notranslate"><span class="pre">formatdate</span></code>, mas a entrada é uma instância de <a class="reference internal" href="datetime.html#module-datetime" title="datetime: Basic date and time types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a>. Se for uma data e hora ingênua, será considerado “UTC sem informações sobre o fuso horário de origem” e o convencional <code class="docutils literal notranslate"><span class="pre">-0000</span></code> será usado para o fuso horário. Se for um <code class="docutils literal notranslate"><span class="pre">datetime</span></code> ciente, então o deslocamento de fuso horário numérico é usado. Se for um fuso horário ciente com deslocamento zero, então <em>usegmt</em> pode ser definido como <code class="docutils literal notranslate"><span class="pre">True</span></code>, caso em que a string <code class="docutils literal notranslate"><span class="pre">GMT</span></code> é usada em vez do deslocamento numérico do fuso horário. Isso fornece uma maneira de gerar cabeçalhos de data HTTP em conformidade com os padrões.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.decode_rfc2231">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">decode_rfc2231</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.decode_rfc2231" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Decodifica a string <em>s</em> de acordo com <span class="target" id="index-27"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2231.html"><strong>RFC 2231</strong></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.encode_rfc2231">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">encode_rfc2231</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">charset</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">language</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.encode_rfc2231" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Codifica a string <em>s</em> de acordo com <span class="target" id="index-28"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2231.html"><strong>RFC 2231</strong></a>. <em>charset</em> e <em>language</em> opcionais, se fornecido, são o nome do conjunto de caracteres e o nome do idioma a ser usado. Se nenhum deles for fornecido, <em>s</em> é retornado como está. Se <em>charset</em> for fornecido, mas <em>language</em> não, a string será codificada usando a string vazia para <em>language</em>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.collapse_rfc2231_value">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">collapse_rfc2231_value</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">'replace'</span></em>, <em class="sig-param"><span class="n">fallback_charset</span><span class="o">=</span><span class="default_value">'us-ascii'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.collapse_rfc2231_value" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Quando um parâmetro de cabeçalho é codificado no formato <span class="target" id="index-29"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2231.html"><strong>RFC 2231</strong></a>, <a class="reference internal" href="email.compat32-message.html#email.message.Message.get_param" title="email.message.Message.get_param"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Message.get_param</span></code></a> pode retornar uma tupla de 3 contendo o conjunto de caracteres, idioma e valor. <a class="reference internal" href="#email.utils.collapse_rfc2231_value" title="email.utils.collapse_rfc2231_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">collapse_rfc2231_value()</span></code></a> transforma isso em uma string Unicode. <em>errors</em> opcionais são passados para o argumento <em>errors</em> do método <a class="reference internal" href="stdtypes.html#str.encode" title="str.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">encode()</span></code></a> de <a class="reference internal" href="stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a>; o padrão é <code class="docutils literal notranslate"><span class="pre">'replace'</span></code>. <em>fallback_charset</em> opcional especifica o conjunto de caracteres a ser usado se aquele no cabeçalho <span class="target" id="index-30"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2231.html"><strong>RFC 2231</strong></a> não for conhecido pelo Python; o padrão é <code class="docutils literal notranslate"><span class="pre">'us-ascii'</span></code>.</p>
+<p>Por conveniência, se <em>value</em> passado para <a class="reference internal" href="#email.utils.collapse_rfc2231_value" title="email.utils.collapse_rfc2231_value"><code class="xref py py-func docutils literal notranslate"><span class="pre">collapse_rfc2231_value()</span></code></a> não for uma tupla, deve ser uma string e é retornado sem aspas.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="email.utils.decode_params">
+<code class="sig-prename descclassname">email.utils.</code><code class="sig-name descname">decode_params</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">params</span></em><span class="sig-paren">)</span><a class="headerlink" href="#email.utils.decode_params" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Decodifica a lista de parâmetros de acordo com <span class="target" id="index-31"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2231.html"><strong>RFC 2231</strong></a>. <em>params</em> é uma sequência de 2 tuplas contendo elementos do formulário <code class="docutils literal notranslate"><span class="pre">(content-type,</span> <span class="pre">string-value)</span></code>.</p>
+</dd></dl>
+
+<p class="rubric">Notas de rodapé</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Observa que o sinal do deslocamento de fuso horário é o oposto do sinal da variável <code class="docutils literal notranslate"><span class="pre">time.timezone</span></code> para o mesmo fuso horário; a última variável segue o padrão POSIX enquanto este módulo segue <span class="target" id="index-32"></span><a class="rfc reference external" href="https://tools.ietf.org/html/rfc2822.html"><strong>RFC 2822</strong></a>.</p>
+</dd>
+</dl>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="email.encoders.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.encoders</span></code>: Encoders</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="email.iterators.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.iterators</span></code>: Iteradores</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/email.utils.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="email.iterators.html" title="email.iterators: Iteradores"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="email.encoders.html" title="email.encoders: Encoders"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="netdata.html" >Manuseio de Dados na Internet</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="email.html" ><code class="xref py py-mod docutils literal notranslate"><span class="pre">email</span></code> — Um e-mail e um pacote MIME manipulável</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">email.utils</span></code>: Utilitários diversos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

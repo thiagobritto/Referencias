@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>_thread— API de segmentação de baixo nível &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Comunicação em Rede e Interprocesso" href="ipc.html" />
+    <link rel="prev" title="contextvars — Variáveis de contexto" href="contextvars.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/_thread.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="contextvars.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contextvars</span></code> — Variáveis de contexto</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="ipc.html"
+                        title="próximo capítulo">Comunicação em Rede e Interprocesso</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/_thread.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="ipc.html" title="Comunicação em Rede e Interprocesso"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="contextvars.html" title="contextvars — Variáveis de contexto"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concurrency.html" accesskey="U">Execução Concorrente</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">_thread</span></code>— API de segmentação de baixo nível</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-_thread">
+<span id="thread-low-level-threading-api"></span><h1><a class="reference internal" href="#module-_thread" title="_thread: Low-level threading API."><code class="xref py py-mod docutils literal notranslate"><span class="pre">_thread</span></code></a>— API de segmentação de baixo nível<a class="headerlink" href="#module-_thread" title="Link permanente para este título">¶</a></h1>
+<hr class="docutils" id="index-0" />
+<p>Este módulo fornece primitivos de baixo nível para trabalhar com vários encadeamentos (também chamados <em class="dfn">processos leves</em> ou <em class="dfn">tarefas</em>) — vários encadeamentos de controle compartilhando seu espaço de dados global. Para sincronização, bloqueios simples (também chamados de <em class="dfn">mutexes</em>, <em class="dfn">exclusão mútua</em> ou <em class="dfn">semáforos binários</em>) são fornecidos. O módulo <a class="reference internal" href="threading.html#module-threading" title="threading: Thread-based parallelism."><code class="xref py py-mod docutils literal notranslate"><span class="pre">threading</span></code></a> fornece uma API de segmentação mais fácil de usar e de nível mais alto, construída sobre este módulo.</p>
+<div class="versionchanged" id="index-1">
+<p><span class="versionmodified changed">Alterado na versão 3.7: </span>Este módulo costumava ser opcional, agora está sempre disponível.</p>
+</div>
+<p>Este módulo define as seguintes constantes e funções:</p>
+<dl class="py exception">
+<dt id="thread.error">
+<span id="_thread.error"></span><em class="property">exception </em><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">error</code><a class="headerlink" href="#thread.error" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Gerado em erros específicos de segmento.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Este é agora um sinônimo do componente embutido <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="thread.LockType">
+<span id="_thread.LockType"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">LockType</code><a class="headerlink" href="#thread.LockType" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Este é o tipo de objetos de bloqueio.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.start_new_thread">
+<span id="_thread.start_new_thread"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">start_new_thread</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">args</em><span class="optional">[</span>, <em class="sig-param">kwargs</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.start_new_thread" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Começa um novo tópico e retorna seu identificador. O tópico executa a função <em>function</em> com a lista de argumentos <em>args</em> (que deve ser uma tupla). O argumento opcional <em>kwargs</em> despecifica um dicionário de argumentos palavras-chave</p>
+<p>Quando a função retorna, o tópico fecha silenciosamente.</p>
+<p>Quando a função termina com uma exceção não processada, <a class="reference internal" href="sys.html#sys.unraisablehook" title="sys.unraisablehook"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.unraisablehook()</span></code></a> é chamada para lidar com a exceção. O atributo <em>object</em> do argumento do hook é <em>function</em>. Por padrão, um stack trace (situação da pilha de execução) é impresso e, em seguida, o thread sai (mas outros threads continuam a ser executados).</p>
+<p>Quando a função gera uma exceção <a class="reference internal" href="exceptions.html#SystemExit" title="SystemExit"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a>, ela é ignorada.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span><a class="reference internal" href="sys.html#sys.unraisablehook" title="sys.unraisablehook"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.unraisablehook()</span></code></a> agora é usada para lidar com exceções não lidadas.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.interrupt_main">
+<span id="_thread.interrupt_main"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">interrupt_main</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signum</span><span class="o">=</span><span class="default_value">signal.SIGINT</span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#thread.interrupt_main" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Simulate the effect of a signal arriving in the main thread.
+A thread can use this function to interrupt the main thread, though
+there is no guarantee that the interruption will happen immediately.</p>
+<p>If given, <em>signum</em> is the number of the signal to simulate.
+If <em>signum</em> is not given, <a class="reference internal" href="signal.html#signal.SIGINT" title="signal.SIGINT"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.SIGINT</span></code></a> is simulated.</p>
+<p>If the given signal isn’t handled by Python (it was set to
+<a class="reference internal" href="signal.html#signal.SIG_DFL" title="signal.SIG_DFL"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.SIG_DFL</span></code></a> or <a class="reference internal" href="signal.html#signal.SIG_IGN" title="signal.SIG_IGN"><code class="xref py py-data docutils literal notranslate"><span class="pre">signal.SIG_IGN</span></code></a>), this function does
+nothing.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>The <em>signum</em> argument is added to customize the signal number.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>This does not emit the corresponding signal but schedules a call to
+the associated handler (if it exists).
+If you want to truly emit the signal, use <a class="reference internal" href="signal.html#signal.raise_signal" title="signal.raise_signal"><code class="xref py py-func docutils literal notranslate"><span class="pre">signal.raise_signal()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.exit">
+<span id="_thread.exit"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">exit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.exit" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Levanta a exceção <a class="reference internal" href="exceptions.html#SystemExit" title="SystemExit"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a>. Quando não for detectada, o thread sairá silenciosamente.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.allocate_lock">
+<span id="_thread.allocate_lock"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">allocate_lock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.allocate_lock" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo objeto de bloqueio. Métodos de bloqueio são descritos abaixo. O bloqueio é desativado inicialmente.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.get_ident">
+<span id="_thread.get_ident"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">get_ident</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.get_ident" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o ‘identificador de thread’ do thread atual. Este é um número inteiro diferente de zero. Seu valor não tem significado direto; pretende-se que seja um cookie mágico para ser usado, por exemplo, para indexar um dicionário de dados específicos do thread. identificadores de thread podem ser reciclados quando um thread sai e outro é criado.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.get_native_id">
+<span id="_thread.get_native_id"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">get_native_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.get_native_id" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a ID de thread integral nativa da thread atual atribuída pelo kernel. Este é um número inteiro não negativo. Seu valor pode ser usado para identificar exclusivamente essa thread específica em todo o sistema (até que a thread termine, após o que o valor poderá ser reciclado pelo sistema operacional).</p>
+<p class="availability"><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Disponibilidade</span></a>: Windows, FreeBSD, Linux, macOS, OpenBSD, NetBSD, AIX.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="thread.stack_size">
+<span id="_thread.stack_size"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">stack_size</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">size</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.stack_size" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o tamanho da pilha de threads usado ao criar novos threads. O argumento opcional <em>size</em> especifica o tamanho da pilha a ser usado para threads criados posteriormente e deve ser 0 (usar plataforma ou padrão configurado) ou um valor inteiro positivo de pelo menos 32.768 (32 KiB). Se <em>size</em> não for especificado, 0 será usado. Se a alteração do tamanho da pilha de threads não for suportada, uma <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> será levantada. Se o tamanho da pilha especificado for inválido, uma <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> será levantada e o tamanho da pilha não será modificado. Atualmente, 0 KiB é o valor mínimo de tamanho de pilha suportado para garantir espaço suficiente para o próprio interpretador. Observe que algumas plataformas podem ter restrições específicas sobre valores para o tamanho da pilha, como exigir um tamanho mínimo de pilha &gt; 32 KiB ou exigir alocação em múltiplos do tamanho da página de memória do sistema – a documentação da plataforma deve ser consultada para obter mais informações (4 páginas KiB são comuns; usar múltiplos de 4096 para o tamanho da pilha é a abordagem sugerida na ausência de informações mais específicas).</p>
+<p class="availability"><a class="reference internal" href="intro.html#availability"><span class="std std-ref">Disponibilidade</span></a>: Windows, sistemas com threads POSIX.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="thread.TIMEOUT_MAX">
+<span id="_thread.TIMEOUT_MAX"></span><code class="sig-prename descclassname">_thread.</code><code class="sig-name descname">TIMEOUT_MAX</code><a class="headerlink" href="#thread.TIMEOUT_MAX" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O valor máximo permitido para o parâmetro <em>timeout</em> de <code class="xref py py-meth docutils literal notranslate"><span class="pre">Lock.acquire()</span></code>. A especificação de um tempo limite maior que esse valor vai levantar um <a class="reference internal" href="exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+</dd></dl>
+
+<p>Os objetos de bloqueio têm os seguintes métodos:</p>
+<dl class="py method">
+<dt id="thread.lock.acquire">
+<span id="_thread.lock.acquire"></span><code class="sig-prename descclassname">lock.</code><code class="sig-name descname">acquire</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">waitflag</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="o">=</span><span class="default_value">- 1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#thread.lock.acquire" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Sem nenhum argumento opcional, esse método adquire o bloqueio incondicionalmente, se necessário, aguardando até que seja liberado por outro encadeamento (apenas um encadeamento por vez pode adquirir um bloqueio — esse é o motivo da sua existência).</p>
+<p>Se o argumento inteiro <em>waitflag</em> estiver presente, a ação dependerá do seu valor: se for zero, o bloqueio será adquirido apenas se puder ser adquirido imediatamente sem aguardar, enquanto se for diferente de zero, o bloqueio será adquirido incondicionalmente, conforme acima.</p>
+<p>Se o argumento de ponto flutuante <em>timeout</em> estiver presente e positivo, ele especificará o tempo máximo de espera em segundos antes de retornar. Um argumento negativo <em>timeout</em> especifica uma espera ilimitada. Você não pode especificar um <em>timeout</em> se <em>waitflag</em> for zero.</p>
+<p>O valor de retorno é <code class="docutils literal notranslate"><span class="pre">True</span></code> se o bloqueio for adquirido com sucesso, se não <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.2: </span>O parâmetro <em>timeout</em> é novo.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.2: </span>As aquisições de bloqueio agora podem ser interrompidas por sinais no POSIX.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="thread.lock.release">
+<span id="_thread.lock.release"></span><code class="sig-prename descclassname">lock.</code><code class="sig-name descname">release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.lock.release" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Libera o bloqueio. O bloqueio deve ter sido adquirido anteriormente, mas não necessariamente pela mesma thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="thread.lock.locked">
+<span id="_thread.lock.locked"></span><code class="sig-prename descclassname">lock.</code><code class="sig-name descname">locked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#thread.lock.locked" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o status do bloqueio: <code class="docutils literal notranslate"><span class="pre">True</span></code> se tiver sido adquirido por alguma thread, <code class="docutils literal notranslate"><span class="pre">False</span></code> se não for o caso.</p>
+</dd></dl>
+
+<p>Além desses métodos, os objetos de bloqueio também podem ser usados através da instrução <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a>, por exemplo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">_thread</span>
+
+<span class="n">a_lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">a_lock</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a_lock is locked while this executes&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Ressalvas:</strong></p>
+<blockquote>
+<div></div></blockquote>
+<ul class="simple" id="index-2">
+<li><p>Threads interagem estranhamente com interrupções: a exceção <a class="reference internal" href="exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a> será recebida por uma thread arbitrário. (Quando o módulo <a class="reference internal" href="signal.html#module-signal" title="signal: Set handlers for asynchronous events."><code class="xref py py-mod docutils literal notranslate"><span class="pre">signal</span></code></a> está disponível, as interrupções sempre vão para a thread principal.)</p></li>
+<li><p>Chamar <a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a> ou levantar a exceção <a class="reference internal" href="exceptions.html#SystemExit" title="SystemExit"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a> é o equivalente a chamar <a class="reference internal" href="#thread.exit" title="_thread.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">_thread.exit()</span></code></a>.</p></li>
+<li><p>Não é possível interromper o método <code class="xref py py-meth docutils literal notranslate"><span class="pre">acquire()</span></code> em um bloqueio — a exceção <a class="reference internal" href="exceptions.html#KeyboardInterrupt" title="KeyboardInterrupt"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyboardInterrupt</span></code></a> ocorrerá após o bloqueio ter sido adquirido.</p></li>
+<li><p>Quando a thread principal se encerra, é definido pelo sistema se as outras threads sobrevivem. Na maioria dos sistemas, elas são eliminadas sem executar cláusulas <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> … <a class="reference internal" href="../reference/compound_stmts.html#finally"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">finally</span></code></a> ou executar destruidores de objetos.</p></li>
+<li><p>Quando a thread principal é encerrada, ela não realiza nenhuma limpeza usual (exceto que as cláusulas <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> … <a class="reference internal" href="../reference/compound_stmts.html#finally"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">finally</span></code></a> são honradas) e os arquivos de E/S padrão não são liberados.</p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="contextvars.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">contextvars</span></code> — Variáveis de contexto</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="ipc.html"
+                        title="próximo capítulo">Comunicação em Rede e Interprocesso</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/_thread.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="ipc.html" title="Comunicação em Rede e Interprocesso"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="contextvars.html" title="contextvars — Variáveis de contexto"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concurrency.html" >Execução Concorrente</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">_thread</span></code>— API de segmentação de baixo nível</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

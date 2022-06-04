@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Introdução &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Funções embutidas" href="functions.html" />
+    <link rel="prev" title="A Biblioteca Padrão do Python" href="index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/intro.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introdução</a><ul>
+<li><a class="reference internal" href="#notes-on-availability">Observações sobre disponibilidade</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">A Biblioteca Padrão do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="functions.html"
+                        title="próximo capítulo">Funções embutidas</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/intro.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="Funções embutidas"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="A Biblioteca Padrão do Python"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<span id="library-intro"></span><h1>Introdução<a class="headerlink" href="#introduction" title="Link permanente para este título">¶</a></h1>
+<p>A “biblioteca Python” contém vários tipos diferentes de componentes.</p>
+<p>Ela contém tipos de dados que seriam normalmente considerados como parte “central” de uma linguagem, tais como números e listas. Para esses tipos, o núcleo da linguagem Python define a forma de literais e coloca algumas restrições em suas semânticas, mas não define completamente as semânticas. (Por outro lado, o núcleo da linguagem define propriedades sintáticas como a ortografia e a prioridade de operadores.)</p>
+<p>A biblioteca também contém exceções e funções embutidas – objetos que podem ser usados por todo o código Python sem a necessidade de uma instrução <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a>. Alguns desses são definidos pelo núcleo da linguagem, mas muitos não são essenciais para as semânticas principais e são apenas descritos aqui.</p>
+<p>A maior parte da biblioteca, entretanto, consiste em uma coleção de módulos. Há muitas formas de dissecar essa coleção. Alguns módulos são escritos em C e colocados no interpretador do Python; outros são escritos em Python e importados na forma de código. Alguns módulos fornecem interfaces que são muito específicas do Python, como imprimir um stack trace (situação da pilha de execução); alguns fornecem interfaces que são específicas para um sistema operacional em particular, tais como acessar hardware específico; outros fornecem interfaces que são específicas de um domínio de aplicação em particular, como a World Wide Web. Alguns módulos estão disponíveis em todas as versões do Python; outros estão apenas disponíveis quando o sistema subjacente suporta ou necessita deles; e ainda outros estão disponíveis apenas quando uma opção de configuração em particular foi escolhida no momento em que o Python foi compilado e instalado.</p>
+<p>Este manual está organizado “de dentro para fora”: ele primeiro descreve as funções inclusas, tipos de dados e exceções, e finalmente os módulos, agrupados em capítulos de módulos relacionados.</p>
+<p>Isto significa que, se você começar a ler este manual do início, e pular para o próximo capítulo quando estiver entediado, você terá uma visão geral razoável dos módulos disponíveis e áreas de aplicação que são suportadas pela biblioteca Python. É claro, você não <em>tem</em> que ler como se fosse um romance — você também pode navegar pela tabela de conteúdos (no início do manual), ou procurar por uma função, módulo ou termo específicos no índice (na parte final). E finalmente, se você gostar de aprender sobre assuntos diversos, você pode escolher um número de página aleatório (veja module <a class="reference internal" href="random.html#module-random" title="random: Generate pseudo-random numbers with various common distributions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code></a>) e leia uma seção ou duas. Independente da ordem na qual você leia as seções deste manual, ajuda iniciar pelo capítulo <a class="reference internal" href="functions.html#built-in-funcs"><span class="std std-ref">Funções embutidas</span></a>, já que o resto do manual requer familiaridade com este material.</p>
+<p>E que o show comece!</p>
+<section id="notes-on-availability">
+<span id="availability"></span><h2>Observações sobre disponibilidade<a class="headerlink" href="#notes-on-availability" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li><p>Uma observação “Disponibilidade: Unix” significa que essa função é comumente encontrada em sistemas Unix. Não faz nenhuma reivindicação sobre sua existência em um sistema operacional específico.</p></li>
+<li><p>If not separately noted, all functions that claim “Availability: Unix” are
+supported on macOS, which builds on a Unix core.</p></li>
+</ul>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introdução</a><ul>
+<li><a class="reference internal" href="#notes-on-availability">Observações sobre disponibilidade</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">A Biblioteca Padrão do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="functions.html"
+                        title="próximo capítulo">Funções embutidas</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/intro.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="Funções embutidas"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="A Biblioteca Padrão do Python"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

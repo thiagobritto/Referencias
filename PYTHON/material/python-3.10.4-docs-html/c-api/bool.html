@@ -1,0 +1,289 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Objetos Booleanos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Objetos de ponto flutuante" href="float.html" />
+    <link rel="prev" title="Objetos Inteiros" href="long.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/bool.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="long.html"
+                        title="capítulo anterior">Objetos Inteiros</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="float.html"
+                        title="próximo capítulo">Objetos de ponto flutuante</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/bool.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="Objetos de ponto flutuante"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="long.html" title="Objetos Inteiros"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" accesskey="U">Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos Booleanos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="boolean-objects">
+<span id="boolobjects"></span><h1>Objetos Booleanos<a class="headerlink" href="#boolean-objects" title="Link permanente para este título">¶</a></h1>
+<p>Booleano em Python é implementado como uma subclasse de inteiros. Existem apenas dois tipos de booleanos <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_False</span></code> e <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_True</span></code>. Como tal, as funções normais de criação e exclusão não se aplicam a booleanos. No entanto, as seguintes macros estão disponíveis.</p>
+<dl class="c function">
+<dt id="c.PyBool_Check">
+int <code class="sig-name descname">PyBool_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyBool_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna verdadeiro se <em>o</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyBool_Type</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.Py_False">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">Py_False</code><a class="headerlink" href="#c.Py_False" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>O objeto Python <code class="docutils literal notranslate"><span class="pre">False</span></code>. Este objeto não possui métodos. Ele precisa ser tratado como qualquer outro objeto em relação às contagens de referência.</p>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.Py_True">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">Py_True</code><a class="headerlink" href="#c.Py_True" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>O objeto Python <code class="docutils literal notranslate"><span class="pre">True</span></code>. Este objeto não possui métodos. Ele precisa ser tratado como qualquer outro objeto em relação às contagens de referência.</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_RETURN_FALSE">
+<code class="sig-name descname">Py_RETURN_FALSE</code><a class="headerlink" href="#c.Py_RETURN_FALSE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retornar <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_False</span></code> de uma função, incrementando adequadamente sua contagem de referência.</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_RETURN_TRUE">
+<code class="sig-name descname">Py_RETURN_TRUE</code><a class="headerlink" href="#c.Py_RETURN_TRUE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_True</span></code> de uma função, incrementando adequadamente sua contagem de referência.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyBool_FromLong">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyBool_FromLong</code><span class="sig-paren">(</span>long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyBool_FromLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna uma nova referência para <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_True</span></code> ou <code class="xref py py-const docutils literal notranslate"><span class="pre">Py_False</span></code> dependendo do valor de verdade de <em>v</em>.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="long.html"
+                        title="capítulo anterior">Objetos Inteiros</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="float.html"
+                        title="próximo capítulo">Objetos de ponto flutuante</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/bool.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="Objetos de ponto flutuante"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="long.html" title="Objetos Inteiros"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" >Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos Booleanos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

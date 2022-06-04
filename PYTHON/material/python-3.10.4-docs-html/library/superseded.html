@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Módulos Substituídos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="aifc — Lê e escreve arquivos AIFF e AIFC" href="aifc.html" />
+    <link rel="prev" title="syslog — Rotinas da biblioteca syslog do Unix" href="syslog.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/superseded.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="syslog.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code> — Rotinas da biblioteca syslog do Unix</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="aifc.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Lê e escreve arquivos AIFF e AIFC</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/superseded.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="aifc.html" title="aifc — Lê e escreve arquivos AIFF e AIFC"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="syslog.html" title="syslog — Rotinas da biblioteca syslog do Unix"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Módulos Substituídos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="superseded-modules">
+<span id="superseded"></span><h1>Módulos Substituídos<a class="headerlink" href="#superseded-modules" title="Link permanente para este título">¶</a></h1>
+<p>Os módulos descritos neste capítulo são descontinuados e mantidos apenas para compatibilidade com versões anteriores. Eles foram substituídos por outros módulos.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="aifc.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Lê e escreve arquivos AIFF e AIFC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="asynchat.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asynchat</span></code> — Asynchronous socket command/response handler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="asynchat.html#asynchat-example">Exemplo com asynchat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="asyncore.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncore</span></code> — Asynchronous socket handler</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="asyncore.html#asyncore-example-basic-http-client">asyncore Example basic HTTP client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="asyncore.html#asyncore-example-basic-echo-server">asyncore Example basic echo server</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="audioop.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">audioop</span></code> — Manipulando dados de áudio original</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cgi.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgi</span></code> — Suporte a Common Gateway Interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#introduction">Introdução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#using-the-cgi-module">Usando o módulo cgi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#higher-level-interface">Interface de nível mais alto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#functions">Funções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#caring-about-security">Caring about security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#installing-your-cgi-script-on-a-unix-system">Installing your CGI script on a Unix system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#testing-your-cgi-script">Testing your CGI script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#debugging-cgi-scripts">Debugging CGI scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cgi.html#common-problems-and-solutions">Common problems and solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cgitb.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">cgitb</span></code> — Gerenciador de traceback (situação da pilha de execução) para roteiros de CGI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chunk.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">chunk</span></code> — Read IFF chunked data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypt.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">crypt</span></code> — Function to check Unix passwords</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crypt.html#hashing-methods">Hashing Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypt.html#module-attributes">Atributos do módulo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypt.html#module-functions">Module Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypt.html#examples">Exemplos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imghdr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imghdr</span></code> — Determina o tipo de uma imagem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imp.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">imp</span></code> — Access the <span class="xref std std-ref">import</span> internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imp.html#examples">Exemplos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mailcap.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">mailcap</span></code> — Mailcap file handling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="msilib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">msilib</span></code> — Read and write Microsoft Installer files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#database-objects">Objetos de banco de dados.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#view-objects">View Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#summary-information-objects">Summary Information Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#record-objects">Record Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#errors">Erros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#cab-objects">CAB Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#directory-objects">Objetos Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#features">Recursos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#gui-classes">Classes GUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msilib.html#precomputed-tables">Precomputed tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nis</span></code> — Interface para NIS da Sun (Yellow Pages)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nntplib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nntplib</span></code> — NNTP protocol client</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="nntplib.html#nntp-objects">NNTP Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nntplib.html#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nntplib.html#methods">Métodos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nntplib.html#utility-functions">Funções utilitárias</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="optparse.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code> — Parser for command line options</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#background">Background</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#terminology">Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#what-are-options-for">What are options for?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#what-are-positional-arguments-for">What are positional arguments for?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#tutorial">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#understanding-option-actions">Understanding option actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#the-store-action">The store action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#handling-boolean-flag-options">Handling boolean (flag) options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#other-actions">Outras Ações</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#default-values">Default values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#generating-help">Generating help</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="optparse.html#grouping-options">Grouping Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#printing-a-version-string">Printing a version string</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#how-optparse-handles-errors">How <code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code> handles errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#putting-it-all-together">Putting it all together</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#reference-guide">Reference Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#creating-the-parser">Creating the parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#populating-the-parser">Populating the parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#defining-options">Defining options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#option-attributes">Option attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#standard-option-actions">Standard option actions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#standard-option-types">Standard option types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#parsing-arguments">Análise de argumentos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#querying-and-manipulating-your-option-parser">Querying and manipulating your option parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#conflicts-between-options">Conflicts between options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#cleanup">Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#other-methods">Other methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#option-callbacks">Option Callbacks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#defining-a-callback-option">Defining a callback option</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#how-callbacks-are-called">How callbacks are called</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#raising-errors-in-a-callback">Raising errors in a callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-1-trivial-callback">Callback example 1: trivial callback</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-2-check-option-order">Callback example 2: check option order</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-3-check-option-order-generalized">Callback example 3: check option order (generalized)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-4-check-arbitrary-condition">Callback example 4: check arbitrary condition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-5-fixed-arguments">Callback example 5: fixed arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#callback-example-6-variable-arguments">Callback example 6: variable arguments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="optparse.html#extending-optparse">Extending <code class="xref py py-mod docutils literal notranslate"><span class="pre">optparse</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#adding-new-types">Adding new types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="optparse.html#adding-new-actions">Adding new actions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ossaudiodev.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ossaudiodev</span></code> — Access to OSS-compatible audio devices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ossaudiodev.html#audio-device-objects">Audio Device Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ossaudiodev.html#mixer-device-objects">Mixer Device Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipes.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pipes</span></code> — Interface to shell pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipes.html#template-objects">Objetos Template</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="smtpd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smtpd</span></code> — Serviços SMTP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="smtpd.html#smtpserver-objects">Objetos SMTPServer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smtpd.html#debuggingserver-objects">DebuggingServer Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smtpd.html#pureproxy-objects">Objetos PureProxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smtpd.html#mailmanproxy-objects">MailmanProxy Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="smtpd.html#smtpchannel-objects">SMTPChannel Objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sndhdr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sndhdr</span></code> — Determina o tipo de arquivos de som</a></li>
+<li class="toctree-l1"><a class="reference internal" href="spwd.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">spwd</span></code> — O banco de dados de senhas shadow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sunau.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sunau</span></code> — Lê e escreve arquivos AU da Sun</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sunau.html#au-read-objects">Objetos AU_read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sunau.html#au-write-objects">Objetos AU_write</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="telnetlib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">telnetlib</span></code> — cliente Telnet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="telnetlib.html#telnet-objects">Objetos Telnet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="telnetlib.html#telnet-example">Telnet Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="uu.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">uu</span></code> — Codifica e decodifica arquivos uuencode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xdrlib.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code> — Encode and decode XDR data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xdrlib.html#packer-objects">Objetos Packer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdrlib.html#unpacker-objects">Objetos Unpacker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdrlib.html#exceptions">Exceções</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="syslog.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">syslog</span></code> — Rotinas da biblioteca syslog do Unix</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="aifc.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Lê e escreve arquivos AIFF e AIFC</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/superseded.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="aifc.html" title="aifc — Lê e escreve arquivos AIFF e AIFC"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="syslog.html" title="syslog — Rotinas da biblioteca syslog do Unix"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Módulos Substituídos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>7. Entrada e Saída &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="8. Erros e exceções" href="errors.html" />
+    <link rel="prev" title="6. Módulos" href="modules.html" />
+    <link rel="canonical" href="https://docs.python.org/3/tutorial/inputoutput.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Entrada e Saída</a><ul>
+<li><a class="reference internal" href="#fancier-output-formatting">7.1. Refinando a formatação de saída</a><ul>
+<li><a class="reference internal" href="#formatted-string-literals">7.1.1. Strings literais formatadas</a></li>
+<li><a class="reference internal" href="#the-string-format-method">7.1.2. O método format()</a></li>
+<li><a class="reference internal" href="#manual-string-formatting">7.1.3. Formatação manual de string</a></li>
+<li><a class="reference internal" href="#old-string-formatting">7.1.4. Formatação de strings à moda antiga</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reading-and-writing-files">7.2. Leitura e escrita de arquivos</a><ul>
+<li><a class="reference internal" href="#methods-of-file-objects">7.2.1. Métodos de objetos arquivo</a></li>
+<li><a class="reference internal" href="#saving-structured-data-with-json">7.2.2. Gravando dados estruturados com <code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="modules.html"
+                        title="capítulo anterior"><span class="section-number">6. </span>Módulos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="errors.html"
+                        title="próximo capítulo"><span class="section-number">8. </span>Erros e exceções</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/inputoutput.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="errors.html" title="8. Erros e exceções"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="6. Módulos"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Entrada e Saída</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="input-and-output">
+<span id="tut-io"></span><h1><span class="section-number">7. </span>Entrada e Saída<a class="headerlink" href="#input-and-output" title="Link permanente para este título">¶</a></h1>
+<p>Existem várias maneiras de apresentar a saída de um programa; os dados podem ser exibidos em forma legível para seres humanos, ou escritos em arquivos para uso posterior. Este capítulo apresentará algumas das possibilidades.</p>
+<section id="fancier-output-formatting">
+<span id="tut-formatting"></span><h2><span class="section-number">7.1. </span>Refinando a formatação de saída<a class="headerlink" href="#fancier-output-formatting" title="Link permanente para este título">¶</a></h2>
+<p>Até agora vimos duas maneiras de exibir valores: <em>expressões</em> e a função <a class="reference internal" href="../library/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a>. (Uma outra maneira é utilizar o método <code class="xref py py-meth docutils literal notranslate"><span class="pre">write()</span></code> de objetos do tipo arquivo; o arquivo saída padrão pode ser referenciado como <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code>. Veja a Referência da Biblioteca Python para mais informações sobre isso.)</p>
+<p>Muitas vezes se deseja mais controle sobre a formatação da saída do que simplesmente exibir valores separados por espaço. Existem várias maneiras de formatar a saída.</p>
+<ul>
+<li><p>Para usar <a class="reference internal" href="#tut-f-strings"><span class="std std-ref">strings literais formatadas</span></a>, comece uma string com <code class="docutils literal notranslate"><span class="pre">f</span></code> ou <code class="docutils literal notranslate"><span class="pre">F</span></code>, antes de abrir as aspas ou aspas triplas. Dentro dessa string, pode-se escrever uma expressão Python entre caracteres <code class="docutils literal notranslate"><span class="pre">{</span></code> e <code class="docutils literal notranslate"><span class="pre">}</span></code>, que podem se referir a variáveis, ou valores literais.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">year</span> <span class="o">=</span> <span class="mi">2016</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">event</span> <span class="o">=</span> <span class="s1">&#39;Referendum&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sa">f</span><span class="s1">&#39;Results of the </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">event</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="go">&#39;Results of the 2016 Referendum&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>O método de strings <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> requer mais esforço manual. Ainda será necessário usar <code class="docutils literal notranslate"><span class="pre">{</span></code> e <code class="docutils literal notranslate"><span class="pre">}</span></code> para marcar onde a variável será substituída e pode-se incluir diretivas de formatação detalhadas, mas também precisará incluir a informação a ser formatada.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">yes_votes</span> <span class="o">=</span> <span class="mi">42_572_654</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">no_votes</span> <span class="o">=</span> <span class="mi">43_132_495</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">percentage</span> <span class="o">=</span> <span class="n">yes_votes</span> <span class="o">/</span> <span class="p">(</span><span class="n">yes_votes</span> <span class="o">+</span> <span class="n">no_votes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;</span><span class="si">{:-9}</span><span class="s1"> YES votes  </span><span class="si">{:2.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">yes_votes</span><span class="p">,</span> <span class="n">percentage</span><span class="p">)</span>
+<span class="go">&#39; 42572654 YES votes  49.67%&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Finalmente, pode-se fazer todo o tratamento da saída usando as operações de fatiamento e concatenação de strings para criar qualquer layout que se possa imaginar. O tipo string possui alguns métodos que realizam operações úteis para preenchimento de strings para uma determinada largura de coluna.</p></li>
+</ul>
+<p>Quando não é necessário sofisticar a saída, mas apenas exibir algumas variáveis com propósito de depuração, pode-se converter qualquer valor para uma string com as funções <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> ou <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a>.</p>
+<p>A função <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> serve para retornar representações de valores que sejam legíveis para as pessoas, enquanto <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a> é para gerar representações que o interpretador Python consegue ler (ou levantará uma exceção <a class="reference internal" href="../library/exceptions.html#SyntaxError" title="SyntaxError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SyntaxError</span></code></a>, se não houver sintaxe equivalente). Para objetos que não têm uma representação adequada para consumo humano, <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> devolve o mesmo valor que <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a>. Muitos valores, tal como números ou estruturas, como listas e dicionários, têm a mesma representação usando quaisquer das funções. Strings, em particular, têm duas representações distintas.</p>
+<p>Alguns exemplos:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;Hello, world.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&#39;Hello, world.&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">repr</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">&quot;&#39;Hello, world.&#39;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">&#39;0.14285714285714285&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">3.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">200</span> <span class="o">*</span> <span class="mi">200</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;The value of x is &#39;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;, and y is &#39;</span> <span class="o">+</span> <span class="nb">repr</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">The value of x is 32.5, and y is 40000...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The repr() of a string adds string quotes and backslashes:</span>
+<span class="gp">... </span><span class="n">hello</span> <span class="o">=</span> <span class="s1">&#39;hello, world</span><span class="se">\n</span><span class="s1">&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hellos</span> <span class="o">=</span> <span class="nb">repr</span><span class="p">(</span><span class="n">hello</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">hellos</span><span class="p">)</span>
+<span class="go">&#39;hello, world\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The argument to repr() may be any Python object:</span>
+<span class="gp">... </span><span class="nb">repr</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">)))</span>
+<span class="go">&quot;(32.5, 40000, (&#39;spam&#39;, &#39;eggs&#39;))&quot;</span>
+</pre></div>
+</div>
+<p>O módulo <a class="reference internal" href="../library/string.html#module-string" title="string: Common string operations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">string</span></code></a> contém uma classe <a class="reference internal" href="../library/string.html#string.Template" title="string.Template"><code class="xref py py-class docutils literal notranslate"><span class="pre">Template</span></code></a> que oferece ainda outra maneira de substituir valores em strings, usando espaços reservados como <code class="docutils literal notranslate"><span class="pre">$x</span></code> e substituindo-os por valores de um dicionário, mas oferece muito menos controle da formatação.</p>
+<section id="formatted-string-literals">
+<span id="tut-f-strings"></span><h3><span class="section-number">7.1.1. </span>Strings literais formatadas<a class="headerlink" href="#formatted-string-literals" title="Link permanente para este título">¶</a></h3>
+<p><a class="reference internal" href="../reference/lexical_analysis.html#f-strings"><span class="std std-ref">Strings literais formatadas</span></a> (também chamadas f-strings, para abreviar) permite que se inclua o valor de expressões Python dentro de uma string, prefixando-a com <code class="docutils literal notranslate"><span class="pre">f</span></code> ou <code class="docutils literal notranslate"><span class="pre">F</span></code> e escrevendo expressões na forma <code class="docutils literal notranslate"><span class="pre">{expression}</span></code>.</p>
+<p>Um especificador opcional de formato pode ser incluído após a expressão. Isso permite maior controle sobre como o valor é formatado. O exemplo a seguir arredonda pi para três casas decimais:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The value of pi is approximately </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="go">The value of pi is approximately 3.142.</span>
+</pre></div>
+</div>
+<p>Passando um inteiro após o <code class="docutils literal notranslate"><span class="pre">':'</span></code> fará com que o campo tenha um número mínimo de caracteres de largura. Isso é útil para alinhar colunas.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">4127</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">7678</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">phone</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1"> ==&gt; </span><span class="si">{</span><span class="n">phone</span><span class="si">:</span><span class="s1">10d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Sjoerd     ==&gt;       4127</span>
+<span class="go">Jack       ==&gt;       4098</span>
+<span class="go">Dcab       ==&gt;       7678</span>
+</pre></div>
+</div>
+<p>Outros modificadores podem ser usados para converter o valor antes de ser formatado. <code class="docutils literal notranslate"><span class="pre">'!a'</span></code> aplica a função <a class="reference internal" href="../library/functions.html#ascii" title="ascii"><code class="xref py py-func docutils literal notranslate"><span class="pre">ascii()</span></code></a>, <code class="docutils literal notranslate"><span class="pre">'!s'</span></code> aplica a função <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-func docutils literal notranslate"><span class="pre">str()</span></code></a> e <code class="docutils literal notranslate"><span class="pre">'!r'</span></code> aplica a função <a class="reference internal" href="../library/functions.html#repr" title="repr"><code class="xref py py-func docutils literal notranslate"><span class="pre">repr()</span></code></a></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">animals</span> <span class="o">=</span> <span class="s1">&#39;eels&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;My hovercraft is full of </span><span class="si">{</span><span class="n">animals</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="go">My hovercraft is full of eels.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;My hovercraft is full of </span><span class="si">{</span><span class="n">animals</span><span class="si">!r}</span><span class="s1">.&#39;</span><span class="p">)</span>
+<span class="go">My hovercraft is full of &#39;eels&#39;.</span>
+</pre></div>
+</div>
+<p>Para uma referência dessas especificações de formatos, veja o guia de referência para <a class="reference internal" href="../library/string.html#formatspec"><span class="std std-ref">Minilinguagem de especificação de formato</span></a>.</p>
+</section>
+<section id="the-string-format-method">
+<span id="tut-string-format"></span><h3><span class="section-number">7.1.2. </span>O método format()<a class="headerlink" href="#the-string-format-method" title="Link permanente para este título">¶</a></h3>
+<p>Um uso básico do método <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a> tem esta forma:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We are the </span><span class="si">{}</span><span class="s1"> who say &quot;</span><span class="si">{}</span><span class="s1">!&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;knights&#39;</span><span class="p">,</span> <span class="s1">&#39;Ni&#39;</span><span class="p">))</span>
+<span class="go">We are the knights who say &quot;Ni!&quot;</span>
+</pre></div>
+</div>
+<p>As chaves e seus conteúdos (chamados campos de formatação) são substituídos pelos objetos passados para o método <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>. Um número nas chaves pode ser usado para referenciar a posição do objeto passado no método <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> and </span><span class="si">{1}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">))</span>
+<span class="go">spam and eggs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{1}</span><span class="s1"> and </span><span class="si">{0}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="s1">&#39;eggs&#39;</span><span class="p">))</span>
+<span class="go">eggs and spam</span>
+</pre></div>
+</div>
+<p>Se argumentos nomeados são passados para o método <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>, seus valores serão referenciados usando o nome do argumento:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This </span><span class="si">{food}</span><span class="s1"> is </span><span class="si">{adjective}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<span class="gp">... </span>      <span class="n">food</span><span class="o">=</span><span class="s1">&#39;spam&#39;</span><span class="p">,</span> <span class="n">adjective</span><span class="o">=</span><span class="s1">&#39;absolutely horrible&#39;</span><span class="p">))</span>
+<span class="go">This spam is absolutely horrible.</span>
+</pre></div>
+</div>
+<p>Argumentos posicionais e nomeados podem ser combinados à vontade:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The story of </span><span class="si">{0}</span><span class="s1">, </span><span class="si">{1}</span><span class="s1">, and </span><span class="si">{other}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Bill&#39;</span><span class="p">,</span> <span class="s1">&#39;Manfred&#39;</span><span class="p">,</span>
+<span class="go">                                                       other=&#39;Georg&#39;))</span>
+<span class="go">The story of Bill, Manfred, and Georg.</span>
+</pre></div>
+</div>
+<p>Se uma string de formatação é muito longa, e não se deseja quebrá-la, pode ser bom fazer referência aos valores a serem formatados por nome, em vez de posição. Isto pode ser feito passando um dicionário usando colchetes <code class="docutils literal notranslate"><span class="pre">'[]'</span></code> para acessar as chaves.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">4127</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">8637678</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jack: </span><span class="si">{0[Jack]:d}</span><span class="s1">; Sjoerd: </span><span class="si">{0[Sjoerd]:d}</span><span class="s1">; &#39;</span>
+<span class="gp">... </span>      <span class="s1">&#39;Dcab: </span><span class="si">{0[Dcab]:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">table</span><span class="p">))</span>
+<span class="go">Jack: 4098; Sjoerd: 4127; Dcab: 8637678</span>
+</pre></div>
+</div>
+<p>Isto também pode ser feito passando o dicionário como argumento do método, usando a notação <cite>**</cite>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">4127</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">8637678</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jack: </span><span class="si">{Jack:d}</span><span class="s1">; Sjoerd: </span><span class="si">{Sjoerd:d}</span><span class="s1">; Dcab: </span><span class="si">{Dcab:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">**</span><span class="n">table</span><span class="p">))</span>
+<span class="go">Jack: 4098; Sjoerd: 4127; Dcab: 8637678</span>
+</pre></div>
+</div>
+<p>Isto é particularmente útil em conjunto com a função embutida <a class="reference internal" href="../library/functions.html#vars" title="vars"><code class="xref py py-func docutils literal notranslate"><span class="pre">vars()</span></code></a>, que devolve um dicionário contendo todas as variáveis locais.</p>
+<p>Como exemplo, as linhas seguintes produzem um conjunto de colunas alinhadas, com alguns inteiros e seus quadrados e cubos:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{0:2d}</span><span class="s1"> </span><span class="si">{1:3d}</span><span class="s1"> </span><span class="si">{2:4d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go"> 1   1    1</span>
+<span class="go"> 2   4    8</span>
+<span class="go"> 3   9   27</span>
+<span class="go"> 4  16   64</span>
+<span class="go"> 5  25  125</span>
+<span class="go"> 6  36  216</span>
+<span class="go"> 7  49  343</span>
+<span class="go"> 8  64  512</span>
+<span class="go"> 9  81  729</span>
+<span class="go">10 100 1000</span>
+</pre></div>
+</div>
+<p>Para uma visão completa da formatação de strings com <a class="reference internal" href="../library/stdtypes.html#str.format" title="str.format"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.format()</span></code></a>, veja a seção <a class="reference internal" href="../library/string.html#formatstrings"><span class="std std-ref">Sintaxe das strings de formato</span></a>.</p>
+</section>
+<section id="manual-string-formatting">
+<h3><span class="section-number">7.1.3. </span>Formatação manual de string<a class="headerlink" href="#manual-string-formatting" title="Link permanente para este título">¶</a></h3>
+<p>Aqui está a mesma tabela de quadrados e cubos, formatados manualmente:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="c1"># Note use of &#39;end&#39; on previous line</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="gp">...</span>
+<span class="go"> 1   1    1</span>
+<span class="go"> 2   4    8</span>
+<span class="go"> 3   9   27</span>
+<span class="go"> 4  16   64</span>
+<span class="go"> 5  25  125</span>
+<span class="go"> 6  36  216</span>
+<span class="go"> 7  49  343</span>
+<span class="go"> 8  64  512</span>
+<span class="go"> 9  81  729</span>
+<span class="go">10 100 1000</span>
+</pre></div>
+</div>
+<p>(Note que o espaço entre cada coluna foi adicionado pela forma que a função <a class="reference internal" href="../library/functions.html#print" title="print"><code class="xref py py-func docutils literal notranslate"><span class="pre">print()</span></code></a> funciona: sempre adiciona espaços entre seus argumentos.)</p>
+<p>O método <a class="reference internal" href="../library/stdtypes.html#str.rjust" title="str.rjust"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.rjust()</span></code></a> justifica uma string à direita, num campo de tamanho definido, acrescentando espaços à esquerda. De forma similar, os métodos <a class="reference internal" href="../library/stdtypes.html#str.ljust" title="str.ljust"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.ljust()</span></code></a>, justifica à esquerda, e <a class="reference internal" href="../library/stdtypes.html#str.center" title="str.center"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.center()</span></code></a>, para centralizar. Esses métodos não escrevem nada, apenas retornam uma nova string. Se a string de entrada é muito longa, os métodos não truncarão a saída, e retornarão a mesma string, sem mudança; isso vai atrapalhar o layout da coluna, mas geralmente é melhor do que a alternativa, que estaria distorcendo o valor. (Se realmente quiser truncar, sempre se pode adicionar uma operação de fatiamento, como em <code class="docutils literal notranslate"><span class="pre">x.ljust(n)[:n]</span></code>.)</p>
+<p>Existe ainda o método <a class="reference internal" href="../library/stdtypes.html#str.zfill" title="str.zfill"><code class="xref py py-meth docutils literal notranslate"><span class="pre">str.zfill()</span></code></a> que preenche uma string numérica com zeros à esquerda, e sabe lidar com sinais positivos e negativos:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;12&#39;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">&#39;00012&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;-3.14&#39;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="go">&#39;-003.14&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;3.14159265359&#39;</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">&#39;3.14159265359&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="old-string-formatting">
+<h3><span class="section-number">7.1.4. </span>Formatação de strings à moda antiga<a class="headerlink" href="#old-string-formatting" title="Link permanente para este título">¶</a></h3>
+<p>O operador % (módulo) também pode ser usado para formatação de string. Dado <code class="docutils literal notranslate"><span class="pre">'string'</span> <span class="pre">%</span> <span class="pre">valores</span></code>, as instâncias de <code class="docutils literal notranslate"><span class="pre">%</span></code> em <code class="docutils literal notranslate"><span class="pre">string</span></code> são substituídas por zero ou mais elementos de <code class="docutils literal notranslate"><span class="pre">valores</span></code>. Essa operação é conhecida como interpolação de string. Por exemplo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The value of pi is approximately </span><span class="si">%5.3f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="go">The value of pi is approximately 3.142.</span>
+</pre></div>
+</div>
+<p>Mais informação pode ser encontrada na seção <a class="reference internal" href="../library/stdtypes.html#old-string-formatting"><span class="std std-ref">Formatação de String no Formato printf-style</span></a>.</p>
+</section>
+</section>
+<section id="reading-and-writing-files">
+<span id="tut-files"></span><h2><span class="section-number">7.2. </span>Leitura e escrita de arquivos<a class="headerlink" href="#reading-and-writing-files" title="Link permanente para este título">¶</a></h2>
+<p id="index-0"><a class="reference internal" href="../library/functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> returns a <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">file object</span></a>, and is most commonly used with
+two positional arguments and one keyword argument:
+<code class="docutils literal notranslate"><span class="pre">open(filename,</span> <span class="pre">mode,</span> <span class="pre">encoding=None)</span></code></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>O primeiro argumento é uma string contendo o nome do arquivo. O segundo argumento é outra string, contendo alguns caracteres que descrevem o modo como o arquivo será usado. <em>modo</em> pode ser <code class="docutils literal notranslate"><span class="pre">'r'</span></code> quando o arquivo será apenas lido, <code class="docutils literal notranslate"><span class="pre">'w'</span></code> para escrever (se o arquivo já existir seu conteúdo prévio será apagado), e <code class="docutils literal notranslate"><span class="pre">'a'</span></code> para abrir o arquivo para adição; qualquer escrita será adicionada ao final do arquivo. A opção <code class="docutils literal notranslate"><span class="pre">'r+'</span></code> abre o arquivo tanto para leitura como para escrita. O argumento <em>modo</em> é opcional, em caso de omissão será assumido <code class="docutils literal notranslate"><span class="pre">'r'</span></code>.</p>
+<p>Normally, files are opened in <em class="dfn">text mode</em>, that means, you read and write
+strings from and to the file, which are encoded in a specific <em>encoding</em>.
+If <em>encoding</em> is not specified, the default is platform dependent
+(see <a class="reference internal" href="../library/functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>).
+Because UTF-8 is the modern de-facto standard, <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8&quot;</span></code> is
+recommended unless you know that you need to use a different encoding.
+Appending a <code class="docutils literal notranslate"><span class="pre">'b'</span></code> to the mode opens the file in <em class="dfn">binary mode</em>.
+Binary mode data is read and written as <a class="reference internal" href="../library/stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> objects.
+You can not specify <em>encoding</em> when opening file in binary mode.</p>
+<p>Em modo texto, o padrão durante a leitura é converter terminadores de linha específicos da plataforma (<code class="docutils literal notranslate"><span class="pre">\n</span></code> no Unix, <code class="docutils literal notranslate"><span class="pre">\r\n</span></code> no Windows) para apenas <code class="docutils literal notranslate"><span class="pre">\n</span></code>. Ao escrever no modo de texto, o padrão é converter as ocorrências de <code class="docutils literal notranslate"><span class="pre">\n</span></code> de volta para os finais de linha específicos da plataforma. Essa modificação de bastidores nos dados do arquivo é adequada para arquivos de texto, mas corromperá dados binários, como arquivos <code class="file docutils literal notranslate"><span class="pre">JPEG</span></code> ou <code class="file docutils literal notranslate"><span class="pre">EXE</span></code>. Tenha muito cuidado para só usar o modo binário, ao ler e gravar esses arquivos.</p>
+<p>É uma boa prática usar a palavra-chave <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a> ao lidar com arquivos. A vantagem é que o arquivo é fechado corretamente após o término de sua utilização, mesmo que uma exceção seja levantada em algum momento. Usar <code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code> também é muito mais curto que escrever seu bloco equivalente <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a>-<a class="reference internal" href="../reference/compound_stmts.html#finally"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">finally</span></code></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">read_data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># We can check that the file has been automatically closed.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">closed</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Se você não está usando a palavra reservada <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a>, então você deveria chamar <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> para fechar o arquivo e imediatamente liberar qualquer recurso do sistema usado por ele.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>Chamar <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> sem usar a palavra reservada <code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code> ou chamar``f.close()`` <strong>pode</strong> resultar nos argumentos de <code class="docutils literal notranslate"><span class="pre">f.write()</span></code> não serem completamente escritos no disco, mesmo se o programa for encerrado com êxito.</p>
+</div>
+<p>Depois que um arquivo é fechado, seja por uma instrução <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a> ou chamando <code class="docutils literal notranslate"><span class="pre">f.close()</span></code>, as tentativas de usar o arquivo falharão automaticamente.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">ValueError</span>: <span class="n">I/O operation on closed file.</span>
+</pre></div>
+</div>
+<section id="methods-of-file-objects">
+<span id="tut-filemethods"></span><h3><span class="section-number">7.2.1. </span>Métodos de objetos arquivo<a class="headerlink" href="#methods-of-file-objects" title="Link permanente para este título">¶</a></h3>
+<p>Para simplificar, o resto dos exemplos nesta seção assumem que um objeto arquivo chamado <code class="docutils literal notranslate"><span class="pre">f</span></code> já foi criado.</p>
+<p>Para ler o conteúdo de um arquivo, chame <code class="docutils literal notranslate"><span class="pre">f.read(tamanho)</span></code>, que lê um punhado de dados devolvendo-os como uma string (em modo texto) ou bytes (em modo binário). <em>tamanho</em> é um argumento numérico opcional. Quando <em>tamanho</em> é omitido ou negativo, todo o conteúdo do arquivo é lido e devolvido; se o arquivo é duas vezes maior que memória da máquina, o problema é seu. Caso contrário, no máximo <em>tamanho</em> caracteres (em modo texto) ou <em>tamanho</em> bytes (em modo binário) são lidos e devolvidos. Se o fim do arquivo for atingido, <code class="docutils literal notranslate"><span class="pre">f.read()</span></code> devolve uma string vazia (<code class="docutils literal notranslate"><span class="pre">''</span></code>).</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="go">&#39;This is the entire file.\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>O método <code class="docutils literal notranslate"><span class="pre">f.readline()</span></code> lê uma única linha do arquivo; o caractere de quebra de linha (<code class="docutils literal notranslate"><span class="pre">\n</span></code>) é mantido ao final da string, e só é omitido na última linha do arquivo, se o arquivo não terminar com uma quebra de linha. Isso elimina a ambiguidade do valor retornado; se <code class="docutils literal notranslate"><span class="pre">f.readline()</span></code> retorna uma string vazia, o fim do arquivo foi atingido. Linhas em branco são representadas por um <code class="docutils literal notranslate"><span class="pre">'\n'</span></code> – uma string contendo apenas o caractere terminador de linha.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;This is the first line of the file.\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;Second line of the file\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Uma maneira alternativa de ler linhas do arquivo é iterar diretamente pelo objeto arquivo. É eficiente, rápido e resulta em código mais simples:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">This is the first line of the file.</span>
+<span class="go">Second line of the file</span>
+</pre></div>
+</div>
+<p>Se desejar ler todas as linhas de um arquivo em uma lista, pode-se usar <code class="docutils literal notranslate"><span class="pre">list(f)</span></code> ou <code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">f.write(string)</span></code> escreve o conteúdo de <em>string</em> para o arquivo, retornando o número de caracteres escritos.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;This is a test</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="go">15</span>
+</pre></div>
+</div>
+<p>Outros tipos de objetos precisam ser convertidos – seja para uma string (em modo texto) ou para bytes (em modo binário) – antes de escrevê-los:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;the answer&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>  <span class="c1"># convert the tuple to string</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="go">18</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">f.tell()</span></code> retorna um inteiro dando a posição atual do objeto arquivo, no arquivo representado, como número de bytes desde o início do arquivo, no modo binário, e um número ininteligível, quando no modo de texto.</p>
+<p>Para mudar a posição, use <code class="docutils literal notranslate"><span class="pre">f.seek(offset,</span> <span class="pre">de_onde)</span></code>. A nova posição é computada pela soma do deslocamento <em>offset</em> a um ponto de referência especificado pelo argumento <em>de-onde</em>. Se o valor de <em>de_onde</em> é 0,a referência é o início do arquivo, 1 refere-se à posição atual, e 2 refere-se ao fim do arquivo. Este argumento pode ser omitido e o valor padrão é 0, usando o início do arquivo como referência.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;workfile&#39;</span><span class="p">,</span> <span class="s1">&#39;rb+&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;0123456789abcdef&#39;</span><span class="p">)</span>
+<span class="go">16</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>      <span class="c1"># Go to the 6th byte in the file</span>
+<span class="go">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">b&#39;5&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># Go to the 3rd byte before the end</span>
+<span class="go">13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">b&#39;d&#39;</span>
+</pre></div>
+</div>
+<p>Em arquivos texto (abertos sem um <code class="docutils literal notranslate"><span class="pre">b</span></code>, em modo string), somente <em>seeks</em> relativos ao início do arquivo serão permitidos (exceto se for indicado o final do arquivo, com <code class="docutils literal notranslate"><span class="pre">seek(0,</span> <span class="pre">2)</span></code>) e o único valor válido para <em>offset</em> são aqueles retornados por chamada à <code class="docutils literal notranslate"><span class="pre">f.tell()</span></code>, ou zero. Qualquer outro valor para <em>offset</em> produz um comportamento indefinido.</p>
+<p>Objetos arquivo tem alguns método adicionais, como <code class="xref py py-meth docutils literal notranslate"><span class="pre">isatty()</span></code> e <code class="xref py py-meth docutils literal notranslate"><span class="pre">truncate()</span></code> que não são usados com frequência; consulte a Biblioteca de Referência para um guia completo de objetos arquivo.</p>
+</section>
+<section id="saving-structured-data-with-json">
+<span id="tut-json"></span><h3><span class="section-number">7.2.2. </span>Gravando dados estruturados com <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a><a class="headerlink" href="#saving-structured-data-with-json" title="Link permanente para este título">¶</a></h3>
+<p id="index-1">Strings podem ser facilmente gravadas e lidas em um arquivo. Números dão um pouco mais de trabalho, já que o método <code class="xref py py-meth docutils literal notranslate"><span class="pre">read()</span></code> só retorna strings, que terão que ser passadas para uma função como <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-func docutils literal notranslate"><span class="pre">int()</span></code></a>, que pega uma string como <code class="docutils literal notranslate"><span class="pre">'123'</span></code> e retorna seu valor numérico 123. Quando você deseja salvar tipos de dados mais complexos, como listas e dicionários aninhados, a análise e serialização manual tornam-se complicadas.</p>
+<p>Ao invés de ter usuários constantemente escrevendo e depurando código para gravar tipos complicados de dados em arquivos, o Python permite que se use o popular formato de troca de dados chamado <a class="reference external" href="http://json.org">JSON (JavaScript Object Notation)</a>. O módulo padrão chamado <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> pode pegar hierarquias de dados em Python e convertê-las em representações de strings; esse processo é chamado <em class="dfn">serialização</em>. Reconstruir os dados estruturados da representação string é chamado <em class="dfn">desserialização</em>. Entre serializar e desserializar, a string que representa o objeto pode ser armazenada em um arquivo, ou estrutura de dados, ou enviada por uma conexão de rede para alguma outra máquina.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O formato JSON é comumente usado por aplicativos modernos para permitir troca de dados. Pessoas que programam já estão familiarizadas com esse formato, o que o torna uma boa opção para interoperabilidade.</p>
+</div>
+<p>Um objeto <code class="docutils literal notranslate"><span class="pre">x</span></code>, pode ser visualizado na sua representação JSON com uma simples linha de código:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">json</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;simple&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">&#39;[1, &quot;simple&quot;, &quot;list&quot;]&#39;</span>
+</pre></div>
+</div>
+<p>Outra variação da função <a class="reference internal" href="../library/json.html#json.dumps" title="json.dumps"><code class="xref py py-func docutils literal notranslate"><span class="pre">dumps()</span></code></a>, chamada <a class="reference internal" href="../library/json.html#json.dump" title="json.dump"><code class="xref py py-func docutils literal notranslate"><span class="pre">dump()</span></code></a>, serializa o objeto para um <a class="reference internal" href="../glossary.html#term-text-file"><span class="xref std std-term">arquivo texto</span></a>. Se <code class="docutils literal notranslate"><span class="pre">f</span></code> é um <a class="reference internal" href="../glossary.html#term-text-file"><span class="xref std std-term">arquivo texto</span></a> aberto para escrita, podemos fazer isto:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To decode the object again, if <code class="docutils literal notranslate"><span class="pre">f</span></code> is a <a class="reference internal" href="../glossary.html#term-binary-file"><span class="xref std std-term">binary file</span></a> or
+<a class="reference internal" href="../glossary.html#term-text-file"><span class="xref std std-term">text file</span></a> object which has been opened for reading:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>JSON files must be encoded in UTF-8. Use <code class="docutils literal notranslate"><span class="pre">encoding=&quot;utf-8&quot;</span></code> when opening
+JSON file as a <a class="reference internal" href="../glossary.html#term-text-file"><span class="xref std std-term">text file</span></a> for both of reading and writing.</p>
+</div>
+<p>Essa técnica de serialização simples pode manipular listas e dicionários, mas a serialização de instâncias de classes arbitrárias no JSON requer um pouco mais de esforço. A referência para o módulo <a class="reference internal" href="../library/json.html#module-json" title="json: Encode and decode the JSON format."><code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a> contém uma explicação disso.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p>O módulo <a class="reference internal" href="../library/pickle.html#module-pickle" title="pickle: Convert Python objects to streams of bytes and back."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickle</span></code></a></p>
+<p>Ao contrário do <a class="reference internal" href="#tut-json"><span class="std std-ref">JSON</span></a>, <em>pickle</em> é um protocolo que permite a serialização de objetos Python arbitrariamente complexos. Por isso, é específico do Python e não pode ser usado para se comunicar com aplicativos escritos em outros linguagens. Também é inseguro por padrão: desserializar dados de pickle, provenientes de uma fonte não confiável, pode executar código arbitrário, se os dados foram criados por um invasor habilidoso.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Entrada e Saída</a><ul>
+<li><a class="reference internal" href="#fancier-output-formatting">7.1. Refinando a formatação de saída</a><ul>
+<li><a class="reference internal" href="#formatted-string-literals">7.1.1. Strings literais formatadas</a></li>
+<li><a class="reference internal" href="#the-string-format-method">7.1.2. O método format()</a></li>
+<li><a class="reference internal" href="#manual-string-formatting">7.1.3. Formatação manual de string</a></li>
+<li><a class="reference internal" href="#old-string-formatting">7.1.4. Formatação de strings à moda antiga</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reading-and-writing-files">7.2. Leitura e escrita de arquivos</a><ul>
+<li><a class="reference internal" href="#methods-of-file-objects">7.2.1. Métodos de objetos arquivo</a></li>
+<li><a class="reference internal" href="#saving-structured-data-with-json">7.2.2. Gravando dados estruturados com <code class="xref py py-mod docutils literal notranslate"><span class="pre">json</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="modules.html"
+                        title="capítulo anterior"><span class="section-number">6. </span>Módulos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="errors.html"
+                        title="próximo capítulo"><span class="section-number">8. </span>Erros e exceções</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/inputoutput.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="errors.html" title="8. Erros e exceções"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="6. Módulos"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Entrada e Saída</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Introdução &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="C API Stability" href="stable.html" />
+    <link rel="prev" title="Manual de referência da API Python/C" href="index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/intro.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introdução</a><ul>
+<li><a class="reference internal" href="#coding-standards">Padrões de codificação</a></li>
+<li><a class="reference internal" href="#include-files">Incluir arquivos</a></li>
+<li><a class="reference internal" href="#useful-macros">Macros úteis</a></li>
+<li><a class="reference internal" href="#objects-types-and-reference-counts">Objetos, tipos e contagens de referências</a><ul>
+<li><a class="reference internal" href="#reference-counts">Contagens de referências</a><ul>
+<li><a class="reference internal" href="#reference-count-details">Detalhes da contagem de referências</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#types">Tipos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceções</a></li>
+<li><a class="reference internal" href="#embedding-python">Incorporando Python</a></li>
+<li><a class="reference internal" href="#debugging-builds">Compilações de depuração</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Manual de referência da API Python/C</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="stable.html"
+                        title="próximo capítulo">C API Stability</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/intro.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="stable.html" title="C API Stability"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Manual de referência da API Python/C"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Manual de referência da API Python/C</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<span id="api-intro"></span><h1>Introdução<a class="headerlink" href="#introduction" title="Link permanente para este título">¶</a></h1>
+<p>A Interface de Programação de Aplicações (API) para Python fornece aos programadores C e C++ acesso ao interpretador Python em uma variedade de níveis. A API pode ser usada igualmente em C++, mas, para abreviar, geralmente é chamada de API Python/C. Existem dois motivos fundamentalmente diferentes para usar a API Python/C. A primeira razão é escrever <em>módulos de extensão</em> para propósitos específicos; esses são módulos C que estendem o interpretador Python. Este é provavelmente o uso mais comum. O segundo motivo é usar Python como um componente em uma aplicação maior; esta técnica é geralmente referida como <em class="dfn">incorporação</em> Python em uma aplicação.</p>
+<p>Escrever um módulo de extensão é um processo relativamente bem compreendido, no qual uma abordagem de “livro de receitas” funciona bem. Existem várias ferramentas que automatizam o processo até certo ponto. Embora as pessoas tenham incorporado o Python em outras aplicações desde sua existência inicial, o processo de incorporação do Python é menos direto do que escrever uma extensão.</p>
+<p>Muitas funções da API são úteis independentemente de você estar incorporando ou estendendo o Python; além disso, a maioria das aplicações que incorporam Python também precisará fornecer uma extensão customizada, portanto, é provavelmente uma boa ideia se familiarizar com a escrita de uma extensão antes de tentar incorporar Python em uma aplicação real.</p>
+<section id="coding-standards">
+<h2>Padrões de codificação<a class="headerlink" href="#coding-standards" title="Link permanente para este título">¶</a></h2>
+<p>Se você estiver escrevendo código C para inclusão no CPython, <strong>deve</strong> seguir as diretrizes e padrões definidos na <span class="target" id="index-47"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>. Essas diretrizes se aplicam independentemente da versão do Python com a qual você está contribuindo. Seguir essas convenções não é necessário para seus próprios módulos de extensão de terceiros, a menos que você eventualmente espere contribuí-los para o Python.</p>
+</section>
+<section id="include-files">
+<span id="api-includes"></span><h2>Incluir arquivos<a class="headerlink" href="#include-files" title="Link permanente para este título">¶</a></h2>
+<p>Todas as definições de função, tipo e macro necessárias para usar a API Python/C estão incluídas em seu código pela seguinte linha:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PY_SSIZE_T_CLEAN</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Python.h&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>Isso implica a inclusão dos seguintes cabeçalhos padrão: <code class="docutils literal notranslate"><span class="pre">&lt;stdio.h&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;string.h&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;errno.h&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;limits.h&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;assert.h&gt;</span></code> e <code class="docutils literal notranslate"><span class="pre">&lt;stdlib.h&gt;</span></code> (se disponível).</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Uma vez que Python pode definir algumas definições de pré-processador que afetam os cabeçalhos padrão em alguns sistemas, você <em>deve</em> incluir <code class="file docutils literal notranslate"><span class="pre">Python.h</span></code> antes de quaisquer cabeçalhos padrão serem incluídos.</p>
+<p>É recomendável sempre definir <code class="docutils literal notranslate"><span class="pre">PY_SSIZE_T_CLEAN</span></code> antes de incluir <code class="docutils literal notranslate"><span class="pre">Python.h</span></code>. Veja <a class="reference internal" href="arg.html#arg-parsing"><span class="std std-ref">Análise de argumentos e construção de valores</span></a> para uma descrição desta macro.</p>
+</div>
+<p>Todos os nomes visíveis ao usuário definidos por Python.h (exceto aqueles definidos pelos cabeçalhos padrão incluídos) têm um dos prefixos <code class="docutils literal notranslate"><span class="pre">Py</span></code> ou <code class="docutils literal notranslate"><span class="pre">_Py</span></code>. Nomes começando com <code class="docutils literal notranslate"><span class="pre">_Py</span></code> são para uso interno pela implementação Python e não devem ser usados por escritores de extensão. Os nomes dos membros da estrutura não têm um prefixo reservado.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O código do usuário nunca deve definir nomes que começam com <code class="docutils literal notranslate"><span class="pre">Py</span></code> ou <code class="docutils literal notranslate"><span class="pre">_Py</span></code>. Isso confunde o leitor e coloca em risco a portabilidade do código do usuário para versões futuras do Python, que podem definir nomes adicionais começando com um desses prefixos.</p>
+</div>
+<p>Os arquivos de cabeçalho são normalmente instalados com Python. No Unix, eles estão localizados nos diretórios <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em><span class="pre">/include/pythonversion/</span></code> e <code class="file docutils literal notranslate"><em><span class="pre">exec_prefix</span></em><span class="pre">/include/pythonversion/</span></code>, onde <span class="target" id="index-48"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">prefix</span></code> e <span class="target" id="index-49"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">exec_prefix</span></code> são definidos pelos parâmetros correspondentes ao script <strong class="program">configure</strong> e <em>version</em> do Python é <code class="docutils literal notranslate"><span class="pre">'%d.%d'</span> <span class="pre">%</span> <span class="pre">sys.version_info[:2]</span></code>. No Windows, os cabeçalhos são instalados em <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em><span class="pre">/include</span></code>, onde <span class="target" id="index-50"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">prefix</span></code> é o diretório de instalação especificado para o instalador.</p>
+<p>Para incluir os cabeçalhos, coloque os dois diretórios (se diferentes) no caminho de pesquisa do compilador para as inclusões. <em>Não</em> coloque os diretórios pais no caminho de busca e então use <code class="docutils literal notranslate"><span class="pre">#include</span> <span class="pre">&lt;pythonX.Y/Python.h&gt;</span></code>; isto irá quebrar em compilações multiplataforma, uma vez que os cabeçalhos independentes da plataforma em <span class="target" id="index-51"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">prefix</span></code> incluem os cabeçalhos específicos da plataforma de <span class="target" id="index-52"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">exec_prefix</span></code>.</p>
+<p>Os usuários de C++ devem notar que embora a API seja definida inteiramente usando C, os arquivos de cabeçalho declaram apropriadamente os pontos de entrada como <code class="docutils literal notranslate"><span class="pre">extern</span> <span class="pre">&quot;C&quot;</span></code>. Como resultado, não há necessidade de fazer nada especial para usar a API do C++.</p>
+</section>
+<section id="useful-macros">
+<h2>Macros úteis<a class="headerlink" href="#useful-macros" title="Link permanente para este título">¶</a></h2>
+<p>Diversas macros úteis são definidas nos arquivos de cabeçalho do Python. Muitas são definidas mais próximas de onde são úteis (por exemplo, <a class="reference internal" href="none.html#c.Py_RETURN_NONE" title="Py_RETURN_NONE"><code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_RETURN_NONE</span></code></a>). Outras de utilidade mais geral são definidas aqui. Esta não é necessariamente uma lista completa.</p>
+<dl class="c macro">
+<dt id="c.Py_UNREACHABLE">
+<code class="sig-name descname">Py_UNREACHABLE</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_UNREACHABLE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Use isso quando você tiver um caminho de código que não pode ser alcançado por design. Por exemplo, na cláusula <code class="docutils literal notranslate"><span class="pre">default:</span></code> em uma instrução <code class="docutils literal notranslate"><span class="pre">switch</span></code> para a qual todos os valores possíveis são incluídos nas instruções <code class="docutils literal notranslate"><span class="pre">case</span></code>. Use isto em lugares onde você pode ficar tentado a colocar uma chamada <code class="docutils literal notranslate"><span class="pre">assert(0)</span></code> ou <code class="docutils literal notranslate"><span class="pre">abort()</span></code>.</p>
+<p>No modo de lançamento, a macro ajuda o compilador a otimizar o código e evita um aviso sobre código inacessível. Por exemplo, a macro é implementada com <code class="docutils literal notranslate"><span class="pre">__builtin_unreachable()</span></code> no GCC em modo de lançamento.</p>
+<p>Um uso para <code class="docutils literal notranslate"><span class="pre">Py_UNREACHABLE()</span></code> é seguir uma chamada de uma função que nunca retorna, mas que não é declarada com <code class="xref c c-macro docutils literal notranslate"><span class="pre">_Py_NO_RETURN</span></code>.</p>
+<p>Se um caminho de código for um código muito improvável, mas puder ser alcançado em casos excepcionais, esta macro não deve ser usada. Por exemplo, sob condição de pouca memória ou se uma chamada de sistema retornar um valor fora do intervalo esperado. Nesse caso, é melhor relatar o erro ao chamador. Se o erro não puder ser reportado ao chamador, <a class="reference internal" href="sys.html#c.Py_FatalError" title="Py_FatalError"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_FatalError()</span></code></a> pode ser usada.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_ABS">
+<code class="sig-name descname">Py_ABS</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_ABS" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o valor absoluto de <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_MIN">
+<code class="sig-name descname">Py_MIN</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_MIN" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o valor mínimo entre <code class="docutils literal notranslate"><span class="pre">x</span></code> e <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_MAX">
+<code class="sig-name descname">Py_MAX</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_MAX" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o valor máximo entre <code class="docutils literal notranslate"><span class="pre">x</span></code> e <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_STRINGIFY">
+<code class="sig-name descname">Py_STRINGIFY</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_STRINGIFY" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Converte <code class="docutils literal notranslate"><span class="pre">x</span></code> para uma string C. Por exemplo, <code class="docutils literal notranslate"><span class="pre">Py_STRINGIFY(123)</span></code> retorna <code class="docutils literal notranslate"><span class="pre">&quot;123&quot;</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_MEMBER_SIZE">
+<code class="sig-name descname">Py_MEMBER_SIZE</code><span class="sig-paren">(</span><em>type</em>, <em>member</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_MEMBER_SIZE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o tamanho do <code class="docutils literal notranslate"><span class="pre">member</span></code> de uma estrutura (<code class="docutils literal notranslate"><span class="pre">type</span></code>) em bytes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_CHARMASK">
+<code class="sig-name descname">Py_CHARMASK</code><span class="sig-paren">(</span><em>c</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_CHARMASK" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>O argumento deve ser um caractere ou um número inteiro no intervalo [-128, 127] ou [0, 255]. Esta macro retorna <code class="docutils literal notranslate"><span class="pre">c</span></code> convertido em um <code class="docutils literal notranslate"><span class="pre">unsigned</span> <span class="pre">char</span></code>.</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_GETENV">
+<code class="sig-name descname">Py_GETENV</code><span class="sig-paren">(</span><em>s</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_GETENV" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Como <code class="docutils literal notranslate"><span class="pre">getenv(s)</span></code>, mas retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> se <a class="reference internal" href="../using/cmdline.html#cmdoption-E"><code class="xref std std-option docutils literal notranslate"><span class="pre">-E</span></code></a> foi passada na linha de comando (isto é, se <code class="docutils literal notranslate"><span class="pre">Py_IgnoreEnvironmentFlag</span></code> estiver definida).</p>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_UNUSED">
+<code class="sig-name descname">Py_UNUSED</code><span class="sig-paren">(</span><em>arg</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_UNUSED" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Use isso para argumentos não usados em uma definição de função para silenciar avisos do compilador. Exemplo: <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">func(int</span> <span class="pre">a,</span> <span class="pre">int</span> <span class="pre">Py_UNUSED(b))</span> <span class="pre">{</span> <span class="pre">return</span> <span class="pre">a;</span> <span class="pre">}</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.Py_DEPRECATED">
+<code class="sig-name descname">Py_DEPRECATED</code><span class="sig-paren">(</span><em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#c.Py_DEPRECATED" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Use isso para declarações descontinuadas. A macro deve ser colocada antes do nome do símbolo.</p>
+<p>Exemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Py_DEPRECATED</span><span class="p">(</span><span class="mf">3.8</span><span class="p">)</span><span class="w"> </span><span class="n">PyAPI_FUNC</span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="n">Py_OldFunction</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Suporte a MSVC foi adicionado.</p>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.PyDoc_STRVAR">
+<code class="sig-name descname">PyDoc_STRVAR</code><span class="sig-paren">(</span><em>name</em>, <em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDoc_STRVAR" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Cria uma variável com o nome <code class="docutils literal notranslate"><span class="pre">name</span></code> que pode ser usada em docstrings. Se o Python for compilado sem docstrings, o valor estará vazio.</p>
+<p>Use <a class="reference internal" href="#c.PyDoc_STRVAR" title="PyDoc_STRVAR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">PyDoc_STRVAR</span></code></a> para docstrings para ter suporte à compilação do Python sem docstrings, conforme especificado em <span class="target" id="index-53"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>.</p>
+<p>Exemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyDoc_STRVAR</span><span class="p">(</span><span class="n">pop_doc</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Remove and return the rightmost element.&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">PyMethodDef</span><span class="w"> </span><span class="n">deque_methods</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;pop&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">PyCFunction</span><span class="p">)</span><span class="n">deque_pop</span><span class="p">,</span><span class="w"> </span><span class="n">METH_NOARGS</span><span class="p">,</span><span class="w"> </span><span class="n">pop_doc</span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="c macro">
+<dt id="c.PyDoc_STR">
+<code class="sig-name descname">PyDoc_STR</code><span class="sig-paren">(</span><em>str</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDoc_STR" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Cria uma docstring para a string de entrada fornecida ou uma string vazia se docstrings estiverem desabilitadas.</p>
+<p>Use <a class="reference internal" href="#c.PyDoc_STR" title="PyDoc_STR"><code class="xref c c-macro docutils literal notranslate"><span class="pre">PyDoc_STR</span></code></a> ao especificar docstrings para ter suporte à compilação do Python sem docstrings, conforme especificado em <span class="target" id="index-54"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0007"><strong>PEP 7</strong></a>.</p>
+<p>Exemplo:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">PyMethodDef</span><span class="w"> </span><span class="n">pysqlite_row_methods</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="s">&quot;keys&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">PyCFunction</span><span class="p">)</span><span class="n">pysqlite_row_keys</span><span class="p">,</span><span class="w"> </span><span class="n">METH_NOARGS</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="n">PyDoc_STR</span><span class="p">(</span><span class="s">&quot;Returns the keys of the row.&quot;</span><span class="p">)},</span><span class="w"></span>
+<span class="w">    </span><span class="p">{</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="objects-types-and-reference-counts">
+<span id="api-objects"></span><h2>Objetos, tipos e contagens de referências<a class="headerlink" href="#objects-types-and-reference-counts" title="Link permanente para este título">¶</a></h2>
+<p id="index-8">A maioria das funções da API Python/C tem um ou mais argumentos, bem como um valor de retorno do tipo <span class="xref c c-texpr"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a>*</span>. Este tipo é um ponteiro para um tipo de dados opaco que representa um objeto Python arbitrário. Como todos os tipos de objeto Python são tratados da mesma maneira pela linguagem Python na maioria das situações (por exemplo, atribuições, regras de escopo e passagem de argumento), é adequado que eles sejam representados por um único tipo C. Quase todos os objetos Python vivem na pilha: você nunca declara uma variável automática ou estática do tipo <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyObject</span></code></a>, variáveis de apenas ponteiro do tipo <span class="xref c c-texpr"><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a>*</span> podem ser declaradas. A única exceção são os objetos de tipo; uma vez que estes nunca devem ser desalocados, eles são normalmente objetos estáticos <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a>.</p>
+<p>Todos os objetos Python (mesmo inteiros Python) têm um <em class="dfn">tipo</em> e uma <em class="dfn">contagem de referências</em>. O tipo de um objeto determina que tipo de objeto ele é (por exemplo, um número inteiro, uma lista ou uma função definida pelo usuário; existem muitos mais, conforme explicado em <a class="reference internal" href="../reference/datamodel.html#types"><span class="std std-ref">A hierarquia de tipos padrão</span></a>). Para cada um dos tipos conhecidos, há uma macro para verificar se um objeto é desse tipo; por exemplo, <code class="docutils literal notranslate"><span class="pre">PyList_Check(a)</span></code> é verdadeiro se (e somente se) o objeto apontado por <em>a</em> for uma lista Python.</p>
+<section id="reference-counts">
+<span id="api-refcounts"></span><h3>Contagens de referências<a class="headerlink" href="#reference-counts" title="Link permanente para este título">¶</a></h3>
+<p>A contagem de referência é importante porque os computadores de hoje têm um tamanho de memória finito (e geralmente muito limitado); Conta quantos lugares diferentes existem que têm uma referência a um objeto. Esse local poderia ser outro objeto, uma variável C global (ou estática) ou uma variável local em alguma função C. Quando a contagem de referência de um objeto se torna zero, o objeto é desalocado. Se contiver referências a outros objetos, sua contagem de referência será diminuída. Esses outros objetos podem ser desalocados, por sua vez, se esse decremento fizer com que sua contagem de referência se torne zero e assim por diante. (Há um problema óbvio com objetos que fazem referência um ao outro aqui; por enquanto, a solução é “não faça isso”).</p>
+<p id="index-9">As contagens de referências são sempre manipuladas explicitamente. A maneira normal é usar a macro <a class="reference internal" href="refcounting.html#c.Py_INCREF" title="Py_INCREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_INCREF()</span></code></a> para incrementar a contagem de referências de um objeto em um, e <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> para diminuí-la em um. A macro <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> é consideravelmente mais complexa que a “incref”, uma vez que deve verificar se a contagem de referências torna-se zero e então fazer com que o desalocador do objeto seja chamado. O desalocador é um ponteiro de função contido na estrutura de tipo do objeto. O desalocador específico do tipo se encarrega de diminuir as contagens de referências para outros objetos contidos no objeto se este for um tipo de objeto composto, como uma lista, bem como realizar qualquer finalização adicional necessária. Não há chance de que a contagem de referências possa estourar; pelo menos tantos bits são usados ​​para manter a contagem de referência quanto há locais de memória distintos na memória virtual (assumindo <code class="docutils literal notranslate"><span class="pre">sizeof(Py_ssize_t)</span> <span class="pre">&gt;=</span> <span class="pre">sizeof(void*)</span></code>). Portanto, o incremento da contagem de referências é uma operação simples.</p>
+<p>Não é necessário incrementar a contagem de referências de um objeto para cada variável local que contém um ponteiro para um objeto. Em teoria, a contagem de referências do objeto aumenta em um quando a variável é feita para apontar para ele e diminui em um quando a variável sai do escopo. No entanto, esses dois se cancelam, portanto, no final, a contagem de referências não mudou. A única razão real para usar a contagem de referências é evitar que o objeto seja desalocado enquanto nossa variável estiver apontando para ele. Se sabemos que existe pelo menos uma outra referência ao objeto que vive pelo menos tanto quanto nossa variável, não há necessidade de incrementar a contagem de referências temporariamente. Uma situação importante em que isso ocorre é em objetos que são passados como argumentos para funções C em um módulo de extensão que são chamados de Python; o mecanismo de chamada garante manter uma referência a todos os argumentos durante a chamada.</p>
+<p>No entanto, uma armadilha comum é extrair um objeto de uma lista e mantê-lo por um tempo, sem incrementar sua contagem de referências. Alguma outra operação poderia remover o objeto da lista, diminuindo sua contagem de referências e possivelmente desalocando-o. O perigo real é que operações aparentemente inocentes podem invocar código Python arbitrário que poderia fazer isso; existe um caminho de código que permite que o controle flua de volta para o usuário a partir de um <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a>, então quase qualquer operação é potencialmente perigosa.</p>
+<p>Uma abordagem segura é sempre usar as operações genéricas (funções cujo nome começa com <code class="docutils literal notranslate"><span class="pre">PyObject_</span></code>, <code class="docutils literal notranslate"><span class="pre">PyNumber_</span></code>, <code class="docutils literal notranslate"><span class="pre">PySequence_</span></code> ou <code class="docutils literal notranslate"><span class="pre">PyMapping_</span></code>). Essas operações sempre incrementam a contagem de referências do objeto que retornam. Isso deixa o chamador com a responsabilidade de chamar <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> quando terminar com o resultado; isso logo se torna uma segunda natureza.</p>
+<section id="reference-count-details">
+<span id="api-refcountdetails"></span><h4>Detalhes da contagem de referências<a class="headerlink" href="#reference-count-details" title="Link permanente para este título">¶</a></h4>
+<p>O comportamento da contagem de referências de funções na API Python/C é melhor explicado em termos de <em>propriedade de referências</em>. A propriedade pertence às referências, nunca aos objetos (os objetos não são possuídos: eles são sempre compartilhados). “Possuir uma referência” significa ser responsável por chamar Py_DECREF nela quando a referência não for mais necessária. A propriedade também pode ser transferida, o que significa que o código que recebe a propriedade da referência torna-se responsável por eventualmente efetuar um decref nela chamando <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> ou <a class="reference internal" href="refcounting.html#c.Py_XDECREF" title="Py_XDECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_XDECREF()</span></code></a> quando não é mais necessário – ou passando essa responsabilidade (geralmente para o responsável pela chamada). Quando uma função passa a propriedade de uma referência para seu chamador, diz-se que o chamador recebe uma <em>nova</em> referência. Quando nenhuma propriedade é transferida, diz-se que o chamador <em>toma emprestado</em> a referência. Nada precisa ser feito para uma <a class="reference internal" href="../glossary.html#term-borrowed-reference"><span class="xref std std-term">referência emprestada</span></a>.</p>
+<p>Por outro lado, quando uma função de chamada passa uma referência a um objeto, há duas possibilidades: a função <em>rouba</em> uma referência ao objeto, ou não. <em>Roubar uma referência</em> significa que quando você passa uma referência para uma função, essa função assume que agora ela possui essa referência e você não é mais responsável por ela.</p>
+<p id="index-10">Poucas funções roubam referências; as duas exceções notáveis são <a class="reference internal" href="list.html#c.PyList_SetItem" title="PyList_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_SetItem()</span></code></a> e <a class="reference internal" href="tuple.html#c.PyTuple_SetItem" title="PyTuple_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyTuple_SetItem()</span></code></a>, que roubam uma referência para o item (mas não para a tupla ou lista na qual o item é colocado!). Essas funções foram projetadas para roubar uma referência devido a um idioma comum para preencher uma tupla ou lista com objetos recém-criados; por exemplo, o código para criar a tupla <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">&quot;three&quot;)</span></code> pode ser parecido com isto (esquecendo o tratamento de erros por enquanto; uma maneira melhor de codificar isso é mostrada abaixo):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">t</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyTuple_New</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span><span class="w"></span>
+<span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mf">1L</span><span class="p">));</span><span class="w"></span>
+<span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mf">2L</span><span class="p">));</span><span class="w"></span>
+<span class="n">PyTuple_SetItem</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">PyUnicode_FromString</span><span class="p">(</span><span class="s">&quot;three&quot;</span><span class="p">));</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Aqui, <a class="reference internal" href="long.html#c.PyLong_FromLong" title="PyLong_FromLong"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyLong_FromLong()</span></code></a> retorna uma nova referência que é imediatamente roubada por <a class="reference internal" href="tuple.html#c.PyTuple_SetItem" title="PyTuple_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyTuple_SetItem()</span></code></a>. Quando você quiser continuar usando um objeto, embora a referência a ele seja roubada, use <a class="reference internal" href="refcounting.html#c.Py_INCREF" title="Py_INCREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_INCREF()</span></code></a> para obter outra referência antes de chamar a função de roubo de referência.</p>
+<p>A propósito, <a class="reference internal" href="tuple.html#c.PyTuple_SetItem" title="PyTuple_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyTuple_SetItem()</span></code></a> é a <em>única</em> maneira de definir itens de tupla; <a class="reference internal" href="sequence.html#c.PySequence_SetItem" title="PySequence_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PySequence_SetItem()</span></code></a> e <a class="reference internal" href="object.html#c.PyObject_SetItem" title="PyObject_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_SetItem()</span></code></a> se recusam a fazer isso, pois tuplas são um tipo de dados imutável. Você só deve usar <a class="reference internal" href="tuple.html#c.PyTuple_SetItem" title="PyTuple_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyTuple_SetItem()</span></code></a> para tuplas que você mesmo está criando.</p>
+<p>O código equivalente para preencher uma lista pode ser escrita usando <a class="reference internal" href="list.html#c.PyList_New" title="PyList_New"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_New()</span></code></a> e <a class="reference internal" href="list.html#c.PyList_SetItem" title="PyList_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_SetItem()</span></code></a>.</p>
+<p>No entanto, na prática, você raramente usará essas maneiras de criar e preencher uma tupla ou lista. Existe uma função genérica, <a class="reference internal" href="arg.html#c.Py_BuildValue" title="Py_BuildValue"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_BuildValue()</span></code></a>, que pode criar objetos mais comuns a partir de valores C, dirigidos por uma <em class="dfn">string de formato</em>. Por exemplo, os dois blocos de código acima podem ser substituídos pelos seguintes (que também cuidam da verificação de erros):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">tuple</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">tuple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Py_BuildValue</span><span class="p">(</span><span class="s">&quot;(iis)&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Py_BuildValue</span><span class="p">(</span><span class="s">&quot;[iis]&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;three&quot;</span><span class="p">);</span><span class="w"></span>
+</pre></div>
+</div>
+<p>É muito mais comum usar <a class="reference internal" href="object.html#c.PyObject_SetItem" title="PyObject_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_SetItem()</span></code></a> e amigos com itens cujas referências você está apenas pegando emprestado, como argumentos que foram passados para a função que você está escrevendo. Nesse caso, o comportamento deles em relação às contagens de referência é muito mais são, já que você não precisa incrementar uma contagem de referências para que possa dar uma referência (“mande-a ser roubada”). Por exemplo, esta função define todos os itens de uma lista (na verdade, qualquer sequência mutável) para um determinado item:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"></span>
+<span class="nf">set_all</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_ssize_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyObject_Length</span><span class="p">(</span><span class="n">target</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyLong_FromSsize_t</span><span class="p">(</span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">index</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PyObject_SetItem</span><span class="p">(</span><span class="n">target</span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">index</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p id="index-11">A situação é ligeiramente diferente para os valores de retorno da função. Embora passar uma referência para a maioria das funções não altere suas responsabilidades de propriedade para aquela referência, muitas funções que retornam uma referência a um objeto fornecem a propriedade da referência. O motivo é simples: em muitos casos, o objeto retornado é criado instantaneamente e a referência que você obtém é a única referência ao objeto. Portanto, as funções genéricas que retornam referências a objetos, como <a class="reference internal" href="object.html#c.PyObject_GetItem" title="PyObject_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetItem()</span></code></a> e <a class="reference internal" href="sequence.html#c.PySequence_GetItem" title="PySequence_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PySequence_GetItem()</span></code></a>, sempre retornam uma nova referência (o chamador torna-se o dono da referência).</p>
+<p>É importante perceber que se você possui uma referência retornada por uma função depende de qual função você chama apenas — <em>a plumagem</em> (o tipo do objeto passado como um argumento para a função) <em>não entra nela!</em> Assim, se você extrair um item de uma lista usando <a class="reference internal" href="list.html#c.PyList_GetItem" title="PyList_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_GetItem()</span></code></a>, você não possui a referência — mas se obtiver o mesmo item da mesma lista usando <a class="reference internal" href="sequence.html#c.PySequence_GetItem" title="PySequence_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PySequence_GetItem()</span></code></a> (que leva exatamente os mesmos argumentos), você possui uma referência ao objeto retornado.</p>
+<p id="index-12">Aqui está um exemplo de como você poderia escrever uma função que calcula a soma dos itens em uma lista de inteiros; uma vez usando <a class="reference internal" href="list.html#c.PyList_GetItem" title="PyList_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_GetItem()</span></code></a>, e uma vez usando <a class="reference internal" href="sequence.html#c.PySequence_GetItem" title="PySequence_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PySequence_GetItem()</span></code></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">long</span><span class="w"></span>
+<span class="nf">sum_list</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">list</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_ssize_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyList_Size</span><span class="p">(</span><span class="n">list</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Not a list */</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyList_GetItem</span><span class="p">(</span><span class="n">list</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Can&#39;t fail */</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span><span class="w"> </span><span class="k">continue</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Skip non-integers */</span><span class="w"></span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">PyErr_Occurred</span><span class="p">())</span><span class="w"></span>
+<span class="w">            </span><span class="cm">/* Integer too big to fit in a C long, bail out */</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate" id="index-13"><div class="highlight"><pre><span></span><span class="kt">long</span><span class="w"></span>
+<span class="nf">sum_sequence</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">sequence</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_ssize_t</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PySequence_Length</span><span class="p">(</span><span class="n">sequence</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Has no length */</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PySequence_GetItem</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Not a sequence, or other failure */</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PyLong_Check</span><span class="p">(</span><span class="n">item</span><span class="p">))</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyLong_AsLong</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">PyErr_Occurred</span><span class="p">())</span><span class="w"></span>
+<span class="w">                </span><span class="cm">/* Integer too big to fit in a C long, bail out */</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">Py_DECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"> </span><span class="cm">/* Discard reference ownership */</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="types">
+<span id="api-types"></span><span id="index-14"></span><h3>Tipos<a class="headerlink" href="#types" title="Link permanente para este título">¶</a></h3>
+<p>Existem alguns outros tipos de dados que desempenham um papel significativo na API Python/C; a maioria são tipos C simples, como <span class="xref c c-texpr">int</span>,  <span class="xref c c-texpr">long</span>, <span class="xref c c-texpr">double</span> e <span class="xref c c-texpr">char*</span>. Alguns tipos de estrutura são usados para descrever tabelas estáticas usadas para listar as funções exportadas por um módulo ou os atributos de dados de um novo tipo de objeto, e outro é usado para descrever o valor de um número complexo. Eles serão discutidos junto com as funções que os utilizam.</p>
+<dl class="c type">
+<dt id="c.Py_ssize_t">
+<em class="property">type </em><code class="sig-name descname">Py_ssize_t</code><a class="headerlink" href="#c.Py_ssize_t" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>A signed integral type such that <code class="docutils literal notranslate"><span class="pre">sizeof(Py_ssize_t)</span> <span class="pre">==</span> <span class="pre">sizeof(size_t)</span></code>.
+C99 doesn’t define such a thing directly (size_t is an unsigned integral type).
+See <span class="target" id="index-15"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0353"><strong>PEP 353</strong></a> for details. <code class="docutils literal notranslate"><span class="pre">PY_SSIZE_T_MAX</span></code> is the largest positive value
+of type <a class="reference internal" href="#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a>.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="exceptions">
+<span id="api-exceptions"></span><h2>Exceções<a class="headerlink" href="#exceptions" title="Link permanente para este título">¶</a></h2>
+<p>O programador Python só precisa lidar com exceções se o tratamento de erros específico for necessário; as exceções não tratadas são propagadas automaticamente para o chamador, depois para o chamador e assim por diante, até chegarem ao interpretador de nível superior, onde são relatadas ao usuário acompanhadas por um traceback (situação da pilha de execução).</p>
+<p id="index-16">Para programadores C, entretanto, a verificação de erros sempre deve ser explícita. Todas as funções na API Python/C podem levantar exceções, a menos que uma declaração explícita seja feita de outra forma na documentação de uma função. Em geral, quando uma função encontra um erro, ela define uma exceção, descarta todas as referências de objeto de sua propriedade e retorna um indicador de erro. Se não for documentado de outra forma, este indicador é <code class="docutils literal notranslate"><span class="pre">NULL</span></code> ou <code class="docutils literal notranslate"><span class="pre">-1</span></code>, dependendo do tipo de retorno da função. Algumas funções retornam um resultado booleano verdadeiro/falso, com falso indicando um erro. Muito poucas funções não retornam nenhum indicador de erro explícito ou têm um valor de retorno ambíguo e requerem teste explícito para erros com <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a>. Essas exceções são sempre documentadas explicitamente.</p>
+<p id="index-17">O estado de exceção é mantido no armazenamento por thread (isso é equivalente a usar o armazenamento global em uma aplicação sem thread). Uma thread pode estar em um de dois estados: ocorreu uma exceção ou não. A função <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> pode ser usada para verificar isso: ela retorna uma referência emprestada ao objeto do tipo de exceção quando uma exceção ocorreu, e <code class="docutils literal notranslate"><span class="pre">NULL</span></code> caso contrário. Existem várias funções para definir o estado de exceção: <a class="reference internal" href="exceptions.html#c.PyErr_SetString" title="PyErr_SetString"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_SetString()</span></code></a> é a função mais comum (embora não a mais geral) para definir o estado de exceção, e <a class="reference internal" href="exceptions.html#c.PyErr_Clear" title="PyErr_Clear"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Clear()</span></code></a> limpa o estado da exceção.</p>
+<p>O estado de exceção completo consiste em três objetos (todos os quais podem ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>): o tipo de exceção, o valor de exceção correspondente e o traceback. Eles têm os mesmos significados que o resultado do Python de <code class="docutils literal notranslate"><span class="pre">sys.exc_info()</span></code>; no entanto, eles não são os mesmos: os objetos Python representam a última exceção sendo tratada por uma instrução Python <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> … <a class="reference internal" href="../reference/compound_stmts.html#except"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">except</span></code></a>, enquanto o estado de exceção de nível C só existe enquanto uma exceção está sendo transmitido entre funções C até atingir o loop principal do interpretador de bytecode Python, que se encarrega de transferi-lo para <code class="docutils literal notranslate"><span class="pre">sys.exc_info()</span></code> e amigos.</p>
+<p id="index-18">Observe que a partir do Python 1.5, a maneira preferida e segura para thread para acessar o estado de exceção do código Python é chamar a função <a class="reference internal" href="../library/sys.html#sys.exc_info" title="sys.exc_info"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exc_info()</span></code></a>, que retorna o estado de exceção por thread para o código Python. Além disso, a semântica de ambas as maneiras de acessar o estado de exceção mudou, de modo que uma função que captura uma exceção salvará e restaurará o estado de exceção de seu segmento de modo a preservar o estado de exceção de seu chamador. Isso evita bugs comuns no código de tratamento de exceções causados por uma função aparentemente inocente sobrescrevendo a exceção sendo tratada; também reduz a extensão da vida útil frequentemente indesejada para objetos que são referenciados pelos quadros de pilha no traceback.</p>
+<p>Como princípio geral, uma função que chama outra função para realizar alguma tarefa deve verificar se a função chamada levantou uma exceção e, em caso afirmativo, passar o estado da exceção para seu chamador. Ele deve descartar todas as referências de objeto que possui e retornar um indicador de erro, mas <em>não</em> deve definir outra exceção — que sobrescreveria a exceção que acabou de ser gerada e perderia informações importantes sobre a causa exata do erro.</p>
+<p id="index-19">Um exemplo simples de detecção de exceções e transmiti-las é mostrado no exemplo <code class="xref c c-func docutils literal notranslate"><span class="pre">sum_sequence()</span></code> acima. Acontece que este exemplo não precisa limpar nenhuma referência de propriedade quando detecta um erro. A função de exemplo a seguir mostra alguma limpeza de erro. Primeiro, para lembrar por que você gosta de Python, mostramos o código Python equivalente:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">def</span><span class="w"> </span><span class="n">incr_item</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="nl">try</span><span class="p">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">KeyError</span><span class="o">:</span><span class="w"></span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<span class="w">    </span><span class="n">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+</pre></div>
+</div>
+<p id="index-20">Aqui está o código C correspondente, em toda sua glória:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"></span>
+<span class="nf">incr_item</span><span class="p">(</span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">key</span><span class="p">)</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Objects all initialized to NULL for Py_XDECREF */</span><span class="w"></span>
+<span class="w">    </span><span class="n">PyObject</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">const_one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">incremented_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Return value initialized to -1 (failure) */</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyObject_GetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="cm">/* Handle KeyError only: */</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">PyErr_ExceptionMatches</span><span class="p">(</span><span class="n">PyExc_KeyError</span><span class="p">))</span><span class="w"></span>
+<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="cm">/* Clear the error and use zero: */</span><span class="w"></span>
+<span class="w">        </span><span class="n">PyErr_Clear</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mf">0L</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="k">goto</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="n">const_one</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyLong_FromLong</span><span class="p">(</span><span class="mf">1L</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">const_one</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="n">incremented_item</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PyNumber_Add</span><span class="p">(</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">const_one</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">incremented_item</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">PyObject_SetItem</span><span class="p">(</span><span class="n">dict</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">incremented_item</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">goto</span><span class="w"> </span><span class="n">error</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">rv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* Success */</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Continue with cleanup code */</span><span class="w"></span>
+
+<span class="w"> </span><span class="nl">error</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="cm">/* Cleanup code, shared by success and failure path */</span><span class="w"></span>
+
+<span class="w">    </span><span class="cm">/* Use Py_XDECREF() to ignore NULL references */</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">item</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">const_one</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">Py_XDECREF</span><span class="p">(</span><span class="n">incremented_item</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">rv</span><span class="p">;</span><span class="w"> </span><span class="cm">/* -1 for error, 0 for success */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<span class="target" id="index-21"></span><p id="index-22">Este exemplo representa um uso endossado da instrução <code class="docutils literal notranslate"><span class="pre">goto</span></code> em C! Ele ilustra o uso de <a class="reference internal" href="exceptions.html#c.PyErr_ExceptionMatches" title="PyErr_ExceptionMatches"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_ExceptionMatches()</span></code></a> e <a class="reference internal" href="exceptions.html#c.PyErr_Clear" title="PyErr_Clear"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Clear()</span></code></a> para lidar com exceções específicas, e o uso de <a class="reference internal" href="refcounting.html#c.Py_XDECREF" title="Py_XDECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_XDECREF()</span></code></a> para descartar referências de propriedade que podem ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code> (observe o <code class="docutils literal notranslate"><span class="pre">'X'</span></code> no nome; <a class="reference internal" href="refcounting.html#c.Py_DECREF" title="Py_DECREF"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_DECREF()</span></code></a> travaria quando confrontado com uma referência <code class="docutils literal notranslate"><span class="pre">NULL</span></code>). É importante que as variáveis usadas para manter as referências de propriedade sejam inicializadas com <code class="docutils literal notranslate"><span class="pre">NULL</span></code> para que isso funcione; da mesma forma, o valor de retorno proposto é inicializado para <code class="docutils literal notranslate"><span class="pre">-1</span></code> (falha) e apenas definido para sucesso após a chamada final feita ser bem sucedida.</p>
+</section>
+<section id="embedding-python">
+<span id="api-embedding"></span><h2>Incorporando Python<a class="headerlink" href="#embedding-python" title="Link permanente para este título">¶</a></h2>
+<p>A única tarefa importante com a qual apenas os incorporadores (em oposição aos escritores de extensão) do interpretador Python precisam se preocupar é a inicialização e, possivelmente, a finalização do interpretador Python. A maior parte da funcionalidade do interpretador só pode ser usada após a inicialização do interpretador.</p>
+<p id="index-23">A função de inicialização básica é <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>. Isso inicializa a tabela de módulos carregados e cria os módulos fundamentais <a class="reference internal" href="../library/builtins.html#module-builtins" title="builtins: The module that provides the built-in namespace."><code class="xref py py-mod docutils literal notranslate"><span class="pre">builtins</span></code></a>, <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a> e <a class="reference internal" href="../library/sys.html#module-sys" title="sys: Access system-specific parameters and functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code></a>. Ela também inicializa o caminho de pesquisa de módulos (<code class="docutils literal notranslate"><span class="pre">sys.path</span></code>).</p>
+<p id="index-24"><a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a> não define a “lista de argumentos de script” (<code class="docutils literal notranslate"><span class="pre">sys.argv</span></code>). Se esta variável for necessária para o código Python que será executado posteriormente, ela deve ser definida explicitamente com uma chamada com <code class="docutils literal notranslate"><span class="pre">PySys_SetArgvEx(argc,</span> <span class="pre">argv,</span> <span class="pre">updatepath)</span></code> após a chamada de <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>.</p>
+<p>Na maioria dos sistemas (em particular, no Unix e no Windows, embora os detalhes sejam ligeiramente diferentes), <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a> calcula o caminho de pesquisa do módulo com base em sua melhor estimativa para a localização do executável do interpretador Python padrão, assumindo que a biblioteca Python é encontrada em um local fixo em relação ao executável do interpretador Python. Em particular, ele procura por um diretório chamado <code class="file docutils literal notranslate"><span class="pre">lib/python</span><em><span class="pre">X.Y</span></em></code> relativo ao diretório pai onde o executável chamado <code class="file docutils literal notranslate"><span class="pre">python</span></code> é encontrado no caminho de pesquisa de comandos do shell (a variável de ambiente <span class="target" id="index-55"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code>).</p>
+<p>Por exemplo, se o executável Python for encontrado em <code class="file docutils literal notranslate"><span class="pre">/usr/local/bin/python</span></code>, ele presumirá que as bibliotecas estão em <code class="file docutils literal notranslate"><span class="pre">/usr/local/lib/python</span><em><span class="pre">X.Y</span></em></code>. (Na verdade, este caminho particular também é o local reserva, usado quando nenhum arquivo executável chamado <code class="file docutils literal notranslate"><span class="pre">python</span></code> é encontrado ao longo de <span class="target" id="index-56"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code>.) O usuário pode substituir este comportamento definindo a variável de ambiente <span class="target" id="index-57"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a>, ou insira diretórios adicionais na frente do caminho padrão definindo <span class="target" id="index-58"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a>.</p>
+<p id="index-29">A aplicação de incorporação pode orientar a pesquisa chamando <code class="docutils literal notranslate"><span class="pre">Py_SetProgramName(file)</span></code> <em>antes</em> de chamar <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>. Observe que <span class="target" id="index-59"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a> ainda substitui isso e <span class="target" id="index-60"></span><a class="reference internal" href="../using/cmdline.html#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a> ainda é inserido na frente do caminho padrão. Uma aplicação que requer controle total deve fornecer sua própria implementação de <a class="reference internal" href="init.html#c.Py_GetPath" title="Py_GetPath"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_GetPath()</span></code></a>, <a class="reference internal" href="init.html#c.Py_GetPrefix" title="Py_GetPrefix"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_GetPrefix()</span></code></a>, <a class="reference internal" href="init.html#c.Py_GetExecPrefix" title="Py_GetExecPrefix"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_GetExecPrefix()</span></code></a> e <a class="reference internal" href="init.html#c.Py_GetProgramFullPath" title="Py_GetProgramFullPath"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_GetProgramFullPath()</span></code></a> (todas definidas em <code class="file docutils literal notranslate"><span class="pre">Modules/getpath.c</span></code>).</p>
+<p id="index-32">Às vezes, é desejável “desinicializar” o Python. Por exemplo, a aplicação pode querer iniciar novamente (fazer outra chamada para <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>) ou a aplicação simplesmente termina com o uso de Python e deseja liberar memória alocada pelo Python. Isso pode ser feito chamando <a class="reference internal" href="init.html#c.Py_FinalizeEx" title="Py_FinalizeEx"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_FinalizeEx()</span></code></a>. A função <a class="reference internal" href="init.html#c.Py_IsInitialized" title="Py_IsInitialized"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_IsInitialized()</span></code></a> retorna verdadeiro se o Python está atualmente no estado inicializado. Mais informações sobre essas funções são fornecidas em um capítulo posterior. Observe que <a class="reference internal" href="init.html#c.Py_FinalizeEx" title="Py_FinalizeEx"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_FinalizeEx()</span></code></a> <em>não</em> libera toda a memória alocada pelo interpretador Python, por exemplo, a memória alocada por módulos de extensão atualmente não pode ser liberada.</p>
+</section>
+<section id="debugging-builds">
+<span id="api-debugging"></span><h2>Compilações de depuração<a class="headerlink" href="#debugging-builds" title="Link permanente para este título">¶</a></h2>
+<p>Python pode ser compilado com várias macros para permitir verificações extras do interpretador e módulos de extensão. Essas verificações tendem a adicionar uma grande quantidade de sobrecarga ao tempo de execução, portanto, não são habilitadas por padrão.</p>
+<p>Uma lista completa dos vários tipos de compilações de depuração está no arquivo <code class="file docutils literal notranslate"><span class="pre">Misc/SpecialBuilds.txt</span></code> na distribuição do código-fonte do Python. Estão disponíveis compilações que oferecem suporte ao rastreamento de contagens de referências, depuração do alocador de memória ou criação de perfil de baixo nível do loop do interpretador principal. Apenas as compilações usadas com mais frequência serão descritas no restante desta seção.</p>
+<p>Compilar o interpretador com a macro <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_DEBUG</span></code> definida produz o que geralmente se entende por <a class="reference internal" href="../using/configure.html#debug-build"><span class="std std-ref">uma compilação de depuração do Python</span></a>. <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_DEBUG</span></code> é habilitada na compilação Unix adicionando <a class="reference internal" href="../using/configure.html#cmdoption-with-pydebug"><code class="xref std std-option docutils literal notranslate"><span class="pre">--with-pydebug</span></code></a> ao comando <code class="file docutils literal notranslate"><span class="pre">./configure</span></code>. Também está implícito na presença da macro não específica do Python <code class="xref c c-macro docutils literal notranslate"><span class="pre">_DEBUG</span></code>. Quando <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_DEBUG</span></code> está habilitado na compilação do Unix, a otimização do compilador é desabilitada.</p>
+<p>Além da depuração de contagem de referências descrita abaixo, verificações extras são realizadas, consulte <a class="reference internal" href="../using/configure.html#debug-build"><span class="std std-ref">Compilação de Depuração do Python</span></a>.</p>
+<p>Definir <code class="xref c c-macro docutils literal notranslate"><span class="pre">Py_TRACE_REFS</span></code> habilita o rastreamento de referência (veja a opção <a class="reference internal" href="../using/configure.html#cmdoption-with-trace-refs"><code class="xref std std-option docutils literal notranslate"><span class="pre">opção</span> <span class="pre">--with-trace-refs</span> <span class="pre">de</span> <span class="pre">configure</span></code></a>). Quando definida, uma lista circular duplamente vinculada de objetos ativos é mantida adicionando dois campos extras a cada <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyObject</span></code></a>. As alocações totais também são rastreadas. Ao sair, todas as referências existentes são impressas. (No modo interativo, isso acontece após cada instrução executada pelo interpretador.)</p>
+<p>Consulte <code class="file docutils literal notranslate"><span class="pre">Misc/SpecialBuilds.txt</span></code> na distribuição do código-fonte Python para informações mais detalhadas.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introdução</a><ul>
+<li><a class="reference internal" href="#coding-standards">Padrões de codificação</a></li>
+<li><a class="reference internal" href="#include-files">Incluir arquivos</a></li>
+<li><a class="reference internal" href="#useful-macros">Macros úteis</a></li>
+<li><a class="reference internal" href="#objects-types-and-reference-counts">Objetos, tipos e contagens de referências</a><ul>
+<li><a class="reference internal" href="#reference-counts">Contagens de referências</a><ul>
+<li><a class="reference internal" href="#reference-count-details">Detalhes da contagem de referências</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#types">Tipos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exceptions">Exceções</a></li>
+<li><a class="reference internal" href="#embedding-python">Incorporando Python</a></li>
+<li><a class="reference internal" href="#debugging-builds">Compilações de depuração</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Manual de referência da API Python/C</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="stable.html"
+                        title="próximo capítulo">C API Stability</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/intro.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="stable.html" title="C API Stability"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Manual de referência da API Python/C"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

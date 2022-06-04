@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Exceções &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Laço de Eventos" href="asyncio-eventloop.html" />
+    <link rel="prev" title="Filas" href="asyncio-queue.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/asyncio-exceptions.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="asyncio-queue.html"
+                        title="capítulo anterior">Filas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="asyncio-eventloop.html"
+                        title="próximo capítulo">Laço de Eventos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/asyncio-exceptions.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="asyncio-eventloop.html" title="Laço de Eventos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="asyncio-queue.html" title="Filas"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="ipc.html" >Comunicação em Rede e Interprocesso</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="asyncio.html" accesskey="U"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code> — E/S assíncrona</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Exceções</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="exceptions">
+<span id="asyncio-exceptions"></span><h1>Exceções<a class="headerlink" href="#exceptions" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/asyncio/exceptions.py">Lib/asyncio/exceptions.py</a></p>
+<hr class="docutils" />
+<dl class="py exception">
+<dt id="asyncio.TimeoutError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">TimeoutError</code><a class="headerlink" href="#asyncio.TimeoutError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A operação excedeu o prazo estabelecido.</p>
+<div class="admonition important">
+<p class="admonition-title">Importante</p>
+<p>Esta exceção é diferente da exceção embutida <a class="reference internal" href="exceptions.html#TimeoutError" title="TimeoutError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TimeoutError</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="asyncio.CancelledError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">CancelledError</code><a class="headerlink" href="#asyncio.CancelledError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A operação foi cancelada.</p>
+<p>Esta exceção pode ser capturada para executar operações personalizadas quando as tarefas assíncronas são canceladas. Em quase todas as situações, a exceção deve ser levantada novamente.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span><a class="reference internal" href="#asyncio.CancelledError" title="asyncio.CancelledError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">CancelledError</span></code></a> é agora uma subclasse de <a class="reference internal" href="exceptions.html#BaseException" title="BaseException"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseException</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="asyncio.InvalidStateError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">InvalidStateError</code><a class="headerlink" href="#asyncio.InvalidStateError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Estado interno inválido de <a class="reference internal" href="asyncio-task.html#asyncio.Task" title="asyncio.Task"><code class="xref py py-class docutils literal notranslate"><span class="pre">Task</span></code></a> ou <a class="reference internal" href="asyncio-future.html#asyncio.Future" title="asyncio.Future"><code class="xref py py-class docutils literal notranslate"><span class="pre">Future</span></code></a>.</p>
+<p>Pode ser levantada em situações como definir um valor de resultado para um objeto <em>Future</em> que já tem um valor de resultado definido.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="asyncio.SendfileNotAvailableError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">SendfileNotAvailableError</code><a class="headerlink" href="#asyncio.SendfileNotAvailableError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A <em>syscall</em> “sendfile” não está disponível para o soquete ou tipo de arquivo fornecido.</p>
+<p>Uma subclasse de <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="asyncio.IncompleteReadError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">IncompleteReadError</code><a class="headerlink" href="#asyncio.IncompleteReadError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A operação de leitura solicitada não foi totalmente concluída.</p>
+<p>Levantada pelas <a class="reference internal" href="asyncio-stream.html#asyncio-streams"><span class="std std-ref">APIs de fluxo de asyncio</span></a>.</p>
+<p>Esta exceção é uma subclasse de <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="asyncio.IncompleteReadError.expected">
+<code class="sig-name descname">expected</code><a class="headerlink" href="#asyncio.IncompleteReadError.expected" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O número total (<a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>) de bytes esperados.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="asyncio.IncompleteReadError.partial">
+<code class="sig-name descname">partial</code><a class="headerlink" href="#asyncio.IncompleteReadError.partial" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma string de <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> lida antes do final do fluxo ser alcançado.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="asyncio.LimitOverrunError">
+<em class="property">exception </em><code class="sig-prename descclassname">asyncio.</code><code class="sig-name descname">LimitOverrunError</code><a class="headerlink" href="#asyncio.LimitOverrunError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Atingiu o limite de tamanho do buffer ao procurar um separador.</p>
+<p>Levantada pelas <a class="reference internal" href="asyncio-stream.html#asyncio-streams"><span class="std std-ref">APIs de fluxo de asyncio</span></a>.</p>
+<dl class="py attribute">
+<dt id="asyncio.LimitOverrunError.consumed">
+<code class="sig-name descname">consumed</code><a class="headerlink" href="#asyncio.LimitOverrunError.consumed" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O número total de bytes a serem consumidos.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="asyncio-queue.html"
+                        title="capítulo anterior">Filas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="asyncio-eventloop.html"
+                        title="próximo capítulo">Laço de Eventos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/asyncio-exceptions.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="asyncio-eventloop.html" title="Laço de Eventos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="asyncio-queue.html" title="Filas"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="ipc.html" >Comunicação em Rede e Interprocesso</a> &#187;</li>
+          <li class="nav-item nav-item-3"><a href="asyncio.html" ><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code> — E/S assíncrona</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Exceções</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

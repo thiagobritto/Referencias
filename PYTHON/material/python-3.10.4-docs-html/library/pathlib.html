@@ -1,0 +1,1551 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>pathlib — Caminhos do sistema de arquivos orientados a objetos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="os.path — Manipulações comuns de nome nomes de caminhos" href="os.path.html" />
+    <link rel="prev" title="Acesso a arquivos e diretórios" href="filesys.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/pathlib.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code> — Caminhos do sistema de arquivos orientados a objetos</a><ul>
+<li><a class="reference internal" href="#basic-use">Uso básico</a></li>
+<li><a class="reference internal" href="#pure-paths">Caminhos puros</a><ul>
+<li><a class="reference internal" href="#general-properties">Propriedades gerais</a></li>
+<li><a class="reference internal" href="#operators">Operadores</a></li>
+<li><a class="reference internal" href="#accessing-individual-parts">Acessando partes individuais</a></li>
+<li><a class="reference internal" href="#methods-and-properties">Métodos e propriedades</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concrete-paths">Caminhos concretos</a><ul>
+<li><a class="reference internal" href="#methods">Métodos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#correspondence-to-tools-in-the-os-module">Correspondência a ferramentas no módulo <code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="filesys.html"
+                        title="capítulo anterior">Acesso a arquivos e diretórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="os.path.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code> — Manipulações comuns de nome nomes de caminhos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/pathlib.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="os.path.html" title="os.path — Manipulações comuns de nome nomes de caminhos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="filesys.html" title="Acesso a arquivos e diretórios"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" accesskey="U">Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code> — Caminhos do sistema de arquivos orientados a objetos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-pathlib">
+<span id="pathlib-object-oriented-filesystem-paths"></span><h1><a class="reference internal" href="#module-pathlib" title="pathlib: Object-oriented filesystem paths"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code></a> — Caminhos do sistema de arquivos orientados a objetos<a class="headerlink" href="#module-pathlib" title="Link permanente para este título">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/pathlib.py">Lib/pathlib.py</a></p>
+<hr class="docutils" id="index-0" />
+<p>Este módulo oferece classes que representam caminhos de sistema de arquivos com semântica apropriada para diferentes sistemas operacionais. As classes de caminho são divididas entre <a class="reference internal" href="#pure-paths"><span class="std std-ref">caminhos puros</span></a>, que fornecem operações puramente computacionais sem E/S, e <a class="reference internal" href="#concrete-paths"><span class="std std-ref">caminhos concretos</span></a>, que herdam de caminhos puros, mas também fornecem operações de E/S.</p>
+<img alt="../_images/pathlib-inheritance.png" class="align-center" src="../_images/pathlib-inheritance.png" />
+<p>Se você nunca usou este módulo antes ou apenas não tem certeza de qual classe é a certa para sua tarefa, provavelmente <a class="reference internal" href="#pathlib.Path" title="pathlib.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> é o que você precisa. Ele instancia um <a class="reference internal" href="#concrete-paths"><span class="std std-ref">caminho concreto</span></a> para a plataforma em que o código está sendo executado.</p>
+<p>Caminhos puros são úteis em alguns casos especiais. Por exemplo:</p>
+<ol class="arabic simple">
+<li><p>Se você deseja manipular os caminhos do Windows em uma máquina Unix (ou vice-versa). Você não pode instanciar uma <a class="reference internal" href="#pathlib.WindowsPath" title="pathlib.WindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowsPath</span></code></a> quando executado no Unix, mas você pode instanciar <a class="reference internal" href="#pathlib.PureWindowsPath" title="pathlib.PureWindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PureWindowsPath</span></code></a>.</p></li>
+<li><p>Você quer ter certeza de que seu código apenas manipula caminhos, sem realmente acessar o sistema operacional. Nesse caso, instanciar uma das classes puras pode ser útil, pois elas simplesmente não têm nenhuma operação de acesso ao sistema operacional.</p></li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0428"><strong>PEP 428</strong></a>: O módulo pathlib – caminhos de sistema de arquivos orientados a objetos.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p>Para manipulação de caminho de baixo nível em strings, você também pode usar o módulo <a class="reference internal" href="os.path.html#module-os.path" title="os.path: Operations on pathnames."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code></a>.</p>
+</div>
+<section id="basic-use">
+<h2>Uso básico<a class="headerlink" href="#basic-use" title="Link permanente para este título">¶</a></h2>
+<p>Importação da classe principal:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+<p>Listando os subdiretórios:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()]</span>
+<span class="go">[PosixPath(&#39;.hg&#39;), PosixPath(&#39;docs&#39;), PosixPath(&#39;dist&#39;),</span>
+<span class="go"> PosixPath(&#39;__pycache__&#39;), PosixPath(&#39;build&#39;)]</span>
+</pre></div>
+</div>
+<p>Listando os arquivos fontes do Python e sua árvore de diretórios:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">))</span>
+<span class="go">[PosixPath(&#39;test_pathlib.py&#39;), PosixPath(&#39;setup.py&#39;),</span>
+<span class="go"> PosixPath(&#39;pathlib.py&#39;), PosixPath(&#39;docs/conf.py&#39;),</span>
+<span class="go"> PosixPath(&#39;build/lib/pathlib.py&#39;)]</span>
+</pre></div>
+</div>
+<p>Navegando dentro da árvore de diretórios:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="s1">&#39;init.d&#39;</span> <span class="o">/</span> <span class="s1">&#39;reboot&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span>
+<span class="go">PosixPath(&#39;/etc/init.d/reboot&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/etc/rc.d/init.d/halt&#39;)</span>
+</pre></div>
+</div>
+<p>Consultando as propriedades do path:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="o">.</span><span class="n">is_dir</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Abrindo um arquivo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">q</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">&#39;#!/bin/bash\n&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="pure-paths">
+<span id="id1"></span><h2>Caminhos puros<a class="headerlink" href="#pure-paths" title="Link permanente para este título">¶</a></h2>
+<p>Objetos de caminho puro fornecem operações de manipulação de caminho que, na verdade, não acessam um sistema de arquivos. Existem três maneiras de acessar essas classes, que também chamamos de <em>sabores</em>:</p>
+<dl class="py class">
+<dt id="pathlib.PurePath">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">PurePath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma classe genérica que representa o tipo de caminho do sistema (instanciando-a cria uma <a class="reference internal" href="#pathlib.PurePosixPath" title="pathlib.PurePosixPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePosixPath</span></code></a> ou uma <a class="reference internal" href="#pathlib.PureWindowsPath" title="pathlib.PureWindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PureWindowsPath</span></code></a>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>      <span class="c1"># Running on a Unix machine</span>
+<span class="go">PurePosixPath(&#39;setup.py&#39;)</span>
+</pre></div>
+</div>
+<p>Cada elemento de <em>pathsegments</em> pode ser uma string representando um segmento de caminho, um objeto que implementa a interface <a class="reference internal" href="os.html#os.PathLike" title="os.PathLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">os.PathLike</span></code></a> que retorna uma string ou outro objeto caminho:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;some/path&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;foo/some/path/bar&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">),</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">))</span>
+<span class="go">PurePosixPath(&#39;foo/bar&#39;)</span>
+</pre></div>
+</div>
+<p>Quando <em>pathsegments</em> está vazio, o diretório atual é presumido:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">()</span>
+<span class="go">PurePosixPath(&#39;.&#39;)</span>
+</pre></div>
+</div>
+<p>Quando vários caminhos absolutos são fornecidos, o último é tomado como uma âncora (imitando o comportamento de <a class="reference internal" href="os.path.html#os.path.join" title="os.path.join"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.join()</span></code></a>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr&#39;</span><span class="p">,</span> <span class="s1">&#39;lib64&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;/usr/lib64&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Windows&#39;</span><span class="p">,</span> <span class="s1">&#39;d:bar&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;d:bar&#39;)</span>
+</pre></div>
+</div>
+<p>No entanto, em um caminho do Windows, a alteração da raiz local não descarta a configuração da unidade anterior:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Windows&#39;</span><span class="p">,</span> <span class="s1">&#39;/Program Files&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Program Files&#39;)</span>
+</pre></div>
+</div>
+<p>Barras espúrias e pontos únicos são recolhidos, mas os pontos duplos (<code class="docutils literal notranslate"><span class="pre">'..'</span></code>) não, pois isso mudaria o significado de um caminho em face de links simbólicos:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;foo//bar&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;foo/bar&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;foo/./bar&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;foo/bar&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;foo/../bar&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;foo/../bar&#39;)</span>
+</pre></div>
+</div>
+<p>(uma abordagem ingênua seria criar <code class="docutils literal notranslate"><span class="pre">PurePosixPath('foo/../bar')</span></code> equivalente a <code class="docutils literal notranslate"><span class="pre">PurePosixPath('bar')</span></code>, o que é errado se <code class="docutils literal notranslate"><span class="pre">foo</span></code> for um link simbólico para outro diretório)</p>
+<p>Objetos caminho puro implementam a interface <a class="reference internal" href="os.html#os.PathLike" title="os.PathLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">os.PathLike</span></code></a>, permitindo que sejam usados em qualquer lugar em que a interface seja aceita.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.6: </span>Adicionado suporte para a interface <a class="reference internal" href="os.html#os.PathLike" title="os.PathLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">os.PathLike</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pathlib.PurePosixPath">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">PurePosixPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePosixPath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma subclasse de <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>, este tipo de caminho representa caminhos de sistema de arquivos não Windows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;/etc&#39;)</span>
+</pre></div>
+</div>
+<p><em>pathsegments</em> é especificado de forma similar para <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pathlib.PureWindowsPath">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">PureWindowsPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PureWindowsPath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma subclasse de <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>, este tipo de caminho representa os caminhos do sistema de arquivos do Windows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Program Files&#39;)</span>
+</pre></div>
+</div>
+<p><em>pathsegments</em> é especificado de forma similar para <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>.</p>
+</dd></dl>
+
+<p>Independentemente do sistema em que você está usando, você pode instanciar todas essas classes, uma vez que elas não fornecem nenhuma operação que faça chamadas de sistema.</p>
+<section id="general-properties">
+<h3>Propriedades gerais<a class="headerlink" href="#general-properties" title="Link permanente para este título">¶</a></h3>
+<p>Os caminhos são imutáveis e hasheáveis. Os caminhos do mesmo sabor são comparáveis e ordenáveis. Essas propriedades respeitam a semântica de caixa alta e baixa do sabor:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;FOO&#39;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="p">}</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;C:&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;d:&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>Caminhos de um sabor diferente são comparados de forma desigual e não podem ser ordenados:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+<span class="gr">TypeError</span>: <span class="n">&#39;&lt;&#39; not supported between instances of &#39;PureWindowsPath&#39; and &#39;PurePosixPath&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="operators">
+<h3>Operadores<a class="headerlink" href="#operators" title="Link permanente para este título">¶</a></h3>
+<p>O operador barra ajuda a criar caminhos filhos, de forma semelhante a <a class="reference internal" href="os.path.html#os.path.join" title="os.path.join"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.join()</span></code></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">PurePosixPath(&#39;/etc&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">/</span> <span class="s1">&#39;init.d&#39;</span> <span class="o">/</span> <span class="s1">&#39;apache2&#39;</span>
+<span class="go">PurePosixPath(&#39;/etc/init.d/apache2&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;bin&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;/usr&#39;</span> <span class="o">/</span> <span class="n">q</span>
+<span class="go">PurePosixPath(&#39;/usr/bin&#39;)</span>
+</pre></div>
+</div>
+<p>Um objeto de caminho pode ser usado em qualquer lugar em que um objeto implementando <a class="reference internal" href="os.html#os.PathLike" title="os.PathLike"><code class="xref py py-class docutils literal notranslate"><span class="pre">os.PathLike</span></code></a> seja aceito:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&#39;/etc&#39;</span>
+</pre></div>
+</div>
+<p>A representação de string de um caminho é o próprio caminho do sistema de arquivos bruto (na forma nativa, por exemplo, com contrabarras no Windows), que você pode passar para qualquer função usando um caminho de arquivo como uma string:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&#39;/etc&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&#39;c:\\Program Files&#39;</span>
+</pre></div>
+</div>
+<p>Da mesma forma, chamar <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> em um caminho fornece o caminho do sistema de arquivos bruto como um objeto bytes, codificado por <a class="reference internal" href="os.html#os.fsencode" title="os.fsencode"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.fsencode()</span></code></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">bytes</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">b&#39;/etc&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A chamada de <a class="reference internal" href="stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> só é recomendada no Unix. No Windows, a forma Unicode é a representação canônica dos caminhos do sistema de arquivos.</p>
+</div>
+</section>
+<section id="accessing-individual-parts">
+<h3>Acessando partes individuais<a class="headerlink" href="#accessing-individual-parts" title="Link permanente para este título">¶</a></h3>
+<p>Para acessar as “partes” individuais (componentes) de um caminho, use a seguinte propriedade:</p>
+<dl class="py data">
+<dt id="pathlib.PurePath.parts">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">parts</code><a class="headerlink" href="#pathlib.PurePath.parts" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma tupla que dá acesso aos vários componentes do caminho:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/usr/bin/python3&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parts</span>
+<span class="go">(&#39;/&#39;, &#39;usr&#39;, &#39;bin&#39;, &#39;python3&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/PSF&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parts</span>
+<span class="go">(&#39;c:\\&#39;, &#39;Program Files&#39;, &#39;PSF&#39;)</span>
+</pre></div>
+</div>
+<p>(observe como a unidade e a raiz local são reagrupadas em uma única parte)</p>
+</dd></dl>
+
+</section>
+<section id="methods-and-properties">
+<h3>Métodos e propriedades<a class="headerlink" href="#methods-and-properties" title="Link permanente para este título">¶</a></h3>
+<p>Caminhos puros fornecem os seguintes métodos e propriedades:</p>
+<dl class="py data">
+<dt id="pathlib.PurePath.drive">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">drive</code><a class="headerlink" href="#pathlib.PurePath.drive" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma string que representa a letra ou nome da unidade, se houver:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drive</span>
+<span class="go">&#39;c:&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;/Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drive</span>
+<span class="go">&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drive</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+<p>Os compartilhamentos UNC também são considerados unidades:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//host/share/foo.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">drive</span>
+<span class="go">&#39;\\\\host\\share&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.root">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">root</code><a class="headerlink" href="#pathlib.PurePath.root" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma string que representa a raiz (local ou global), se houver:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span>
+<span class="go">&#39;\\&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span>
+<span class="go">&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span>
+<span class="go">&#39;/&#39;</span>
+</pre></div>
+</div>
+<p>Os compartilhamentos UNC sempre têm uma raiz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//host/share&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">root</span>
+<span class="go">&#39;\\&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.anchor">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">anchor</code><a class="headerlink" href="#pathlib.PurePath.anchor" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A concatenação da unidade e da raiz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">&#39;c:\\&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:Program Files/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">&#39;c:&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">&#39;/&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//host/share&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">anchor</span>
+<span class="go">&#39;\\\\host\\share\\&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.parents">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">parents</code><a class="headerlink" href="#pathlib.PurePath.parents" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma sequência imutável que fornece acesso aos ancestrais lógicos do caminho:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/foo/bar/setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">PureWindowsPath(&#39;c:/foo/bar&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">PureWindowsPath(&#39;c:/foo&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">PureWindowsPath(&#39;c:/&#39;)</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>A sequência pai agora tem suporte <a class="reference internal" href="../glossary.html#term-slice"><span class="xref std std-term">fatias</span></a> e valores de índice negativos.</p>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.parent">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">parent</code><a class="headerlink" href="#pathlib.PurePath.parent" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O pai lógico do caminho:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/a/b/c/d&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parent</span>
+<span class="go">PurePosixPath(&#39;/a/b/c&#39;)</span>
+</pre></div>
+</div>
+<p>Você não pode passar por uma âncora ou caminho vazio:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parent</span>
+<span class="go">PurePosixPath(&#39;/&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parent</span>
+<span class="go">PurePosixPath(&#39;.&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta é uma operação puramente lexical, daí o seguinte comportamento:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;foo/..&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">parent</span>
+<span class="go">PurePosixPath(&#39;foo&#39;)</span>
+</pre></div>
+</div>
+<p>Se você quiser percorrer um caminho de sistema de arquivos arbitrário para cima, é recomendado primeiro chamar <a class="reference internal" href="#pathlib.Path.resolve" title="pathlib.Path.resolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.resolve()</span></code></a> para resolver links simbólicos e eliminar componentes <cite>“..”</cite>.</p>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.name">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">name</code><a class="headerlink" href="#pathlib.PurePath.name" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma string que representa o componente do caminho final, excluindo a unidade e a raiz, se houver:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library/setup.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;setup.py&#39;</span>
+</pre></div>
+</div>
+<p>Nomes de unidades UNC não são considerados::</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//some/share/setup.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;setup.py&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//some/share&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.suffix">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">suffix</code><a class="headerlink" href="#pathlib.PurePath.suffix" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A extensão do arquivo do componente final, se houver:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library/setup.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span>
+<span class="go">&#39;.py&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library.tar.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span>
+<span class="go">&#39;.gz&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffix</span>
+<span class="go">&#39;&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.suffixes">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">suffixes</code><a class="headerlink" href="#pathlib.PurePath.suffixes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma lista das extensões de arquivo do caminho:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library.tar.gar&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffixes</span>
+<span class="go">[&#39;.tar&#39;, &#39;.gar&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library.tar.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffixes</span>
+<span class="go">[&#39;.tar&#39;, &#39;.gz&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">suffixes</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt id="pathlib.PurePath.stem">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">stem</code><a class="headerlink" href="#pathlib.PurePath.stem" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O componente final do caminho, sem seu sufixo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library.tar.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+<span class="go">&#39;library.tar&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library.tar&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+<span class="go">&#39;library&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;my/library&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+<span class="go">&#39;library&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.as_posix">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">as_posix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.as_posix" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma representação de string do caminho com barras (<code class="docutils literal notranslate"><span class="pre">/</span></code>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:</span><span class="se">\\</span><span class="s1">windows&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<span class="go">&#39;c:\\windows&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">as_posix</span><span class="p">()</span>
+<span class="go">&#39;c:/windows&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.as_uri">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">as_uri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.as_uri" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Representa o caminho como um URI de <code class="docutils literal notranslate"><span class="pre">file</span></code>. <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> é levantada se o caminho não for absoluto.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">as_uri</span><span class="p">()</span>
+<span class="go">&#39;file:///etc/passwd&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Windows&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">as_uri</span><span class="p">()</span>
+<span class="go">&#39;file:///c:/Windows&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.is_absolute">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">is_absolute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.is_absolute" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna se o caminho é absoluto ou não. Um caminho é considerado absoluto se tiver uma raiz e (se o tipo permitir) uma unidade:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/a/b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;a/b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">False</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/a/b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;/a/b&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;//some/share&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_absolute</span><span class="p">()</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.is_relative_to">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">is_relative_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.is_relative_to" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna se este caminho é ou não relativo a outro caminho, representado por <em>other</em>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">is_relative_to</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">is_relative_to</span><span class="p">(</span><span class="s1">&#39;/usr&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.9.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.is_reserved">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">is_reserved</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.is_reserved" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Com <a class="reference internal" href="#pathlib.PureWindowsPath" title="pathlib.PureWindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PureWindowsPath</span></code></a>, retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho é considerado reservado no Windows, <code class="docutils literal notranslate"><span class="pre">False</span></code> caso contrário. Com <a class="reference internal" href="#pathlib.PurePosixPath" title="pathlib.PurePosixPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePosixPath</span></code></a>, <code class="docutils literal notranslate"><span class="pre">False</span></code> é sempre retornado.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;nul&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_reserved</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;nul&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">is_reserved</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>As chamadas do sistema de arquivos em caminhos reservados podem falhar misteriosamente ou ter efeitos indesejados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.joinpath">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">joinpath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.joinpath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Chamar este método é equivalente a combinar o caminho com cada um dos outros argumentos, representados por <em>other</em>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;passwd&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;/etc/passwd&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;passwd&#39;</span><span class="p">))</span>
+<span class="go">PurePosixPath(&#39;/etc/passwd&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;init.d&#39;</span><span class="p">,</span> <span class="s1">&#39;apache2&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;/etc/init.d/apache2&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;/Program Files&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Program Files&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.match">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.match" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Compara esse caminho com o padrão de estilo glob fornecido. Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se a correspondência for bem-sucedida, <code class="docutils literal notranslate"><span class="pre">False</span></code> caso contrário.</p>
+<p>Se <em>pattern</em> for relativo, o caminho pode ser relativo ou absoluto, e a correspondência é feita da direita:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;a/b.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/a/b/c.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;b/*.py&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/a/b/c.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;a/*.py&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Se <em>pattern</em> for absoluto, o caminho deve ser absoluto e todo o caminho deve corresponder a:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;/a.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;/*.py&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PurePath</span><span class="p">(</span><span class="s1">&#39;a/b.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;/*.py&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>Tal como acontece com outros métodos, a distinção entre maiúsculas e minúsculas segue os padrões da plataforma:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;b.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;*.PY&#39;</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;b.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;*.PY&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.relative_to">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">relative_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.relative_to" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula uma versão deste caminho em relação ao caminho representado por <em>other</em>. Se for impossível, ValueError é levantada:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PurePosixPath</span><span class="p">(</span><span class="s1">&#39;/etc/passwd&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;etc/passwd&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="go">PurePosixPath(&#39;passwd&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="s1">&#39;/usr&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;pathlib.py&quot;</span>, line <span class="m">694</span>, in <span class="n">relative_to</span>
+    <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">formatted</span><span class="p">)))</span>
+<span class="gr">ValueError</span>: <span class="n">&#39;/etc/passwd&#39; is not in the subpath of &#39;/usr&#39; OR one path is relative and the other absolute.</span>
+</pre></div>
+</div>
+<p>NOTA: Esta função é parte de <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a> e funciona com strings. Ela não verifica nem acessa a estrutura de arquivos subjacente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.with_name">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">with_name</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.with_name" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo caminho com o <a class="reference internal" href="#pathlib.PurePath.name" title="pathlib.PurePath.name"><code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code></a> alterado. Se o caminho original não tiver um nome, ValueError é levantada:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Downloads/pathlib.tar.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Downloads/setup.py&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/home/antoine/cpython/default/Lib/pathlib.py&quot;</span>, line <span class="m">751</span>, in <span class="n">with_name</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> has an empty name&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,))</span>
+<span class="gr">ValueError</span>: <span class="n">PureWindowsPath(&#39;c:/&#39;) has an empty name</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.with_stem">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">with_stem</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stem</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.with_stem" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo caminho com o <a class="reference internal" href="#pathlib.PurePath.stem" title="pathlib.PurePath.stem"><code class="xref py py-attr docutils literal notranslate"><span class="pre">stem</span></code></a> alterado. Se o caminho original não tiver um nome, ValueError é levantada:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Downloads/draft.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="s1">&#39;final&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Downloads/final.txt&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Downloads/pathlib.tar.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="s1">&#39;lib&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Downloads/lib.gz&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_stem</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;/home/antoine/cpython/default/Lib/pathlib.py&quot;</span>, line <span class="m">861</span>, in <span class="n">with_stem</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_name</span><span class="p">(</span><span class="n">stem</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">suffix</span><span class="p">)</span>
+  File <span class="nb">&quot;/home/antoine/cpython/default/Lib/pathlib.py&quot;</span>, line <span class="m">851</span>, in <span class="n">with_name</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%r</span><span class="s2"> has an empty name&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="p">,))</span>
+<span class="gr">ValueError</span>: <span class="n">PureWindowsPath(&#39;c:/&#39;) has an empty name</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.9.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.PurePath.with_suffix">
+<code class="sig-prename descclassname">PurePath.</code><code class="sig-name descname">with_suffix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">suffix</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PurePath.with_suffix" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo caminho com o <a class="reference internal" href="#pathlib.PurePath.suffix" title="pathlib.PurePath.suffix"><code class="xref py py-attr docutils literal notranslate"><span class="pre">suffix</span></code></a> alterado. Se o caminho original não tiver um sufixo, o novo <em>suffixo</em> será anexado. Se o <em>suffix</em> for uma string vazia, o sufixo original será removido:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Downloads/pathlib.tar.gz&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.bz2&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;c:/Downloads/pathlib.tar.bz2&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;README&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;.txt&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;README.txt&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PureWindowsPath</span><span class="p">(</span><span class="s1">&#39;README.txt&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">with_suffix</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="go">PureWindowsPath(&#39;README&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="concrete-paths">
+<span id="id2"></span><h2>Caminhos concretos<a class="headerlink" href="#concrete-paths" title="Link permanente para este título">¶</a></h2>
+<p>Caminhos concretos são subclasses das classes de caminho puro. Além das operações fornecidas por este último, eles também fornecem métodos para fazer chamadas de sistema em objetos de caminho. Existem três maneiras de instanciar caminhos concretos:</p>
+<dl class="py class">
+<dt id="pathlib.Path">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">Path</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma subclasse de <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>, esta classe representa caminhos concretos do tipo de caminho do sistema (instanciando-o cria uma <a class="reference internal" href="#pathlib.PosixPath" title="pathlib.PosixPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PosixPath</span></code></a> ou uma <a class="reference internal" href="#pathlib.WindowsPath" title="pathlib.WindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">WindowsPath</span></code></a>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;setup.py&#39;)</span>
+</pre></div>
+</div>
+<p><em>pathsegments</em> é especificado de forma similar para <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pathlib.PosixPath">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">PosixPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.PosixPath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma subclasse de <a class="reference internal" href="#pathlib.Path" title="pathlib.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> e <a class="reference internal" href="#pathlib.PurePosixPath" title="pathlib.PurePosixPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePosixPath</span></code></a>, esta classe representa caminhos concretos de sistemas de arquivos não Windows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;/etc&#39;)</span>
+</pre></div>
+</div>
+<p><em>pathsegments</em> é especificado de forma similar para <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="pathlib.WindowsPath">
+<em class="property">class </em><code class="sig-prename descclassname">pathlib.</code><code class="sig-name descname">WindowsPath</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">pathsegments</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.WindowsPath" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma subclasse de <a class="reference internal" href="#pathlib.Path" title="pathlib.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> e <a class="reference internal" href="#pathlib.PureWindowsPath" title="pathlib.PureWindowsPath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PureWindowsPath</span></code></a>, esta classe representa caminhos concretos de sistemas de arquivos do Windows:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">WindowsPath</span><span class="p">(</span><span class="s1">&#39;c:/Program Files/&#39;</span><span class="p">)</span>
+<span class="go">WindowsPath(&#39;c:/Program Files&#39;)</span>
+</pre></div>
+</div>
+<p><em>pathsegments</em> é especificado de forma similar para <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>.</p>
+</dd></dl>
+
+<p>Você só pode instanciar o tipo de classe que corresponde ao seu sistema (permitir chamadas de sistema em tipos de caminho não compatíveis pode levar a bugs ou falhas em sua aplicação):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;posix&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;setup.py&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;setup.py&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">WindowsPath</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gt">Traceback (most recent call last):</span>
+  File <span class="nb">&quot;&lt;stdin&gt;&quot;</span>, line <span class="m">1</span>, in <span class="n">&lt;module&gt;</span>
+  File <span class="nb">&quot;pathlib.py&quot;</span>, line <span class="m">798</span>, in <span class="n">__new__</span>
+    <span class="o">%</span> <span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,))</span>
+<span class="gr">NotImplementedError</span>: <span class="n">cannot instantiate &#39;WindowsPath&#39; on your system</span>
+</pre></div>
+</div>
+<section id="methods">
+<h3>Métodos<a class="headerlink" href="#methods" title="Link permanente para este título">¶</a></h3>
+<p>Caminhos concretos fornecem os seguintes métodos, além dos métodos de caminhos puros. Muitos desses métodos podem levantar uma <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> se uma chamada de sistema falhar (por exemplo, porque o caminho não existe).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span><a class="reference internal" href="#pathlib.Path.exists" title="pathlib.Path.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_dir" title="pathlib.Path.is_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_dir()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_file" title="pathlib.Path.is_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_file()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_mount" title="pathlib.Path.is_mount"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_mount()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_symlink" title="pathlib.Path.is_symlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_symlink()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_block_device" title="pathlib.Path.is_block_device"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_block_device()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_char_device" title="pathlib.Path.is_char_device"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_char_device()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_fifo" title="pathlib.Path.is_fifo"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_fifo()</span></code></a>, <a class="reference internal" href="#pathlib.Path.is_socket" title="pathlib.Path.is_socket"><code class="xref py py-meth docutils literal notranslate"><span class="pre">is_socket()</span></code></a> agora retornam <code class="docutils literal notranslate"><span class="pre">False</span></code> em vez de levantar uma exceção para caminhos que contêm caracteres não representáveis no nível do sistema operacional.</p>
+</div>
+<dl class="py method">
+<dt id="pathlib.Path.cwd">
+<em class="property">classmethod </em><code class="sig-prename descclassname">Path.</code><code class="sig-name descname">cwd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.cwd" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo objeto de caminho que representa o diretório atual (conforme retornado por <a class="reference internal" href="os.html#os.getcwd" title="os.getcwd"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.getcwd()</span></code></a>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/antoine/pathlib&#39;)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.home">
+<em class="property">classmethod </em><code class="sig-prename descclassname">Path.</code><code class="sig-name descname">home</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.home" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo objeto de caminho representando o diretório pessoal do usuário (conforme retornado por <a class="reference internal" href="os.path.html#os.path.expanduser" title="os.path.expanduser"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.expanduser()</span></code></a> com a construção <code class="docutils literal notranslate"><span class="pre">~</span></code>). Se o diretório pessoal não puder ser resolvido, <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> é levantada.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/antoine&#39;)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.stat">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">stat</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.stat" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um objeto <a class="reference internal" href="os.html#os.stat_result" title="os.stat_result"><code class="xref py py-class docutils literal notranslate"><span class="pre">os.stat_result</span></code></a> contendo informações sobre este caminho, como <a class="reference internal" href="os.html#os.stat" title="os.stat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.stat()</span></code></a>. O resultado é consultado em cada chamada para este método.</p>
+<p>Este método normalmente segue links simbólicos; para obter estado de um link simbólico, adicione o argumento <code class="docutils literal notranslate"><span class="pre">follow_symlinks=False</span></code>, ou use <a class="reference internal" href="#pathlib.Path.lstat" title="pathlib.Path.lstat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lstat()</span></code></a>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span>
+<span class="go">956</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mtime</span>
+<span class="go">1327883547.852554</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>O parâmetro <em>follow_symlinks</em> foi adicionado.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.chmod">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">chmod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">follow_symlinks</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.chmod" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Altera o modo de arquivo e as permissões, como <a class="reference internal" href="os.html#os.chmod" title="os.chmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.chmod()</span></code></a>.</p>
+<p>This method normally follows symlinks. Some Unix flavours support changing
+permissions on the symlink itself; on these platforms you may add the
+argument <code class="docutils literal notranslate"><span class="pre">follow_symlinks=False</span></code>, or use <a class="reference internal" href="#pathlib.Path.lchmod" title="pathlib.Path.lchmod"><code class="xref py py-meth docutils literal notranslate"><span class="pre">lchmod()</span></code></a>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mode</span>
+<span class="go">33277</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="mo">0o444</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_mode</span>
+<span class="go">33060</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>O parâmetro <em>follow_symlinks</em> foi adicionado.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.exists">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">exists</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.exists" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se o caminho aponta para um arquivo ou diretório existente:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;/etc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;nonexistentfile&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">()</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se o caminho aponta para um link simbólico, <a class="reference internal" href="#pathlib.Path.exists" title="pathlib.Path.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">exists()</span></code></a> retorna se o link simbólico <em>aponta para</em> um arquivo ou diretório existente.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.expanduser">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">expanduser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.expanduser" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo caminho com as construções <code class="docutils literal notranslate"><span class="pre">~</span></code> e <code class="docutils literal notranslate"><span class="pre">~user</span></code> expandidas,  como retornado por <a class="reference internal" href="os.path.html#os.path.expanduser" title="os.path.expanduser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">os.path.expanduser()</span></code></a>. Se um diretóriopessoal não puder ser resolvido, <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> é levantada.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PosixPath</span><span class="p">(</span><span class="s1">&#39;~/films/Monty Python&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/eric/films/Monty Python&#39;)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.glob">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">glob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.glob" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz o glob do <em>pattern</em> relativo fornecido no diretório representado por este caminho, produzindo todos os arquivos correspondentes (de qualquer tipo):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.py&#39;</span><span class="p">))</span>
+<span class="go">[PosixPath(&#39;pathlib.py&#39;), PosixPath(&#39;setup.py&#39;), PosixPath(&#39;test_pathlib.py&#39;)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*/*.py&#39;</span><span class="p">))</span>
+<span class="go">[PosixPath(&#39;docs/conf.py&#39;)]</span>
+</pre></div>
+</div>
+<p>Os padrões são os mesmos de <a class="reference internal" href="fnmatch.html#module-fnmatch" title="fnmatch: Unix shell style filename pattern matching."><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a>, com a adição de “<code class="docutils literal notranslate"><span class="pre">**</span></code>” que significa “este diretório e todos os subdiretórios, recursivamente”. Em outras palavras, ele permite fazer glob recursivo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.py&#39;</span><span class="p">))</span>
+<span class="go">[PosixPath(&#39;build/lib/pathlib.py&#39;),</span>
+<span class="go"> PosixPath(&#39;docs/conf.py&#39;),</span>
+<span class="go"> PosixPath(&#39;pathlib.py&#39;),</span>
+<span class="go"> PosixPath(&#39;setup.py&#39;),</span>
+<span class="go"> PosixPath(&#39;test_pathlib.py&#39;)]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Usar o padrão “<code class="docutils literal notranslate"><span class="pre">**</span></code>” em grandes árvores de diretório pode consumir uma quantidade excessiva de tempo.</p>
+</div>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">pathlib.Path.glob</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">self</span></code>, <code class="docutils literal notranslate"><span class="pre">pattern</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.group">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">group</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.group" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o nome do grupo que possui o arquivo. <a class="reference internal" href="exceptions.html#KeyError" title="KeyError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code></a> é levantada se o gid do arquivo não for encontrado no banco de dados do sistema.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_dir">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_dir" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um diretório (ou um link simbólico apontando para um diretório), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_file">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_file" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um arquivo regular (ou um link simbólico apontando para um arquivo regular), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_mount">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_mount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_mount" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho for um <em class="dfn">ponto de montagem</em>: um ponto em um sistema de arquivos onde um sistema de arquivos diferente foi montado. No POSIX, a função verifica se o pai do <em>path</em>, <code class="file docutils literal notranslate"><span class="pre">path/..</span></code>, está em um dispositivo diferente de <em>path</em>, ou se <code class="file docutils literal notranslate"><span class="pre">path/..</span></code> e <em>path</em> apontam para o mesmo nó-i no mesmo dispositivo – isso deve detectar pontos de montagem para todas as variantes Unix e POSIX. Não implementado no Windows.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_symlink">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_symlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_symlink" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um link simbólico, <code class="docutils literal notranslate"><span class="pre">False</span></code> caso contrário.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_socket">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_socket" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um soquete Unix (ou um link simbólico apontando para um soquete Unix), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_fifo">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_fifo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_fifo" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um FIFO (ou um link simbólico apontando para um FIFO), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_block_device">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_block_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_block_device" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um dispositivo de bloco (ou um link simbólico apontando para um dispositivo de bloco), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.is_char_device">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">is_char_device</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.is_char_device" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna <code class="docutils literal notranslate"><span class="pre">True</span></code> se o caminho apontar para um dispositivo de caractere (ou um link simbólico apontando para um dispositivo de caractere), <code class="docutils literal notranslate"><span class="pre">False</span></code> se apontar para outro tipo de arquivo.</p>
+<p><code class="docutils literal notranslate"><span class="pre">False</span></code> também é retornado se o caminho não existir ou se for um link simbólico quebrado; outros erros (como erros de permissão) são propagados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.iterdir">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">iterdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.iterdir" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Quando o caminho aponta para um diretório, produz objetos caminho do conteúdo do diretório:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;docs&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span> <span class="n">child</span>
+<span class="gp">...</span>
+<span class="go">PosixPath(&#39;docs/conf.py&#39;)</span>
+<span class="go">PosixPath(&#39;docs/_templates&#39;)</span>
+<span class="go">PosixPath(&#39;docs/make.bat&#39;)</span>
+<span class="go">PosixPath(&#39;docs/index.rst&#39;)</span>
+<span class="go">PosixPath(&#39;docs/_build&#39;)</span>
+<span class="go">PosixPath(&#39;docs/_static&#39;)</span>
+<span class="go">PosixPath(&#39;docs/Makefile&#39;)</span>
+</pre></div>
+</div>
+<p>The children are yielded in arbitrary order, and the special entries
+<code class="docutils literal notranslate"><span class="pre">'.'</span></code> and <code class="docutils literal notranslate"><span class="pre">'..'</span></code> are not included.  If a file is removed from or added
+to the directory after creating the iterator, whether a path object for
+that file be included is unspecified.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.lchmod">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">lchmod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.lchmod" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Como <a class="reference internal" href="#pathlib.Path.chmod" title="pathlib.Path.chmod"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.chmod()</span></code></a>, mas, se o caminho apontar para um link simbólico, o modo do link simbólico é alterado ao invés de seu alvo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.lstat">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">lstat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.lstat" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Como <a class="reference internal" href="#pathlib.Path.stat" title="pathlib.Path.stat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.stat()</span></code></a>, mas, se o caminho apontar para um link simbólico, retorna as informações do link simbólico ao invés de seu alvo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.mkdir">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">mkdir</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0o777</span></em>, <em class="sig-param"><span class="n">parents</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">exist_ok</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.mkdir" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Cria um novo diretório neste caminho fornecido. Se <em>mode</em> for fornecido, ele é combinado com o valor <code class="docutils literal notranslate"><span class="pre">umask</span></code> do processo para determinar o modo do arquivo e os sinalizadores de acesso. Se o caminho já existe, <a class="reference internal" href="exceptions.html#FileExistsError" title="FileExistsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileExistsError</span></code></a> é levantada.</p>
+<p>Se <em>parents</em> for verdadeiro, quaisquer pais ausentes neste caminho serão criados conforme necessário; eles são criados com as permissões padrão sem levar o <em>mode</em> em consideração (imitando o comando POSIX <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code>).</p>
+<p>Se <em>parents</em> for falso (o padrão), um pai ausente levanta <a class="reference internal" href="exceptions.html#FileNotFoundError" title="FileNotFoundError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></a>.</p>
+<p>Se <em>exist_ok</em> for falso (o padrão), <a class="reference internal" href="exceptions.html#FileExistsError" title="FileExistsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileExistsError</span></code></a> será levantada se o diretório alvo já existir.</p>
+<p>Se <em>exist_ok</em> for verdadeiro, as exceções <a class="reference internal" href="exceptions.html#FileExistsError" title="FileExistsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileExistsError</span></code></a> serão ignoradas (mesmo comportamento que o comando POSIX <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span></code>), mas apenas se o último componente do caminho não for um arquivo existente não pertencente ao diretório.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>O parâmetro <em>exist_ok</em> foi adicionado.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.open">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">open</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'r'</span></em>, <em class="sig-param"><span class="n">buffering</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">newline</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.open" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Abre o arquivo apontado pelo caminho, como a função embutida <a class="reference internal" href="functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> faz:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">()</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="go">&#39;#!/usr/bin/env python3\n&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.owner">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">owner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.owner" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o nome do usuário que possui o arquivo. <a class="reference internal" href="exceptions.html#KeyError" title="KeyError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">KeyError</span></code></a> é levantada se o uid do arquivo não for encontrado no banco de dados do sistema.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.read_bytes">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">read_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.read_bytes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o conteúdo binário do arquivo apontado como um objeto bytes:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;my_binary_file&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Binary file contents&#39;</span><span class="p">)</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
+<span class="go">b&#39;Binary file contents&#39;</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.read_text">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">read_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.read_text" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o conteúdo decodificado do arquivo apontado como uma string:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;my_text_file&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;Text file contents&#39;</span><span class="p">)</span>
+<span class="go">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="go">&#39;Text file contents&#39;</span>
+</pre></div>
+</div>
+<p>O arquivo é aberto e, então, fechado. Os parâmetros opcionais têm o mesmo significado que em <a class="reference internal" href="functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.readlink">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">readlink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.readlink" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o caminho para o qual o link simbólico aponta (conforme retornado por <a class="reference internal" href="os.html#os.readlink" title="os.readlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.readlink()</span></code></a>):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;mylink&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">symlink_to</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">readlink</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;setup.py&#39;)</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.9.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.rename">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">rename</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.rename" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Rename this file or directory to the given <em>target</em>, and return a new Path
+instance pointing to <em>target</em>.  On Unix, if <em>target</em> exists and is a file,
+it will be replaced silently if the user has permission.
+On Windows, if <em>target</em> exists, <a class="reference internal" href="exceptions.html#FileExistsError" title="FileExistsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileExistsError</span></code></a> will be raised.
+<em>target</em> can be either a string or another path object:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;some text&#39;</span><span class="p">)</span>
+<span class="go">9</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="go">PosixPath(&#39;bar&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span><span class="o">.</span><span class="n">open</span><span class="p">()</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="go">&#39;some text&#39;</span>
+</pre></div>
+</div>
+<p>O caminho de destino pode ser absoluto ou relativo. Caminhos relativos são interpretados em relação ao diretório de trabalho atual, <em>não</em> ao diretório do objeto Path.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Adicionado valor de retorno, returna a nova instância de Path.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.replace">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">replace</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.replace" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Rename this file or directory to the given <em>target</em>, and return a new Path
+instance pointing to <em>target</em>.  If <em>target</em> points to an existing file or
+empty directory, it will be unconditionally replaced.</p>
+<p>O caminho de destino pode ser absoluto ou relativo. Caminhos relativos são interpretados em relação ao diretório de trabalho atual, <em>não</em> ao diretório do objeto Path.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Adicionado valor de retorno, returna a nova instância de Path.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.resolve">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">resolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">strict</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.resolve" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faça o caminho absoluto, resolvendo quaisquer links simbólicos. Um novo objeto de caminho é retornado:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span>
+<span class="go">PosixPath(&#39;.&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/antoine/pathlib&#39;)</span>
+</pre></div>
+</div>
+<p>Componentes “<code class="docutils literal notranslate"><span class="pre">..</span></code>” também são eliminados (este é o único método para fazer isso):</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;docs/../setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/antoine/pathlib/setup.py&#39;)</span>
+</pre></div>
+</div>
+<p>Se o caminho não existe e <em>strict</em> é <code class="docutils literal notranslate"><span class="pre">True</span></code>, <a class="reference internal" href="exceptions.html#FileNotFoundError" title="FileNotFoundError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></a> é levantada. Se <em>strict</em> for <code class="docutils literal notranslate"><span class="pre">False</span></code>, o caminho será resolvido tanto quanto possível e qualquer resto é anexado sem verificar se existe. Se um laço infinito for encontrado ao longo do caminho de resolução, <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> é levantada.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6: </span>O argumento <em>strict</em> (comportamento pré-3.6 é estrito).</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.rglob">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">rglob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pattern</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.rglob" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>É como chamar <a class="reference internal" href="#pathlib.Path.glob" title="pathlib.Path.glob"><code class="xref py py-func docutils literal notranslate"><span class="pre">Path.glob()</span></code></a> com “<code class="docutils literal notranslate"><span class="pre">**/</span></code>” adicionado na frente do <em>pattern</em> relativo fornecido:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">sorted</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*.py&quot;</span><span class="p">))</span>
+<span class="go">[PosixPath(&#39;build/lib/pathlib.py&#39;),</span>
+<span class="go"> PosixPath(&#39;docs/conf.py&#39;),</span>
+<span class="go"> PosixPath(&#39;pathlib.py&#39;),</span>
+<span class="go"> PosixPath(&#39;setup.py&#39;),</span>
+<span class="go"> PosixPath(&#39;test_pathlib.py&#39;)]</span>
+</pre></div>
+</div>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">pathlib.Path.rglob</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">self</span></code>, <code class="docutils literal notranslate"><span class="pre">pattern</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.rmdir">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">rmdir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.rmdir" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remove este diretório. O diretório deve estar vazio.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.samefile">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">samefile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other_path</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.samefile" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna se este path apontar para o mesmo arquivo como <em>other_path</em>, que pode ser um objeto PATH ou uma String. A semântica é semelhante a função <a class="reference internal" href="os.path.html#os.path.samefile" title="os.path.samefile"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.samefile()</span></code></a> e a função <a class="reference internal" href="os.path.html#os.path.samestat" title="os.path.samestat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.samestat()</span></code></a>.</p>
+<p>Um <a class="reference internal" href="exceptions.html#OSError" title="OSError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OSError</span></code></a> poderá ser levantado caso algum arquivo não puder ser acessado por alguma razão.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;eggs&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">samefile</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">samefile</span><span class="p">(</span><span class="s1">&#39;spam&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.symlink_to">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">symlink_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em>, <em class="sig-param"><span class="n">target_is_directory</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.symlink_to" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz deste path um link simbólico para <em>target</em>. No Windows, <em>target_is_directory</em> deverá ser verdadeiro (padrão <code class="docutils literal notranslate"><span class="pre">False</span></code>) se o local do link for um diretório. Num sistema POSIX, o valor <em>target_is_directory</em> será ignorado.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;mylink&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">symlink_to</span><span class="p">(</span><span class="s1">&#39;setup.py&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="go">PosixPath(&#39;/home/antoine/pathlib/setup.py&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span>
+<span class="go">956</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">lstat</span><span class="p">()</span><span class="o">.</span><span class="n">st_size</span>
+<span class="go">8</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A ordem dos argumentos (link, target) é o inverso da função <a class="reference internal" href="os.html#os.symlink" title="os.symlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.symlink()</span></code></a>’s.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.hardlink_to">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">hardlink_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.hardlink_to" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz deste caminho um link físico para o mesmo arquivo que <em>target</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>A ordem dos argumentos (link, target) é o inverso da função <a class="reference internal" href="os.html#os.link" title="os.link"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.link()</span></code></a>’s.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.link_to">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">link_to</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">target</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.link_to" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz do <em>target</em> um link físico para este caminho.</p>
+<div class="admonition warning">
+<p class="admonition-title">Aviso</p>
+<p>Esta função não faz deste caminho um link físico para <em>target</em>, apesar da implicação dos nomes da função e do argumento. A ordem do argumento (target, link) é o reverso de <a class="reference internal" href="#pathlib.Path.symlink_to" title="pathlib.Path.symlink_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">Path.symlink_to()</span></code></a> e <a class="reference internal" href="#pathlib.Path.hardlink_to" title="pathlib.Path.hardlink_to"><code class="xref py py-func docutils literal notranslate"><span class="pre">Path.hardlink_to()</span></code></a>, mas corresponde ao de <a class="reference internal" href="os.html#os.link" title="os.link"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.link()</span></code></a>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Obsoleto desde a versão 3.10: </span>Este método foi descontinuado em favor de <a class="reference internal" href="#pathlib.Path.hardlink_to" title="pathlib.Path.hardlink_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.hardlink_to()</span></code></a>, pois a ordem de argumentos de <a class="reference internal" href="#pathlib.Path.link_to" title="pathlib.Path.link_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.link_to()</span></code></a> não corresponde àquela de <a class="reference internal" href="#pathlib.Path.symlink_to" title="pathlib.Path.symlink_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.symlink_to()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.touch">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">touch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0o666</span></em>, <em class="sig-param"><span class="n">exist_ok</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.touch" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Cria um arquivo neste caminho especifico. Caso o <em>modo</em> for dado, ele será combinado com o valor do processo <code class="docutils literal notranslate"><span class="pre">umask</span></code> para determinar o modo de arquivo e as flags de acesso. Se o arquivo já existir, a função será bem-sucedida se <em>exist_ok</em> for verdadeiro (e o tempo de modificação for atualizado para a hora atual), caso contrário o erro <a class="reference internal" href="exceptions.html#FileExistsError" title="FileExistsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileExistsError</span></code></a> será levantado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.unlink">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">unlink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">missing_ok</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.unlink" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remova esse arquivo ou link simbólico. Caso o caminho aponte para um diretório, use a função <a class="reference internal" href="#pathlib.Path.rmdir" title="pathlib.Path.rmdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">Path.rmdir()</span></code></a> em vez disso.</p>
+<p>Se <em>missing_ok</em> for falso (o padrão), <a class="reference internal" href="exceptions.html#FileNotFoundError" title="FileNotFoundError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></a> é levantada se o caminho não existir.</p>
+<p>Se <em>missing_ok</em> for verdadeiro, exceções de <a class="reference internal" href="exceptions.html#FileNotFoundError" title="FileNotFoundError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></a> serão ignoradas (mesmo comportamento que o comando POSIX <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-f</span></code>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>O parâmetro <em>missing_ok</em> foi adicionado.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.write_bytes">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">write_bytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.write_bytes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Abre o arquivo apontado no modo bytes, escreve <em>dados</em> e fecha o arquivo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;my_binary_file&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;Binary file contents&#39;</span><span class="p">)</span>
+<span class="go">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">()</span>
+<span class="go">b&#39;Binary file contents&#39;</span>
+</pre></div>
+</div>
+<p>Um arquivo existente de mesmo nome será substituído.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="pathlib.Path.write_text">
+<code class="sig-prename descclassname">Path.</code><code class="sig-name descname">write_text</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">encoding</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">errors</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">newline</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pathlib.Path.write_text" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Abre o arquivo apontado no modo de texto, escreve <em>data</em> e fecha o arquivo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;my_text_file&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="s1">&#39;Text file contents&#39;</span><span class="p">)</span>
+<span class="go">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="go">&#39;Text file contents&#39;</span>
+</pre></div>
+</div>
+<p>Um arquivo existente com o mesmo nome é sobrescrito. Os parâmetros opcionais têm o mesmo significado que em <a class="reference internal" href="functions.html#open" title="open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>O parâmetro <em>newline</em> foi adicionado.</p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="correspondence-to-tools-in-the-os-module">
+<h2>Correspondência a ferramentas no módulo <a class="reference internal" href="os.html#module-os" title="os: Miscellaneous operating system interfaces."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a><a class="headerlink" href="#correspondence-to-tools-in-the-os-module" title="Link permanente para este título">¶</a></h2>
+<p>Abaixo está uma tabela mapeando várias funções <a class="reference internal" href="os.html#module-os" title="os: Miscellaneous operating system interfaces."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> a sua <a class="reference internal" href="#pathlib.PurePath" title="pathlib.PurePath"><code class="xref py py-class docutils literal notranslate"><span class="pre">PurePath</span></code></a>/<a class="reference internal" href="#pathlib.Path" title="pathlib.Path"><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></a> equivalente.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Nem todos os pares de funções/métodos abaixo são equivalentes. Alguns deles, apesar de ter alguns casos de uso sobrepostos, têm semânticas diferentes. Eles incluem <a class="reference internal" href="os.path.html#os.path.abspath" title="os.path.abspath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.abspath()</span></code></a> e <a class="reference internal" href="#pathlib.Path.resolve" title="pathlib.Path.resolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.resolve()</span></code></a>, <a class="reference internal" href="os.path.html#os.path.relpath" title="os.path.relpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.relpath()</span></code></a> e <a class="reference internal" href="#pathlib.PurePath.relative_to" title="pathlib.PurePath.relative_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PurePath.relative_to()</span></code></a>.</p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="os.html#module-os" title="os: Miscellaneous operating system interfaces."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a> e <a class="reference internal" href="os.path.html#module-os.path" title="os.path: Operations on pathnames."><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code></a></p></th>
+<th class="head"><p><a class="reference internal" href="#module-pathlib" title="pathlib: Object-oriented filesystem paths"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code></a></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.abspath" title="os.path.abspath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.abspath()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.resolve" title="pathlib.Path.resolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.resolve()</span></code></a> <a class="footnote-reference brackets" href="#id5" id="id3">1</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.chmod" title="os.chmod"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.chmod()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.chmod" title="pathlib.Path.chmod"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.chmod()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.html#os.mkdir" title="os.mkdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.mkdir()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.mkdir" title="pathlib.Path.mkdir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.mkdir()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.makedirs" title="os.makedirs"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.makedirs()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.mkdir" title="pathlib.Path.mkdir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.mkdir()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.html#os.rename" title="os.rename"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rename()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.rename" title="pathlib.Path.rename"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.rename()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.replace" title="os.replace"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.replace()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.replace" title="pathlib.Path.replace"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.replace()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.html#os.rmdir" title="os.rmdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.rmdir()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.rmdir" title="pathlib.Path.rmdir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.rmdir()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.remove" title="os.remove"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.remove()</span></code></a>, <a class="reference internal" href="os.html#os.unlink" title="os.unlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.unlink()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.unlink" title="pathlib.Path.unlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.unlink()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.html#os.getcwd" title="os.getcwd"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.getcwd()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.cwd" title="pathlib.Path.cwd"><code class="xref py py-func docutils literal notranslate"><span class="pre">Path.cwd()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.path.html#os.path.exists" title="os.path.exists"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.exists()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.exists" title="pathlib.Path.exists"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.exists()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.expanduser" title="os.path.expanduser"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.expanduser()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.expanduser" title="pathlib.Path.expanduser"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.expanduser()</span></code></a> and
+<a class="reference internal" href="#pathlib.Path.home" title="pathlib.Path.home"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.home()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.listdir" title="os.listdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.listdir()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.iterdir" title="pathlib.Path.iterdir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.iterdir()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.isdir" title="os.path.isdir"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.isdir()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.is_dir" title="pathlib.Path.is_dir"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.is_dir()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.path.html#os.path.isfile" title="os.path.isfile"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.isfile()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.is_file" title="pathlib.Path.is_file"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.is_file()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.islink" title="os.path.islink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.islink()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.is_symlink" title="pathlib.Path.is_symlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.is_symlink()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.link" title="os.link"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.link()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.hardlink_to" title="pathlib.Path.hardlink_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.hardlink_to()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.html#os.symlink" title="os.symlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.symlink()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.symlink_to" title="pathlib.Path.symlink_to"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.symlink_to()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.readlink" title="os.readlink"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.readlink()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.readlink" title="pathlib.Path.readlink"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.readlink()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.relpath" title="os.path.relpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.relpath()</span></code></a></p></td>
+<td><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.relative_to()</span></code> <a class="footnote-reference brackets" href="#id6" id="id4">2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.html#os.stat" title="os.stat"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.stat()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.stat" title="pathlib.Path.stat"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.stat()</span></code></a>,
+<a class="reference internal" href="#pathlib.Path.owner" title="pathlib.Path.owner"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.owner()</span></code></a>,
+<a class="reference internal" href="#pathlib.Path.group" title="pathlib.Path.group"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.group()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.isabs" title="os.path.isabs"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.isabs()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.PurePath.is_absolute" title="pathlib.PurePath.is_absolute"><code class="xref py py-meth docutils literal notranslate"><span class="pre">PurePath.is_absolute()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.path.html#os.path.join" title="os.path.join"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.join()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.PurePath.joinpath" title="pathlib.PurePath.joinpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">PurePath.joinpath()</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.basename" title="os.path.basename"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.basename()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.PurePath.name" title="pathlib.PurePath.name"><code class="xref py py-data docutils literal notranslate"><span class="pre">PurePath.name</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.path.html#os.path.dirname" title="os.path.dirname"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.dirname()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.PurePath.parent" title="pathlib.PurePath.parent"><code class="xref py py-data docutils literal notranslate"><span class="pre">PurePath.parent</span></code></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="os.path.html#os.path.samefile" title="os.path.samefile"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.samefile()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.Path.samefile" title="pathlib.Path.samefile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.samefile()</span></code></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="os.path.html#os.path.splitext" title="os.path.splitext"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.splitext()</span></code></a></p></td>
+<td><p><a class="reference internal" href="#pathlib.PurePath.suffix" title="pathlib.PurePath.suffix"><code class="xref py py-data docutils literal notranslate"><span class="pre">PurePath.suffix</span></code></a></p></td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notas de rodapé</p>
+<dl class="footnote brackets">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p><a class="reference internal" href="os.path.html#os.path.abspath" title="os.path.abspath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.abspath()</span></code></a> não resolve link simbólico enquanto <a class="reference internal" href="#pathlib.Path.resolve" title="pathlib.Path.resolve"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.resolve()</span></code></a> resolve.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p><code class="xref py py-meth docutils literal notranslate"><span class="pre">Path.relative_to()</span></code> requer <code class="docutils literal notranslate"><span class="pre">self</span></code> para ser o subcaminho do argumento, mas <a class="reference internal" href="os.path.html#os.path.relpath" title="os.path.relpath"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.relpath()</span></code></a> não requer.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code> — Caminhos do sistema de arquivos orientados a objetos</a><ul>
+<li><a class="reference internal" href="#basic-use">Uso básico</a></li>
+<li><a class="reference internal" href="#pure-paths">Caminhos puros</a><ul>
+<li><a class="reference internal" href="#general-properties">Propriedades gerais</a></li>
+<li><a class="reference internal" href="#operators">Operadores</a></li>
+<li><a class="reference internal" href="#accessing-individual-parts">Acessando partes individuais</a></li>
+<li><a class="reference internal" href="#methods-and-properties">Métodos e propriedades</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#concrete-paths">Caminhos concretos</a><ul>
+<li><a class="reference internal" href="#methods">Métodos</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#correspondence-to-tools-in-the-os-module">Correspondência a ferramentas no módulo <code class="xref py py-mod docutils literal notranslate"><span class="pre">os</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="filesys.html"
+                        title="capítulo anterior">Acesso a arquivos e diretórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="os.path.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">os.path</span></code> — Manipulações comuns de nome nomes de caminhos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/pathlib.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="os.path.html" title="os.path — Manipulações comuns de nome nomes de caminhos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="filesys.html" title="Acesso a arquivos e diretórios"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" >Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code> — Caminhos do sistema de arquivos orientados a objetos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

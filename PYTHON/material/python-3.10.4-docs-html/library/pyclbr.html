@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>pyclbr — Suporte a navegador de módulos do Python &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="py_compile — Compila arquivos fonte do Python" href="py_compile.html" />
+    <link rel="prev" title="tabnanny — Detecção de recuo ambíguo" href="tabnanny.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/pyclbr.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code> — Suporte a navegador de módulos do Python</a><ul>
+<li><a class="reference internal" href="#function-objects">Objetos Função</a></li>
+<li><a class="reference internal" href="#class-objects">Objetos de Class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tabnanny.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tabnanny</span></code> — Detecção de recuo ambíguo</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="py_compile.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">py_compile</span></code> — Compila arquivos fonte do Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/pyclbr.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="py_compile.html" title="py_compile — Compila arquivos fonte do Python"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="tabnanny.html" title="tabnanny — Detecção de recuo ambíguo"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="language.html" accesskey="U">Serviços da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code> — Suporte a navegador de módulos do Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-pyclbr">
+<span id="pyclbr-python-module-browser-support"></span><h1><a class="reference internal" href="#module-pyclbr" title="pyclbr: Supports information extraction for a Python module browser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code></a> — Suporte a navegador de módulos do Python<a class="headerlink" href="#module-pyclbr" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/pyclbr.py">Lib/pyclbr.py</a></p>
+<hr class="docutils" />
+<p>O módulo <a class="reference internal" href="#module-pyclbr" title="pyclbr: Supports information extraction for a Python module browser."><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code></a> fornece informações limitadas sobre as funções, classes e métodos definidos em um módulo codificado em Python. As informações são suficientes para implementar um navegador de módulos. As informações são extraídas do código-fonte do Python em vez de importar o módulo, portanto, este módulo é seguro para uso com código não confiável. Essa restrição torna impossível o uso deste módulo com módulos não implementados no Python, incluindo todos os módulos de extensão padrão e opcionais.</p>
+<dl class="py function">
+<dt id="pyclbr.readmodule">
+<code class="sig-prename descclassname">pyclbr.</code><code class="sig-name descname">readmodule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclbr.readmodule" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um dicionário que mapeia os nomes de classe no nível do módulo aos descritores de classe. Se possível, descritores para classes base importadas estão incluídos. O parâmetro <em>module</em> é uma string com o nome do módulo a ser lido; pode ser o nome de um módulo dentro de um pacote. Se fornecido, <em>path</em> é uma sequência de caminhos de diretório anexada a <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>, que é usada para localizar o código-fonte do módulo.</p>
+<p>Esta função é a interface original e é mantida apenas para compatibilidade reversa. Ela retorna uma versão filtrada da seguinte.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="pyclbr.readmodule_ex">
+<code class="sig-prename descclassname">pyclbr.</code><code class="sig-name descname">readmodule_ex</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">module</span></em>, <em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#pyclbr.readmodule_ex" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma árvore baseada em dicionário que contém uma função ou descritores de classe para cada função e classe definida no módulo com uma instrução <code class="docutils literal notranslate"><span class="pre">def</span></code> ou <code class="docutils literal notranslate"><span class="pre">class</span></code>. O dicionário retornado mapeia os nomes das funções e das classes no nível do módulo para seus descritores. Objetos aninhados são inseridos no dicionário filho de seus pais. Como em readmodule, <em>module</em> nomeia o módulo a ser lido e <em>path</em> é anexado ao sys.path. Se o módulo que está sendo lido for um pacote, o dicionário retornado terá uma chave <code class="docutils literal notranslate"><span class="pre">'__path__'</span></code> cujo valor é uma lista que contém o caminho de pesquisa do pacote.</p>
+</dd></dl>
+
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7: </span>Descritores para definições aninhadas. Eles são acessados através do novo atributo filho. Cada um tem um novo atributo pai.</p>
+</div>
+<p>Os descritores retornados por essas funções são instâncias das classes Function e Class. Não se espera que os usuários criem instâncias dessas classes.</p>
+<section id="function-objects">
+<span id="pyclbr-function-objects"></span><h2>Objetos Função<a class="headerlink" href="#function-objects" title="Link permanente para este título">¶</a></h2>
+<p>Instâncias da classe <code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code> descrevem funções definidas por instruções def. Elas têm os seguintes atributos:</p>
+<dl class="py attribute">
+<dt id="pyclbr.Function.file">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">file</code><a class="headerlink" href="#pyclbr.Function.file" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Nome do arquivo no qual a função está definida.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.module">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">module</code><a class="headerlink" href="#pyclbr.Function.module" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O nome do módulo que define a função descrita.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.name">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">name</code><a class="headerlink" href="#pyclbr.Function.name" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O nome da função.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.lineno">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">lineno</code><a class="headerlink" href="#pyclbr.Function.lineno" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O número da linha no arquivo em que a definição é iniciada.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.parent">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">parent</code><a class="headerlink" href="#pyclbr.Function.parent" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Para funções de nível superior, None. Para funções aninhadas, o pai.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.children">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">children</code><a class="headerlink" href="#pyclbr.Function.children" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Um dicionário que mapeia nomes para descritores para funções e classes aninhadas.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Function.is_async">
+<code class="sig-prename descclassname">Function.</code><code class="sig-name descname">is_async</code><a class="headerlink" href="#pyclbr.Function.is_async" title="Link permanente para esta definição">¶</a></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">True</span></code> para funções que são definidas com o prefixo <code class="docutils literal notranslate"><span class="pre">async</span></code>. Caso contrário, <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+</section>
+<section id="class-objects">
+<span id="pyclbr-class-objects"></span><h2>Objetos de Class<a class="headerlink" href="#class-objects" title="Link permanente para este título">¶</a></h2>
+<p>Instâncias da classe <code class="xref py py-class docutils literal notranslate"><span class="pre">Class</span></code> descrevem classes definidas por instruções class. Elas têm os mesmos atributos que Functions e mais dois.</p>
+<dl class="py attribute">
+<dt id="pyclbr.Class.file">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">file</code><a class="headerlink" href="#pyclbr.Class.file" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Nome do arquivo no qual a classe está definida.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.module">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">module</code><a class="headerlink" href="#pyclbr.Class.module" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O nome do módulo que define a classe descrita.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.name">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">name</code><a class="headerlink" href="#pyclbr.Class.name" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O nome da classe.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.lineno">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">lineno</code><a class="headerlink" href="#pyclbr.Class.lineno" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O número da linha no arquivo em que a definição é iniciada.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.parent">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">parent</code><a class="headerlink" href="#pyclbr.Class.parent" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Para classes de nível superior, None. Para classes aninhadas, o pai.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.children">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">children</code><a class="headerlink" href="#pyclbr.Class.children" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Um dicionário que mapeia nomes para descritores para funções e classes aninhadas.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.super">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">super</code><a class="headerlink" href="#pyclbr.Class.super" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma lista de objetos <code class="xref py py-class docutils literal notranslate"><span class="pre">Class</span></code> que descreve as classes base imediatas da classe que está sendo descrita. Classes nomeadas como superclasses, mas que não podem ser descobertas por <a class="reference internal" href="#pyclbr.readmodule_ex" title="pyclbr.readmodule_ex"><code class="xref py py-func docutils literal notranslate"><span class="pre">readmodule_ex()</span></code></a> são listadas como uma string com o nome da classe em vez de como objetos de <code class="xref py py-class docutils literal notranslate"><span class="pre">Class</span></code>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="pyclbr.Class.methods">
+<code class="sig-prename descclassname">Class.</code><code class="sig-name descname">methods</code><a class="headerlink" href="#pyclbr.Class.methods" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Um dicionário que mapeia nomes de métodos para números de linha. Isso pode ser derivado do dicionário filho mais novo, mas permanece para compatibilidade retroativa.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code> — Suporte a navegador de módulos do Python</a><ul>
+<li><a class="reference internal" href="#function-objects">Objetos Função</a></li>
+<li><a class="reference internal" href="#class-objects">Objetos de Class</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tabnanny.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tabnanny</span></code> — Detecção de recuo ambíguo</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="py_compile.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">py_compile</span></code> — Compila arquivos fonte do Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/pyclbr.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="py_compile.html" title="py_compile — Compila arquivos fonte do Python"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="tabnanny.html" title="tabnanny — Detecção de recuo ambíguo"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="language.html" >Serviços da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code> — Suporte a navegador de módulos do Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

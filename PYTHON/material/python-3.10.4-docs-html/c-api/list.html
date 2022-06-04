@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Objeto List &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Objetos dicionários" href="dict.html" />
+    <link rel="prev" title="Objeto tupla" href="tuple.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/list.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tuple.html"
+                        title="capítulo anterior">Objeto tupla</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="dict.html"
+                        title="próximo capítulo">Objetos dicionários</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/list.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="dict.html" title="Objetos dicionários"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="tuple.html" title="Objeto tupla"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" accesskey="U">Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objeto List</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="list-objects">
+<span id="listobjects"></span><h1>Objeto List<a class="headerlink" href="#list-objects" title="Link permanente para este título">¶</a></h1>
+<span class="target" id="index-0"></span><dl class="c type">
+<dt id="c.PyListObject">
+<em class="property">type </em><code class="sig-name descname">PyListObject</code><a class="headerlink" href="#c.PyListObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Este subtipo de <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyObject</span></code></a> representa um objeto de lista Python.</p>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.PyList_Type">
+<a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject">PyTypeObject</a> <code class="sig-name descname">PyList_Type</code><a class="headerlink" href="#c.PyList_Type" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Esta instância de <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> representa o tipo de lista Python. Este é o mesmo objeto que <a class="reference internal" href="../library/stdtypes.html#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> na camada Python.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Check">
+int <code class="sig-name descname">PyList_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna verdadeiro se <em>p</em> é um objeto lista ou uma instância de um subtipo do tipo lista. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_CheckExact">
+int <code class="sig-name descname">PyList_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna verdadeiro se <em>p</em> é um objeto lista, mas não uma instância de um subtipo do tipo lista. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_New">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyList_New</code><span class="sig-paren">(</span><a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_New" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna uma nova lista de comprimento <em>len</em> em caso de sucesso, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se <em>len</em> for maior que zero, os itens do objeto de lista retornado são definidos como <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Portanto, você não pode usar funções API abstratas, como <a class="reference internal" href="sequence.html#c.PySequence_SetItem" title="PySequence_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PySequence_SetItem()</span></code></a> ou expor o objeto ao código Python antes de definir todos os itens para um objeto real com <a class="reference internal" href="#c.PyList_SetItem" title="PyList_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_SetItem()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Size">
+<a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <code class="sig-name descname">PyList_Size</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Size" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-1">Retorna o comprimento do objeto de lista em <em>list</em>; isto é equivalente a <code class="docutils literal notranslate"><span class="pre">len(list)</span></code> em um objeto lista.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_GET_SIZE">
+<a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <code class="sig-name descname">PyList_GET_SIZE</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_GET_SIZE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Forma macro de <a class="reference internal" href="#c.PyList_Size" title="PyList_Size"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_Size()</span></code></a> sem verificação de erros.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_GetItem">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyList_GetItem</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_GetItem" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: Borrowed reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna o objeto na posição <em>index</em> na lista apontada por <em>list</em>. A posição deve ser não negativa; não há suporte à indexação do final da lista. Se <em>index</em> estiver fora dos limites (&lt;o ou &gt;=len(list)), retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e levanta uma exceção <a class="reference internal" href="../library/exceptions.html#IndexError" title="IndexError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IndexError</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_GET_ITEM">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyList_GET_ITEM</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_GET_ITEM" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: Borrowed reference.</em><p>Forma macro de <a class="reference internal" href="#c.PyList_GetItem" title="PyList_GetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_GetItem()</span></code></a> sem verificação de erros.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_SetItem">
+int <code class="sig-name descname">PyList_SetItem</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>index</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_SetItem" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Define o item no índice <em>index</em> na lista como <em>item</em>. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> em caso de sucesso. Se <em>index</em> estiver fora dos limites, retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e levanta uma exceção <a class="reference internal" href="../library/exceptions.html#IndexError" title="IndexError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">IndexError</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta função “rouba” uma referência para o <em>item</em> e descarta uma referência para um item já presente na lista na posição afetada.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_SET_ITEM">
+void <code class="sig-name descname">PyList_SET_ITEM</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>i</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_SET_ITEM" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Forma macro de <a class="reference internal" href="#c.PyList_SetItem" title="PyList_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_SetItem()</span></code></a> sem verificação de erro. Este é normalmente usado apenas para preencher novas listas onde não há conteúdo anterior.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta macro “rouba” uma referência para o <em>item</em> e, ao contrário de <a class="reference internal" href="#c.PyList_SetItem" title="PyList_SetItem"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyList_SetItem()</span></code></a>, <em>não</em> descarta uma referência para nenhum item que esteja sendo substituído; qualquer referência em <em>list</em> será perdida.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Insert">
+int <code class="sig-name descname">PyList_Insert</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>index</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Insert" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Insere o item <em>item</em> na lista <em>list</em> na frente do índice <em>index</em>. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> se for bem-sucedido; retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e levanta uma exceção se malsucedido. Análogo a <code class="docutils literal notranslate"><span class="pre">list.insert(index,</span> <span class="pre">item)</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Append">
+int <code class="sig-name descname">PyList_Append</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Append" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Adiciona o item <em>item</em> ao final da lista <em>list</em>. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> se for bem-sucedido; retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e levanta uma exceção se malsucedido. Análogo a <code class="docutils literal notranslate"><span class="pre">list.insert(index,</span> <span class="pre">item)</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_GetSlice">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyList_GetSlice</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>low</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>high</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_GetSlice" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna uma lista dos objetos em <em>list</em> contendo os objetos <em>entre</em> <em>low</em> e <em>alto</em>. Retorne <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e levanta uma exceção se malsucedido. Análogo a <code class="docutils literal notranslate"><span class="pre">list[low:high]</span></code>. Não há suporte à indexação do final da lista.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_SetSlice">
+int <code class="sig-name descname">PyList_SetSlice</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>low</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>high</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>itemlist</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_SetSlice" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Define a fatia de <em>list</em> entre <em>low</em> e <em>high</em> para o conteúdo de <em>itemlist</em>. Análogo a <code class="docutils literal notranslate"><span class="pre">list[low:high]</span> <span class="pre">=</span> <span class="pre">itemlist</span></code>. <em>itemlist</em> pode ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, indicando a atribuição de uma lista vazia (exclusão de fatia). Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> em caso de sucesso, <code class="docutils literal notranslate"><span class="pre">-1</span></code> em caso de falha. Não há suporte à indexação do final da lista.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Sort">
+int <code class="sig-name descname">PyList_Sort</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Sort" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Ordena os itens de <em>list</em> no mesmo lugar. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> em caso de sucesso, e <code class="docutils literal notranslate"><span class="pre">-1</span></code> em caso de falha. Isso é o equivalente de <code class="docutils literal notranslate"><span class="pre">list.sort()</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_Reverse">
+int <code class="sig-name descname">PyList_Reverse</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_Reverse" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Inverte os itens de <em>list</em> no mesmo lugar. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> em caso de sucesso, e <code class="docutils literal notranslate"><span class="pre">-1</span></code> em caso de falha. Isso é o equivalente de <code class="docutils literal notranslate"><span class="pre">list.reverse()</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyList_AsTuple">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyList_AsTuple</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>list</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyList_AsTuple" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-2">Retorna um novo objeto tupla contendo os conteúdos de <em>list</em>; equivale a``tuple(list)``.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tuple.html"
+                        title="capítulo anterior">Objeto tupla</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="dict.html"
+                        title="próximo capítulo">Objetos dicionários</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/list.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="dict.html" title="Objetos dicionários"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="tuple.html" title="Objeto tupla"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" >Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objeto List</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

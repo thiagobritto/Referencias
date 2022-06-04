@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Objetos DateTime &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Objetos de indicação de tipos" href="typehints.html" />
+    <link rel="prev" title="Objetos de variáveis ​​de contexto" href="contextvars.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/datetime.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="contextvars.html"
+                        title="capítulo anterior">Objetos de variáveis ​​de contexto</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="typehints.html"
+                        title="próximo capítulo">Objetos de indicação de tipos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/datetime.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="typehints.html" title="Objetos de indicação de tipos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="contextvars.html" title="Objetos de variáveis ​​de contexto"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" accesskey="U">Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos DateTime</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="datetime-objects">
+<span id="datetimeobjects"></span><h1>Objetos DateTime<a class="headerlink" href="#datetime-objects" title="Link permanente para este título">¶</a></h1>
+<p>Vários objetos de data e hora são fornecidos pelo módulo <a class="reference internal" href="../library/datetime.html#module-datetime" title="datetime: Basic date and time types."><code class="xref py py-mod docutils literal notranslate"><span class="pre">datetime</span></code></a>. Antes de usar qualquer uma dessas funções, o arquivo de cabeçalho <code class="file docutils literal notranslate"><span class="pre">datetime.h</span></code> deve ser incluído na sua fonte (observe que isso não é incluído por <code class="file docutils literal notranslate"><span class="pre">Python.h</span></code>) e a macro <code class="xref c c-macro docutils literal notranslate"><span class="pre">PyDateTime_IMPORT</span></code> deve ser chamada, geralmente como parte da função de inicialização do módulo. A macro coloca um ponteiro para uma estrutura C em uma variável estática, <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTimeAPI</span></code>, usada pelas macros a seguir.</p>
+<p>Macro para acesso ao singleton UTC:</p>
+<dl class="c var">
+<dt id="c.PyDateTime_TimeZone_UTC">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_TimeZone_UTC</code><a class="headerlink" href="#c.PyDateTime_TimeZone_UTC" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna um singleton do fuso horário representando o UTC, o mesmo objeto que <a class="reference internal" href="../library/datetime.html#datetime.timezone.utc" title="datetime.timezone.utc"><code class="xref py py-attr docutils literal notranslate"><span class="pre">datetime.timezone.utc</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<p>Macros de verificação de tipo:</p>
+<dl class="c function">
+<dt id="c.PyDate_Check">
+int <code class="sig-name descname">PyDate_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDate_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateType</span></code> ou um subtipo de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDate_CheckExact">
+int <code class="sig-name descname">PyDate_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDate_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_Check">
+int <code class="sig-name descname">PyDateTime_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> é do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateTimeType</span></code> ou um subtipo de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateTimeType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_CheckExact">
+int <code class="sig-name descname">PyDateTime_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateTimeType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTime_Check">
+int <code class="sig-name descname">PyTime_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTime_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> é do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TimeType</span></code> ou um subtipo de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TimeType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTime_CheckExact">
+int <code class="sig-name descname">PyTime_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTime_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TimeType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDelta_Check">
+int <code class="sig-name descname">PyDelta_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDelta_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> é do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DeltaType</span></code> ou um subtipo de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DeltaType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDelta_CheckExact">
+int <code class="sig-name descname">PyDelta_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDelta_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DeltaType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTZInfo_Check">
+int <code class="sig-name descname">PyTZInfo_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTZInfo_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> é do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TZInfoType</span></code> ou um subtipo de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TZInfoType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTZInfo_CheckExact">
+int <code class="sig-name descname">PyTZInfo_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>ob</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTZInfo_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se <em>ob</em> for do tipo <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_TZInfoType</span></code>. <em>ob</em> não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<p>Macros para criar objetos:</p>
+<dl class="c function">
+<dt id="c.PyDate_FromDate">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDate_FromDate</code><span class="sig-paren">(</span>int <em>year</em>, int <em>month</em>, int <em>day</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDate_FromDate" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.date" title="datetime.date"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a> com o ano, mês e dia especificados.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_FromDateAndTime">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_FromDateAndTime</code><span class="sig-paren">(</span>int <em>year</em>, int <em>month</em>, int <em>day</em>, int <em>hour</em>, int <em>minute</em>, int <em>second</em>, int <em>usecond</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_FromDateAndTime" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> com o ano, mês, dia, hora, minuto, segundo, microssegundo especificados.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_FromDateAndTimeAndFold">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_FromDateAndTimeAndFold</code><span class="sig-paren">(</span>int <em>year</em>, int <em>month</em>, int <em>day</em>, int <em>hour</em>, int <em>minute</em>, int <em>second</em>, int <em>usecond</em>, int <em>fold</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_FromDateAndTimeAndFold" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a> com o ano, mês, dia, hora, minuto, segundo, microssegundo e a dobra especificados.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTime_FromTime">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyTime_FromTime</code><span class="sig-paren">(</span>int <em>hour</em>, int <em>minute</em>, int <em>second</em>, int <em>usecond</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTime_FromTime" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.time" title="datetime.time"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code></a> com a hora, minuto, segundo e microssegundo especificados.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTime_FromTimeAndFold">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyTime_FromTimeAndFold</code><span class="sig-paren">(</span>int <em>hour</em>, int <em>minute</em>, int <em>second</em>, int <em>usecond</em>, int <em>fold</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTime_FromTimeAndFold" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.time" title="datetime.time"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.time</span></code></a> com a hora, minuto, segundo, microssegundo e a dobra especificados.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDelta_FromDSU">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDelta_FromDSU</code><span class="sig-paren">(</span>int <em>days</em>, int <em>seconds</em>, int <em>useconds</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDelta_FromDSU" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.timedelta" title="datetime.timedelta"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a> representando o número especificado de dias, segundos e microssegundos. A normalização é realizada para que o número resultante de microssegundos e segundos esteja nos intervalos documentados para objetos de <a class="reference internal" href="../library/datetime.html#datetime.timedelta" title="datetime.timedelta"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timedelta</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTimeZone_FromOffset">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyTimeZone_FromOffset</code><span class="sig-paren">(</span>PyDateTime_DeltaType *<em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTimeZone_FromOffset" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.timezone" title="datetime.timezone"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timezone</span></code></a> com um deslocamento fixo sem nome representado pelo argumento <em>offset</em>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyTimeZone_FromOffsetAndName">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyTimeZone_FromOffsetAndName</code><span class="sig-paren">(</span>PyDateTime_DeltaType *<em>offset</em>, PyUnicode *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyTimeZone_FromOffsetAndName" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto <a class="reference internal" href="../library/datetime.html#datetime.timezone" title="datetime.timezone"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.timezone</span></code></a> com um deslocamento fixo representado pelo argumento <em>offset</em> e com tzname <em>name</em>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<p>Macros para extrair campos de objetos de data. O argumento deve ser uma instância de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_Date</span></code>, incluindo subclasses (como <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateTime</span></code>). O argumento não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e o tipo não está marcado:</p>
+<dl class="c function">
+<dt id="c.PyDateTime_GET_YEAR">
+int <code class="sig-name descname">PyDateTime_GET_YEAR</code><span class="sig-paren">(</span>PyDateTime_Date *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_GET_YEAR" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o ano, como um inteiro positivo.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_GET_MONTH">
+int <code class="sig-name descname">PyDateTime_GET_MONTH</code><span class="sig-paren">(</span>PyDateTime_Date *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_GET_MONTH" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o mês, como um inteiro de 1 a 12.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_GET_DAY">
+int <code class="sig-name descname">PyDateTime_GET_DAY</code><span class="sig-paren">(</span>PyDateTime_Date *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_GET_DAY" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o dia, como um inteiro de 1 a 31.</p>
+</dd></dl>
+
+<p>Macros para extrair campos de objetos de data e hora. O argumento deve ser uma instância de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_DateTime</span></code>, incluindo subclasses. O argumento não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e o tipo não é verificado:</p>
+<dl class="c function">
+<dt id="c.PyDateTime_DATE_GET_HOUR">
+int <code class="sig-name descname">PyDateTime_DATE_GET_HOUR</code><span class="sig-paren">(</span>PyDateTime_DateTime *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DATE_GET_HOUR" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a hora, como um inteiro de 0 a 23.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DATE_GET_MINUTE">
+int <code class="sig-name descname">PyDateTime_DATE_GET_MINUTE</code><span class="sig-paren">(</span>PyDateTime_DateTime *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DATE_GET_MINUTE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o minuto, como um inteiro de 0 a 59.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DATE_GET_SECOND">
+int <code class="sig-name descname">PyDateTime_DATE_GET_SECOND</code><span class="sig-paren">(</span>PyDateTime_DateTime *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DATE_GET_SECOND" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o segundo, como um inteiro de 0 a 59.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DATE_GET_MICROSECOND">
+int <code class="sig-name descname">PyDateTime_DATE_GET_MICROSECOND</code><span class="sig-paren">(</span>PyDateTime_DateTime *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DATE_GET_MICROSECOND" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o microssegundo, como um inteiro de 0 a 999999.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DATE_GET_TZINFO">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_DATE_GET_TZINFO</code><span class="sig-paren">(</span>PyDateTime_DateTime *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DATE_GET_TZINFO" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o tzinfo (que pode ser <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<p>Macros para extrair campos de objetos de tempo. O argumento deve ser uma instância de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_Time</span></code>, incluindo subclasses. O argumento não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e o tipo não é verificado:</p>
+<dl class="c function">
+<dt id="c.PyDateTime_TIME_GET_HOUR">
+int <code class="sig-name descname">PyDateTime_TIME_GET_HOUR</code><span class="sig-paren">(</span>PyDateTime_Time *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_TIME_GET_HOUR" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a hora, como um inteiro de 0 a 23.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_TIME_GET_MINUTE">
+int <code class="sig-name descname">PyDateTime_TIME_GET_MINUTE</code><span class="sig-paren">(</span>PyDateTime_Time *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_TIME_GET_MINUTE" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o minuto, como um inteiro de 0 a 59.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_TIME_GET_SECOND">
+int <code class="sig-name descname">PyDateTime_TIME_GET_SECOND</code><span class="sig-paren">(</span>PyDateTime_Time *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_TIME_GET_SECOND" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o segundo, como um inteiro de 0 a 59.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_TIME_GET_MICROSECOND">
+int <code class="sig-name descname">PyDateTime_TIME_GET_MICROSECOND</code><span class="sig-paren">(</span>PyDateTime_Time *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_TIME_GET_MICROSECOND" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o microssegundo, como um inteiro de 0 a 999999.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_TIME_GET_TZINFO">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_TIME_GET_TZINFO</code><span class="sig-paren">(</span>PyDateTime_Time *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_TIME_GET_TZINFO" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o tzinfo (que pode ser <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<p>Macros para extrair campos de objetos time delta. O argumento deve ser uma instância de <code class="xref c c-data docutils literal notranslate"><span class="pre">PyDateTime_Delta</span></code>, incluindo subclasses. O argumento não deve ser <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, e o tipo não é checado:</p>
+<dl class="c function">
+<dt id="c.PyDateTime_DELTA_GET_DAYS">
+int <code class="sig-name descname">PyDateTime_DELTA_GET_DAYS</code><span class="sig-paren">(</span>PyDateTime_Delta *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DELTA_GET_DAYS" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o número de dias, como um inteiro de -999999999 a 999999999.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DELTA_GET_SECONDS">
+int <code class="sig-name descname">PyDateTime_DELTA_GET_SECONDS</code><span class="sig-paren">(</span>PyDateTime_Delta *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DELTA_GET_SECONDS" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o número de segundos, como um inteiro de 0 a 86399.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDateTime_DELTA_GET_MICROSECONDS">
+int <code class="sig-name descname">PyDateTime_DELTA_GET_MICROSECONDS</code><span class="sig-paren">(</span>PyDateTime_Delta *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_DELTA_GET_MICROSECONDS" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o número de microssegundos, como um inteiro de 0 a 999999.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<p>Macros para a conveniência de módulos implementando a API de DB:</p>
+<dl class="c function">
+<dt id="c.PyDateTime_FromTimestamp">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDateTime_FromTimestamp</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDateTime_FromTimestamp" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Cria e retorna um novo objeto <a class="reference internal" href="../library/datetime.html#datetime.datetime" title="datetime.datetime"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.datetime</span></code></a>, com uma tupla de argumentos adequada para passar para <a class="reference internal" href="../library/datetime.html#datetime.datetime.fromtimestamp" title="datetime.datetime.fromtimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.datetime.fromtimestamp()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyDate_FromTimestamp">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyDate_FromTimestamp</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>args</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyDate_FromTimestamp" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Cria e retorna um novo objeto <a class="reference internal" href="../library/datetime.html#datetime.date" title="datetime.date"><code class="xref py py-class docutils literal notranslate"><span class="pre">datetime.date</span></code></a>, com uma tupla de argumentos adequada para passar para <a class="reference internal" href="../library/datetime.html#datetime.date.fromtimestamp" title="datetime.date.fromtimestamp"><code class="xref py py-meth docutils literal notranslate"><span class="pre">datetime.date.fromtimestamp()</span></code></a>.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="contextvars.html"
+                        title="capítulo anterior">Objetos de variáveis ​​de contexto</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="typehints.html"
+                        title="próximo capítulo">Objetos de indicação de tipos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/datetime.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="typehints.html" title="Objetos de indicação de tipos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="contextvars.html" title="Objetos de variáveis ​​de contexto"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" >Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos DateTime</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

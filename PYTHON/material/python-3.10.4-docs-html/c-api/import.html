@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Importando módulos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Suporte a marshalling de dados" href="marshal.html" />
+    <link rel="prev" title="Utilitários do Sistema Operacional" href="sys.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/import.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="sys.html"
+                        title="capítulo anterior">Utilitários do Sistema Operacional</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="marshal.html"
+                        title="próximo capítulo">Suporte a <em>marshalling</em> de dados</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/import.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="marshal.html" title="Suporte a marshalling de dados"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="sys.html" title="Utilitários do Sistema Operacional"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="utilities.html" accesskey="U">Utilitários</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Importando módulos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="importing-modules">
+<span id="importing"></span><h1>Importando módulos<a class="headerlink" href="#importing-modules" title="Link permanente para este título">¶</a></h1>
+<dl class="c function">
+<dt id="c.PyImport_ImportModule">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ImportModule</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-0">Esta é uma interface simplificada para <a class="reference internal" href="#c.PyImport_ImportModuleEx" title="PyImport_ImportModuleEx"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModuleEx()</span></code></a> abaixo, deixando os argumentos <em>globals</em> e <em>locals</em> definidos como <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e <em>level</em> definido como 0. Quando o argumento <em>name</em> contém um caractere de ponto (quando especifica um submódulo de um pacote), o argumento <em>fromlist</em> é definido para a lista <code class="docutils literal notranslate"><span class="pre">['*']</span></code> de modo que o valor de retorno é o módulo nomeado em vez do pacote de nível superior que o contém como faria caso contrário, seja o caso. (Infelizmente, isso tem um efeito colateral adicional quando <em>name</em> de fato especifica um subpacote em vez de um submódulo: os submódulos especificados na variável <code class="docutils literal notranslate"><span class="pre">__all__</span></code> do pacote são carregados.) Retorna uma nova referência ao módulo importado, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida em caso de falha. Uma importação com falha de um módulo não deixa o módulo em <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.modules</span></code></a>.</p>
+<p>Esta função sempre usa importações absolutas.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportModuleNoBlock">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ImportModuleNoBlock</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportModuleNoBlock" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Esta função é um alias descontinuado de <a class="reference internal" href="#c.PyImport_ImportModule" title="PyImport_ImportModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Essa função falhava em alguns casos, quando o bloqueio de importação era mantido por outra thread. No Python 3.3, no entanto, o esquema de bloqueio mudou passando a ser por módulo na maior parte, dessa forma, o comportamento especial dessa função não é mais necessário.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportModuleEx">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ImportModuleEx</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>globals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>locals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>fromlist</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportModuleEx" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p id="index-1">Importa um módulo. Isso é melhor descrito referindo-se à função embutida do Python <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a>.</p>
+<p>O valor de retorno é uma nova referência ao módulo importado ou pacote de nível superior, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida em caso de falha. Como para <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a>, o valor de retorno quando um submódulo de um pacote é solicitado é normalmente o pacote de nível superior, a menos que um <em>fromlist</em> não vazio seja fornecido.</p>
+<p>As importações com falhas removem objetos incompletos do módulo, como em <a class="reference internal" href="#c.PyImport_ImportModule" title="PyImport_ImportModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportModuleLevelObject">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ImportModuleLevelObject</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>globals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>locals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>fromlist</em>, int <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportModuleLevelObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a> since version 3.7.</em><p>Importa um módulo. Isso é melhor descrito referindo-se à função embutida do Python <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a>, já que a função padrão <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a> chama essa função diretamente.</p>
+<p>O valor de retorno é uma nova referência ao módulo importado ou pacote de nível superior, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida em caso de falha. Como para <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a>, o valor de retorno quando um submódulo de um pacote é solicitado é normalmente o pacote de nível superior, a menos que um <em>fromlist</em> não vazio seja fornecido.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportModuleLevel">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ImportModuleLevel</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>globals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>locals</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>fromlist</em>, int <em>level</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportModuleLevel" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Semelhante para <a class="reference internal" href="#c.PyImport_ImportModuleLevelObject" title="PyImport_ImportModuleLevelObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModuleLevelObject()</span></code></a>, mas o nome é uma string codificada em UTF-8 de um objeto Unicode.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Valores negativos para <em>level</em> não são mais aceitos.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_Import">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_Import</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_Import" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Essa é uma interface de alto nível que chama a atual “função auxiliar de importação” (com um <em>level</em> explícito de 0, significando importação absoluta). Invoca a função <a class="reference internal" href="../library/functions.html#import__" title="__import__"><code class="xref py py-func docutils literal notranslate"><span class="pre">__import__()</span></code></a> a partir de <code class="docutils literal notranslate"><span class="pre">__builtins__</span></code> da global atual. Isso significa que a importação é feita usando quaisquer extras de importação instalados no ambiente atual.</p>
+<p>Esta função sempre usa importações absolutas.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ReloadModule">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ReloadModule</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>m</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ReloadModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Recarrega um módulo. Retorna uma nova referência para o módulo recarregado, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida em caso de falha (o módulo ainda existe neste caso).</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_AddModuleObject">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_AddModuleObject</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_AddModuleObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: Borrowed reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a> since version 3.7.</em><p>Retorna o objeto módulo correspondente a um nome de módulo. O argumento <em>name</em> pode ter a forma <code class="docutils literal notranslate"><span class="pre">package.module</span></code>. Primeiro verifica o dicionário de módulos se houver algum, caso contrário, cria um novo e insere-o no dicionário de módulos. Retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida em caso de falha.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta função não carrega ou importa o módulo; se o módulo não foi carregado, você receberá um objeto de módulo vazio. Use <a class="reference internal" href="#c.PyImport_ImportModule" title="PyImport_ImportModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code></a> ou uma de suas variações para importar um módulo. Estruturas de pacotes implícitos por um nome pontilhado para a <em>name</em> não são criados se não estiverem presentes.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_AddModule">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_AddModule</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_AddModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: Borrowed reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Semelhante para <a class="reference internal" href="#c.PyImport_AddModuleObject" title="PyImport_AddModuleObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_AddModuleObject()</span></code></a>, mas o nome é uma string codifica em UTF-8 em vez de um objeto Unicode.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ExecCodeModule">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ExecCodeModule</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>co</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExecCodeModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-2">Dado um nome de módulo (possivelmente na forma <code class="docutils literal notranslate"><span class="pre">package.module</span></code>) e um objeto código lido de um arquivo de bytecode Python ou obtido da função embutida <a class="reference internal" href="../library/functions.html#compile" title="compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a>, carrega o módulo. Retorna uma nova referência ao objeto do módulo, ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> com uma exceção definida se ocorrer um erro. <em>name</em> é removido de <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> em casos de erro, mesmo se <em>name</em> já estivesse em <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> na entrada para <a class="reference internal" href="#c.PyImport_ExecCodeModule" title="PyImport_ExecCodeModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModule()</span></code></a>. Deixar módulos incompletamente inicializados em <a class="reference internal" href="../library/sys.html#sys.modules" title="sys.modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">sys.modules</span></code></a> é perigoso, pois as importações de tais módulos não têm como saber se o objeto módulo é um estado desconhecido (e provavelmente danificado em relação às intenções do autor do módulo).</p>
+<p>O <a class="reference internal" href="../reference/import.html#spec__" title="__spec__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__spec__</span></code></a> e o <a class="reference internal" href="../reference/import.html#loader__" title="__loader__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__loader__</span></code></a> do módulo serão definidos, se não estiverem, com os valores apropriados. O carregador do spec será definido para o <code class="docutils literal notranslate"><span class="pre">__loader__</span></code> do módulo (se definido) e para uma instância da classe <code class="xref py py-class docutils literal notranslate"><span class="pre">SourceFileLoader</span></code> em caso contrário.</p>
+<p>O atributo <a class="reference internal" href="../reference/import.html#file__" title="__file__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__file__</span></code></a> do módulo será definido para o <code class="xref c c-member docutils literal notranslate"><span class="pre">co_filename</span></code> do objeto código. Se aplicável, <a class="reference internal" href="../reference/import.html#cached__" title="__cached__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__cached__</span></code></a> também será definido.</p>
+<p>Esta função recarregará o módulo se este já tiver sido importado. Veja <a class="reference internal" href="#c.PyImport_ReloadModule" title="PyImport_ReloadModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ReloadModule()</span></code></a> para forma desejada de recarregar um módulo.</p>
+<p>Se <em>name</em> apontar para um nome pontilhado no formato de <code class="docutils literal notranslate"><span class="pre">package.module</span></code>, quaisquer estruturas de pacote ainda não criadas ainda não serão criadas.</p>
+<p>Veja também <a class="reference internal" href="#c.PyImport_ExecCodeModuleEx" title="PyImport_ExecCodeModuleEx"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModuleEx()</span></code></a> e  <a class="reference internal" href="#c.PyImport_ExecCodeModuleWithPathnames" title="PyImport_ExecCodeModuleWithPathnames"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModuleWithPathnames()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ExecCodeModuleEx">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ExecCodeModuleEx</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>co</em>, <em class="property">const</em> char *<em>pathname</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExecCodeModuleEx" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Como <a class="reference internal" href="#c.PyImport_ExecCodeModule" title="PyImport_ExecCodeModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModule()</span></code></a>, mas o atributo <a class="reference internal" href="../reference/import.html#file__" title="__file__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__file__</span></code></a>  do objeto módulo é definido como <em>pathname</em>  se não for <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<p>Veja também <a class="reference internal" href="#c.PyImport_ExecCodeModuleWithPathnames" title="PyImport_ExecCodeModuleWithPathnames"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModuleWithPathnames()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ExecCodeModuleObject">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ExecCodeModuleObject</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>co</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pathname</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>cpathname</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExecCodeModuleObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a> since version 3.7.</em><p>Como <a class="reference internal" href="#c.PyImport_ExecCodeModuleEx" title="PyImport_ExecCodeModuleEx"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModuleEx()</span></code></a>, mas o atributo <a class="reference internal" href="../reference/import.html#cached__" title="__cached__"><code class="xref py py-attr docutils literal notranslate"><span class="pre">__cached__</span></code></a>  do objeto módulo é definido como <em>cpathname</em>  se não for <code class="docutils literal notranslate"><span class="pre">NULL</span></code>. Das três funções, esta é a preferida para usar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ExecCodeModuleWithPathnames">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_ExecCodeModuleWithPathnames</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>co</em>, <em class="property">const</em> char *<em>pathname</em>, <em class="property">const</em> char *<em>cpathname</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExecCodeModuleWithPathnames" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Como <a class="reference internal" href="#c.PyImport_ExecCodeModuleObject" title="PyImport_ExecCodeModuleObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExecCodeModuleObject()</span></code></a>, mas <em>name</em>, <em>pathname</em> e <em>cpathname</em> são strings codificadas em UTF-8. Também são feitas tentativas para descobrir qual valor para <em>pathname</em> deve ser de <em>cpathname</em> se o primeiro estiver definido como <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Usa <a class="reference internal" href="../library/imp.html#imp.source_from_cache" title="imp.source_from_cache"><code class="xref py py-func docutils literal notranslate"><span class="pre">imp.source_from_cache()</span></code></a> no cálculo do caminho de origem se apenas o caminho do bytecode for fornecido.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_GetMagicNumber">
+long <code class="sig-name descname">PyImport_GetMagicNumber</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_GetMagicNumber" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna o número mágico para arquivos de bytecode Python (também conhecido como arquivo <code class="file docutils literal notranslate"><span class="pre">.pyc</span></code>). O número mágico deve estar presente nos primeiros quatro bytes do arquivo bytecode, na ordem de bytes little-endian. Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> em caso de erro.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.3: </span>Retorna o valor de <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de falha.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_GetMagicTag">
+<em class="property">const</em> char *<code class="sig-name descname">PyImport_GetMagicTag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_GetMagicTag" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna a string de tag mágica para nomes de arquivo de bytecode Python no formato de <span class="target" id="index-6"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-3147"><strong>PEP 3147</strong></a>. Tenha em mente que o valor em <code class="docutils literal notranslate"><span class="pre">sys.implementation.cache_tag</span></code> é autoritativo e deve ser usado no lugar desta função.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_GetModuleDict">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_GetModuleDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_GetModuleDict" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: Borrowed reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna o dicionário usado para a administração do módulo (também conhecido como <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code>). Observe que esta é uma variável por interpretador.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_GetModule">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_GetModule</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_GetModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a> since version 3.8.</em><p>Retorna o módulo já importado com o nome fornecido. Se o módulo ainda não foi importado, retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, mas não define um erro. Retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> e define um erro se a pesquisa falhar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_GetImporter">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyImport_GetImporter</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_GetImporter" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um objeto localizador para o item <em>path</em> de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>/<code class="xref py py-attr docutils literal notranslate"><span class="pre">pkg.__path__</span></code>, possivelmente obtendo-o do dicionário <a class="reference internal" href="../library/sys.html#sys.path_importer_cache" title="sys.path_importer_cache"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path_importer_cache</span></code></a>. Se ainda não foi armazenado em cache, atravessa <a class="reference internal" href="../library/sys.html#sys.path_hooks" title="sys.path_hooks"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path_hooks</span></code></a> até que um gancho seja encontrado que possa lidar com o item de caminho. Retorna <code class="docutils literal notranslate"><span class="pre">None</span></code> se nenhum gancho puder; isso diz ao nosso chamador que o <a class="reference internal" href="../glossary.html#term-path-based-finder"><span class="xref std std-term">localizador baseado no caminho</span></a> não conseguiu encontrar um localizador para este item de caminho. Armazena o resultado em <a class="reference internal" href="../library/sys.html#sys.path_importer_cache" title="sys.path_importer_cache"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path_importer_cache</span></code></a>. Retorna uma nova referência ao objeto localizador.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportFrozenModuleObject">
+int <code class="sig-name descname">PyImport_ImportFrozenModuleObject</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportFrozenModuleObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a> since version 3.7.</em><p>Carrega um módulo congelado chamado <em>name</em>. Retorna <code class="docutils literal notranslate"><span class="pre">1</span></code> para sucesso, <code class="docutils literal notranslate"><span class="pre">0</span></code> se o módulo não for encontrado e <code class="docutils literal notranslate"><span class="pre">-1</span></code> com uma exceção definida se a inicialização falhar. Para acessar o módulo importado em um carregamento bem-sucedido, use <a class="reference internal" href="#c.PyImport_ImportModule" title="PyImport_ImportModule"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportModule()</span></code></a>. (Observe o nome incorreto — esta função recarregaria o módulo se ele já tivesse sido importado.)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>O atributo <code class="docutils literal notranslate"><span class="pre">__file__</span></code> não está mais definido no módulo.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ImportFrozenModule">
+int <code class="sig-name descname">PyImport_ImportFrozenModule</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ImportFrozenModule" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Semelhante a <a class="reference internal" href="#c.PyImport_ImportFrozenModuleObject" title="PyImport_ImportFrozenModuleObject"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ImportFrozenModuleObject()</span></code></a>, mas o nome é uma string codificada em UTF-8 em vez de um objeto Unicode.</p>
+</dd></dl>
+
+<dl class="c type">
+<dt id="c._frozen">
+<em class="property">struct </em><code class="sig-name descname">_frozen</code><a class="headerlink" href="#c._frozen" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p id="index-4">Esta é a definição do tipo de estrutura para descritores de módulo congelados, conforme gerado pelo utilitário <strong class="program">freeze</strong> (veja <code class="file docutils literal notranslate"><span class="pre">Tools/freeze/</span></code> na distribuição fonte do Python). Sua definição, encontrada em <code class="file docutils literal notranslate"><span class="pre">Include/import.h</span></code>, é:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">_frozen</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">code</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="p">;</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.PyImport_FrozenModules">
+<em class="property">const</em> <em class="property">struct</em> <a class="reference internal" href="#c._frozen" title="_frozen">_frozen</a> *<code class="sig-name descname">PyImport_FrozenModules</code><a class="headerlink" href="#c.PyImport_FrozenModules" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Este ponteiro é inicializado para apontar para um vetor de registros de <code class="xref c c-type docutils literal notranslate"><span class="pre">struct_frozen</span></code>, terminado por um cujos membros são todos <code class="docutils literal notranslate"><span class="pre">NULL</span></code> ou zero. Quando um módulo congelado é importado, ele é pesquisado nesta tabela. O código de terceiros pode fazer truques com isso para fornecer uma coleção criada dinamicamente de módulos congelados.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_AppendInittab">
+int <code class="sig-name descname">PyImport_AppendInittab</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>name</em>, <a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *(*<em>initfunc</em>)<span class="sig-paren">(</span>void<span class="sig-paren">)</span><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_AppendInittab" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Adiciona um único módulo à tabela existente de módulos embutidos. Este é um invólucro prático em torno de <a class="reference internal" href="#c.PyImport_ExtendInittab" title="PyImport_ExtendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExtendInittab()</span></code></a>, retornando <code class="docutils literal notranslate"><span class="pre">-1</span></code> se a tabela não puder ser estendida. O novo módulo pode ser importado pelo nome <em>name</em> e usa a função <em>initfunc</em> como a função de inicialização chamada na primeira tentativa de importação. Deve ser chamado antes de <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c type">
+<dt id="c._inittab">
+<em class="property">struct </em><code class="sig-name descname">_inittab</code><a class="headerlink" href="#c._inittab" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Estrutura que descreve uma única entrada na lista de módulos embutidos. Cada uma dessas estruturas fornece o nome e a função de inicialização para um módulo embutido ao interpretador. O nome é uma string codificada em ASCII. Os programas que embutem Python podem usar um vetor dessas estruturas em conjunto com <a class="reference internal" href="#c.PyImport_ExtendInittab" title="PyImport_ExtendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExtendInittab()</span></code></a> para fornecer módulos embutidos adicionais. A estrutura é definida em <code class="file docutils literal notranslate"><span class="pre">Include/import.h</span></code> como:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">_inittab</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">name</span><span class="p">;</span><span class="w">           </span><span class="cm">/* ASCII encoded string */</span><span class="w"></span>
+<span class="w">    </span><span class="n">PyObject</span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">initfunc</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyImport_ExtendInittab">
+int <code class="sig-name descname">PyImport_ExtendInittab</code><span class="sig-paren">(</span><em class="property">struct</em> <a class="reference internal" href="#c._inittab" title="_inittab">_inittab</a> *<em>newtab</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyImport_ExtendInittab" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Adiciona uma coleção de módulos à tabela de módulos embutidos. O vetor <em>newtab</em> deve terminar com uma entrada sentinela que contém <code class="docutils literal notranslate"><span class="pre">NULL</span></code> para o campo <code class="xref py py-attr docutils literal notranslate"><span class="pre">name</span></code>; a falha em fornecer o valor sentinela pode resultar em uma falha de memória. Retorna <code class="docutils literal notranslate"><span class="pre">0</span></code> em caso de sucesso ou <code class="docutils literal notranslate"><span class="pre">-1</span></code> se memória insuficiente puder ser alocada para estender a tabela interna. Em caso de falha, nenhum módulo é adicionado à tabela interna. Deve ser chamado antes de <a class="reference internal" href="init.html#c.Py_Initialize" title="Py_Initialize"><code class="xref c c-func docutils literal notranslate"><span class="pre">Py_Initialize()</span></code></a>.</p>
+<p>Se Python é inicializado várias vezes, <a class="reference internal" href="#c.PyImport_AppendInittab" title="PyImport_AppendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_AppendInittab()</span></code></a> ou <a class="reference internal" href="#c.PyImport_ExtendInittab" title="PyImport_ExtendInittab"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyImport_ExtendInittab()</span></code></a> devem ser chamados antes de cada inicialização do Python.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="sys.html"
+                        title="capítulo anterior">Utilitários do Sistema Operacional</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="marshal.html"
+                        title="próximo capítulo">Suporte a <em>marshalling</em> de dados</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/import.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="marshal.html" title="Suporte a marshalling de dados"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="sys.html" title="Utilitários do Sistema Operacional"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="utilities.html" >Utilitários</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Importando módulos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

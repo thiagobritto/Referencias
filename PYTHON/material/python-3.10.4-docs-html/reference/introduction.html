@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>1. Introdução &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="2. Análise léxica" href="lexical_analysis.html" />
+    <link rel="prev" title="A Referência da Linguagem Python" href="index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/reference/introduction.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Introdução</a><ul>
+<li><a class="reference internal" href="#alternate-implementations">1.1. Implementações Alternativas</a></li>
+<li><a class="reference internal" href="#notation">1.2. Notação</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">A Referência da Linguagem Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="lexical_analysis.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Análise léxica</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/reference/introduction.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="lexical_analysis.html" title="2. Análise léxica"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="A Referência da Linguagem Python"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">A Referência da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="introduction">
+<span id="id1"></span><h1><span class="section-number">1. </span>Introdução<a class="headerlink" href="#introduction" title="Link permanente para este título">¶</a></h1>
+<p>Este manual de referência descreve a linguagem de programação Python. O mesmo não tem como objetivo de ser um tutorial.</p>
+<p>Enquanto estou tentando ser o mais preciso possível, optei por usar especificações em inglês e não formal para tudo, exceto para a sintaxe e análise léxica. Isso deve tornar o documento mais compreensível para o leitor intermediário, mas deixará margem para ambiguidades. Consequentemente, caso estivesses vindo de Marte e tentasse re-implementar o Python a partir deste documento, sozinho, talvez precisarias adivinhar algumas coisas e, na verdade, provavelmente acabaria por implementar um linguagem bem diferente. Por outro lado, se estiveres usando o Python e se perguntando quais são as regras precisas sobre uma determinada área da linguagem, você definitivamente encontrá neste documento o que estás procurando. Caso queiras ver uma definição mais formal do linguagem, talvez possas oferecer seu tempo — ou inventar uma máquina de clonagem :-).</p>
+<p>É perigoso adicionar muitos detalhes de implementação num documento de referência de uma linguagem - a implementação pode mudar e outras implementações da mesma linguagem podem funcionar de forma diferente. Por outro lado, o CPython é a única implementação de Python em uso de forma generalizada (embora as implementações alternativas continuem a ganhar suporte), e suas peculiaridades e particulares são por vezes dignas de serem mencionadas, especialmente quando a implementação impõe limitações adicionais. Portanto, encontrarás poucas “notas sobre a implementação” espalhadas neste documento.</p>
+<p>Cada implementação do Python vem com vários módulos embutidos e por padrão. Estes estão documentados em <a class="reference internal" href="../library/index.html#library-index"><span class="std std-ref">A Biblioteca Padrão do Python</span></a>. Alguns módulos embutidos são mencionados ao interagirem de forma significativa com a definição da linguagem.</p>
+<section id="alternate-implementations">
+<span id="implementations"></span><h2><span class="section-number">1.1. </span>Implementações Alternativas<a class="headerlink" href="#alternate-implementations" title="Link permanente para este título">¶</a></h2>
+<p>Embora exista uma implementação do Python que seja, de longe, a mais popular, existem algumas implementações alternativas que são de de interesse particular e para públicos diferentes.</p>
+<p>As implementações conhecidas são:</p>
+<dl class="simple">
+<dt>CPython</dt><dd><p>Esta é a implementação original e a é a versão do Python que mais vem sendo sendo desenvolvido e a mesma está escrita com a linguagem C. Novas funcionalidades ou recursos da linguagem aparecerão por aqui primeiro.</p>
+</dd>
+<dt>Jython</dt><dd><p>Versão do Python implementado em Java. Esta implementação pode ser usada como linguagem de Script em aplicações Java, ou pode ser usada para criar aplicativos usando as bibliotecas das classes do Java. Também vem sendo bastante utilizado na construção de testes unitários para as bibliotecas do Java. Mais informações podem ser encontradas no <a class="reference external" href="http://www.jython.org/">the Jython website</a>.</p>
+</dd>
+<dt>Python for .NET</dt><dd><p>Essa implementação utiliza de fato a implementação CPython, mas é um aplicativo gerenciado .NET e disponibilizado como uma bibliotecas .NET. Foi desenvolvido por Brian Lloyd. Para obter mais informações, consulte <a class="reference external" href="https://pythonnet.github.io/">Python for .NET home page</a>.</p>
+</dd>
+<dt>IronPython</dt><dd><p>Um versão alternativa do Python para a plataforma .NET. Ao contrário do Python.NET, esta é uma implementação completa do Python que gera IL e compila o código Python diretamente para assemblies .NET. Foi desenvolvida por Jim Hugunin, o criador original do Jython. Para obter mais informações, consulte <a class="reference external" href="http://ironpython.net/">the IronPython website</a>.</p>
+</dd>
+<dt>PyPy</dt><dd><p>Uma implementação do Python escrita completamente em Python. A mesma suporta vários recursos avançados não encontrados em outras implementações, como suporte sem pilhas e um compilador Just in Time. Um dos objetivos do projeto é incentivar a construção de experimentos com a própria linguagem, facilitando a modificação do interpretador (uma vez que o mesmos está escrito em Python). Informações adicionais estão disponíveis na página <a class="reference external" href="http://pypy.org/">the PyPy project’s home page</a>.</p>
+</dd>
+</dl>
+<p>Cada uma dessas implementações varia em alguma forma a linguagem conforme documentado neste manual, ou introduz informações específicas além do que está coberto na documentação padrão do Python. Consulte a documentação específica da implementação para determinar o que é necessário sobre a implementação específica que você está usando.</p>
+</section>
+<section id="notation">
+<span id="id2"></span><h2><span class="section-number">1.2. </span>Notação<a class="headerlink" href="#notation" title="Link permanente para este título">¶</a></h2>
+<p id="index-0">As descrições da Análise Léxica e da Sintaxe usam uma notação de gramática BNF modificada. Isso usa o seguinte estilo de definição:</p>
+<pre>
+<strong id="grammar-token-notation-name"><span id="grammar-token-name"></span>name     </strong> ::=  <a class="reference internal" href="#grammar-token-notation-lc_letter"><code class="xref docutils literal notranslate"><span class="pre">lc_letter</span></code></a> (<a class="reference internal" href="#grammar-token-notation-lc_letter"><code class="xref docutils literal notranslate"><span class="pre">lc_letter</span></code></a> | &quot;_&quot;)*
+<strong id="grammar-token-notation-lc_letter"><span id="grammar-token-lc-letter"></span>lc_letter</strong> ::=  &quot;a&quot;...&quot;z&quot;
+</pre>
+<p>A primeira linha diz que um <code class="docutils literal notranslate"><span class="pre">nome</span></code> é um <code class="docutils literal notranslate"><span class="pre">lc_letter</span></code> seguido de uma sequência de zero ou mais <code class="docutils literal notranslate"><span class="pre">lc_letter``s</span> <span class="pre">e</span> <span class="pre">underscores.</span> <span class="pre">Um</span> <span class="pre">``lc_letter</span></code> por sua vez é qualquer um dos caracteres simples <code class="docutils literal notranslate"><span class="pre">'a'</span></code> através de <code class="docutils literal notranslate"><span class="pre">'z'</span></code>. (Esta regra é aderida pelos nomes definidos nas regras léxicas e gramáticas deste documento.)</p>
+<p>Cada regra começa com um nome (no caso, o nome definido pela regra) e <code class="docutils literal notranslate"><span class="pre">::=</span></code>. Uma barra vertical (<code class="docutils literal notranslate"><span class="pre">|</span></code>) é usada para separar alternativas; o mesmo é o operador menos vinculativo nesta notação. Uma estrela (<code class="docutils literal notranslate"><span class="pre">*</span></code>) significa zero ou mais repetições do item anterior; da mesma forma, o sinal de adição (<code class="docutils literal notranslate"><span class="pre">+</span></code>) significa uma ou mais repetições, e uma frase entre colchetes (<code class="docutils literal notranslate"><span class="pre">[]</span></code>) significa zero ou uma ocorrência (em outras palavras, a frase anexada é opcional). Os operadores <code class="docutils literal notranslate"><span class="pre">*</span></code> e <code class="docutils literal notranslate"><span class="pre">+</span></code> se ligam tão forte quanto possível; parêntesis são usados para o agrupamento. Os literais Strings são delimitados por aspas. O espaço em branco só é significativo para separar os tokens. As regras normalmente estão contidas numa única linha; as regras com muitas alternativas podem ser formatadas alternativamente com cada linha após o primeiro começo com uma barra vertical.</p>
+<p id="index-1">Nas definições léxicas (como o exemplo acima), são utilizadas mais duas convenções: dois caracteres literais separados por três pontos significam a escolha de qualquer caractere único na faixa (inclusiva) fornecida pelos caracteres ASCII. Uma frase entre colchetes angulares (<code class="docutils literal notranslate"><span class="pre">&lt;...&gt;</span></code>) fornece uma descrição informal do símbolo definido; por exemplo, isso poderia ser usado para descrever a notação de ‘caractere de controle’, caso fosse necessário.</p>
+<p>Embora a notação utilizada seja quase a mesma, há uma grande diferença entre o significado das definições lexicais e sintáticas: uma definição lexical opera nos caracteres individuais da fonte de entrada, enquanto uma definição de sintaxe opera no fluxo de tokens gerados pelo analisador léxico. Todos os usos do BNF no próximo capítulo (“Lexical Analysis”) são definições léxicas; os usos nos capítulos subsequentes são definições sintáticas.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Introdução</a><ul>
+<li><a class="reference internal" href="#alternate-implementations">1.1. Implementações Alternativas</a></li>
+<li><a class="reference internal" href="#notation">1.2. Notação</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">A Referência da Linguagem Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="lexical_analysis.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Análise léxica</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/reference/introduction.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="lexical_analysis.html" title="2. Análise léxica"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="A Referência da Linguagem Python"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Referência da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Introdução</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

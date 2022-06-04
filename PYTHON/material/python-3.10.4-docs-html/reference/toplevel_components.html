@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>9. Componentes de Alto-Nível &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="10. Especificação Completa da Gramática" href="grammar.html" />
+    <link rel="prev" title="8. Instruções compostas" href="compound_stmts.html" />
+    <link rel="canonical" href="https://docs.python.org/3/reference/toplevel_components.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Componentes de Alto-Nível</a><ul>
+<li><a class="reference internal" href="#complete-python-programs">9.1. Programas Python completos</a></li>
+<li><a class="reference internal" href="#file-input">9.2. Entrada de arquivo</a></li>
+<li><a class="reference internal" href="#interactive-input">9.3. Entrada interativa</a></li>
+<li><a class="reference internal" href="#expression-input">9.4. Entrada de expressão</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="compound_stmts.html"
+                        title="capítulo anterior"><span class="section-number">8. </span>Instruções compostas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="grammar.html"
+                        title="próximo capítulo"><span class="section-number">10. </span>Especificação Completa da Gramática</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/reference/toplevel_components.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="grammar.html" title="10. Especificação Completa da Gramática"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="compound_stmts.html" title="8. Instruções compostas"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">A Referência da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Componentes de Alto-Nível</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="top-level-components">
+<span id="top-level"></span><h1><span class="section-number">9. </span>Componentes de Alto-Nível<a class="headerlink" href="#top-level-components" title="Link permanente para este título">¶</a></h1>
+<p id="index-0">O interpretador Python pode receber suas entradas de uma quantidade de fontes: de um script passado a ele como entrada padrão ou como um argumento do programa, digitado interativamente, de um arquivo fonte de um módulo, etc. Este capítulo mostra a sintaxe usada nesses casos.</p>
+<section id="complete-python-programs">
+<span id="programs"></span><h2><span class="section-number">9.1. </span>Programas Python completos<a class="headerlink" href="#complete-python-programs" title="Link permanente para este título">¶</a></h2>
+<span class="target" id="index-1"></span><p id="index-2">Ainda que uma especificação de linguagem não precise prescrever como o interpretador da linguagem é invocado, é útil ter uma noção de um programa Python completo. Um programa Python completo é executado em um ambiente minimamente inicializado: todos os módulos embutidos e padrões estão disponíveis, mas nenhum foi inicializado, exceto por <a class="reference internal" href="../library/sys.html#module-sys" title="sys: Access system-specific parameters and functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">sys</span></code></a> (serviços de sistema diversos), <a class="reference internal" href="../library/builtins.html#module-builtins" title="builtins: The module that provides the built-in namespace."><code class="xref py py-mod docutils literal notranslate"><span class="pre">builtins</span></code></a> (funções embutidas, exceções e <code class="docutils literal notranslate"><span class="pre">None</span></code>) e <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a>. O último é usado para fornecer o espaço de nomes global e local para execução de um programa completo.</p>
+<p>A sintaxe para um programa Python completo é esta para uma entrada de arquivo, descrita na próxima seção.</p>
+<p id="index-3">O interpretador também pode ser invocado no modo interativo; neste caso, ele não lê e executa um programa completo, mas lê e executa uma instrução (possivelmente composta) por vez. O ambiente inicial é idêntico àquele de um programa completo; cada instrução é executada no espaço de nomes de <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a>.</p>
+<p id="index-4">Um programa completo pode ser passado ao interpretador de três formas: com a opção de linha de comando <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> <em>string</em>, como um arquivo passado como o primeiro argumento da linha de comando, ou como uma entrada padrão. Se o arquivo ou a entrada padrão é um dispositivo tty, o interpretador entra em modo interativo; caso contrário, ele executa o arquivo como um programa completo.</p>
+</section>
+<section id="file-input">
+<span id="id1"></span><h2><span class="section-number">9.2. </span>Entrada de arquivo<a class="headerlink" href="#file-input" title="Link permanente para este título">¶</a></h2>
+<p>Toda entrada lida de arquivos não-interativos têm a mesma forma:</p>
+<pre>
+<strong id="grammar-token-python-grammar-file_input"><span id="grammar-token-file-input"></span>file_input</strong> ::=  (NEWLINE | <a class="reference internal" href="compound_stmts.html#grammar-token-python-grammar-statement"><code class="xref docutils literal notranslate"><span class="pre">statement</span></code></a>)*
+</pre>
+<p>Essa sintaxe é usada nas seguintes situações:</p>
+<ul class="simple">
+<li><p>quando analisando um programa Python completo (a partir de um arquivo ou de uma string);</p></li>
+<li><p>quando analisando um módulo;</p></li>
+<li><p>quando analisando uma string passada à função <a class="reference internal" href="../library/functions.html#exec" title="exec"><code class="xref py py-func docutils literal notranslate"><span class="pre">exec()</span></code></a>;</p></li>
+</ul>
+</section>
+<section id="interactive-input">
+<span id="interactive"></span><h2><span class="section-number">9.3. </span>Entrada interativa<a class="headerlink" href="#interactive-input" title="Link permanente para este título">¶</a></h2>
+<p>A entrada em modo interativo é analisada usando a seguinte gramática:</p>
+<pre>
+<strong id="grammar-token-python-grammar-interactive_input"><span id="grammar-token-interactive-input"></span>interactive_input</strong> ::=  [<a class="reference internal" href="compound_stmts.html#grammar-token-python-grammar-stmt_list"><code class="xref docutils literal notranslate"><span class="pre">stmt_list</span></code></a>] NEWLINE | <a class="reference internal" href="compound_stmts.html#grammar-token-python-grammar-compound_stmt"><code class="xref docutils literal notranslate"><span class="pre">compound_stmt</span></code></a> NEWLINE
+</pre>
+<p>Note que uma instrução composta (de alto-nível) deve ser seguida por uma linha em branco no modo interativo; isso é necessário para ajudar o analisador sintático a detectar o fim da entrada.</p>
+</section>
+<section id="expression-input">
+<span id="id2"></span><h2><span class="section-number">9.4. </span>Entrada de expressão<a class="headerlink" href="#expression-input" title="Link permanente para este título">¶</a></h2>
+<span class="target" id="index-5"></span><p id="index-6">A função <a class="reference internal" href="../library/functions.html#eval" title="eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a> é usada para uma entrada de expressão. Ela ignora espaços à esquerda. O argumento em string para <a class="reference internal" href="../library/functions.html#eval" title="eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a> deve ter a seguinte forma:</p>
+<pre>
+<strong id="grammar-token-python-grammar-eval_input"><span id="grammar-token-eval-input"></span>eval_input</strong> ::=  <a class="reference internal" href="expressions.html#grammar-token-python-grammar-expression_list"><code class="xref docutils literal notranslate"><span class="pre">expression_list</span></code></a> NEWLINE*
+</pre>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">9. Componentes de Alto-Nível</a><ul>
+<li><a class="reference internal" href="#complete-python-programs">9.1. Programas Python completos</a></li>
+<li><a class="reference internal" href="#file-input">9.2. Entrada de arquivo</a></li>
+<li><a class="reference internal" href="#interactive-input">9.3. Entrada interativa</a></li>
+<li><a class="reference internal" href="#expression-input">9.4. Entrada de expressão</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="compound_stmts.html"
+                        title="capítulo anterior"><span class="section-number">8. </span>Instruções compostas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="grammar.html"
+                        title="próximo capítulo"><span class="section-number">10. </span>Especificação Completa da Gramática</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/reference/toplevel_components.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="grammar.html" title="10. Especificação Completa da Gramática"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="compound_stmts.html" title="8. Instruções compostas"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Referência da Linguagem Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">9. </span>Componentes de Alto-Nível</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

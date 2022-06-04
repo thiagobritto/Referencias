@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>html — Suporte HTML(HyperText Markup Language) &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="html.parser — Simple HTML and XHTML parser" href="html.parser.html" />
+    <link rel="prev" title="Ferramentas de Processamento de Markup Estruturado" href="markup.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/html.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="markup.html"
+                        title="capítulo anterior">Ferramentas de Processamento de Markup Estruturado</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="html.parser.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.parser</span></code> — Simple HTML and XHTML parser</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/html.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="html.parser.html" title="html.parser — Simple HTML and XHTML parser"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="markup.html" title="Ferramentas de Processamento de Markup Estruturado"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="markup.html" accesskey="U">Ferramentas de Processamento de Markup Estruturado</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">html</span></code> — Suporte HTML(HyperText Markup Language)</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-html">
+<span id="html-hypertext-markup-language-support"></span><h1><a class="reference internal" href="#module-html" title="html: Helpers for manipulating HTML."><code class="xref py py-mod docutils literal notranslate"><span class="pre">html</span></code></a> — Suporte HTML(HyperText Markup Language)<a class="headerlink" href="#module-html" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/html/__init__.py">Lib/html/__init__.py</a></p>
+<hr class="docutils" />
+<p>Este módulo define utilitários para manipular HTML.</p>
+<dl class="py function">
+<dt id="html.escape">
+<code class="sig-prename descclassname">html.</code><code class="sig-name descname">escape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em>, <em class="sig-param"><span class="n">quote</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#html.escape" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Converte os caracteres <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> e <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> na string <em>s</em> para sequências seguras em HTML. Use se necessitar mostrar texto que possa conter estes caracteres no HTML. Se o flag opcional <em>quote</em> é true, os caracteres (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) e (<code class="docutils literal notranslate"><span class="pre">'</span></code>) também são convertidos; isso auxilia na inclusão de valores delimitados por aspas num atributo HTML, como em <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;...&quot;&gt;</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="html.unescape">
+<code class="sig-prename descclassname">html.</code><code class="sig-name descname">unescape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#html.unescape" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Converte todas as referências de caracteres numéricos e nomeados (ex. <code class="docutils literal notranslate"><span class="pre">&amp;gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;#62;</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;#x3e;</span></code>) na string <em>s</em> para caracteres Unicode correspondentes. Essa função usa as regras definidas pelo padrão HTML 5 para referências de caracteres, sejam válidas ou inválidas, e a <a class="reference internal" href="html.entities.html#html.entities.html5" title="html.entities.html5"><code class="xref py py-data docutils literal notranslate"><span class="pre">lista</span> <span class="pre">de</span> <span class="pre">referência</span> <span class="pre">de</span> <span class="pre">caracteres</span> <span class="pre">nomeados</span> <span class="pre">do</span> <span class="pre">HTML</span> <span class="pre">5</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<hr class="docutils" />
+<p>Sub módulos no pacote <code class="docutils literal notranslate"><span class="pre">html</span></code> são:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="html.parser.html#module-html.parser" title="html.parser: A simple parser that can handle HTML and XHTML."><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.parser</span></code></a> – analisador HTML/XHTML com modo de análise branda</p></li>
+<li><p><a class="reference internal" href="html.entities.html#module-html.entities" title="html.entities: Definitions of HTML general entities."><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.entities</span></code></a> – definições das entidade HTML</p></li>
+</ul>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="markup.html"
+                        title="capítulo anterior">Ferramentas de Processamento de Markup Estruturado</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="html.parser.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">html.parser</span></code> — Simple HTML and XHTML parser</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/html.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="html.parser.html" title="html.parser — Simple HTML and XHTML parser"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="markup.html" title="Ferramentas de Processamento de Markup Estruturado"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="markup.html" >Ferramentas de Processamento de Markup Estruturado</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">html</span></code> — Suporte HTML(HyperText Markup Language)</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

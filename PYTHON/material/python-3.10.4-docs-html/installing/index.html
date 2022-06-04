@@ -1,0 +1,429 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Instalando módulos Python &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Python HOWTOs" href="../howto/index.html" />
+    <link rel="prev" title="Distribuindo módulos Python" href="../distributing/index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/installing/index.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Instalando módulos Python</a><ul>
+<li><a class="reference internal" href="#key-terms">Termos chave</a></li>
+<li><a class="reference internal" href="#basic-usage">Uso básico</a></li>
+<li><a class="reference internal" href="#how-do-i">Como eu …?</a><ul>
+<li><a class="reference internal" href="#install-pip-in-versions-of-python-prior-to-python-3-4">… instalo <code class="docutils literal notranslate"><span class="pre">pip</span></code> em versões do Python anteriores ao Python 3.4?</a></li>
+<li><a class="reference internal" href="#install-packages-just-for-the-current-user">… instalo pacotes apenas para o usuário atual?</a></li>
+<li><a class="reference internal" href="#install-scientific-python-packages">… instalo pacotes científicos do Python?</a></li>
+<li><a class="reference internal" href="#work-with-multiple-versions-of-python-installed-in-parallel">… trabalho com várias versões do Python instaladas em paralelo?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-installation-issues">Problemas comuns de instalação</a><ul>
+<li><a class="reference internal" href="#installing-into-the-system-python-on-linux">Instalando no sistema Python no Linux</a></li>
+<li><a class="reference internal" href="#pip-not-installed">Pip não instalado</a></li>
+<li><a class="reference internal" href="#installing-binary-extensions">Instalando extensões binárias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="../distributing/index.html"
+                        title="capítulo anterior">Distribuindo módulos Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="../howto/index.html"
+                        title="próximo capítulo">Python HOWTOs</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/installing/index.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../howto/index.html" title="Python HOWTOs"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="../distributing/index.html" title="Distribuindo módulos Python"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+        <li class="nav-item nav-item-this"><a href="">Instalando módulos Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="installing-python-modules">
+<span id="installing-index"></span><h1>Instalando módulos Python<a class="headerlink" href="#installing-python-modules" title="Link permanente para este título">¶</a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">E-mail</dt>
+<dd class="field-odd"><p><a class="reference external" href="mailto:distutils-sig&#37;&#52;&#48;python&#46;org">distutils-sig<span>&#64;</span>python<span>&#46;</span>org</a></p>
+</dd>
+</dl>
+<p>Como um projeto popular de desenvolvimento de código aberto, Python tem uma comunidade de apoio ativa de colaboradores e usuários, que também fazem o seu software disponível para outros desenvolvedores de Python para usar sob os termos da licença de código aberto.</p>
+<p>Isso permite aos usuários Python compartilhar e colaborar efetivamente, se beneficiando das soluções que outros já tenham criado para os problemas mais comuns (em alguns casos até mesmo os raros), bem como potencialmente contribuindo com suas próprias soluções para o conjunto de soluções comuns.</p>
+<p>Este guia cobre a parte do processo de instalação. Para um guia sobre criar e compartilhar seus próprios projetos Python, refira-se à <a class="reference internal" href="../distributing/index.html#distributing-index"><span class="std std-ref">guia de distribuição</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Para corporações e outros usuários institucionais, esteja ciente que muitas organizações têm suas próprias políticas em relação ao uso e contribuição para o software de código aberto. Por favor, leve em conta essas políticas ao usar as ferramentas de distribuição e instalação fornecidas com o Python.</p>
+</div>
+<section id="key-terms">
+<h2>Termos chave<a class="headerlink" href="#key-terms" title="Link permanente para este título">¶</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pip</span></code> é o programa de instalação preferido. A partir do Python 3.4, ele é incluído por padrão com os instaladores binários do Python.</p></li>
+<li><p>Um <em>ambiente virtual</em> é um ambiente Python semi-isolado que permite que pacotes sejam instalados para uso por uma aplicação específica, em vez de serem instaladas em todo o sistema.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">venv</span></code> é a ferramenta padrão para criar ambientes virtuais e faz parte do Python desde o Python 3.3. A partir do Python 3.4, o padrão é instalar <code class="docutils literal notranslate"><span class="pre">pip</span></code> em todos os ambientes virtuais criados.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">virtualenv</span></code> é uma alternativa de terceiros (e predecessora) ao <code class="docutils literal notranslate"><span class="pre">venv</span></code>. Ele permite que ambientes virtuais sejam usados em versões do Python anteriores a 3.4, que não fornecem <code class="docutils literal notranslate"><span class="pre">venv</span></code> de forma alguma, ou não são capazes de instalar automaticamente o <code class="docutils literal notranslate"><span class="pre">pip</span></code> nos ambientes criados.</p></li>
+<li><p>The <a class="reference external" href="https://pypi.org">Python Package Index</a> is a public
+repository of open source licensed packages made available for use by
+other Python users.</p></li>
+<li><p>o <a class="reference external" href="https://www.pypa.io/">Python Packaging Authority</a> é o grupo de desenvolvedores e autores de documentação responsáveis pela manutenção e evolução das ferramentas de empacotamento padrão e os metadados associados e padrões de formato de arquivo. Eles mantêm uma variedade de ferramentas, documentação e rastreadores de problemas no <a class="reference external" href="https://github.com/pypa">GitHub</a> e no <a class="reference external" href="https://bitbucket.org/pypa/">Bitbucket</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">distutils</span></code> é o sistema original de construção e distribuição adicionado pela primeira vez à biblioteca padrão Python em 1998. Embora o uso direto de <code class="docutils literal notranslate"><span class="pre">distutils</span></code> esteja sendo eliminado, ele ainda estabeleceu a base para a infraestrutura de distribuição e empacotamento atual, e não apenas permanece da biblioteca padrão, mas seu nome sobrevive de outras maneiras (como o nome da lista de e-mails usada para coordenar o desenvolvimento de padrões de empacotamento Python).</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>O uso de <code class="docutils literal notranslate"><span class="pre">venv</span></code> agora é recomendado para a criação de ambientes virtuais.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference external" href="https://packaging.python.org/installing/#creating-virtual-environments">Python Packaging User Guide: Creating and using virtual environments</a></p>
+</div>
+</section>
+<section id="basic-usage">
+<h2>Uso básico<a class="headerlink" href="#basic-usage" title="Link permanente para este título">¶</a></h2>
+<p>As ferramentas de empacotamento padrão são todas projetadas para serem usadas na linha de comando.</p>
+<p>The following command will install the latest version of a module and its
+dependencies from the Python Package Index:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m pip install SomePackage
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>For POSIX users (including macOS and Linux users), the examples in
+this guide assume the use of a <a class="reference internal" href="../glossary.html#term-virtual-environment"><span class="xref std std-term">virtual environment</span></a>.</p>
+<p>Para usuários do Windows, os exemplos neste guia presumem que a opção de ajustar a variável de ambiente PATH do sistema foi selecionada durante a instalação do Python.</p>
+</div>
+<p>Também é possível especificar uma versão exata ou mínima diretamente na linha de comando. Ao usar operadores de comparação como <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> ou algum outro caractere especial que é interpretado pelo shell, o nome do pacote e a versão devem ser colocados entre aspas duplas:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m pip install SomePackage==1.0.4    # specific version
+python -m pip install &quot;SomePackage&gt;=1.0.4&quot;  # minimum version
+</pre></div>
+</div>
+<p>Normalmente, se um módulo adequado já estiver instalado, tentar instalá-lo novamente não terá efeito. A atualização de módulos existentes deve ser solicitada explicitamente:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m pip install --upgrade SomePackage
+</pre></div>
+</div>
+<p>Mais informações e recursos sobre o <code class="docutils literal notranslate"><span class="pre">pip</span></code> e seus recursos podem ser encontrados no <a class="reference external" href="https://packaging.python.org">Python Packaging User Guide</a>.</p>
+<p>A criação de ambientes virtuais é feita através do módulo <a class="reference internal" href="../library/venv.html#module-venv" title="venv: Creation of virtual environments."><code class="xref py py-mod docutils literal notranslate"><span class="pre">venv</span></code></a>. A instalação de pacotes em um ambiente virtual ativo usa os comandos mostrados acima.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference external" href="https://packaging.python.org/installing/">Python Packaging User Guide: Installing Python Distribution Packages</a></p>
+</div>
+</section>
+<section id="how-do-i">
+<h2>Como eu …?<a class="headerlink" href="#how-do-i" title="Link permanente para este título">¶</a></h2>
+<p>Estas são respostas rápidas ou links para algumas tarefas comuns.</p>
+<section id="install-pip-in-versions-of-python-prior-to-python-3-4">
+<h3>… instalo <code class="docutils literal notranslate"><span class="pre">pip</span></code> em versões do Python anteriores ao Python 3.4?<a class="headerlink" href="#install-pip-in-versions-of-python-prior-to-python-3-4" title="Link permanente para este título">¶</a></h3>
+<p>Python apenas começou a empacotar <code class="docutils literal notranslate"><span class="pre">pip</span></code> com Python 3.4. Para versões anteriores, o <code class="docutils literal notranslate"><span class="pre">pip</span></code> precisa ser “inicializado” conforme descrito no Python Packaging User Guide.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference external" href="https://packaging.python.org/installing/#requirements-for-installing-packages">Python Packaging User Guide: Requirements for Installing Packages</a></p>
+</div>
+</section>
+<section id="install-packages-just-for-the-current-user">
+<h3>… instalo pacotes apenas para o usuário atual?<a class="headerlink" href="#install-packages-just-for-the-current-user" title="Link permanente para este título">¶</a></h3>
+<p>Passar a opção <code class="docutils literal notranslate"><span class="pre">--user</span></code> para <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">pip</span> <span class="pre">install</span></code> irá instalar um pacote apenas para o usuário atual, ao invés de para todos os usuários do sistema.</p>
+</section>
+<section id="install-scientific-python-packages">
+<h3>… instalo pacotes científicos do Python?<a class="headerlink" href="#install-scientific-python-packages" title="Link permanente para este título">¶</a></h3>
+<p>Vários pacotes científicos do Python têm dependências binárias complexas e atualmente não são fáceis de instalar usando o <code class="docutils literal notranslate"><span class="pre">pip</span></code> diretamente. Neste ponto, frequentemente será mais fácil para os usuários instalarem esses pacotes por <a class="reference external" href="https://packaging.python.org/science/">outros meios</a> ao invés de tentar instalá-los com <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference external" href="https://packaging.python.org/science/">Python Packaging User Guide: Installing Scientific Packages</a></p>
+</div>
+</section>
+<section id="work-with-multiple-versions-of-python-installed-in-parallel">
+<h3>… trabalho com várias versões do Python instaladas em paralelo?<a class="headerlink" href="#work-with-multiple-versions-of-python-installed-in-parallel" title="Link permanente para este título">¶</a></h3>
+<p>On Linux, macOS, and other POSIX systems, use the versioned Python commands
+in combination with the <code class="docutils literal notranslate"><span class="pre">-m</span></code> switch to run the appropriate copy of
+<code class="docutils literal notranslate"><span class="pre">pip</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python2   -m pip install SomePackage  # default Python 2
+python2.7 -m pip install SomePackage  # specifically Python 2.7
+python3   -m pip install SomePackage  # default Python 3
+python3.4 -m pip install SomePackage  # specifically Python 3.4
+</pre></div>
+</div>
+<p>Comandos <code class="docutils literal notranslate"><span class="pre">pip</span></code> com versão apropriada também podem estar disponíveis.</p>
+<p>No Windows, use o iniciador Python <code class="docutils literal notranslate"><span class="pre">py</span></code> em combinação com a opção <code class="docutils literal notranslate"><span class="pre">-m</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>py -2   -m pip install SomePackage  # default Python 2
+py -2.7 -m pip install SomePackage  # specifically Python 2.7
+py -3   -m pip install SomePackage  # default Python 3
+py -3.4 -m pip install SomePackage  # specifically Python 3.4
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-installation-issues">
+<h2>Problemas comuns de instalação<a class="headerlink" href="#common-installation-issues" title="Link permanente para este título">¶</a></h2>
+<section id="installing-into-the-system-python-on-linux">
+<h3>Instalando no sistema Python no Linux<a class="headerlink" href="#installing-into-the-system-python-on-linux" title="Link permanente para este título">¶</a></h3>
+<p>Em sistemas Linux, uma instalação Python normalmente será incluída como parte da distribuição. A instalação nesta instalação Python requer acesso root ao sistema, e pode interferir na operação do gerenciador de pacotes do sistema e outros componentes do sistema se um componente for atualizado inesperadamente usando <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+<p>Em tais sistemas, geralmente é melhor usar um ambiente virtual ou uma instalação por usuário ao instalar pacotes com <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
+</section>
+<section id="pip-not-installed">
+<h3>Pip não instalado<a class="headerlink" href="#pip-not-installed" title="Link permanente para este título">¶</a></h3>
+<p>É possível que o <code class="docutils literal notranslate"><span class="pre">pip</span></code> não seja instalado por padrão. Uma solução potencial é:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m ensurepip --default-pip
+</pre></div>
+</div>
+<p>Existem também recursos adicionais para <a class="reference external" href="https://packaging.python.org/tutorials/installing-packages/#install-pip-setuptools-and-wheel">instalar pip.</a></p>
+</section>
+<section id="installing-binary-extensions">
+<h3>Instalando extensões binárias<a class="headerlink" href="#installing-binary-extensions" title="Link permanente para este título">¶</a></h3>
+<p>O Python normalmente depende fortemente da distribuição baseada na fonte, com os usuários finais sendo esperados para compilar os módulos de extensão da fonte como parte do processo de instalação.</p>
+<p>With the introduction of support for the binary <code class="docutils literal notranslate"><span class="pre">wheel</span></code> format, and the
+ability to publish wheels for at least Windows and macOS through the
+Python Package Index, this problem is expected to diminish over time,
+as users are more regularly able to install pre-built extensions rather
+than needing to build them themselves.</p>
+<p>Algumas das soluções para instalar <a class="reference external" href="https://packaging.python.org/science/">softwares científicos</a> que ainda não estão disponíveis como arquivos <code class="docutils literal notranslate"><span class="pre">wheel</span></code> pré-construídos também podem ajudar a obter outras extensões binárias sem a necessidade para construí-los localmente.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference external" href="https://packaging.python.org/extensions/">Python Packaging User Guide: Binary Extensions</a></p>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Instalando módulos Python</a><ul>
+<li><a class="reference internal" href="#key-terms">Termos chave</a></li>
+<li><a class="reference internal" href="#basic-usage">Uso básico</a></li>
+<li><a class="reference internal" href="#how-do-i">Como eu …?</a><ul>
+<li><a class="reference internal" href="#install-pip-in-versions-of-python-prior-to-python-3-4">… instalo <code class="docutils literal notranslate"><span class="pre">pip</span></code> em versões do Python anteriores ao Python 3.4?</a></li>
+<li><a class="reference internal" href="#install-packages-just-for-the-current-user">… instalo pacotes apenas para o usuário atual?</a></li>
+<li><a class="reference internal" href="#install-scientific-python-packages">… instalo pacotes científicos do Python?</a></li>
+<li><a class="reference internal" href="#work-with-multiple-versions-of-python-installed-in-parallel">… trabalho com várias versões do Python instaladas em paralelo?</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#common-installation-issues">Problemas comuns de instalação</a><ul>
+<li><a class="reference internal" href="#installing-into-the-system-python-on-linux">Instalando no sistema Python no Linux</a></li>
+<li><a class="reference internal" href="#pip-not-installed">Pip não instalado</a></li>
+<li><a class="reference internal" href="#installing-binary-extensions">Instalando extensões binárias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="../distributing/index.html"
+                        title="capítulo anterior">Distribuindo módulos Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="../howto/index.html"
+                        title="próximo capítulo">Python HOWTOs</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/installing/index.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../howto/index.html" title="Python HOWTOs"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="../distributing/index.html" title="Distribuindo módulos Python"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+        <li class="nav-item nav-item-this"><a href="">Instalando módulos Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

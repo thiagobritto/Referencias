@@ -1,0 +1,494 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Objetos Inteiros &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Objetos Booleanos" href="bool.html" />
+    <link rel="prev" title="O Objeto None" href="none.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/long.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="none.html"
+                        title="capítulo anterior">O Objeto <code class="docutils literal notranslate"><span class="pre">None</span></code></a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="bool.html"
+                        title="próximo capítulo">Objetos Booleanos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/long.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="bool.html" title="Objetos Booleanos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="none.html" title="O Objeto None"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" accesskey="U">Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos Inteiros</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="integer-objects">
+<span id="longobjects"></span><h1>Objetos Inteiros<a class="headerlink" href="#integer-objects" title="Link permanente para este título">¶</a></h1>
+<p id="index-0">Todos os inteiros são implementados como objetos inteiros “longos” de tamanho arbitrário.</p>
+<p>Em caso de erro, a maioria das APIs <code class="docutils literal notranslate"><span class="pre">PyLong_As*</span></code> retorna <code class="docutils literal notranslate"><span class="pre">(tipo</span> <span class="pre">de</span> <span class="pre">retorno)-1</span></code> que não pode ser distinguido de um número. Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<dl class="c type">
+<dt id="c.PyLongObject">
+<em class="property">type </em><code class="sig-name descname">PyLongObject</code><a class="headerlink" href="#c.PyLongObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Este subtipo de <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyObject</span></code></a> representa um objeto inteiro Python.</p>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.PyLong_Type">
+<a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject">PyTypeObject</a> <code class="sig-name descname">PyLong_Type</code><a class="headerlink" href="#c.PyLong_Type" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Esta instância de <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> representa o tipo inteiro Python. Este é o mesmo objeto que <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a> na camada Python.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_Check">
+int <code class="sig-name descname">PyLong_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se seu argumento é um <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> ou um subtipo de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_CheckExact">
+int <code class="sig-name descname">PyLong_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se seu argumento é um <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, mas não um subtipo de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromLong">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromLong</code><span class="sig-paren">(</span>long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de <em>v</em> ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+<p>The current implementation keeps an array of integer objects for all integers
+between <code class="docutils literal notranslate"><span class="pre">-5</span></code> and <code class="docutils literal notranslate"><span class="pre">256</span></code>. When you create an int in that range you actually
+just get back a reference to the existing object.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromUnsignedLong">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromUnsignedLong</code><span class="sig-paren">(</span>unsigned long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromUnsignedLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de um <span class="xref c c-texpr">unsigned long</span> C ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromSsize_t">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromSsize_t</code><span class="sig-paren">(</span><a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromSsize_t" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de um <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a> C ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromSize_t">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromSize_t</code><span class="sig-paren">(</span>size_t <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromSize_t" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de um <code class="xref c c-type docutils literal notranslate"><span class="pre">size_t</span></code> C ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromLongLong">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromLongLong</code><span class="sig-paren">(</span>long long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromLongLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de um <span class="xref c c-texpr">long long</span> C ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromUnsignedLongLong">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromUnsignedLongLong</code><span class="sig-paren">(</span>unsigned long long <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromUnsignedLongLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> de um <span class="xref c c-texpr">unsigned long long</span> C ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromDouble">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromDouble</code><span class="sig-paren">(</span>double <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromDouble" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> da parte inteira de <em>v</em> ou <code class="docutils literal notranslate"><span class="pre">NULL</span></code> em caso de falha.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromString">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromString</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>str</em>, char **<em>pend</em>, int <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromString" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a> com base no valor da string em <em>str</em>, que é interpretado de acordo com a raiz em <em>base</em>. Se <em>pend</em> não for <code class="docutils literal notranslate"><span class="pre">NULL</span></code>, <em>*pend</em> apontará para o primeiro caractere em <em>str</em> que segue a representação do número. Se <em>base</em> for <code class="docutils literal notranslate"><span class="pre">0</span></code>, <em>str</em> é interpretado usando a definição de <a class="reference internal" href="../reference/lexical_analysis.html#integers"><span class="std std-ref">Inteiros Literais</span></a>; neste caso, zeros à esquerda em um número decimal diferente de zero aumenta um <a class="reference internal" href="../library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a>. Se <em>base</em> não for <code class="docutils literal notranslate"><span class="pre">0</span></code>, deve estar entre <code class="docutils literal notranslate"><span class="pre">2</span></code> e <code class="docutils literal notranslate"><span class="pre">36</span></code>, inclusive. Espaços iniciais e sublinhados simples após um especificador de base e entre dígitos são ignorados. Se não houver dígitos, <a class="reference internal" href="../library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> será levantada.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromUnicodeObject">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromUnicodeObject</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>u</em>, int <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromUnicodeObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Converte uma sequência de dígitos Unicode na string <em>u</em> para um valor inteiro Python.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_FromVoidPtr">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyLong_FromVoidPtr</code><span class="sig-paren">(</span>void *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_FromVoidPtr" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Cria um inteiro Python a partir do ponteiro <em>p</em>. O valor do ponteiro pode ser recuperado do valor resultante usando <a class="reference internal" href="#c.PyLong_AsVoidPtr" title="PyLong_AsVoidPtr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyLong_AsVoidPtr()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsLong">
+long <code class="sig-name descname">PyLong_AsLong</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-1">Return a C <span class="xref c c-texpr">long</span> representation of <em>obj</em>.  If <em>obj</em> is not an
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+(if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>obj</em> estiver fora do intervalo de um <span class="xref c c-texpr">long</span>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsLongAndOverflow">
+long <code class="sig-name descname">PyLong_AsLongAndOverflow</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em>, int *<em>overflow</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongAndOverflow" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="xref c c-texpr">long</span> representation of <em>obj</em>.  If <em>obj</em> is not an
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>
+method (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Se o valor de <em>obj</em> for maior que <code class="xref py py-const docutils literal notranslate"><span class="pre">LONG_MAX</span></code> ou menor que <code class="xref py py-const docutils literal notranslate"><span class="pre">LONG_MIN</span></code>, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">1</span></code> ou <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectivamente, e retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code>; caso contrário, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">0</span></code>. Se qualquer outra exceção ocorrer, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">0</span></code> e retorne <code class="docutils literal notranslate"><span class="pre">-1</span></code> como de costume.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsLongLong">
+long long <code class="sig-name descname">PyLong_AsLongLong</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-2">Return a C <span class="xref c c-texpr">long long</span> representation of <em>obj</em>.  If <em>obj</em> is not an
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+(if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>obj</em> estiver fora do intervalo de um <span class="xref c c-texpr">long long</span>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsLongLongAndOverflow">
+long long <code class="sig-name descname">PyLong_AsLongLongAndOverflow</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em>, int *<em>overflow</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsLongLongAndOverflow" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="xref c c-texpr">long long</span> representation of <em>obj</em>.  If <em>obj</em> is not an
+instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method
+(if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Se o valor de <em>obj</em> for maior que <code class="xref py py-const docutils literal notranslate"><span class="pre">LLONG_MAX</span></code> ou menor que <code class="xref py py-const docutils literal notranslate"><span class="pre">LLONG_MIN</span></code>, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">1</span></code> ou <code class="docutils literal notranslate"><span class="pre">-1</span></code>, respectivamente, e retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code>; caso contrário, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">0</span></code>. Se qualquer outra exceção ocorrer, define <em>*overflow</em> para <code class="docutils literal notranslate"><span class="pre">0</span></code> e retorne <code class="docutils literal notranslate"><span class="pre">-1</span></code> como de costume.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsSsize_t">
+<a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <code class="sig-name descname">PyLong_AsSsize_t</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsSsize_t" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-3">Retorna uma representação de <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a> C de <em>pylong</em>. <em>pylong</em> deve ser uma instância de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>pylong</em> estiver fora do intervalo de um <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_ssize_t</span></code></a>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsUnsignedLong">
+unsigned long <code class="sig-name descname">PyLong_AsUnsignedLong</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-4">Retorna uma representação de <span class="xref c c-texpr">unsigned long</span> C de <em>pylong</em>. <em>pylong</em> deve ser uma instância de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>pylong</em> estiver fora do intervalo de um <span class="xref c c-texpr">unsigned long</span>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long)-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsSize_t">
+size_t <code class="sig-name descname">PyLong_AsSize_t</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsSize_t" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-5">Retorna uma representação de <code class="xref c c-type docutils literal notranslate"><span class="pre">size_t</span></code> C de <em>pylong</em>. <em>pylong</em> deve ser uma instância de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>pylong</em> estiver fora do intervalo de um <code class="xref c c-type docutils literal notranslate"><span class="pre">size_t</span></code>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(size)-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsUnsignedLongLong">
+unsigned long long <code class="sig-name descname">PyLong_AsUnsignedLongLong</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLongLong" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p id="index-6">Retorna uma representação de <span class="xref c c-texpr">unsigned long long</span> C de <em>pylong</em>. <em>pylong</em> deve ser uma instância de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>pylong</em> estiver fora do intervalo de um <span class="xref c c-texpr">unsigned long long</span>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long</span> <span class="pre">long)-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.1: </span>Um <em>pylong</em> negativo agora levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a>, não <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsUnsignedLongMask">
+unsigned long <code class="sig-name descname">PyLong_AsUnsignedLongMask</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLongMask" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="xref c c-texpr">unsigned long</span> representation of <em>obj</em>.  If <em>obj</em> is not
+an instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>
+method (if present) to convert it to a <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Se o valor de <em>obj</em> estiver fora do intervalo para um <span class="xref c c-texpr">unsigned long</span>, retorna a redução desse módulo de valor <code class="docutils literal notranslate"><span class="pre">ULONG_MAX</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long)-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsUnsignedLongLongMask">
+unsigned long long <code class="sig-name descname">PyLong_AsUnsignedLongLongMask</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsUnsignedLongLongMask" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Return a C <span class="xref c c-texpr">unsigned long long</span> representation of <em>obj</em>.  If <em>obj</em>
+is not an instance of <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>, first call its
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code> method (if present) to convert it to a
+<a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Se o valor de <em>obj</em> estiver fora do intervalo para um <span class="xref c c-texpr">unsigned long long</span>, retorna a redução desse módulo de valor <code class="docutils literal notranslate"><span class="pre">ULLONG_MAX</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">(unsigned</span> <span class="pre">long</span> <span class="pre">long)-1</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>This function will no longer use <code class="xref py py-meth docutils literal notranslate"><span class="pre">__int__()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsDouble">
+double <code class="sig-name descname">PyLong_AsDouble</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsDouble" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna uma representação de <span class="xref c c-texpr">double</span> C de <em>pylong</em>. <em>pylong</em> deve ser uma instância de <a class="reference internal" href="#c.PyLongObject" title="PyLongObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyLongObject</span></code></a>.</p>
+<p>Levanta <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> se o valor de <em>pylong</em> estiver fora do intervalo de um <span class="xref c c-texpr">double</span>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyLong_AsVoidPtr">
+void *<code class="sig-name descname">PyLong_AsVoidPtr</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>pylong</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyLong_AsVoidPtr" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Converte um inteiro Python <em>pylong</em> em um ponteiro <span class="xref c c-texpr">void</span> C. Se <em>pylong</em> não puder ser convertido, uma <a class="reference internal" href="../library/exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> será levantada. Isso só é garantido para produzir um ponteiro utilizável <span class="xref c c-texpr">void</span> para valores criados com <a class="reference internal" href="#c.PyLong_FromVoidPtr" title="PyLong_FromVoidPtr"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyLong_FromVoidPtr()</span></code></a>.</p>
+<p>Retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code> no caso de erro.  Use <a class="reference internal" href="exceptions.html#c.PyErr_Occurred" title="PyErr_Occurred"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyErr_Occurred()</span></code></a> para desambiguar.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="none.html"
+                        title="capítulo anterior">O Objeto <code class="docutils literal notranslate"><span class="pre">None</span></code></a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="bool.html"
+                        title="próximo capítulo">Objetos Booleanos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/long.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="bool.html" title="Objetos Booleanos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="none.html" title="O Objeto None"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" >Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos Inteiros</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

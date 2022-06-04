@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Protocolo de Buffer Antigo &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Camada de Objetos Concretos" href="concrete.html" />
+    <link rel="prev" title="Protocolo de Buffer" href="buffer.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/objbuffer.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="buffer.html"
+                        title="capítulo anterior">Protocolo de Buffer</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="concrete.html"
+                        title="próximo capítulo">Camada de Objetos Concretos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/objbuffer.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="concrete.html" title="Camada de Objetos Concretos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="buffer.html" title="Protocolo de Buffer"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="abstract.html" accesskey="U">Camada de Objetos Abstratos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Protocolo de Buffer Antigo</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="old-buffer-protocol">
+<h1>Protocolo de Buffer Antigo<a class="headerlink" href="#old-buffer-protocol" title="Link permanente para este título">¶</a></h1>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Obsoleto desde a versão 3.0.</span></p>
+</div>
+<p>Essas funções faziam parte da API do “protocolo de buffer antigo” no Python 2. No Python 3, esse protocolo não existe mais, mas as funções ainda estão expostas para facilitar a portabilidade do código 2.x. Eles atuam como um wrapper de compatibilidade em torno do <a class="reference internal" href="buffer.html#bufferobjects"><span class="std std-ref">novo protocolo de buffer</span></a>, mas não oferecem controle sobre a vida útil dos recursos adquiridos quando um buffer é exportado.</p>
+<p>Portanto, é recomendável que você chame <a class="reference internal" href="buffer.html#c.PyObject_GetBuffer" title="PyObject_GetBuffer"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetBuffer()</span></code></a> (ou os <a class="reference internal" href="arg.html#arg-parsing"><span class="std std-ref">códigos de formatação</span></a> <code class="docutils literal notranslate"><span class="pre">y*</span></code> ou <code class="docutils literal notranslate"><span class="pre">w*</span></code> com o família de funções de <a class="reference internal" href="arg.html#c.PyArg_ParseTuple" title="PyArg_ParseTuple"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyArg_ParseTuple()</span></code></a>) para obter uma visão de buffer sobre um objeto e <a class="reference internal" href="buffer.html#c.PyBuffer_Release" title="PyBuffer_Release"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyBuffer_Release()</span></code></a> quando a visão de buffer puder ser liberada.</p>
+<dl class="c function">
+<dt id="c.PyObject_AsCharBuffer">
+int <code class="sig-name descname">PyObject_AsCharBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em>, <em class="property">const</em> char **<em>buffer</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> *<em>buffer_len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_AsCharBuffer" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um ponteiro para um local de memória somente leitura utilizável como entrada baseada em caracteres. O argumento <em>obj</em> deve ter suporte a interface do buffer de caracteres de segmento único. Em caso de sucesso, retorna <code class="docutils literal notranslate"><span class="pre">0</span></code>, define <em>buffer</em> com o local da memória e <em>buffer_len</em> com o comprimento do buffer. Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e define a <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> em caso de erro.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyObject_AsReadBuffer">
+int <code class="sig-name descname">PyObject_AsReadBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em>, <em class="property">const</em> void **<em>buffer</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> *<em>buffer_len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_AsReadBuffer" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um ponteiro para um local de memória somente leitura que contém dados arbitrários. O argumento <em>obj</em> deve ter suporte a interface de buffer legível de segmento único. Em caso de sucesso, retorna <code class="docutils literal notranslate"><span class="pre">0</span></code>, define <em>buffer</em> com o local da memória e <em>buffer_len</em> com o comprimento do buffer. Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e define a <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> em caso de erro.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyObject_CheckReadBuffer">
+int <code class="sig-name descname">PyObject_CheckReadBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>o</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_CheckReadBuffer" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna <code class="docutils literal notranslate"><span class="pre">1</span></code> se <em>o</em> tiver suporte a interface de buffer legível de segmento único. Caso contrário, retorna <code class="docutils literal notranslate"><span class="pre">0</span></code>. Esta função sempre tem sucesso.</p>
+<p>Observe que esta função tenta obter e liberar um buffer, e as exceções que ocorrem ao chamar as funções correspondentes serão suprimidas. Para obter o relatório de erros, use <a class="reference internal" href="buffer.html#c.PyObject_GetBuffer" title="PyObject_GetBuffer"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyObject_GetBuffer()</span></code></a> em vez disso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyObject_AsWriteBuffer">
+int <code class="sig-name descname">PyObject_AsWriteBuffer</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>obj</em>, void **<em>buffer</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> *<em>buffer_len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyObject_AsWriteBuffer" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um ponteiro para um local de memória gravável. O argumento <em>obj</em> deve ter suporte a interface de buffer de caracteres de segmento único. Em caso de sucesso, retorna <code class="docutils literal notranslate"><span class="pre">0</span></code>, define <em>buffer</em> com o local da memória e <em>buffer_len</em> com o comprimento do buffer. Retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code> e define a <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> em caso de erro.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="buffer.html"
+                        title="capítulo anterior">Protocolo de Buffer</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="concrete.html"
+                        title="próximo capítulo">Camada de Objetos Concretos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/objbuffer.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="concrete.html" title="Camada de Objetos Concretos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="buffer.html" title="Protocolo de Buffer"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="abstract.html" >Camada de Objetos Abstratos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Protocolo de Buffer Antigo</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

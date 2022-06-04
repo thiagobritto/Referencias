@@ -1,0 +1,349 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>2. Utilizando o interpretador Python &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="3. Uma introdução informal ao Python" href="introduction.html" />
+    <link rel="prev" title="1. Abrindo seu apetite" href="appetite.html" />
+    <link rel="canonical" href="https://docs.python.org/3/tutorial/interpreter.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Utilizando o interpretador Python</a><ul>
+<li><a class="reference internal" href="#invoking-the-interpreter">2.1. Chamando o interpretador</a><ul>
+<li><a class="reference internal" href="#argument-passing">2.1.1. Passagem de argumentos</a></li>
+<li><a class="reference internal" href="#interactive-mode">2.1.2. Modo interativo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-interpreter-and-its-environment">2.2. O interpretador e seu ambiente</a><ul>
+<li><a class="reference internal" href="#source-code-encoding">2.2.1. Edição de código-fonte</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="appetite.html"
+                        title="capítulo anterior"><span class="section-number">1. </span>Abrindo seu apetite</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="próximo capítulo"><span class="section-number">3. </span>Uma introdução informal ao Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/interpreter.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="3. Uma introdução informal ao Python"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="appetite.html" title="1. Abrindo seu apetite"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Utilizando o interpretador Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="using-the-python-interpreter">
+<span id="tut-using"></span><h1><span class="section-number">2. </span>Utilizando o interpretador Python<a class="headerlink" href="#using-the-python-interpreter" title="Link permanente para este título">¶</a></h1>
+<section id="invoking-the-interpreter">
+<span id="tut-invoking"></span><h2><span class="section-number">2.1. </span>Chamando o interpretador<a class="headerlink" href="#invoking-the-interpreter" title="Link permanente para este título">¶</a></h2>
+<p>O interpretador Python é frequentemente instalado como <code class="file docutils literal notranslate"><span class="pre">/usr/local/bin/python3.10</span></code> nas máquinas onde está disponível; adicionando <code class="file docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> ao caminho de busca da shell de seu Unix torna-se possível iniciá-lo digitando o comando:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>python3.10
+</pre></div>
+</div>
+<p>no shell. <a class="footnote-reference brackets" href="#id2" id="id1">1</a> Considerando que a escolha do diretório onde o interpretador está é uma opção de instalação, outros locais são possíveis; verifique com seu guru local de Python ou administrador do sistema local. (Por exemplo, <code class="file docutils literal notranslate"><span class="pre">/usr/local/python</span></code> é um local alternativo popular.)</p>
+<p>Em máquinas Windows onde você instalou Python a partir da <a class="reference internal" href="../using/windows.html#windows-store"><span class="std std-ref">Microsoft Store</span></a>, o comando <code class="file docutils literal notranslate"><span class="pre">python3.10</span></code> estará disponível. Se você tem o <a class="reference internal" href="../using/windows.html#launcher"><span class="std std-ref">lançador py.exe</span></a> instalado, você pode usar o comando <code class="file docutils literal notranslate"><span class="pre">py</span></code>. Veja <a class="reference internal" href="../using/windows.html#setting-envvars"><span class="std std-ref">Excursus: Configurando variáveis de ambiente</span></a> para outras maneiras de executar o Python.</p>
+<p>Digitando um caractere de fim-de-arquivo (<kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd></kbd> no Unix, <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">Z</kbd></kbd> no Windows) diretamente no prompt força o interpretador a sair com status de saída zero. Se isso não funcionar, você pode sair do interpretador digitando o seguinte comando: <code class="docutils literal notranslate"><span class="pre">quit()</span></code>.</p>
+<p>Os recursos de edição de linha do interpretador incluem edição interativa, substituição de histórico e complemento de código, em sistemas com suporte à biblioteca <a class="reference external" href="https://tiswww.case.edu/php/chet/readline/rltop.html">GNU Readline</a>. Talvez a verificação mais rápida para ver se o suporte à edição de linha de comando está disponível é digitando <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Control</kbd>-<kbd class="kbd docutils literal notranslate">P</kbd></kbd> no primeiro prompt oferecido pelo Python. Se for emitido um bipe, você terá a edição da linha de comando; veja Apêndice <a class="reference internal" href="interactive.html#tut-interacting"><span class="std std-ref">Edição de entrada interativa e substituição de histórico</span></a> para uma introdução às combinações. Se nada acontecer, ou se <code class="docutils literal notranslate"><span class="pre">^P</span></code> aparecer na tela, a edição da linha de comando não está disponível; você só poderá usar backspace para remover caracteres da linha atual.</p>
+<p>O interpretador trabalha de forma semelhante a uma shell de Unix: quando chamado com a saída padrão conectada a um console de terminal, ele lê e executa comandos interativamente; quando chamado com um nome de arquivo como argumento, ou com redirecionamento da entrada padrão para ler um arquivo, o interpretador lê e executa o <em>script</em> contido no arquivo.</p>
+<p>Uma segunda forma de iniciar o interpretador é <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-c</span> <span class="pre">comando</span> <span class="pre">[arg]</span> <span class="pre">...</span></code>, que executa uma ou mais instruções especificadas na posição <em>comando</em>, analogamente à opção de shell <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a>. Considerando que comandos Python frequentemente têm espaços em branco (ou outros caracteres que são especiais para a shell) é aconselhável que o <em>comando</em> esteja dentro de aspas duplas.</p>
+<p>Alguns módulos Python são também úteis como scripts. Estes podem ser chamados usando <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">módulo</span> <span class="pre">[arg]</span> <span class="pre">...</span></code> que executa o arquivo fonte do <em>módulo</em> como se você tivesse digitado seu caminho completo na linha de comando.</p>
+<p>Quando um arquivo de script é utilizado, às vezes é útil executá-lo e logo em seguida entrar em modo interativo. Isto pode ser feito acrescentando o argumento <a class="reference internal" href="../using/cmdline.html#cmdoption-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a> antes do nome do script.</p>
+<p>Todas as opções de linha de comando são descritas em <a class="reference internal" href="../using/cmdline.html#using-on-general"><span class="std std-ref">Linha de comando e ambiente</span></a>.</p>
+<section id="argument-passing">
+<span id="tut-argpassing"></span><h3><span class="section-number">2.1.1. </span>Passagem de argumentos<a class="headerlink" href="#argument-passing" title="Link permanente para este título">¶</a></h3>
+<p>Quando são de conhecimento do interpretador, o nome do script e demais argumentos da linha de comando da shell são acessíveis ao próprio script através da variável <code class="docutils literal notranslate"><span class="pre">argv</span></code> do módulo <code class="docutils literal notranslate"><span class="pre">sys</span></code>. Pode-se acessar essa lista executando <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">sys</span></code>. Essa lista tem sempre ao menos um elemento; quando nenhum script ou argumento for passado para o interpretador, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> será uma string vazia. Quando o nome do script for <code class="docutils literal notranslate"><span class="pre">'-'</span></code> (significando entrada padrão), o conteúdo de <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> será <code class="docutils literal notranslate"><span class="pre">'-'</span></code>. Quando for utilizado <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> <em>comando</em>, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> conterá <code class="docutils literal notranslate"><span class="pre">'-c'</span></code>. Quando for utilizado <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> <em>módulo</em>, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> conterá o caminho completo do módulo localizado. Opções especificadas após <a class="reference internal" href="../using/cmdline.html#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> <em>comando</em> ou <a class="reference internal" href="../using/cmdline.html#cmdoption-m"><code class="xref std std-option docutils literal notranslate"><span class="pre">-m</span></code></a> <em>módulo</em> não serão consumidas pelo interpretador mas deixadas em <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> para serem tratadas pelo comando ou módulo.</p>
+</section>
+<section id="interactive-mode">
+<span id="tut-interactive"></span><h3><span class="section-number">2.1.2. </span>Modo interativo<a class="headerlink" href="#interactive-mode" title="Link permanente para este título">¶</a></h3>
+<p>Quando os comandos são lidos a partir do console, diz-se que o interpretador está em modo interativo. Nesse modo ele solicita um próximo comando através do <em>prompt primário</em>, tipicamente três sinais de maior (<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>); para linhas de continuação do comando atual, o <em>prompt secundário</em> padrão é formado por três pontos (<code class="docutils literal notranslate"><span class="pre">...</span></code>). O interpretador exibe uma mensagem de boas vindas, informando seu número de versão e um aviso de copyright antes de exibir o primeiro prompt:</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python3.10
+<span class="go">Python 3.10 (default, June 4 2019, 09:25:04)</span>
+<span class="go">[GCC 4.8.2] on linux</span>
+<span class="go">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Linhas de continuação são necessárias em construções multi-linha. Como exemplo, dê uma olhada nesse comando <a class="reference internal" href="../reference/compound_stmts.html#if"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">if</span></code></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">the_world_is_flat</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">the_world_is_flat</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Be careful not to fall off!&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">Be careful not to fall off!</span>
+</pre></div>
+</div>
+<p>Para mais informações sobre o modo interativo, veja <a class="reference internal" href="appendix.html#tut-interac"><span class="std std-ref">Modo interativo</span></a>.</p>
+</section>
+</section>
+<section id="the-interpreter-and-its-environment">
+<span id="tut-interp"></span><h2><span class="section-number">2.2. </span>O interpretador e seu ambiente<a class="headerlink" href="#the-interpreter-and-its-environment" title="Link permanente para este título">¶</a></h2>
+<section id="source-code-encoding">
+<span id="tut-source-encoding"></span><h3><span class="section-number">2.2.1. </span>Edição de código-fonte<a class="headerlink" href="#source-code-encoding" title="Link permanente para este título">¶</a></h3>
+<p>Por padrão, arquivos fonte de Python são tratados com codificação UTF-8. Nessa codificação, caracteres de muitos idiomas no mundo podem ser usados simultaneamente em literais string, identificadores e comentários — embora a biblioteca padrão use apenas caracteres ASCII para identificadores, uma convenção que qualquer código portável deve seguir. Para exibir todos esses caracteres corretamente, seu editor deve reconhecer que o arquivo é UTF-8 e deve usar uma fonte com suporte a todos os caracteres no arquivo.</p>
+<p>Para declarar uma codificação diferente da padrão, uma linha de comentário especial deve ser adicionada como <em>primeira</em> linha do arquivo. A sintaxe é essa:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: encoding -*-</span>
+</pre></div>
+</div>
+<p>onde <em>encoding</em> é uma das <a class="reference internal" href="../library/codecs.html#module-codecs" title="codecs: Encode and decode data and streams."><code class="xref py py-mod docutils literal notranslate"><span class="pre">codecs</span></code></a> válidas com suporte do Python.</p>
+<p>Por exemplo, para declarar que a codificação Windows-1252 deve ser usada, a primeira linha do seu arquivo fonte deve ser:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- coding: cp1252 -*-</span>
+</pre></div>
+</div>
+<p>Uma exceção para a regra da <em>primeira linha</em> é quando o código-fonte inicia com uma <a class="reference internal" href="appendix.html#tut-scripts"><span class="std std-ref">linha com UNIX “shebang”</span></a>. Nesse caso, a declaração de codificação deve ser adicionada como a segunda linha do arquivo. Por exemplo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python3</span>
+<span class="c1"># -*- coding: cp1252 -*-</span>
+</pre></div>
+</div>
+<p class="rubric">Notas de rodapé</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>No Unix, o interpretador Python 3.x não é instalado por padrão com o executável nomeado <code class="docutils literal notranslate"><span class="pre">python</span></code>, então não vai conflitar com um executável Python 2.x instalado simultaneamente.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Utilizando o interpretador Python</a><ul>
+<li><a class="reference internal" href="#invoking-the-interpreter">2.1. Chamando o interpretador</a><ul>
+<li><a class="reference internal" href="#argument-passing">2.1.1. Passagem de argumentos</a></li>
+<li><a class="reference internal" href="#interactive-mode">2.1.2. Modo interativo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-interpreter-and-its-environment">2.2. O interpretador e seu ambiente</a><ul>
+<li><a class="reference internal" href="#source-code-encoding">2.2.1. Edição de código-fonte</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="appetite.html"
+                        title="capítulo anterior"><span class="section-number">1. </span>Abrindo seu apetite</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="próximo capítulo"><span class="section-number">3. </span>Uma introdução informal ao Python</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/tutorial/interpreter.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="3. Uma introdução informal ao Python"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="appetite.html" title="1. Abrindo seu apetite"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >O tutorial de Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Utilizando o interpretador Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

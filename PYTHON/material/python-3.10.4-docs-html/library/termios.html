@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>termios — Controle de tty no estilo POSIX &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="tty — Funções de controle de terminal" href="tty.html" />
+    <link rel="prev" title="grp — The group database" href="grp.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/termios.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code> — Controle de tty no estilo POSIX</a><ul>
+<li><a class="reference internal" href="#example">Exemplo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="grp.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">grp</span></code> — The group database</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="tty.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tty</span></code> — Funções de controle de terminal</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/termios.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="tty.html" title="tty — Funções de controle de terminal"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="grp.html" title="grp — The group database"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="unix.html" accesskey="U">Serviços Específicos Unix</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code> — Controle de tty no estilo POSIX</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-termios">
+<span id="termios-posix-style-tty-control"></span><h1><a class="reference internal" href="#module-termios" title="termios: POSIX style tty control. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code></a> — Controle de tty no estilo POSIX<a class="headerlink" href="#module-termios" title="Link permanente para este título">¶</a></h1>
+<hr class="docutils" id="index-0" />
+<p>Este módulo fornece uma interface para as chamadas POSIX para controle de E/S do tty. Para uma descrição completa dessas chamadas, consulte a página de manual Unix <em class="manpage"><a class="manpage reference external" href="https://manpages.debian.org/termios(3)">termios(3)</a></em>. Está disponível apenas para as versões Unix que tenham suporte ao controle de E/S de tty no estilo POSIX do <em>termios</em> configurado durante a instalação.</p>
+<p>Todas as funções neste módulo usam um descritor de arquivo <em>fd</em> como seu primeiro argumento. Pode ser um descritor de arquivo de tipo inteiro, como retornado por <code class="docutils literal notranslate"><span class="pre">sys.stdin.fileno()</span></code>, ou um <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">objeto arquivo</span></a>, como o próprio <code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code>.</p>
+<p>Este módulo também define todas as constantes necessárias para trabalhar com as funções fornecidas aqui; estes têm o mesmo nome de seus equivalentes em C. Consulte a documentação do sistema para mais informações sobre o uso dessas interfaces de controle de terminal.</p>
+<p>O módulo define as seguintes funções:</p>
+<dl class="py function">
+<dt id="termios.tcgetattr">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcgetattr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcgetattr" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma lista contendo os atributos tty para o descritor de arquivo <em>fd</em>, da seguinte forma: <code class="docutils literal notranslate"><span class="pre">[iflag,</span> <span class="pre">oflag,</span> <span class="pre">cflag,</span> <span class="pre">lflag,</span> <span class="pre">ispeed,</span> <span class="pre">ospeed,</span> <span class="pre">cc]</span></code> onde <em>cc</em> é uma lista dos caracteres especiais do tty (cada uma string de comprimento 1, exceto os itens com índices <code class="xref py py-const docutils literal notranslate"><span class="pre">VMIN</span></code> e <code class="xref py py-const docutils literal notranslate"><span class="pre">VTIME</span></code>, que são números inteiros quando esses campos são definidos). A interpretação dos sinalizadores e as velocidades, bem como a indexação no vetor <em>cc</em>, devem ser feitas usando as constantes simbólicas definidas no módulo <a class="reference internal" href="#module-termios" title="termios: POSIX style tty control. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="termios.tcsetattr">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcsetattr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">when</span></em>, <em class="sig-param"><span class="n">attributes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcsetattr" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Define os atributos tty para o descritor de arquivo <em>fd</em> a partir de <em>attribute</em>, que é uma lista como a retornada por <a class="reference internal" href="#termios.tcgetattr" title="termios.tcgetattr"><code class="xref py py-func docutils literal notranslate"><span class="pre">tcgetattr()</span></code></a>. O argumento <em>when</em> determina quando os atributos são alterados: <code class="xref py py-const docutils literal notranslate"><span class="pre">TCSANOW</span></code> para mudar imediatamente, <code class="xref py py-const docutils literal notranslate"><span class="pre">TCSADRAIN</span></code> para alterar após transmitir todas as saídas na fila ou <code class="xref py py-const docutils literal notranslate"><span class="pre">TCSAFLUSH</span></code> para alterar após transmitir todas as saídas na fila e descartando todas as entradas na fila.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="termios.tcsendbreak">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcsendbreak</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">duration</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcsendbreak" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Envia uma quebra no descritor de arquivo <em>fd</em>. Uma duração zero, representada por <em>duration</em>, envia uma pausa por 0,25 a 0,5 segundos; <em>duration</em> com valor diferente de zero tem um significado dependente do sistema.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="termios.tcdrain">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcdrain</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcdrain" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Aguarda até que toda a saída escrita no descritor de arquivo <em>fd</em> seja transmitida.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="termios.tcflush">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcflush</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">queue</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcflush" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Descarta dados na fila no descritor de arquivo <em>fd</em>. O seletor <em>queue</em> especifica qual fila: <code class="xref py py-const docutils literal notranslate"><span class="pre">TCIFLUSH</span></code> para a fila de entrada, <code class="xref py py-const docutils literal notranslate"><span class="pre">TCOFLUSH</span></code> para a fila de saída ou <code class="xref py py-const docutils literal notranslate"><span class="pre">TCIOFLUSH</span></code> para as duas filas.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="termios.tcflow">
+<code class="sig-prename descclassname">termios.</code><code class="sig-name descname">tcflow</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fd</span></em>, <em class="sig-param"><span class="n">action</span></em><span class="sig-paren">)</span><a class="headerlink" href="#termios.tcflow" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Suspende ou retoma a entrada ou saída no descritor de arquivo <em>fd</em>. O argumento <em>action</em> pode ser <code class="xref py py-const docutils literal notranslate"><span class="pre">TCOOFF</span></code> para suspender a saída, <code class="xref py py-const docutils literal notranslate"><span class="pre">TCOON</span></code> para reiniciar a saída, <code class="xref py py-const docutils literal notranslate"><span class="pre">TCIOFF</span></code> para suspender a entrada ou <code class="xref py py-const docutils literal notranslate"><span class="pre">TCION</span></code> para reiniciar a entrada.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt>Módulo <a class="reference internal" href="tty.html#module-tty" title="tty: Utility functions that perform common terminal control operations. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tty</span></code></a></dt><dd><p>Funções de conveniência para operações comuns de controle de terminal.</p>
+</dd>
+</dl>
+</div>
+<section id="example">
+<span id="termios-example"></span><h2>Exemplo<a class="headerlink" href="#example" title="Link permanente para este título">¶</a></h2>
+<p>Aqui está uma função que solicita uma senha com o eco desativado. Observe a técnica usando uma chamada separada <a class="reference internal" href="#termios.tcgetattr" title="termios.tcgetattr"><code class="xref py py-func docutils literal notranslate"><span class="pre">tcgetattr()</span></code></a> e uma instrução <a class="reference internal" href="../reference/compound_stmts.html#try"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">try</span></code></a> … <a class="reference internal" href="../reference/compound_stmts.html#finally"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">finally</span></code></a> para garantir que os atributos tty antigos sejam restaurados exatamente, aconteça o que acontecer:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getpass</span><span class="p">(</span><span class="n">prompt</span><span class="o">=</span><span class="s2">&quot;Password: &quot;</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">termios</span><span class="o">,</span> <span class="nn">sys</span>
+    <span class="n">fd</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
+    <span class="n">old</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+    <span class="n">new</span> <span class="o">=</span> <span class="n">termios</span><span class="o">.</span><span class="n">tcgetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
+    <span class="n">new</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">termios</span><span class="o">.</span><span class="n">ECHO</span>          <span class="c1"># lflags</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="n">passwd</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">termios</span><span class="o">.</span><span class="n">tcsetattr</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="n">termios</span><span class="o">.</span><span class="n">TCSADRAIN</span><span class="p">,</span> <span class="n">old</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">passwd</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code> — Controle de tty no estilo POSIX</a><ul>
+<li><a class="reference internal" href="#example">Exemplo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="grp.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">grp</span></code> — The group database</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="tty.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tty</span></code> — Funções de controle de terminal</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/termios.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="tty.html" title="tty — Funções de controle de terminal"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="grp.html" title="grp — The group database"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="unix.html" >Serviços Específicos Unix</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">termios</span></code> — Controle de tty no estilo POSIX</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

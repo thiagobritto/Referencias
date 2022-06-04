@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Objetos de números complexos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Objetos Bytes" href="bytes.html" />
+    <link rel="prev" title="Objetos de ponto flutuante" href="float.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/complex.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Objetos de números complexos</a><ul>
+<li><a class="reference internal" href="#complex-numbers-as-c-structures">Números complexos como estruturas C.</a></li>
+<li><a class="reference internal" href="#complex-numbers-as-python-objects">Números complexos como objetos Python</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="float.html"
+                        title="capítulo anterior">Objetos de ponto flutuante</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="bytes.html"
+                        title="próximo capítulo">Objetos Bytes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/complex.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="bytes.html" title="Objetos Bytes"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="Objetos de ponto flutuante"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" accesskey="U">Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos de números complexos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="complex-number-objects">
+<span id="complexobjects"></span><h1>Objetos de números complexos<a class="headerlink" href="#complex-number-objects" title="Link permanente para este título">¶</a></h1>
+<p id="index-0">Os objetos de números complexos do Python são implementados como dois tipos distintos quando visualizados na API C: um é o objeto Python exposto aos programas Python e o outro é uma estrutura C que representa o valor real do número complexo. A API fornece funções para trabalhar com ambos.</p>
+<section id="complex-numbers-as-c-structures">
+<h2>Números complexos como estruturas C.<a class="headerlink" href="#complex-numbers-as-c-structures" title="Link permanente para este título">¶</a></h2>
+<p>Observe que as funções que aceitam essas estruturas como parâmetros e as retornam como resultados o fazem <em>por valor</em> em vez de desreferenciá-las por meio de ponteiros. Isso é consistente em toda a API.</p>
+<dl class="c type">
+<dt id="c.Py_complex">
+<em class="property">type </em><code class="sig-name descname">Py_complex</code><a class="headerlink" href="#c.Py_complex" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>A estrutura C que corresponde à parte do valor de um objeto de número complexo Python. A maioria das funções para lidar com objetos de números complexos usa estruturas desse tipo como valores de entrada ou saída, conforme apropriado. É definido como:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">real</span><span class="p">;</span><span class="w"></span>
+<span class="w">   </span><span class="kt">double</span><span class="w"> </span><span class="n">imag</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"> </span><span class="n">Py_complex</span><span class="p">;</span><span class="w"></span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_sum">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_sum</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>left</em>, <a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>right</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_sum" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a soma de dois números complexos, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_diff">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_diff</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>left</em>, <a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>right</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_diff" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a diferença entre dois números complexos, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a>:</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_neg">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_neg</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_neg" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a negação do número complexo <em>num</em>, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a></p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_prod">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_prod</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>left</em>, <a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>right</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_prod" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o produto de dois números complexos, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_quot">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_quot</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>dividend</em>, <a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>divisor</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_quot" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o quociente de dois números complexos, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a>.</p>
+<p>Se <em>divisor</em> é nulo, este método retorna zero e define <code class="xref c c-data docutils literal notranslate"><span class="pre">errno</span></code> para <code class="xref c c-data docutils literal notranslate"><span class="pre">EDOM</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c._Py_c_pow">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">_Py_c_pow</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>num</em>, <a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>exp</em><span class="sig-paren">)</span><a class="headerlink" href="#c._Py_c_pow" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna a exponenciação de <em>num</em> por <em>exp</em>, utilizando a representação C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a></p>
+<p>Se <em>num</em> for nulo e <em>exp</em> não for um número real positivo, este método retorna zero e define <code class="xref c c-data docutils literal notranslate"><span class="pre">errno</span></code> para <code class="xref c c-data docutils literal notranslate"><span class="pre">EDOM</span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="complex-numbers-as-python-objects">
+<h2>Números complexos como objetos Python<a class="headerlink" href="#complex-numbers-as-python-objects" title="Link permanente para este título">¶</a></h2>
+<dl class="c type">
+<dt id="c.PyComplexObject">
+<em class="property">type </em><code class="sig-name descname">PyComplexObject</code><a class="headerlink" href="#c.PyComplexObject" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Este subtipo de <a class="reference internal" href="structures.html#c.PyObject" title="PyObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyObject</span></code></a> representa um objeto Python de número complexo.</p>
+</dd></dl>
+
+<dl class="c var">
+<dt id="c.PyComplex_Type">
+<a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject">PyTypeObject</a> <code class="sig-name descname">PyComplex_Type</code><a class="headerlink" href="#c.PyComplex_Type" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Esta instância de <a class="reference internal" href="type.html#c.PyTypeObject" title="PyTypeObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyTypeObject</span></code></a> representa o tipo de número complexo Python. É o mesmo objeto que <a class="reference internal" href="../library/functions.html#complex" title="complex"><code class="xref py py-class docutils literal notranslate"><span class="pre">complex</span></code></a> na camada Python.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_Check">
+int <code class="sig-name descname">PyComplex_Check</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_Check" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se seu argumento é um <a class="reference internal" href="#c.PyComplexObject" title="PyComplexObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyComplexObject</span></code></a> ou um subtipo de <a class="reference internal" href="#c.PyComplexObject" title="PyComplexObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyComplexObject</span></code></a>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_CheckExact">
+int <code class="sig-name descname">PyComplex_CheckExact</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_CheckExact" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna true se seu argumento é um <a class="reference internal" href="#c.PyComplexObject" title="PyComplexObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyComplexObject</span></code></a>, mas não um subtipo de <a class="reference internal" href="#c.PyComplexObject" title="PyComplexObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyComplexObject</span></code></a>. Esta função sempre tem sucesso.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_FromCComplex">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyComplex_FromCComplex</code><span class="sig-paren">(</span><a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <em>v</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_FromCComplex" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Cria um novo objeto de número complexo Python a partir de um valor C <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_FromDoubles">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyComplex_FromDoubles</code><span class="sig-paren">(</span>double <em>real</em>, double <em>imag</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_FromDoubles" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna um novo objeto <a class="reference internal" href="#c.PyComplexObject" title="PyComplexObject"><code class="xref c c-type docutils literal notranslate"><span class="pre">PyComplexObject</span></code></a> de <em>real</em> e <em>imag</em>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_RealAsDouble">
+double <code class="sig-name descname">PyComplex_RealAsDouble</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_RealAsDouble" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna a parte real de <em>op</em> como um <span class="xref c c-texpr">double</span> C.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_ImagAsDouble">
+double <code class="sig-name descname">PyComplex_ImagAsDouble</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_ImagAsDouble" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="stableabi"> Part of the <a class="reference internal" href="stable.html#stable"><span class="std std-ref">Stable ABI</span></a>.</em><p>Retorna a parte imaginária de <em>op</em> como um <span class="xref c c-texpr">double</span> C.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyComplex_AsCComplex">
+<a class="reference internal" href="#c.Py_complex" title="Py_complex">Py_complex</a> <code class="sig-name descname">PyComplex_AsCComplex</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyComplex_AsCComplex" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna o valor <a class="reference internal" href="#c.Py_complex" title="Py_complex"><code class="xref c c-type docutils literal notranslate"><span class="pre">Py_complex</span></code></a> do número complexo <em>op</em>.</p>
+<p>Se <em>op</em> não é um objeto de número complexo Python, mas tem um método <code class="xref py py-meth docutils literal notranslate"><span class="pre">__complex__()</span></code>, este método será primeiro chamado para converter <em>op</em> em um objeto de número complexo Python. Se <code class="docutils literal notranslate"><span class="pre">__complex__()</span></code> não for definido, então ele recorre a <code class="xref py py-meth docutils literal notranslate"><span class="pre">__float__()</span></code>. Se <code class="docutils literal notranslate"><span class="pre">__float__()</span></code> não estiver definido, então ele volta para <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>. Em caso de falha, este método retorna <code class="docutils literal notranslate"><span class="pre">-1.0</span></code> como um valor real.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Usa <code class="xref py py-meth docutils literal notranslate"><span class="pre">__index__()</span></code>, se disponível.</p>
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Objetos de números complexos</a><ul>
+<li><a class="reference internal" href="#complex-numbers-as-c-structures">Números complexos como estruturas C.</a></li>
+<li><a class="reference internal" href="#complex-numbers-as-python-objects">Números complexos como objetos Python</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="float.html"
+                        title="capítulo anterior">Objetos de ponto flutuante</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="bytes.html"
+                        title="próximo capítulo">Objetos Bytes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/complex.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="bytes.html" title="Objetos Bytes"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="float.html" title="Objetos de ponto flutuante"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="concrete.html" >Camada de Objetos Concretos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Objetos de números complexos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

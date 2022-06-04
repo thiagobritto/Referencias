@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Suporte a marshalling de dados &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Análise de argumentos e construção de valores" href="arg.html" />
+    <link rel="prev" title="Importando módulos" href="import.html" />
+    <link rel="canonical" href="https://docs.python.org/3/c-api/marshal.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="import.html"
+                        title="capítulo anterior">Importando módulos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="arg.html"
+                        title="próximo capítulo">Análise de argumentos e construção de valores</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/marshal.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="arg.html" title="Análise de argumentos e construção de valores"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="import.html" title="Importando módulos"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="utilities.html" accesskey="U">Utilitários</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Suporte a <em>marshalling</em> de dados</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="data-marshalling-support">
+<span id="marshalling-utils"></span><h1>Suporte a <em>marshalling</em> de dados<a class="headerlink" href="#data-marshalling-support" title="Link permanente para este título">¶</a></h1>
+<p>Essas rotinas permitem que o código C trabalhe com objetos serializados usando o mesmo formato de dados que o módulo <a class="reference internal" href="../library/marshal.html#module-marshal" title="marshal: Convert Python objects to streams of bytes and back (with different constraints)."><code class="xref py py-mod docutils literal notranslate"><span class="pre">marshal</span></code></a>. Existem funções para gravar dados no formato de serialização e funções adicionais que podem ser usadas para ler os dados novamente. Os arquivos usados para armazenar dados empacotados devem ser abertos no modo binário.</p>
+<p>Os valores numéricos são armazenados primeiro com o byte menos significativo.</p>
+<p>O módulo possui suporte a duas versões do formato de dados: a versão 0 é a versão histórica, a versão 1 compartilha sequências de caracteres internas no arquivo e após a desserialização. A versão 2 usa um formato binário para números de ponto flutuante. <code class="docutils literal notranslate"><span class="pre">Py_MARSHAL_VERSION</span></code> indica o formato do arquivo atual (atualmente 2).</p>
+<dl class="c function">
+<dt id="c.PyMarshal_WriteLongToFile">
+void <code class="sig-name descname">PyMarshal_WriteLongToFile</code><span class="sig-paren">(</span>long <em>value</em>, FILE *<em>file</em>, int <em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_WriteLongToFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Aplica <em>marshalling</em> em um inteiro <span class="xref c c-texpr">long</span>, <em>value</em>, para <em>file</em>. Isso escreverá apenas os 32 bits menos significativos de <em>value</em>; independentemente do tamanho do tipo nativo <span class="xref c c-texpr">long</span>. <em>version</em> indica o formato do arquivo.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_WriteObjectToFile">
+void <code class="sig-name descname">PyMarshal_WriteObjectToFile</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>value</em>, FILE *<em>file</em>, int <em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_WriteObjectToFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Aplica <em>marshalling</em> em um objeto Python, <em>value</em>, para <em>file</em>. <em>version</em> indica o formato do arquivo.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_WriteObjectToString">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyMarshal_WriteObjectToString</code><span class="sig-paren">(</span><a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<em>value</em>, int <em>version</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_WriteObjectToString" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto de bytes que contém a representação pós-<em>marshalling</em> de <em>value</em>. <em>version</em> indica o formato do arquivo.</p>
+</dd></dl>
+
+<p>As seguintes funções permitem que os valores pós-<em>marshalling</em> sejam lidos novamente.</p>
+<dl class="c function">
+<dt id="c.PyMarshal_ReadLongFromFile">
+long <code class="sig-name descname">PyMarshal_ReadLongFromFile</code><span class="sig-paren">(</span>FILE *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_ReadLongFromFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna um <span class="xref c c-texpr">long</span> C do fluxo de dados em um <span class="xref c c-texpr">FILE*</span> aberto para leitura. Somente um valor de 32 bits pode ser lido usando essa função, independentemente do tamanho nativo de <span class="xref c c-texpr">long</span>.</p>
+<p>Em caso de erro, define a exceção apropriada (<a class="reference internal" href="../library/exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>) e retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_ReadShortFromFile">
+int <code class="sig-name descname">PyMarshal_ReadShortFromFile</code><span class="sig-paren">(</span>FILE *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_ReadShortFromFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><p>Retorna um <span class="xref c c-texpr">short</span> C do fluxo de dados em um <span class="xref c c-texpr">FILE*</span> aberto para leitura. Somente um valor de 16 bits pode ser lido usando essa função, independentemente do tamanho nativo de <span class="xref c c-texpr">short</span>.</p>
+<p>Em caso de erro, define a exceção apropriada (<a class="reference internal" href="../library/exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>) e retorna <code class="docutils literal notranslate"><span class="pre">-1</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_ReadObjectFromFile">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyMarshal_ReadObjectFromFile</code><span class="sig-paren">(</span>FILE *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_ReadObjectFromFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto Python do fluxo de dados em um <span class="xref c c-texpr">FILE*</span> aberto para leitura.</p>
+<p>Em caso de erro, define a exceção apropriada (<a class="reference internal" href="../library/exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>, <a class="reference internal" href="../library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> ou <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>) e retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_ReadLastObjectFromFile">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyMarshal_ReadLastObjectFromFile</code><span class="sig-paren">(</span>FILE *<em>file</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_ReadLastObjectFromFile" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto Python do fluxo de dados em um <span class="xref c c-texpr">FILE*</span> aberto para leitura. Diferentemente de <a class="reference internal" href="#c.PyMarshal_ReadObjectFromFile" title="PyMarshal_ReadObjectFromFile"><code class="xref c c-func docutils literal notranslate"><span class="pre">PyMarshal_ReadObjectFromFile()</span></code></a>, essa função presume que nenhum objeto adicional será lido do arquivo, permitindo que ele carregue agressivamente os dados do arquivo na memória, para que a desserialização possa operar a partir de dados na memória em vez de ler um byte por vez do arquivo. Use essas variantes apenas se tiver certeza de que não estará lendo mais nada do arquivo.</p>
+<p>Em caso de erro, define a exceção apropriada (<a class="reference internal" href="../library/exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>, <a class="reference internal" href="../library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> ou <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>) e retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt id="c.PyMarshal_ReadObjectFromString">
+<a class="reference internal" href="structures.html#c.PyObject" title="PyObject">PyObject</a> *<code class="sig-name descname">PyMarshal_ReadObjectFromString</code><span class="sig-paren">(</span><em class="property">const</em> char *<em>data</em>, <a class="reference internal" href="intro.html#c.Py_ssize_t" title="Py_ssize_t">Py_ssize_t</a> <em>len</em><span class="sig-paren">)</span><a class="headerlink" href="#c.PyMarshal_ReadObjectFromString" title="Link permanente para esta definição">¶</a><br /></dt>
+<dd><em class="refcount">Return value: New reference.</em><p>Retorna um objeto Python do fluxo de dados em um buffer de bytes contendo <em>len</em> bytes apontados por <em>data</em>.</p>
+<p>Em caso de erro, define a exceção apropriada (<a class="reference internal" href="../library/exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a>, <a class="reference internal" href="../library/exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> ou <a class="reference internal" href="../library/exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>) e retorna <code class="docutils literal notranslate"><span class="pre">NULL</span></code>.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="import.html"
+                        title="capítulo anterior">Importando módulos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="arg.html"
+                        title="próximo capítulo">Análise de argumentos e construção de valores</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/c-api/marshal.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="arg.html" title="Análise de argumentos e construção de valores"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="import.html" title="Importando módulos"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Manual de referência da API Python/C</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="utilities.html" >Utilitários</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Suporte a <em>marshalling</em> de dados</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

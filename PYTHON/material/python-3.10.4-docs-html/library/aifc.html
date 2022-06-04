@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>aifc — Lê e escreve arquivos AIFF e AIFC &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="asynchat — Asynchronous socket command/response handler" href="asynchat.html" />
+    <link rel="prev" title="Módulos Substituídos" href="superseded.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/aifc.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="superseded.html"
+                        title="capítulo anterior">Módulos Substituídos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="asynchat.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asynchat</span></code> — Asynchronous socket command/response handler</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/aifc.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="asynchat.html" title="asynchat — Asynchronous socket command/response handler"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="superseded.html" title="Módulos Substituídos"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="superseded.html" accesskey="U">Módulos Substituídos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Lê e escreve arquivos AIFF e AIFC</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-aifc">
+<span id="aifc-read-and-write-aiff-and-aifc-files"></span><h1><a class="reference internal" href="#module-aifc" title="aifc: Read and write audio files in AIFF or AIFC format. (obsoleto)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code></a> — Lê e escreve arquivos AIFF e AIFC<a class="headerlink" href="#module-aifc" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/aifc.py">Lib/aifc.py</a></p>
+<div class="deprecated" id="index-0">
+<p><span class="versionmodified deprecated">Obsoleto desde a versão 3.11: </span>The <a class="reference internal" href="#module-aifc" title="aifc: Read and write audio files in AIFF or AIFC format. (obsoleto)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code></a> module is deprecated
+(see <span class="target" id="index-1"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0594#aifc"><strong>PEP 594</strong></a> for details).</p>
+</div>
+<hr class="docutils" />
+<p>Este módulo fornece suporte para leitura e gravação de arquivos AIFF e AIFF-C. AIFF significa Audio Interchange File Format, um formato para armazenar amostras de áudio digital em um arquivo. AIFF-C é uma versão mais recente do formato que inclui a capacidade de compactar os dados de áudio.</p>
+<p>Arquivos de áudio têm vários parâmetros que descrevem os dados de áudio. A taxa de amostragem ou taxa de quadros é o número de vezes por segundo em que o som é amostrado. O número de canais indica se o áudio é mono, estéreo ou quadro. Cada quadro consiste em uma amostra por canal. O tamanho da amostra é o tamanho em bytes de cada amostra. Assim, um quadro consiste em <code class="docutils literal notranslate"><span class="pre">nchannels</span> <span class="pre">*</span> <span class="pre">samplesize</span></code> bytes e um segundo de áudio consiste em <code class="docutils literal notranslate"><span class="pre">nchannels</span> <span class="pre">*</span> <span class="pre">samplesize</span> <span class="pre">*</span> <span class="pre">framerate</span></code> bytes.</p>
+<p>Por exemplo, o áudio com qualidade de CD tem um tamanho de amostra de dois bytes (16 bits), usa dois canais (estéreo) e tem uma taxa de quadros de 44.100 quadros/segundo. Isto dá um tamanho de quadro de 4 bytes (2*2), e o valor de um segundo ocupa 2*2*44100 bytes (176.400 bytes).</p>
+<p>O módulo <a class="reference internal" href="#module-aifc" title="aifc: Read and write audio files in AIFF or AIFC format. (obsoleto)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code></a> define a seguinte função:</p>
+<dl class="py function">
+<dt id="aifc.open">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">open</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">file</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.open" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Abre um arquivo AIFF ou AIFF-C e retorna uma instância de objeto com os métodos descritos abaixo. O argumento <em>file</em> é uma string nomeando um arquivo ou um <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">objeto arquivo</span></a>. <em>mode</em> deve ser <code class="docutils literal notranslate"><span class="pre">'r'</span></code> ou <code class="docutils literal notranslate"><span class="pre">'rb'</span></code> quando o arquivo deve ser aberto para leitura, ou <code class="docutils literal notranslate"><span class="pre">'w'</span></code> ou <code class="docutils literal notranslate"><span class="pre">'wb'</span></code> quando o arquivo deve ser aberto para escrita. Se omitido, <code class="docutils literal notranslate"><span class="pre">file.mode</span></code> é usado se existir, caso contrário <code class="docutils literal notranslate"><span class="pre">'rb'</span></code> é usado. Quando usado para escrita, o objeto arquivo deve ser pesquisável, a menos que você saiba com antecedência quantas amostras você irá escrever no total e usar <code class="xref py py-meth docutils literal notranslate"><span class="pre">writeframesraw()</span></code> e <code class="xref py py-meth docutils literal notranslate"><span class="pre">setnframes()</span></code>. A função <a class="reference internal" href="#aifc.open" title="aifc.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> pode ser usada em um bloco de instrução <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a>. Quando o bloco <code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code> é concluído, o método <a class="reference internal" href="#aifc.aifc.close" title="aifc.aifc.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> é chamado.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>Suporte para a instrução <a class="reference internal" href="../reference/compound_stmts.html#with"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">with</span></code></a> foi adicionado.</p>
+</div>
+</dd></dl>
+
+<p>Objetos retornados por <a class="reference internal" href="#aifc.open" title="aifc.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> quando um arquivo é aberto para leitura têm os seguintes métodos:</p>
+<dl class="py method">
+<dt id="aifc.aifc.getnchannels">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getnchannels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getnchannels" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o número de canais de áudio (1 para mono, 2 para estéreo).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getsampwidth">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getsampwidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getsampwidth" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o tamanho em bytes de amostras individuais.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getframerate">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getframerate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getframerate" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a taxa de amostra (número de quadros de áudio por segundo).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getnframes">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getnframes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getnframes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o número de quadros de áudio no arquivo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getcomptype">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getcomptype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getcomptype" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um array de bytes de tamanho 4 descrevendo o tipo de compressão usada no arquivo de áudio. Para arquivos AIFF, o valor retornado é <code class="docutils literal notranslate"><span class="pre">b'NONE'</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getcompname">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getcompname</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getcompname" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um array de bytes convertível para uma descrição legível por humanos do tipo de compactação usado no arquivo de áudio. Para arquivos AIFF, o valor retornado é <code class="docutils literal notranslate"><span class="pre">b'not</span> <span class="pre">compressed'</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getparams">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getparams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getparams" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma <a class="reference internal" href="collections.html#collections.namedtuple" title="collections.namedtuple"><code class="xref py py-func docutils literal notranslate"><span class="pre">namedtuple()</span></code></a> <code class="docutils literal notranslate"><span class="pre">(nchannels,</span> <span class="pre">sampwidth,</span> <span class="pre">framerate,</span> <span class="pre">nframes,</span> <span class="pre">comptype,</span> <span class="pre">compname)</span></code>, equivalente à saída dos métodos <code class="xref py py-meth docutils literal notranslate"><span class="pre">get*()</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getmarkers">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getmarkers</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getmarkers" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma lista de marcadores no arquivo de áudio. Um marcador consiste em uma tupla de três elementos. O primeiro é o ID da marca (um inteiro), o segundo é a posição da marca nos quadros desde o início dos dados (um inteiro), o terceiro é o nome da marca (uma string).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.getmark">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">getmark</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.getmark" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a tupla como descrito em <a class="reference internal" href="#aifc.aifc.getmarkers" title="aifc.aifc.getmarkers"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getmarkers()</span></code></a> para a marca com o <em>id</em> fornecido.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.readframes">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">readframes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nframes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.readframes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Lê e retorna os próximos <em>nframes</em> quadros do arquivo de áudio. Os dados retornados são uma string contendo para cada quadro as amostras descompactadas de todos os canais.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.rewind">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">rewind</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.rewind" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Reinicia o ponteiro de leitura. O próximo <a class="reference internal" href="#aifc.aifc.readframes" title="aifc.aifc.readframes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">readframes()</span></code></a> começará do início.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setpos">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setpos</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pos</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setpos" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Procura o número do quadro especificado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.tell">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.tell" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o número do quadro atual.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.close">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.close" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Fecha o arquivo AIFF. Depois de chamar esse método, o objeto não pode mais ser usado.</p>
+</dd></dl>
+
+<p>Objetos retornados por <a class="reference internal" href="#aifc.open" title="aifc.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">open()</span></code></a> quando um arquivo é aberto para escrita possuem todos os métodos acima, exceto <code class="xref py py-meth docutils literal notranslate"><span class="pre">readframes()</span></code> e <code class="xref py py-meth docutils literal notranslate"><span class="pre">setpos()</span></code>. Além disso, os seguintes métodos existem. Os métodos <code class="xref py py-meth docutils literal notranslate"><span class="pre">get*()</span></code> só podem ser chamados após os métodos <code class="xref py py-meth docutils literal notranslate"><span class="pre">set*()</span></code> correspondentes terem sido chamados. Antes do primeiro <code class="xref py py-meth docutils literal notranslate"><span class="pre">writeframes()</span></code> ou <code class="xref py py-meth docutils literal notranslate"><span class="pre">writeframesraw()</span></code>, todos os parâmetros, exceto o número de quadros, devem ser preenchidos.</p>
+<dl class="py method">
+<dt id="aifc.aifc.aiff">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">aiff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.aiff" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Cria um arquivo AIFF. O padrão é que um arquivo AIFF-C seja criado, a menos que o nome do arquivo termine em <code class="docutils literal notranslate"><span class="pre">'.aiff'</span></code>, caso em que o padrão é um arquivo AIFF.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.aifc">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">aifc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.aifc" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Cria um arquivo AIFF-C. O padrão é que um arquivo AIFF-C seja criado, a menos que o nome do arquivo termine em <code class="docutils literal notranslate"><span class="pre">'.aiff'</span></code>, caso em que o padrão é um arquivo AIFF.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setnchannels">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setnchannels</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nchannels</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setnchannels" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Especifica o número de canais no arquivo de áudio.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setsampwidth">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setsampwidth</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">width</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setsampwidth" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Especifica o tamanho em bytes de amostras de áudio.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setframerate">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setframerate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">rate</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setframerate" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Especifica a frequência de amostragem em quadros por segundo.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setnframes">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setnframes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nframes</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setnframes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Especifica o número de quadros que devem ser escritos no arquivo de áudio. Se este parâmetro não estiver configurado ou estiver incorretamente configurado, o arquivo precisará ter suporte a procura.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setcomptype">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setcomptype</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">type</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setcomptype" title="Link permanente para esta definição">¶</a></dt>
+<dd><p id="index-2">Especifica o tipo de compactação. Se não for especificado, os dados de áudio não serão compactados. Em arquivos AIFF, a compactação não é possível. O parâmetro de nome deve ser uma descrição legível por humanos do tipo de compressão como uma array de bytes, o parâmetro de tipo deve ser uma array de bytes de tamanho 4. Atualmente, há suporte aos seguintes tipos de compactação: <code class="docutils literal notranslate"><span class="pre">b'NONE'</span></code>, <code class="docutils literal notranslate"><span class="pre">b'ULAW'</span></code>, <code class="docutils literal notranslate"><span class="pre">b'ALAW'</span></code>, <code class="docutils literal notranslate"><span class="pre">b'G722'</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setparams">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setparams</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">nchannels</span></em>, <em class="sig-param"><span class="n">sampwidth</span></em>, <em class="sig-param"><span class="n">framerate</span></em>, <em class="sig-param"><span class="n">comptype</span></em>, <em class="sig-param"><span class="n">compname</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setparams" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Define todos os parâmetros acima de uma só vez. O argumento é uma tupla que consiste em vários parâmetros. Isto significa que é possível usar o resultado de uma chamada de <a class="reference internal" href="#aifc.aifc.getparams" title="aifc.aifc.getparams"><code class="xref py py-meth docutils literal notranslate"><span class="pre">getparams()</span></code></a> como argumento para <a class="reference internal" href="#aifc.aifc.setparams" title="aifc.aifc.setparams"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setparams()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.setmark">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">setmark</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">pos</span></em>, <em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.setmark" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Adiciona uma marca com o ID fornecido (maior que 0) e o nome dado na posição determinada. Este método pode ser chamado a qualquer momento antes de <a class="reference internal" href="#aifc.aifc.close" title="aifc.aifc.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Retorna a posição atual de escrita no arquivo de saída. Útil em combinação com <a class="reference internal" href="#aifc.aifc.setmark" title="aifc.aifc.setmark"><code class="xref py py-meth docutils literal notranslate"><span class="pre">setmark()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.writeframes">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">writeframes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.writeframes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Escreve dados no arquivo de saída. Este método só pode ser chamado após os parâmetros do arquivo de áudio terem sido definidos.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>Todo <a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">objeto byte ou similar</span></a> agora é aceito.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="aifc.aifc.writeframesraw">
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">writeframesraw</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#aifc.aifc.writeframesraw" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Semelhante a <a class="reference internal" href="#aifc.aifc.writeframes" title="aifc.aifc.writeframes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">writeframes()</span></code></a>, exceto que o cabeçalho do arquivo de áudio não é atualizado.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>Todo <a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">objeto byte ou similar</span></a> agora é aceito.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-prename descclassname">aifc.</code><code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Fecha o arquivo AIFF. O cabeçalho do arquivo é atualizado para refletir o tamanho real dos dados de áudio. Depois de chamar esse método, o objeto não pode mais ser usado.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="superseded.html"
+                        title="capítulo anterior">Módulos Substituídos</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="asynchat.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">asynchat</span></code> — Asynchronous socket command/response handler</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/aifc.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="asynchat.html" title="asynchat — Asynchronous socket command/response handler"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="superseded.html" title="Módulos Substituídos"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="superseded.html" >Módulos Substituídos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">aifc</span></code> — Lê e escreve arquivos AIFF e AIFC</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

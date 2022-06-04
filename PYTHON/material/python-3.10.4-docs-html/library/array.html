@@ -1,0 +1,534 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>array— Vetores eficientes de valores numéricos &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="weakref — Weak references" href="weakref.html" />
+    <link rel="prev" title="bisect — Algoritmo de bisseção de vetor" href="bisect.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/array.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="bisect.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code> — Algoritmo de bisseção de vetor</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="weakref.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">weakref</span></code> — Weak references</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/array.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="weakref.html" title="weakref — Weak references"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="bisect.html" title="bisect — Algoritmo de bisseção de vetor"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="datatypes.html" accesskey="U">Tipos de Dados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">array</span></code>— Vetores eficientes de valores numéricos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-array">
+<span id="array-efficient-arrays-of-numeric-values"></span><h1><a class="reference internal" href="#module-array" title="array: Space efficient arrays of uniformly typed numeric values."><code class="xref py py-mod docutils literal notranslate"><span class="pre">array</span></code></a>— Vetores eficientes de valores numéricos<a class="headerlink" href="#module-array" title="Link permanente para este título">¶</a></h1>
+<hr class="docutils" id="index-0" />
+<p>Esse módulo define um tipo de objeto que pode representar compactamente um vetor de valores básicos: caracteres, inteiros, números de ponto flutuante. Vetores são tipos de sequência e funcionam bem parecidamente com listas, porém o tipo dos objetos armazenados é restringido. O tipo é especificado na criação do objeto usando um <em class="dfn">código de tipo</em>, que é um único caractere. São definidos os seguintes códigos de tipo:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 25%" />
+<col style="width: 24%" />
+<col style="width: 29%" />
+<col style="width: 9%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Código de tipo</p></th>
+<th class="head"><p>Tipo em C</p></th>
+<th class="head"><p>Tipo em Python</p></th>
+<th class="head"><p>Tamanho mínimo em bytes</p></th>
+<th class="head"><p>Notas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'b'</span></code></p></td>
+<td><p>signed char</p></td>
+<td><p>int</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'B'</span></code></p></td>
+<td><p>unsigned char</p></td>
+<td><p>int</p></td>
+<td><p>1</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'u'</span></code></p></td>
+<td><p>wchar_t</p></td>
+<td><p>Caractere unicode</p></td>
+<td><p>2</p></td>
+<td><p>(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'h'</span></code></p></td>
+<td><p>signed short</p></td>
+<td><p>int</p></td>
+<td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'H'</span></code></p></td>
+<td><p>unsigned short</p></td>
+<td><p>int</p></td>
+<td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'i'</span></code></p></td>
+<td><p>signed int</p></td>
+<td><p>int</p></td>
+<td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'I'</span></code></p></td>
+<td><p>unsigned int</p></td>
+<td><p>int</p></td>
+<td><p>2</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'l'</span></code></p></td>
+<td><p>signed long</p></td>
+<td><p>int</p></td>
+<td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'L'</span></code></p></td>
+<td><p>unsigned long</p></td>
+<td><p>int</p></td>
+<td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'q'</span></code></p></td>
+<td><p>signed long long</p></td>
+<td><p>int</p></td>
+<td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'Q'</span></code></p></td>
+<td><p>unsigned long long</p></td>
+<td><p>int</p></td>
+<td><p>8</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'f'</span></code></p></td>
+<td><p>float</p></td>
+<td><p>float</p></td>
+<td><p>4</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'d'</span></code></p></td>
+<td><p>double</p></td>
+<td><p>float</p></td>
+<td><p>8</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Notas:</p>
+<ol class="arabic">
+<li><p>Pode ser de 16 ou 32 bits dependendo da plataforma.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.9: </span><code class="docutils literal notranslate"><span class="pre">array('u')</span></code> agora usa <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> como tipo C no lugar do descontinuado <code class="docutils literal notranslate"><span class="pre">Py_UNICODE</span></code>. Essa mudança não afeta o comportamento pois <code class="docutils literal notranslate"><span class="pre">Py_UNICODE</span></code> é um apelido para <code class="docutils literal notranslate"><span class="pre">wchar_t</span></code> desde Python 3.3.</p>
+</div>
+<div class="deprecated-removed">
+<p><span class="versionmodified">Deprecated since version 3.3, will be removed in version 4.0.</span></p>
+</div>
+</li>
+</ol>
+<p>A representação dos valores é definida pela arquitetura da máquina, mais especificamente da implementação do C. O tamanho real pode ser acessado pelo atributo <code class="xref py py-attr docutils literal notranslate"><span class="pre">itemsize</span></code>.</p>
+<p>O módulo define o seguinte tipo:</p>
+<dl class="py class">
+<dt id="array.array">
+<em class="property">class </em><code class="sig-prename descclassname">array.</code><code class="sig-name descname">array</code><span class="sig-paren">(</span><em class="sig-param">typecode</em><span class="optional">[</span>, <em class="sig-param">initializer</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Um novo vetor cujos itens são restritos pelo <em>código de tipo</em> e inicializados pelo valor opcional <em>initializer</em>, que deve ser uma lista, um <a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">objeto byte ou similar</span></a>, ou outros elementos iteráveis do tipo apropriado.</p>
+<p>Se passado uma lista ou string, o inicializador é passado para os métodos <a class="reference internal" href="#array.array.fromlist" title="array.array.fromlist"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fromlist()</span></code></a>, <a class="reference internal" href="#array.array.frombytes" title="array.array.frombytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">frombytes()</span></code></a>, ou <a class="reference internal" href="#array.array.fromunicode" title="array.array.fromunicode"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fromunicode()</span></code></a> (ver abaixo) do novo vetor para adicionar itens iniciais ao vetor. Caso contrário, o inicializador iterável é passado para o método <a class="reference internal" href="#array.array.extend" title="array.array.extend"><code class="xref py py-meth docutils literal notranslate"><span class="pre">extend()</span></code></a>.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">array.__new__</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">typecode</span></code>, <code class="docutils literal notranslate"><span class="pre">initializer</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt id="array.typecodes">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">typecodes</code><a class="headerlink" href="#array.typecodes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>String com todos os códigos de tipo disponíveis.</p>
+</dd></dl>
+
+<p>Objetos array tem suporte para as operações de sequência comuns: indexação, fatiamento, concatenação, e multiplicação.  Quando usando a atribuição de fatias, o valor associado deve ser um objeto array com o mesmo código de tipo; caso contrário, <a class="reference internal" href="exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a> é levantada. Objetos array também implementam a interface buffer, e também podem ser usados em qualquer lugar onde <a class="reference internal" href="../glossary.html#term-bytes-like-object"><span class="xref std std-term">objetos byte ou similar</span></a> é permitido.</p>
+<p>Os seguintes itens e métodos também são suportados:</p>
+<dl class="py attribute">
+<dt id="array.array.typecode">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">typecode</code><a class="headerlink" href="#array.array.typecode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O caractere typecode usado para criar o vetor.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="array.array.itemsize">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">itemsize</code><a class="headerlink" href="#array.array.itemsize" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>O tamanho em bytes de um item do vetor em representação interna.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.append">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">append</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.append" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Adiciona um novo item com valor <em>x</em> ao final do vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.buffer_info">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">buffer_info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.buffer_info" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma tupla <code class="docutils literal notranslate"><span class="pre">(address,</span> <span class="pre">length)</span></code> com o endereço corrente da memória e o tamanho em elementos do buffer usado para armazenar conteúdos do vetor. O tamanho do buffer da memória em bytes pode ser computado como <code class="docutils literal notranslate"><span class="pre">array.buffer_info()[1]</span> <span class="pre">*</span> <span class="pre">array.itemsize</span></code>. Isso é ocasionalmente útil quando se está trabalhando com interfaces I/O de baixo nível (inerentemente inseguras) que precisam de endereços de memória, como algumas operações <code class="xref c c-func docutils literal notranslate"><span class="pre">ioctl()</span></code>. Os números retornados são válidos enquanto o vetor existir e nenhuma operação de alteração de tamanho for aplicada a ele.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Quando se está usando vetores de código escrito em C ou C++ (o único jeito efetivo de usar essa informação), faz mais sentido usar a interface do buffer suportada pelos vetores. Esse método é mantido para retrocompatibilidade e deve ser evitado em código novo. A interface de buffers está documentada em <a class="reference internal" href="../c-api/buffer.html#bufferobjects"><span class="std std-ref">Protocolo de Buffer</span></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.byteswap">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">byteswap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.byteswap" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>“Byteswap” todos os itens do vetor. Isso é somente suportado para valores de 1, 2, 4 ou 8 bytes de tamanho; para outros tipos de valores é levantada <a class="reference internal" href="exceptions.html#RuntimeError" title="RuntimeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">RuntimeError</span></code></a> .  Isso é útil quando estamos lendo dados de um arquivo para serem escritos em um arquivo de outra máquina de ordem de bytes diferente.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.count">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">count</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.count" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a quantidade de ocorrências de <em>x</em> no vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.extend">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">extend</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">iterable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.extend" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Acrescenta os itens de <em>iterable</em> ao final do vetor. Se <em>iterable</em> for outro vetor, ele deve ter <em>exatamente</em> o mesmo código de tipo; senão, ocorrerá uma <a class="reference internal" href="exceptions.html#TypeError" title="TypeError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">TypeError</span></code></a>. Se <em>iterable</em> não for um vetor, ele deve ser iterável e seus elementos devem ser do tipo correto para ser acrescentado ao vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.frombytes">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">frombytes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.frombytes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Adiciona itens da string, interpretando a string como um vetor (como se tivesse sido lido de um arquivo usando o método <a class="reference internal" href="#array.array.fromfile" title="array.array.fromfile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">fromfile()</span></code></a>).</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2: </span><code class="xref py py-meth docutils literal notranslate"><span class="pre">fromstring()</span></code> foi renomeado para <a class="reference internal" href="#array.array.frombytes" title="array.array.frombytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">frombytes()</span></code></a> para maior clareza.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.fromfile">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">fromfile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="n">n</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.fromfile" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Lê <em>n</em> itens (como valores de máquinas) do <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">objeto arquivo</span></a> <em>f</em> e adiciona-os ao fim do vetor. Se estão disponíveis menos de <em>n</em> itens, <a class="reference internal" href="exceptions.html#EOFError" title="EOFError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">EOFError</span></code></a> é levantada, mas os itens disponíveis ainda são inseridos ao final do vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.fromlist">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">fromlist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.fromlist" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Adiciona itens de <em>list</em>.  Isso é equivalente a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">x</span> <span class="pre">in</span> <span class="pre">list:</span> <span class="pre">a.append(x)</span></code> exceto que se ocorrer um errro de tipo, o vetor não é alterado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.fromunicode">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">fromunicode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.fromunicode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Estende este vetor com os dados da strind unicode fornecida.  O vetor deve ser do tipo <code class="docutils literal notranslate"><span class="pre">'u'</span></code>; aso contrário uma <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> será levantada.  Use <code class="docutils literal notranslate"><span class="pre">array.frombytes(unicodestring.encode(enc))</span></code> para adicionar dados Unicode para um vetor de outros tipos de dados.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.index">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">index</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="optional">[</span>, <em class="sig-param">start</em><span class="optional">[</span>, <em class="sig-param">stop</em><span class="optional">]</span><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.index" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Return the smallest <em>i</em> such that <em>i</em> is the index of the first occurrence of
+<em>x</em> in the array.  The optional arguments <em>start</em> and <em>stop</em> can be
+specified to search for <em>x</em> within a subsection of the array.  Raise
+<a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if <em>x</em> is not found.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>Added optional <em>start</em> and <em>stop</em> parameters.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.insert">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">insert</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">i</span></em>, <em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.insert" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Insere um novo item com o <em>x</em> no vetor antes da posição <em>i</em>. Valores negativos são tratados como sendo em relação ao fim do vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.pop">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">pop</code><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param">i</em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.pop" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remove o item com o índice <em>i</em> do vetor e retorna este item. O valor padrão do argumento é <code class="docutils literal notranslate"><span class="pre">-1</span></code>, assim por padrão o último item é removido e retornado.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.remove">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">remove</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.remove" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remove a primeira ocorrência de <em>x</em> do vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.reverse">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">reverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.reverse" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Inverte a ordem dos itens no vetor.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.tobytes">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">tobytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.tobytes" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Devolve os itens do vetor como um vetor de valores de máquina com a representação em bytes (a mesma sequência de bytes que seria escrita pelo método <a class="reference internal" href="#array.array.tofile" title="array.array.tofile"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tofile()</span></code></a>.)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2: </span><code class="xref py py-meth docutils literal notranslate"><span class="pre">tostring()</span></code> foi nomeada para <a class="reference internal" href="#array.array.tobytes" title="array.array.tobytes"><code class="xref py py-meth docutils literal notranslate"><span class="pre">tobytes()</span></code></a> para maior clareza.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.tofile">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">tofile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em><span class="sig-paren">)</span><a class="headerlink" href="#array.array.tofile" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Escreve todos os itens (como valores de máquinas) para o <a class="reference internal" href="../glossary.html#term-file-object"><span class="xref std std-term">objeto arquivo</span></a> <em>f</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.tolist">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">tolist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.tolist" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Devolve os itens do vetor como uma lista comum.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="array.array.tounicode">
+<code class="sig-prename descclassname">array.</code><code class="sig-name descname">tounicode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#array.array.tounicode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Devolve os itens do vetor como uma string unicode.  O vetor deve ser do tipo <code class="docutils literal notranslate"><span class="pre">'u'</span></code>; caso contrário <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> é levantada. Use <code class="docutils literal notranslate"><span class="pre">array.tobytes().decode(enc)</span></code> para obter uma string unicode de um vetor de outros tipos.</p>
+</dd></dl>
+
+<p>Quando um vetor é exibido ou convertido para uma string, é representado como <code class="docutils literal notranslate"><span class="pre">array(typecode,</span> <span class="pre">initializer)</span></code>. O <em>initializer</em> é omitido se o vetor estiver vazio, caso contrário será uma string se <em>typecode</em> for <code class="docutils literal notranslate"><span class="pre">'u'</span></code>, se não será uma lista de números. É garantido que será possível uma conversão da string de volta para um vetor com o mesmo tipo e valor usando <a class="reference internal" href="functions.html#eval" title="eval"><code class="xref py py-func docutils literal notranslate"><span class="pre">eval()</span></code></a>, contanto que a classe <a class="reference internal" href="#array.array" title="array.array"><code class="xref py py-class docutils literal notranslate"><span class="pre">array</span></code></a> tenha sido importada usando <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">array</span> <span class="pre">import</span> <span class="pre">array</span></code>. Exemplos:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+<span class="n">array</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;hello </span><span class="se">\u2641</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">array</span><span class="p">(</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">array</span><span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt>Módulo <a class="reference internal" href="struct.html#module-struct" title="struct: Interpret bytes as packed binary data."><code class="xref py py-mod docutils literal notranslate"><span class="pre">struct</span></code></a></dt><dd><p>Empacotamento e desempacotamento de dados binários heterogêneos.</p>
+</dd>
+<dt>Módulo <a class="reference internal" href="xdrlib.html#module-xdrlib" title="xdrlib: Encoders and decoders for the External Data Representation (XDR). (obsoleto)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">xdrlib</span></code></a></dt><dd><p>Empacotamento e desempacotamento de dados External Data Representation (XDR) usados em alguns sistemas para chamada remota de procedimentos.</p>
+</dd>
+<dt><a class="reference external" href="https://numpy.org/">NumPy</a></dt><dd><p>The NumPy package defines another array type.</p>
+</dd>
+</dl>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="bisect.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">bisect</span></code> — Algoritmo de bisseção de vetor</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="weakref.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">weakref</span></code> — Weak references</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/array.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="weakref.html" title="weakref — Weak references"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="bisect.html" title="bisect — Algoritmo de bisseção de vetor"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="datatypes.html" >Tipos de Dados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">array</span></code>— Vetores eficientes de valores numéricos</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

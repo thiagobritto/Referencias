@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>getpass — Entrada de senha portátil &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="curses — Gerenciador de terminal para visualizadores de células de caracteres." href="curses.html" />
+    <link rel="prev" title="logging.handlers — Tratadores de registro" href="logging.handlers.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/getpass.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="logging.handlers.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.handlers</span></code> — Tratadores de registro</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="curses.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code> — Gerenciador de terminal para visualizadores de células de caracteres.</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/getpass.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="curses.html" title="curses — Gerenciador de terminal para visualizadores de células de caracteres."
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="logging.handlers.html" title="logging.handlers — Tratadores de registro"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="allos.html" accesskey="U">Serviços Genéricos do Sistema Operacional</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code> — Entrada de senha portátil</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-getpass">
+<span id="getpass-portable-password-input"></span><h1><a class="reference internal" href="#module-getpass" title="getpass: Portable reading of passwords and retrieval of the userid."><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code></a> — Entrada de senha portátil<a class="headerlink" href="#module-getpass" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/getpass.py">Lib/getpass.py</a></p>
+<hr class="docutils" />
+<p>O módulo <a class="reference internal" href="#module-getpass" title="getpass: Portable reading of passwords and retrieval of the userid."><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code></a> fornece duas funções:</p>
+<dl class="py function">
+<dt id="getpass.getpass">
+<code class="sig-prename descclassname">getpass.</code><code class="sig-name descname">getpass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prompt</span><span class="o">=</span><span class="default_value">'Password: '</span></em>, <em class="sig-param"><span class="n">stream</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#getpass.getpass" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Solicita uma senha do usuário sem emiti-la. O usuário é solicitado usando a string <em>prompt</em>, cujo padrão é <code class="docutils literal notranslate"><span class="pre">'Password:</span> <span class="pre">'</span></code>. No Unix, o prompt é escrito no objeto arquivo ou similar <em>stream</em> usando o tratador de erros de substituição, se necessário. O <em>stream</em> padrão para o terminal de controle (<code class="file docutils literal notranslate"><span class="pre">/dev/tty</span></code>) ou se não estiver disponível para <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> (este argumento é ignorado no Windows).</p>
+<p>Se uma entrada sem exibição em tela não estiver disponível, getpass() recorre a exibir uma mensagem de aviso para <em>stream</em> e lê de <code class="docutils literal notranslate"><span class="pre">sys.stdin</span></code> e levantar de um <a class="reference internal" href="#getpass.GetPassWarning" title="getpass.GetPassWarning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">GetPassWarning</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Se você chamar getpass de dentro do IDLE, a entrada pode ser feita no terminal de onde você iniciou o IDLE, e não na própria janela ociosa.</p>
+</div>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="getpass.GetPassWarning">
+<em class="property">exception </em><code class="sig-prename descclassname">getpass.</code><code class="sig-name descname">GetPassWarning</code><a class="headerlink" href="#getpass.GetPassWarning" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>A subclasse <a class="reference internal" href="exceptions.html#UserWarning" title="UserWarning"><code class="xref py py-exc docutils literal notranslate"><span class="pre">UserWarning</span></code></a> é levantada quando a entrada de senha pode acabar sendo exibida na tela.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="getpass.getuser">
+<code class="sig-prename descclassname">getpass.</code><code class="sig-name descname">getuser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getpass.getuser" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o “nome de login” do usuário.</p>
+<p>Esta função verifica as variáveis de ambiente <span class="target" id="index-8"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">LOGNAME</span></code>, <span class="target" id="index-9"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">USER</span></code>, <span class="target" id="index-10"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">LNAME</span></code> e <span class="target" id="index-11"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">USERNAME</span></code>, nesta ordem, e retorna o valor da primeiro que estiver definida como uma string não vazia. Se nenhuma estiver definida, o nome de login do banco de dados de senhas é retornado em sistemas que suportam o módulo <a class="reference internal" href="pwd.html#module-pwd" title="pwd: The password database (getpwnam() and friends). (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pwd</span></code></a>, caso contrário, uma exceção é levantada.</p>
+<p>Em geral, esta função deve ter preferência sobre <a class="reference internal" href="os.html#os.getlogin" title="os.getlogin"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.getlogin()</span></code></a>.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="logging.handlers.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">logging.handlers</span></code> — Tratadores de registro</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="curses.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">curses</span></code> — Gerenciador de terminal para visualizadores de células de caracteres.</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/getpass.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="curses.html" title="curses — Gerenciador de terminal para visualizadores de células de caracteres."
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="logging.handlers.html" title="logging.handlers — Tratadores de registro"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="allos.html" >Serviços Genéricos do Sistema Operacional</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">getpass</span></code> — Entrada de senha portátil</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

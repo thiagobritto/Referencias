@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>1. Uma Introdução ao Distutils &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="2. Escrevendo o Script de Configuração" href="setupscript.html" />
+    <link rel="prev" title="Distribuindo Módulos Python (Versão legada)" href="index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/distutils/introduction.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Uma Introdução ao Distutils</a><ul>
+<li><a class="reference internal" href="#concepts-terminology">1.1. Conceitos &amp; Terminologias</a></li>
+<li><a class="reference internal" href="#a-simple-example">1.2. Um Exemplo Simples</a></li>
+<li><a class="reference internal" href="#general-python-terminology">1.3. Terminologia geral do Python</a></li>
+<li><a class="reference internal" href="#distutils-specific-terminology">1.4. Terminologia específica do Distutils</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Distribuindo Módulos Python (Versão legada)</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="setupscript.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Escrevendo o Script de Configuração</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/distutils/introduction.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="setupscript.html" title="2. Escrevendo o Script de Configuração"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Distribuindo Módulos Python (Versão legada)"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Distribuindo Módulos Python (Versão legada)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Uma Introdução ao Distutils</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="an-introduction-to-distutils">
+<span id="distutils-intro"></span><h1><span class="section-number">1. </span>Uma Introdução ao Distutils<a class="headerlink" href="#an-introduction-to-distutils" title="Link permanente para este título">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este documento está sendo mantido apenas até que a documentação do <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> em <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html">https://setuptools.readthedocs.io/en/latest/setuptools.html</a> cubra independentemente todas as informações relevantes atualmente incluídas aqui.</p>
+</div>
+<p>Este documento trata do uso do Distutils tornando possível a distribuição dos seus módulos Python, podendo assim, concentrar-se no seu papel de desenvolvedor/distribuidor: caso estejas procurando informações sobre a instalação de módulos Python, deverás consultar o capítulo <a class="reference internal" href="../install/index.html#install-index"><span class="std std-ref">Instalando módulos Python (versão legada)</span></a>.</p>
+<section id="concepts-terminology">
+<span id="distutils-concepts"></span><h2><span class="section-number">1.1. </span>Conceitos &amp; Terminologias<a class="headerlink" href="#concepts-terminology" title="Link permanente para este título">¶</a></h2>
+<p>Utilizar o Distutils é bastante simples, tanto para desenvolvedores de módulos quanto para usuários/administradores que instalam módulos de terceiros. Como desenvolvedor, suas responsabilidades (além de escrever um código sólido, bem documentado e bem testado, é claro!) são:</p>
+<ul class="simple">
+<li><p>escrever um script setup (<code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> através da conversão)</p></li>
+<li><p>(opcional) escrever um arquivo Setup de configuração</p></li>
+<li><p>criar uma distribuição de fontes</p></li>
+<li><p>(opcional) criar uma ou mais distribuições compiladas (binárias)</p></li>
+</ul>
+<p>Cada uma dessas tarefas são tratadas neste documento.</p>
+<p>Nem todos os desenvolvedores de módulos têm acesso a uma infinidade de plataformas, portanto, nem sempre é possível esperar que eles criem uma infinidade de distribuições construídas. Espera-se que uma classe de intermediários, chamada <em>empacotadores</em>, surja para atender a essa necessidade. Os empacotadores pegam as distribuições fonte lançadas pelos desenvolvedores do módulo, as compilam em uma ou mais plataformas e lançam as distribuições compiladas resultantes. Assim, os usuários das plataformas mais populares poderão instalar as distribuições mais populares de módulos Python da maneira mais natural possível para sua plataforma, sem precisar executar um único script de configuração ou compilar uma linha de código.</p>
+</section>
+<section id="a-simple-example">
+<span id="distutils-simple-example"></span><h2><span class="section-number">1.2. </span>Um Exemplo Simples<a class="headerlink" href="#a-simple-example" title="Link permanente para este título">¶</a></h2>
+<p>O script de configuração geralmente é bastante simples, embora, como esteja escrito em Python, não haja limites arbitrários para o que você pode fazer com ele, mas você deve ter cuidado ao colocar operações arbitrariamente caras em seu script de configuração. Ao contrário, digamos, dos scripts de configuração no estilo Autoconf, o script de instalação pode ser executado várias vezes no decorrer da compilação e instalação da distribuição do módulo.</p>
+<p>Se tudo o que você quer fazer é distribuir um módulo chamado <code class="xref py py-mod docutils literal notranslate"><span class="pre">foo</span></code>, contido em um arquivo <code class="file docutils literal notranslate"><span class="pre">foo.py</span></code>, então seu script de instalação pode ser tão simples quanto este:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">distutils.core</span> <span class="kn">import</span> <span class="n">setup</span>
+<span class="n">setup</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+      <span class="n">version</span><span class="o">=</span><span class="s1">&#39;1.0&#39;</span><span class="p">,</span>
+      <span class="n">py_modules</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span>
+      <span class="p">)</span>
+</pre></div>
+</div>
+<p>Algumas observações:</p>
+<ul class="simple">
+<li><p>a maioria das informações que você fornecerá ao Distutils será fornecida como argumentos nomeados para a função <code class="xref py py-func docutils literal notranslate"><span class="pre">setup()</span></code></p></li>
+<li><p>esses argumentos nomeados se enquadram em duas categorias: metadados do pacote (nome, número da versão) e informações sobre o conteúdo do pacote (uma lista de módulos Python puros, neste caso)</p></li>
+<li><p>módulos são especificados pelo nome do módulo, não pelo nome do arquivo (o mesmo se aplica aos pacotes e extensões)</p></li>
+<li><p>é recomendável que você forneça um pouco mais de metadados, em particular seu nome, endereço de e-mail e uma URL para o projeto (consulte a seção <a class="reference internal" href="setupscript.html#setup-script"><span class="std std-ref">Escrevendo o Script de Configuração</span></a> por exemplo)</p></li>
+</ul>
+<p>Para criar uma distribuição fonte para este módulo, você deve criar um script de instalação, <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>, contendo o código acima, e executar este comando a partir de um terminal:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
+</pre></div>
+</div>
+<p>No Windows, abra uma janela do prompt de comando (<span class="menuselection">Iniciar ‣ Acessórios</span>) e altere o comando para:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">sdist</span>
+</pre></div>
+</div>
+<p><strong class="command">sdist</strong> criará um arquivo (por exemplo, tarball no Unix, arquivo ZIP no Windows) contendo seu script de instalação <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> e seu módulo <code class="file docutils literal notranslate"><span class="pre">foo.py</span></code>. O arquivo será nomeado <code class="file docutils literal notranslate"><span class="pre">foo-1.0.tar.gz</span></code> (ou <code class="file docutils literal notranslate"><span class="pre">.zip</span></code>) e será descompactado em um diretório <code class="file docutils literal notranslate"><span class="pre">foo-1.0</span></code>.</p>
+<p>Se um usuário final deseja instalar o seu módulo <code class="xref py py-mod docutils literal notranslate"><span class="pre">foo</span></code>, tudo o que eles precisam fazer é baixar <code class="file docutils literal notranslate"><span class="pre">foo-1.0.tar.gz</span></code> (ou <code class="file docutils literal notranslate"><span class="pre">.zip</span></code>), descompactá-lo, e — no diretório <code class="file docutils literal notranslate"><span class="pre">foo-1.0</span></code> — executar:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>que finalmente copiará <code class="file docutils literal notranslate"><span class="pre">foo.py</span></code> para o diretório apropriado para módulos de terceiros em sua instalação do Python.</p>
+<p>Este exemplo simples demonstra alguns conceitos fundamentais dos Distutils. Primeiro, desenvolvedores e instaladores têm a mesma interface de usuário básica, ou seja, o script de instalação. A diferença é que <em>comandos</em> do Distutils eles usam: o comando <strong class="command">sdist</strong> é quase exclusivamente para desenvolvedores de módulos, enquanto <strong class="command">install</strong> é mais frequentemente para instaladores (embora a maioria dos desenvolvedores deseje instalar ocasionalmente seu próprio código).</p>
+<p>Outros formatos de distribuição úteis úteis são o RPM, implementado pelo comando <strong class="command">bdist_rpm</strong>, <strong class="program">pkgtool</strong> do Solaris (<strong class="command">bdist_pkgtool</strong>) e <strong class="program">swinstall</strong> do HP-UX (<strong class="command">bdist_sdux</strong>). Por exemplo, o seguinte comando criará um arquivo RPM chamado <code class="file docutils literal notranslate"><span class="pre">foo-1.0.noarch.rpm</span></code>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist_rpm</span>
+</pre></div>
+</div>
+<p>(O comando <strong class="command">bdist_rpm</strong> usa o executável <strong class="command">rpm</strong>, portanto, ele deve ser executado em um sistema baseado em RPM, como Red Hat Linux, SuSE Linux ou Mandrake Linux.)</p>
+<p>Você pode descobrir quais formatos de distribuição estão disponíveis a qualquer momento executando:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">bdist</span> <span class="o">--</span><span class="n">help</span><span class="o">-</span><span class="n">formats</span>
+</pre></div>
+</div>
+</section>
+<section id="general-python-terminology">
+<span id="python-terms"></span><h2><span class="section-number">1.3. </span>Terminologia geral do Python<a class="headerlink" href="#general-python-terminology" title="Link permanente para este título">¶</a></h2>
+<p>Se você está lendo este documento, provavelmente tem uma boa ideia do que são módulos, extensões e assim por diante. No entanto, apenas para ter certeza de que todos estão operando de um ponto de partida comum, oferecemos o seguinte glossário de termos comuns do Python:</p>
+<dl class="simple">
+<dt>módulo</dt><dd><p>a unidade básica de reutilização de código em Python: um bloco de código importado por algum outro código. Três tipos de módulos nos importam aqui: módulos Python puros, módulos de extensão e pacotes.</p>
+</dd>
+<dt>pure Python module (módulo Python puro)</dt><dd><p>um módulo escrito em Python e contido em um único arquivo <code class="file docutils literal notranslate"><span class="pre">.py</span></code> (e possivelmente arquivos <code class="file docutils literal notranslate"><span class="pre">.pyc</span></code> associados). Às vezes referido como um “módulo puro”.</p>
+</dd>
+<dt>módulo de extensão</dt><dd><p>um módulo escrito na linguagem de baixo nível da implementação Python: C/C++ para Python, Java para Jython. Normalmente contido em um único arquivo pré-compilado carregável dinamicamente, por exemplo, um arquivo de objeto compartilhado (<code class="file docutils literal notranslate"><span class="pre">.so</span></code>) para extensões Python no Unix, uma DLL (dada a extensão <code class="file docutils literal notranslate"><span class="pre">.pyd</span></code>) para extensões Python no Windows ou um arquivo de classe Java para extensões Jython. (Observe que, atualmente, o Distutils só lida com extensões C/C++ para Python.)</p>
+</dd>
+<dt>pacote</dt><dd><p>um módulo que contém outros módulos; tipicamente contido em um diretório no sistema de arquivos e diferenciado de outros diretórios pela presença de um arquivo <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>.</p>
+</dd>
+<dt>root package (pacote raiz)</dt><dd><p>a raiz da hierarquia de pacotes. (Este não é realmente um pacote, uma vez que não possui um arquivo <code class="file docutils literal notranslate"><span class="pre">__init__.py</span></code>. Mas temos que chamá-lo de alguma coisa.) A grande maioria da biblioteca padrão está no pacote raiz, assim como muitos módulos pequenos e independentes de terceiros que não pertencem a uma coleção de módulos maior. Ao contrário dos pacotes regulares, os módulos no pacote raiz podem ser encontrados em muitos diretórios: na verdade, cada diretório listado em <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> contribui com módulos para o pacote raiz.</p>
+</dd>
+</dl>
+</section>
+<section id="distutils-specific-terminology">
+<span id="distutils-term"></span><h2><span class="section-number">1.4. </span>Terminologia específica do Distutils<a class="headerlink" href="#distutils-specific-terminology" title="Link permanente para este título">¶</a></h2>
+<p>Os termos a seguir se aplicam mais especificamente ao domínio de distribuição de módulos Python usando Distutils:</p>
+<dl class="simple">
+<dt>module distribution (distribuição de módulo)</dt><dd><p>uma coleção de módulos Python distribuídos juntos como um único recurso para download e devem ser instalados <em>em massa</em>. Exemplos de algumas distribuições de módulos bem conhecidas são NumPy, SciPy, Pillow ou mxBase. (Isso seria chamado de <em>pacote</em>, exceto que o termo já é usado no contexto Python: uma distribuição de módulo único pode conter zero, um ou muitos pacotes Python.)</p>
+</dd>
+<dt>pure module distribution (distribuição de módulo pura)</dt><dd><p>uma distribuição de módulo que contém apenas módulos e pacotes Python puros. Às vezes chamada de “distribuição pura”.</p>
+</dd>
+<dt>non-pure module distribution (distribuição de módulo não pura)</dt><dd><p>uma distribuição de módulo que contém pelo menos um módulo de extensão. Às vezes chamada de “distribuição não pura”.</p>
+</dd>
+<dt>distribution root (raiz da distribuição)</dt><dd><p>o diretório de nível superior de sua árvore de fontes (ou distribuição fonte); o diretório onde existe <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code>. Geralmente, <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> vai ser executado a partir deste diretório.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Uma Introdução ao Distutils</a><ul>
+<li><a class="reference internal" href="#concepts-terminology">1.1. Conceitos &amp; Terminologias</a></li>
+<li><a class="reference internal" href="#a-simple-example">1.2. Um Exemplo Simples</a></li>
+<li><a class="reference internal" href="#general-python-terminology">1.3. Terminologia geral do Python</a></li>
+<li><a class="reference internal" href="#distutils-specific-terminology">1.4. Terminologia específica do Distutils</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Distribuindo Módulos Python (Versão legada)</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="setupscript.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Escrevendo o Script de Configuração</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/distutils/introduction.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="setupscript.html" title="2. Escrevendo o Script de Configuração"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Distribuindo Módulos Python (Versão legada)"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Distribuindo Módulos Python (Versão legada)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Uma Introdução ao Distutils</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

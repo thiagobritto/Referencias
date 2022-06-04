@@ -1,0 +1,974 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>1. Linha de comando e ambiente &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="2. Utilizando Python em plataformas Unix" href="unix.html" />
+    <link rel="prev" title="Configurações e Uso do Python" href="index.html" />
+    <link rel="canonical" href="https://docs.python.org/3/using/cmdline.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Linha de comando e ambiente</a><ul>
+<li><a class="reference internal" href="#command-line">1.1. Linha de comando</a><ul>
+<li><a class="reference internal" href="#interface-options">1.1.1. Opções de interface</a></li>
+<li><a class="reference internal" href="#generic-options">1.1.2. Opções genéricas</a></li>
+<li><a class="reference internal" href="#miscellaneous-options">1.1.3. Opções diversas</a></li>
+<li><a class="reference internal" href="#options-you-shouldn-t-use">1.1.4. Opções que você não deve usar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#environment-variables">1.2. Variáveis de ambiente</a><ul>
+<li><a class="reference internal" href="#debug-mode-variables">1.2.1. Variáveis de modo de depuração</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Configurações e Uso do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="unix.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Utilizando Python em plataformas Unix</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/using/cmdline.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="unix.html" title="2. Utilizando Python em plataformas Unix"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Configurações e Uso do Python"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Configurações e Uso do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Linha de comando e ambiente</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="command-line-and-environment">
+<span id="using-on-general"></span><h1><span class="section-number">1. </span>Linha de comando e ambiente<a class="headerlink" href="#command-line-and-environment" title="Link permanente para este título">¶</a></h1>
+<p>O interpretador do CPython verifica a linha de comando e o ambiente em busca de várias configurações.</p>
+<div class="impl-detail compound">
+<p><strong>CPython implementation detail:</strong> Os esquemas de linha de comando de outras implementações podem ser diferentes. Consulte <a class="reference internal" href="../reference/introduction.html#implementations"><span class="std std-ref">Implementações Alternativas</span></a> para mais recursos.</p>
+</div>
+<section id="command-line">
+<span id="using-on-cmdline"></span><h2><span class="section-number">1.1. </span>Linha de comando<a class="headerlink" href="#command-line" title="Link permanente para este título">¶</a></h2>
+<p>Ao invocar o Python, você pode especificar qualquer uma destas opções:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python <span class="o">[</span>-bBdEhiIOqsSuvVWx?<span class="o">]</span> <span class="o">[</span>-c <span class="nb">command</span> <span class="p">|</span> -m module-name <span class="p">|</span> script <span class="p">|</span> - <span class="o">]</span> <span class="o">[</span>args<span class="o">]</span>
+</pre></div>
+</div>
+<p>O caso de uso mais comum é, obviamente, uma simples invocação de um script:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python myscript.py
+</pre></div>
+</div>
+<section id="interface-options">
+<span id="using-on-interface-options"></span><h3><span class="section-number">1.1.1. </span>Opções de interface<a class="headerlink" href="#interface-options" title="Link permanente para este título">¶</a></h3>
+<p>A interface do interpretador é semelhante à do console do UNIX, mas fornece alguns métodos adicionais de chamada:</p>
+<ul class="simple">
+<li><p>Quando chamado com a entrada padrão conectada a um dispositivo tty, ele solicita comandos e os executa até um EOF (um caractere de fim de arquivo, você pode produzi-lo com <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">D</kbd></kbd> no UNIX ou <kbd class="kbd docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>-<kbd class="kbd docutils literal notranslate">Z,</kbd> <kbd class="kbd docutils literal notranslate">Enter</kbd></kbd> no Windows) ser lido.</p></li>
+<li><p>Quando chamado com um argumento de nome de arquivo ou com um arquivo como entrada padrão, ele lê e executa um script desse arquivo.</p></li>
+<li><p>Quando chamado com um argumento de nome de diretório, ele lê e executa um script nomeado adequadamente desse diretório.</p></li>
+<li><p>Quando chamado com <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">command</span></code>, ele executa as instruções Python fornecidas como <em>command</em>. Aqui <em>command</em> pode conter várias instruções separadas por novas linhas. O espaço em branco à esquerda é significativo nas instruções do Python!</p></li>
+<li><p>Quando chamado com <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">module-name</span></code>, o módulo fornecido está localizado no caminho do módulo Python e é executado como um script.</p></li>
+</ul>
+<p>No modo não interativo, toda a entrada é analisada antes de ser executada.</p>
+<p>Uma opção de interface termina a lista de opções consumidas pelo interpretador, todos os argumentos consecutivos terminam em <a class="reference internal" href="../library/sys.html#sys.argv" title="sys.argv"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.argv</span></code></a> – observe que o primeiro elemento, subscrito zero (<code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code>) , é uma string que reflete a fonte do programa.</p>
+<dl class="std cmdoption">
+<dt id="cmdoption-c">
+<code class="sig-name descname">-c</code><code class="sig-prename descclassname"> &lt;command&gt;</code><a class="headerlink" href="#cmdoption-c" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Executa o código Python em <em>command</em>. <em>command</em> pode ser uma ou mais instruções separadas por novas linhas, com espaços em branco à esquerda significativos, como no código normal do módulo.</p>
+<p>Se esta opção for fornecida, o primeiro elemento de <a class="reference internal" href="../library/sys.html#sys.argv" title="sys.argv"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.argv</span></code></a> será <code class="docutils literal notranslate"><span class="pre">&quot;-c&quot;</span></code> e o diretório atual será adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> (permitindo módulos nesse diretório para ser importado como módulos de nível superior).</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="../library/sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">cpython.run_command</span></code> com argumento <code class="docutils literal notranslate"><span class="pre">command</span></code>.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-m">
+<code class="sig-name descname">-m</code><code class="sig-prename descclassname"> &lt;module-name&gt;</code><a class="headerlink" href="#cmdoption-m" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Procura <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> pelo módulo nomeado e executa seu conteúdo como o módulo <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a>.</p>
+<p>Como o argumento é um nome de <em>module</em>, você não deve fornecer uma extensão de arquivo (<code class="docutils literal notranslate"><span class="pre">.py</span></code>). O nome do módulo deve ser um nome de módulo Python absoluto válido, mas a implementação nem sempre pode impor isso (por exemplo, pode permitir que você use um nome que inclua um hífen).</p>
+<p>Nomes de pacotes (incluindo pacotes de espaço de nomes) também são permitidos. Quando um nome de pacote é fornecido ao invés de um módulo normal, o interpretador irá executar <code class="docutils literal notranslate"><span class="pre">&lt;pkg&gt;.__main__</span></code> como o módulo principal. Esse comportamento é deliberadamente semelhante ao tratamento de diretórios e arquivos zip que são passados para o interpretador como o argumento do script.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Esta opção não pode ser usada com módulos embutidos e módulos de extensão escritos em C, uma vez que eles não possuem arquivos de módulo Python. No entanto, ele ainda pode ser usado para módulos pré-compilados, mesmo se o arquivo fonte original não estiver disponível.</p>
+</div>
+<p>Se esta opção for fornecida, o primeiro elemento de <a class="reference internal" href="../library/sys.html#sys.argv" title="sys.argv"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.argv</span></code></a> será o caminho completo para o arquivo do módulo (enquanto o arquivo do módulo está sendo localizado, o primeiro elemento será definido como <code class="docutils literal notranslate"><span class="pre">&quot;-m&quot;</span></code>). Como com a opção <a class="reference internal" href="#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a>, o diretório atual será adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.</p>
+<p>A opção <a class="reference internal" href="#cmdoption-I"><code class="xref std std-option docutils literal notranslate"><span class="pre">-I</span></code></a> pode ser usada para executar o script em modo isolado onde <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> não contém nem o diretório atual nem o diretório de pacotes de sites do usuário. Todas as variáveis de ambiente <span class="target" id="index-82"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHON*</span></code> são ignoradas também.</p>
+<p>Muitos módulos de biblioteca padrão contêm código que é chamado em sua execução como um script. Um exemplo é o módulo <a class="reference internal" href="../library/timeit.html#module-timeit" title="timeit: Measure the execution time of small code snippets."><code class="xref py py-mod docutils literal notranslate"><span class="pre">timeit</span></code></a>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python -m timeit -s <span class="s1">&#39;setup here&#39;</span> <span class="s1">&#39;benchmarked code here&#39;</span>
+python -m timeit -h <span class="c1"># for details</span>
+</pre></div>
+</div>
+<p class="audit-hook">Levanta um <a class="reference internal" href="../library/sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">cpython.run_module</span></code> com argumento <code class="docutils literal notranslate"><span class="pre">module-name</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../library/runpy.html#runpy.run_module" title="runpy.run_module"><code class="xref py py-func docutils literal notranslate"><span class="pre">runpy.run_module()</span></code></a></dt><dd><p>Funcionalidade equivalente diretamente disponível para o código Python</p>
+</dd>
+</dl>
+<p><span class="target" id="index-83"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0338"><strong>PEP 338</strong></a> – Executando módulos como scripts</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.1: </span>Forneça o nome do pacote para executar um submódulo <code class="docutils literal notranslate"><span class="pre">__main__</span></code>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>pacotes de espaço de nomes também são suportados</p>
+</div>
+</dd></dl>
+
+<span class="target" id="cmdarg-dash"></span><dl class="describe">
+<dt>
+<code class="sig-name descname">-</code></dt>
+<dd><p>Lê os comandos da entrada padrão (<a class="reference internal" href="../library/sys.html#sys.stdin" title="sys.stdin"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stdin</span></code></a>). Se a entrada padrão for um terminal, <a class="reference internal" href="#cmdoption-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a> está implícito.</p>
+<p>Se esta opção for fornecida, o primeiro elemento de <a class="reference internal" href="../library/sys.html#sys.argv" title="sys.argv"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.argv</span></code></a> será <code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code> e o diretório atual será adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.</p>
+<p class="audit-hook" id="audit_event_cpython_run_stdin_0">Levanta um <a class="reference internal" href="../library/sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">cpython.run_stdin</span></code> com nenhum argumento.</p>
+</dd></dl>
+
+<span class="target" id="cmdarg-script"></span><dl class="describe">
+<dt>
+<code class="sig-name descname">&lt;script&gt;</code></dt>
+<dd><p>Executa o código Python contido em <em>script</em>, que deve ser um caminho do sistema de arquivos (absoluto ou relativo) referindo-se a um arquivo Python, um diretório contendo um arquivo <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>, ou um arquivo zip contendo um arquivo <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code>.</p>
+<p>Se esta opção for fornecida, o primeiro elemento de <a class="reference internal" href="../library/sys.html#sys.argv" title="sys.argv"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.argv</span></code></a> será o nome do script conforme fornecido na linha de comando.</p>
+<p>Se o nome do script se referir diretamente a um arquivo Python, o diretório que contém esse arquivo é adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>, e o arquivo é executado como o módulo <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a>.</p>
+<p>Se o nome do script se referir a um diretório ou arquivo zip, o nome do script será adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> e o arquivo <code class="docutils literal notranslate"><span class="pre">__main__.py</span></code> nesse local será executado como o módulo <a class="reference internal" href="../library/__main__.html#module-__main__" title="__main__: The environment where top-level code is run. Covers command-line interfaces, import-time behavior, and ``__name__ == '__main__'``."><code class="xref py py-mod docutils literal notranslate"><span class="pre">__main__</span></code></a>.</p>
+<p>A opção <a class="reference internal" href="#cmdoption-I"><code class="xref std std-option docutils literal notranslate"><span class="pre">-I</span></code></a> pode ser usada para executar o script em modo isolado onde <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> não contém nem o diretório do script nem o diretório de pacotes de sites do usuário. Todas as variáveis de ambiente <span class="target" id="index-84"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHON*</span></code> são ignoradas também.</p>
+<p class="audit-hook" id="audit_event_cpython_run_file_0">Levanta um <a class="reference internal" href="../library/sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">cpython.run_file</span></code> com argumento <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../library/runpy.html#runpy.run_path" title="runpy.run_path"><code class="xref py py-func docutils literal notranslate"><span class="pre">runpy.run_path()</span></code></a></dt><dd><p>Funcionalidade equivalente diretamente disponível para o código Python</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+<p>Se nenhuma opção de interface for fornecida, <a class="reference internal" href="#cmdoption-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a> está implícito, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> é uma string vazia (<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>) e o diretório atual será adicionado ao início de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>. Além disso, o preenchimento por tab e a edição do histórico são habilitados automaticamente, se disponíveis em sua plataforma (veja <a class="reference internal" href="../library/site.html#rlcompleter-config"><span class="std std-ref">Configuração Readline</span></a>).</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><a class="reference internal" href="../tutorial/interpreter.html#tut-invoking"><span class="std std-ref">Chamando o interpretador</span></a></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>Ativação automática de preenchimento com tab e edição de histórico.</p>
+</div>
+</section>
+<section id="generic-options">
+<h3><span class="section-number">1.1.2. </span>Opções genéricas<a class="headerlink" href="#generic-options" title="Link permanente para este título">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-0">
+<span id="cmdoption"></span><code class="sig-name descname">-?</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-0" title="Link permanente para esta definição">¶</a></dt>
+<dt id="cmdoption-h">
+<code class="sig-name descname">-h</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-h" title="Link permanente para esta definição">¶</a></dt>
+<dt id="cmdoption-help">
+<code class="sig-name descname">--help</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-help" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Exibe uma breve descrição de todas as opções de linha de comando.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-V">
+<span id="cmdoption-v"></span><code class="sig-name descname">-V</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-V" title="Link permanente para esta definição">¶</a></dt>
+<dt id="cmdoption-version">
+<code class="sig-name descname">--version</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-version" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Exibe o número da versão do Python e saia. O exemplo de saída poderia ser:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.8.0b2+
+</pre></div>
+</div>
+<p>Quando fornecido duas vezes, exibe mais informações sobre a construção, como:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python 3.8.0b2+ (3.8:0c076caaa8, Apr 20 2019, 21:55:00)
+[GCC 6.2.0 20161005]
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6: </span>A opção <code class="docutils literal notranslate"><span class="pre">-VV</span></code>.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="miscellaneous-options">
+<span id="using-on-misc-options"></span><h3><span class="section-number">1.1.3. </span>Opções diversas<a class="headerlink" href="#miscellaneous-options" title="Link permanente para este título">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-b">
+<code class="sig-name descname">-b</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-b" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Emite um aviso ao comparar <a class="reference internal" href="../library/stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> ou <a class="reference internal" href="../library/stdtypes.html#bytearray" title="bytearray"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytearray</span></code></a> com <a class="reference internal" href="../library/stdtypes.html#str" title="str"><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></a> ou <a class="reference internal" href="../library/stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> com <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>. Emite um erro quando a opção é fornecida duas vezes (<code class="xref std std-option docutils literal notranslate"><span class="pre">-bb</span></code>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>Afeta comparações de <a class="reference internal" href="../library/stdtypes.html#bytes" title="bytes"><code class="xref py py-class docutils literal notranslate"><span class="pre">bytes</span></code></a> com <a class="reference internal" href="../library/functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-B">
+<code class="sig-name descname">-B</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-B" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se fornecido, Python não tentará escrever arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> na importação de módulos fonte. Veja também <span class="target" id="index-85"></span><a class="reference internal" href="#envvar-PYTHONDONTWRITEBYTECODE"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONDONTWRITEBYTECODE</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-check-hash-based-pycs">
+<code class="sig-name descname">--check-hash-based-pycs</code><code class="sig-prename descclassname"> default|always|never</code><a class="headerlink" href="#cmdoption-check-hash-based-pycs" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Controla o comportamento de validação de arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> baseados em hash. Veja <a class="reference internal" href="../reference/import.html#pyc-invalidation"><span class="std std-ref">Cached bytecode invalidation</span></a>. Quando definido como <code class="docutils literal notranslate"><span class="pre">default</span></code>, os arquivos de cache bytecode baseados em hash verificados e não verificados são validados de acordo com sua semântica padrão. Quando definido como <code class="docutils literal notranslate"><span class="pre">always</span></code>, todos os arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> baseados em hash, sejam verificados ou não verificados, são validados para seus arquivos fonte correspondentes. Quando definido como <code class="docutils literal notranslate"><span class="pre">never</span></code>, os arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> baseados em hash não são validados para seus arquivos fonte correspondentes.</p>
+<p>A semântica dos arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> baseados em marca de tempo não é afetada por esta opção.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-d">
+<code class="sig-name descname">-d</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-d" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Ativa a saída de depuração do analisador sintático (apenas para especialistas, dependendo das opções de compilação). Veja também <span class="target" id="index-86"></span><a class="reference internal" href="#envvar-PYTHONDEBUG"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONDEBUG</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-E">
+<span id="cmdoption-e"></span><code class="sig-name descname">-E</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-E" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Ignora todas as variáveis de ambiente <span class="target" id="index-87"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHON*</span></code>, por exemplo <span class="target" id="index-88"></span><a class="reference internal" href="#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a> e <span class="target" id="index-89"></span><a class="reference internal" href="#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a>, que pode ser definido.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-i">
+<code class="sig-name descname">-i</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-i" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Quando um script é passado como primeiro argumento ou a opção <a class="reference internal" href="#cmdoption-c"><code class="xref std std-option docutils literal notranslate"><span class="pre">-c</span></code></a> é usada, entre no modo interativo depois de executar o script ou o comando, mesmo quando <a class="reference internal" href="../library/sys.html#sys.stdin" title="sys.stdin"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stdin</span></code></a> não parece ser um terminal. O arquivo <span class="target" id="index-90"></span><a class="reference internal" href="#envvar-PYTHONSTARTUP"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONSTARTUP</span></code></a> não foi lido.</p>
+<p>Isso pode ser útil para inspecionar variáveis globais ou um stack trace (situação da pilha de execução) quando um script levanta uma exceção. Veja também <span class="target" id="index-91"></span><a class="reference internal" href="#envvar-PYTHONINSPECT"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONINSPECT</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-I">
+<code class="sig-name descname">-I</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-I" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Executa o Python no modo isolado. Isso também implica -E e -s. No modo isolado <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> não contém o diretório do script nem o diretório de pacotes do site do usuário. Todas as variáveis de ambiente <span class="target" id="index-92"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHON*</span></code> são ignoradas também. Outras restrições podem ser impostas para evitar que o usuário injete código malicioso.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-O">
+<span id="cmdoption-o"></span><code class="sig-name descname">-O</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-O" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remova as instruções de asserção e qualquer código condicional ao valor de <a class="reference internal" href="../library/constants.html#debug__" title="__debug__"><code class="xref py py-const docutils literal notranslate"><span class="pre">__debug__</span></code></a>. Aumenta o nome do arquivo para arquivos compilados (<a class="reference internal" href="../glossary.html#term-bytecode"><span class="xref std std-term">bytecode</span></a>) adicionando <code class="docutils literal notranslate"><span class="pre">.opt-1</span></code> antes da extensão <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> (veja <span class="target" id="index-93"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0488"><strong>PEP 488</strong></a>). Veja também <span class="target" id="index-94"></span><a class="reference internal" href="#envvar-PYTHONOPTIMIZE"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONOPTIMIZE</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>Modifica nomes de arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> conforme a <span class="target" id="index-95"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0488"><strong>PEP 488</strong></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-OO">
+<span id="cmdoption-oo"></span><code class="sig-name descname">-OO</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-OO" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz o mesmo que <a class="reference internal" href="#cmdoption-O"><code class="xref std std-option docutils literal notranslate"><span class="pre">-O</span></code></a> e também descarta docstrings. Aumenta o nome do arquivo para arquivos compilados (<a class="reference internal" href="../glossary.html#term-bytecode"><span class="xref std std-term">bytecode</span></a>) adicionando <code class="docutils literal notranslate"><span class="pre">.opt-2</span></code> antes da extensão <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> (veja <span class="target" id="index-96"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0488"><strong>PEP 488</strong></a>).</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>Modifica nomes de arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> conforme a <span class="target" id="index-97"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0488"><strong>PEP 488</strong></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-q">
+<code class="sig-name descname">-q</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-q" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Não exibe as mensagens de copyright e de versão nem mesmo no modo interativo.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-R">
+<span id="cmdoption-r"></span><code class="sig-name descname">-R</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-R" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Habilita a aleatorização com hash. Esta opção só tem efeito se a variável de ambiente <span class="target" id="index-98"></span><a class="reference internal" href="#envvar-PYTHONHASHSEED"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code></a> estiver configurada para <code class="docutils literal notranslate"><span class="pre">0</span></code>, uma vez que a aleatorização com hash é habilitada por padrão.</p>
+<p>Em versões anteriores do Python, esta opção ativa a aleatorização com hash, para que os valores <code class="xref py py-meth docutils literal notranslate"><span class="pre">__hash__()</span></code> dos objetos str e bytes sejam “salgados” com um valor aleatório imprevisível. Embora permaneçam constantes em um processo Python individual, eles não são previsíveis entre invocações repetidas de Python.</p>
+<p>Hash randomization is intended to provide protection against a
+denial-of-service caused by carefully-chosen inputs that exploit the worst
+case performance of a dict construction, O(n<sup>2</sup>) complexity.  See
+<a class="reference external" href="http://www.ocert.org/advisories/ocert-2011-003.html">http://www.ocert.org/advisories/ocert-2011-003.html</a> for details.</p>
+<p><span class="target" id="index-99"></span><a class="reference internal" href="#envvar-PYTHONHASHSEED"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code></a> permite que você defina um valor fixo para o segredo da semente de hash.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.7: </span>A opção não é mais ignorada.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-s">
+<code class="sig-name descname">-s</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-s" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Não adiciona o <code class="xref py py-data docutils literal notranslate"><span class="pre">diretório</span> <span class="pre">site-packages</span> <span class="pre">de</span> <span class="pre">usuário</span></code> a <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><span class="target" id="index-100"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0370"><strong>PEP 370</strong></a> – Diretório site-packages por usuário.</p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-S">
+<code class="sig-name descname">-S</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-S" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Desabilita a importação do módulo <a class="reference internal" href="../library/site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> e as manipulações dependentes do site de <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a> que isso acarreta. Também desabilita essas manipulações se <a class="reference internal" href="../library/site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> for explicitamente importado mais tarde (chame <a class="reference internal" href="../library/site.html#site.main" title="site.main"><code class="xref py py-func docutils literal notranslate"><span class="pre">site.main()</span></code></a> se você quiser que eles sejam acionados).</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-u">
+<code class="sig-name descname">-u</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-u" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Força os fluxos stdout e stderr a serem sem buffer. Esta opção não tem efeito no fluxo stdin.</p>
+<p>Veja também <span class="target" id="index-101"></span><a class="reference internal" href="#envvar-PYTHONUNBUFFERED"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONUNBUFFERED</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.7: </span>A camada de texto dos fluxos stdout e stderr agora é sem buffer.</p>
+</div>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-1">
+<code class="sig-name descname">-v</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-1" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Exibe uma mensagem cada vez que um módulo é inicializado, mostrando o local (nome do arquivo ou módulo embutido) de onde ele é carregado. Quando fornecido duas vezes (<code class="xref std std-option docutils literal notranslate"><span class="pre">-vv</span></code>), exibe uma mensagem para cada arquivo que é verificado durante a busca por um módulo. Também fornece informações sobre a limpeza do módulo na saída.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>O módulo <a class="reference internal" href="../library/site.html#module-site" title="site: Module responsible for site-specific configuration."><code class="xref py py-mod docutils literal notranslate"><span class="pre">site</span></code></a> relata os caminhos específicos do site e os arquivos <code class="file docutils literal notranslate"><span class="pre">.pth</span></code> sendo processados.</p>
+</div>
+<p>Veja também <span class="target" id="index-102"></span><a class="reference internal" href="#envvar-PYTHONVERBOSE"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONVERBOSE</span></code></a>.</p>
+</dd></dl>
+
+<span class="target" id="using-on-warnings"></span><dl class="std cmdoption">
+<dt id="cmdoption-W">
+<span id="cmdoption-w"></span><code class="sig-name descname">-W</code><code class="sig-prename descclassname"> arg</code><a class="headerlink" href="#cmdoption-W" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Controle de advertência. O mecanismo de aviso do Python por padrão exibe mensagens de aviso para <a class="reference internal" href="../library/sys.html#sys.stderr" title="sys.stderr"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stderr</span></code></a>.</p>
+<p>As configurações mais simples aplicam uma determinada ação incondicionalmente a todos os avisos emitidos por um processo (mesmo aqueles que são ignorados por padrão):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>-Wdefault  <span class="c1"># Warn once per call location</span>
+-Werror    <span class="c1"># Convert to exceptions</span>
+-Walways   <span class="c1"># Warn every time</span>
+-Wmodule   <span class="c1"># Warn once per calling module</span>
+-Wonce     <span class="c1"># Warn once per Python process</span>
+-Wignore   <span class="c1"># Never warn</span>
+</pre></div>
+</div>
+<p>Os nomes das ações podem ser abreviados conforme desejado e o interpretador irá resolvê-los para o nome da ação apropriado. Por exemplo, <code class="docutils literal notranslate"><span class="pre">-Wi</span></code> é o mesmo que <code class="docutils literal notranslate"><span class="pre">-Wignore</span></code>.</p>
+<p>A forma completa de argumento é:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>action:message:category:module:lineno
+</pre></div>
+</div>
+<p>Os campos vazios correspondem a todos os valores; campos vazios à direita podem ser omitidos. Por exemplo, <code class="docutils literal notranslate"><span class="pre">-W</span> <span class="pre">ignore::DeprecationWarning</span></code> ignora todos os avisos de DeprecationWarning.</p>
+<p>O campo <em>action</em> é explicado acima, mas se aplica apenas a avisos que correspondem aos campos restantes.</p>
+<p>O campo <em>message</em> deve corresponder a toda a mensagem de aviso; essa correspondência não diferencia maiúsculas de minúsculas.</p>
+<p>O campo <em>category</em> corresponde à categoria de aviso (ex: <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code>). Deve ser um nome de classe; o teste de correspondência se a categoria de aviso real da mensagem é uma subclasse da categoria de aviso especificada.</p>
+<p>O campo <em>module</em> corresponde ao nome do módulo (totalmente qualificado); esta correspondência diferencia maiúsculas de minúsculas.</p>
+<p>O campo <em>lineno</em> corresponde ao número da linha, onde zero corresponde a todos os números da linha e, portanto, é equivalente a um número da linha omitido.</p>
+<p>Múltiplas opções <a class="reference internal" href="#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a> podem ser fornecidas; quando um aviso corresponde a mais de uma opção, a ação para a última opção correspondente é executada. As opções <a class="reference internal" href="#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a> inválidas são ignoradas (embora, uma mensagem de aviso seja exibida sobre opções inválidas quando o primeiro aviso for emitido).</p>
+<p>Os avisos também podem ser controlados usando a variável de ambiente <span class="target" id="index-103"></span><a class="reference internal" href="#envvar-PYTHONWARNINGS"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONWARNINGS</span></code></a> e de dentro de um programa Python usando o módulo <a class="reference internal" href="../library/warnings.html#module-warnings" title="warnings: Issue warning messages and control their disposition."><code class="xref py py-mod docutils literal notranslate"><span class="pre">warnings</span></code></a>. Por exemplo, a função <a class="reference internal" href="../library/warnings.html#warnings.filterwarnings" title="warnings.filterwarnings"><code class="xref py py-func docutils literal notranslate"><span class="pre">warnings.filterwarnings()</span></code></a> pode ser usada para usar uma expressão regular na mensagem de aviso.</p>
+<p>Veja <a class="reference internal" href="../library/warnings.html#warning-filter"><span class="std std-ref">O filtro de avisos</span></a> e <a class="reference internal" href="../library/warnings.html#describing-warning-filters"><span class="std std-ref">Describing Warning Filters</span></a> para mais detalhes.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-x">
+<code class="sig-name descname">-x</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-x" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Pula a primeira linha do código-fonte, permitindo o uso de formas não-Unix de <code class="docutils literal notranslate"><span class="pre">#!cmd</span></code>. Isso se destina apenas a um hack específico do DOS.</p>
+</dd></dl>
+
+<dl class="std cmdoption">
+<dt id="cmdoption-X">
+<code class="sig-name descname">-X</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-X" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Reservado para várias opções específicas de implementação. CPython atualmente define os seguintes valores possíveis:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">faulthandler</span></code> para habilitar <a class="reference internal" href="../library/faulthandler.html#module-faulthandler" title="faulthandler: Dump the Python traceback."><code class="xref py py-mod docutils literal notranslate"><span class="pre">faulthandler</span></code></a>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">showrefcount</span></code> para emitir a contagem de referências total e o número de blocos de memória usados quando o programa termina ou após cada instrução no interpretador interativo. Isso só funciona em <a class="reference internal" href="configure.html#debug-build"><span class="std std-ref">construções de depuração</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">tracemalloc</span></code> para começar a rastrear alocações de memória do Python usando o módulo <a class="reference internal" href="../library/tracemalloc.html#module-tracemalloc" title="tracemalloc: Trace memory allocations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tracemalloc</span></code></a>. Por padrão, apenas o quadro mais recente é armazenado no traceback (situação da pilha de execução) de um rastro. Use <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">tracemalloc=NFRAME</span></code> para iniciar o rastreamento com um limite de traceback de quadros <em>NFRAME</em>. Veja o <a class="reference internal" href="../library/tracemalloc.html#tracemalloc.start" title="tracemalloc.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">tracemalloc.start()</span></code></a> para mais informações.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">importtime</span></code> para mostrar quanto tempo leva cada importação. Mostra o nome do módulo, tempo cumulativo (incluindo importações aninhadas) e tempo próprio (excluindo importações aninhadas). Observe que sua saída pode ser interrompida em aplicações multithread. O uso típico é <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-X</span> <span class="pre">importtime</span> <span class="pre">-c</span> <span class="pre">'import</span> <span class="pre">asyncio'</span></code>.  Veja também <span class="target" id="index-104"></span><a class="reference internal" href="#envvar-PYTHONPROFILEIMPORTTIME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPROFILEIMPORTTIME</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">dev</span></code>: habilita <a class="reference internal" href="../library/devmode.html#devmode"><span class="std std-ref">Modo de Desenvolvimento do Python</span></a>, introduzindo verificações adicionais de tempo de execução que são muito custosas para serem habilitadas por padrão.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">utf8</span></code> habilita o <a class="reference internal" href="../library/os.html#utf8-mode"><span class="std std-ref">Modo UTF-8 do Python</span></a>. <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">utf8=0</span></code> explicitamente desabilita o <a class="reference internal" href="../library/os.html#utf8-mode"><span class="std std-ref">Modo UTF-8 do Python</span></a> (mesmo quando de outra forma seria ativado automaticamente).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">pycache_prefix=PATH</span></code> permite a escrita de arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> em uma árvore paralela enraizada em um determinado diretório em vez de na árvore de código. Veja também <span class="target" id="index-105"></span><a class="reference internal" href="#envvar-PYTHONPYCACHEPREFIX"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPYCACHEPREFIX</span></code></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">warn_default_encoding</span></code> emite uma <a class="reference internal" href="../library/exceptions.html#EncodingWarning" title="EncodingWarning"><code class="xref py py-class docutils literal notranslate"><span class="pre">EncodingWarning</span></code></a> quando a codificação padrão específica da localidade é usada para abrir arquivos. Veja também  <span class="target" id="index-106"></span><a class="reference internal" href="#envvar-PYTHONWARNDEFAULTENCODING"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONWARNDEFAULTENCODING</span></code></a>.</p></li>
+</ul>
+<p>Também permite passar valores arbitrários e recuperá-los através do dicionário <a class="reference internal" href="../library/sys.html#sys._xoptions" title="sys._xoptions"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys._xoptions</span></code></a>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.2: </span>A opção <a class="reference internal" href="#cmdoption-X"><code class="xref std std-option docutils literal notranslate"><span class="pre">-X</span></code></a> foi adicionada.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3: </span>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">faulthandler</span></code>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4: </span>As opções <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">showrefcount</span></code> e <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">tracemalloc</span></code>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6: </span>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">showalloccount</span></code>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7: </span>As opções <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">importtime</span></code>, <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">dev</span></code> e <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">utf8</span></code>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8: </span>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">pycache_prefix</span></code>. A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">dev</span></code> agora registra exceções de <code class="docutils literal notranslate"><span class="pre">close()</span></code> no destruidor de <a class="reference internal" href="../library/io.html#io.IOBase" title="io.IOBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">io.IOBase</span></code></a>.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.9: </span>Usando a opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">dev</span></code>, verifica os argumentos de <em>encoding</em> e <em>errors</em> nas operações de codificação e decodificação de strings.</p>
+<p>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">showalloccount</span></code> foi removida.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10: </span>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">warn_default_encoding</span></code>.</p>
+</div>
+<div class="deprecated-removed">
+<p><span class="versionmodified">Deprecated since version 3.9, removed in version 3.10: </span>A opção <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">oldparser</span></code>.</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="options-you-shouldn-t-use">
+<h3><span class="section-number">1.1.4. </span>Opções que você não deve usar<a class="headerlink" href="#options-you-shouldn-t-use" title="Link permanente para este título">¶</a></h3>
+<dl class="std cmdoption">
+<dt id="cmdoption-J">
+<span id="cmdoption-j"></span><code class="sig-name descname">-J</code><code class="sig-prename descclassname"></code><a class="headerlink" href="#cmdoption-J" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Reservado para uso pelo <a class="reference external" href="http://www.jython.org/">Jython</a>.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="environment-variables">
+<span id="using-on-envvars"></span><h2><span class="section-number">1.2. </span>Variáveis de ambiente<a class="headerlink" href="#environment-variables" title="Link permanente para este título">¶</a></h2>
+<p>Essas variáveis de ambiente influenciam o comportamento do Python, elas são processadas antes das opções de linha de comando diferentes de -E ou -I. É comum que as opções de linha de comando substituam as variáveis ambientais onde há um conflito.</p>
+<dl class="std envvar">
+<dt id="envvar-PYTHONHOME">
+<code class="sig-name descname">PYTHONHOME</code><a class="headerlink" href="#envvar-PYTHONHOME" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Altera a localização das bibliotecas Python padrão. Por padrão, as bibliotecas são pesquisadas em <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em><span class="pre">/lib/python</span><em><span class="pre">version</span></em></code> e <code class="file docutils literal notranslate"><em><span class="pre">exec_prefix</span></em><span class="pre">/lib/python</span><em><span class="pre">version</span></em></code>, onde <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em></code> e <code class="file docutils literal notranslate"><em><span class="pre">exec_prefix</span></em></code> são diretórios dependentes da instalação, ambos padronizando para <code class="file docutils literal notranslate"><span class="pre">/usr/local</span></code>.</p>
+<p>Quando <span class="target" id="index-107"></span><a class="reference internal" href="#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a> é definido como um único diretório, seu valor substitui <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em></code> e <code class="file docutils literal notranslate"><em><span class="pre">exec_prefix</span></em></code>. Para especificar valores diferentes para estes, defina <span class="target" id="index-108"></span><a class="reference internal" href="#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a> para <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em><span class="pre">:</span><em><span class="pre">exec_prefix</span></em></code>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONPATH">
+<code class="sig-name descname">PYTHONPATH</code><a class="headerlink" href="#envvar-PYTHONPATH" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Aumenta o caminho de pesquisa padrão para arquivos de módulo. O formato é o mesmo <span class="target" id="index-109"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PATH</span></code> do shell: um ou mais caminhos de diretório separados por <a class="reference internal" href="../library/os.html#os.pathsep" title="os.pathsep"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.pathsep</span></code></a> (por exemplo, dois pontos no Unix ou ponto e vírgula no Windows). Os diretórios inexistentes são ignorados silenciosamente.</p>
+<p>Além dos diretórios normais, entradas individuais <span class="target" id="index-110"></span><a class="reference internal" href="#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a> podem referir-se a arquivos zip contendo módulos Python puros (tanto no código-fonte quanto na forma compilada). Módulos de extensão não podem ser importados de arquivos zip.</p>
+<p>O caminho de pesquisa padrão depende da instalação, mas geralmente começa com <code class="file docutils literal notranslate"><em><span class="pre">prefix</span></em><span class="pre">/lib/python</span><em><span class="pre">version</span></em></code> (veja <span class="target" id="index-111"></span><a class="reference internal" href="#envvar-PYTHONHOME"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHOME</span></code></a> acima). É <em>sempre</em> anexado a <span class="target" id="index-112"></span><a class="reference internal" href="#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a>.</p>
+<p>Um diretório adicional será inserido no caminho de pesquisa antes de <span class="target" id="index-113"></span><a class="reference internal" href="#envvar-PYTHONPATH"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></a> como descrito acima em <a class="reference internal" href="#using-on-interface-options"><span class="std std-ref">Opções de interface</span></a>. O caminho de pesquisa pode ser manipulado de dentro de um programa Python como a variável <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONPLATLIBDIR">
+<code class="sig-name descname">PYTHONPLATLIBDIR</code><a class="headerlink" href="#envvar-PYTHONPLATLIBDIR" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, ela substitui o valor <a class="reference internal" href="../library/sys.html#sys.platlibdir" title="sys.platlibdir"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.platlibdir</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.9.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONSTARTUP">
+<code class="sig-name descname">PYTHONSTARTUP</code><a class="headerlink" href="#envvar-PYTHONSTARTUP" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se este for o nome de um arquivo legível, os comandos Python nesse arquivo serão executados antes que o primeiro prompt seja exibido no modo interativo. O arquivo é executado no mesmo namespace onde os comandos interativos são executados para que os objetos definidos ou importados nele possam ser usados sem qualificação na sessão interativa. Você também pode alterar os prompts <a class="reference internal" href="../library/sys.html#sys.ps1" title="sys.ps1"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.ps1</span></code></a> e <a class="reference internal" href="../library/sys.html#sys.ps2" title="sys.ps2"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.ps2</span></code></a> e o gancho <a class="reference internal" href="../library/sys.html#sys.__interactivehook__" title="sys.__interactivehook__"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.__interactivehook__</span></code></a> neste arquivo.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="../library/sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">cpython.run_startup</span></code> com argumento <code class="docutils literal notranslate"><span class="pre">filename</span></code>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONOPTIMIZE">
+<code class="sig-name descname">PYTHONOPTIMIZE</code><a class="headerlink" href="#envvar-PYTHONOPTIMIZE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-O"><code class="xref std std-option docutils literal notranslate"><span class="pre">-O</span></code></a>. Se definido como um inteiro, é equivalente a especificar <a class="reference internal" href="#cmdoption-O"><code class="xref std std-option docutils literal notranslate"><span class="pre">-O</span></code></a> várias vezes.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONBREAKPOINT">
+<code class="sig-name descname">PYTHONBREAKPOINT</code><a class="headerlink" href="#envvar-PYTHONBREAKPOINT" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se estiver definida, ela nomeia um chamável usando a notação de caminho com pontos. O módulo que contém o chamável será importado e então o chamável será executado pela implementação padrão de <a class="reference internal" href="../library/sys.html#sys.breakpointhook" title="sys.breakpointhook"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.breakpointhook()</span></code></a> que é chamado pelo <a class="reference internal" href="../library/functions.html#breakpoint" title="breakpoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">breakpoint()</span></code></a> embutido. Se não for definido, ou definido como uma string vazia, é equivalente ao valor “pdb.set_trace”. Definir isso para a string “0” faz com que a implementação padrão de <a class="reference internal" href="../library/sys.html#sys.breakpointhook" title="sys.breakpointhook"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.breakpointhook()</span></code></a> não faça nada além de retornar imediatamente.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONDEBUG">
+<code class="sig-name descname">PYTHONDEBUG</code><a class="headerlink" href="#envvar-PYTHONDEBUG" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">-d</span></code></a>. Se definido como um inteiro, é equivalente a especificar <a class="reference internal" href="#cmdoption-d"><code class="xref std std-option docutils literal notranslate"><span class="pre">-d</span></code></a> várias vezes.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONINSPECT">
+<code class="sig-name descname">PYTHONINSPECT</code><a class="headerlink" href="#envvar-PYTHONINSPECT" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-i"><code class="xref std std-option docutils literal notranslate"><span class="pre">-i</span></code></a>.</p>
+<p>Esta variável também pode ser modificada pelo código Python usando <a class="reference internal" href="../library/os.html#os.environ" title="os.environ"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.environ</span></code></a> para forçar o modo de inspeção no encerramento do programa.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONUNBUFFERED">
+<code class="sig-name descname">PYTHONUNBUFFERED</code><a class="headerlink" href="#envvar-PYTHONUNBUFFERED" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-u"><code class="xref std std-option docutils literal notranslate"><span class="pre">-u</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONVERBOSE">
+<code class="sig-name descname">PYTHONVERBOSE</code><a class="headerlink" href="#envvar-PYTHONVERBOSE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-1"><code class="xref std std-option docutils literal notranslate"><span class="pre">-v</span></code></a>. Se definido como um inteiro, é equivalente a especificar <a class="reference internal" href="#cmdoption-1"><code class="xref std std-option docutils literal notranslate"><span class="pre">-v</span></code></a> várias vezes.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONCASEOK">
+<code class="sig-name descname">PYTHONCASEOK</code><a class="headerlink" href="#envvar-PYTHONCASEOK" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>If this is set, Python ignores case in <a class="reference internal" href="../reference/simple_stmts.html#import"><code class="xref std std-keyword docutils literal notranslate"><span class="pre">import</span></code></a> statements.  This
+only works on Windows and macOS.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONDONTWRITEBYTECODE">
+<code class="sig-name descname">PYTHONDONTWRITEBYTECODE</code><a class="headerlink" href="#envvar-PYTHONDONTWRITEBYTECODE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido como uma string não vazia, o Python não tentará escrever arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> na importação de módulos fonte. Isso é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-B"><code class="xref std std-option docutils literal notranslate"><span class="pre">-B</span></code></a>.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONPYCACHEPREFIX">
+<code class="sig-name descname">PYTHONPYCACHEPREFIX</code><a class="headerlink" href="#envvar-PYTHONPYCACHEPREFIX" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se estiver definido, o Python escreverá os arquivos <code class="docutils literal notranslate"><span class="pre">.pyc</span></code> em uma árvore de diretório espelho neste caminho, em vez de nos diretórios <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> dentro da árvore de fontes. Isso é equivalente a especificar a opção <a class="reference internal" href="#cmdoption-X"><code class="xref std std-option docutils literal notranslate"><span class="pre">-X</span></code></a> <code class="docutils literal notranslate"><span class="pre">pycache_prefix=PATH</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONHASHSEED">
+<code class="sig-name descname">PYTHONHASHSEED</code><a class="headerlink" href="#envvar-PYTHONHASHSEED" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável não for definida ou definida como <code class="docutils literal notranslate"><span class="pre">random</span></code>, um valor aleatório é usado para semear os hashes de objetos str e bytes.</p>
+<p>Se <span class="target" id="index-114"></span><a class="reference internal" href="#envvar-PYTHONHASHSEED"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONHASHSEED</span></code></a> for definido como um valor inteiro, ele é usado como uma semente fixa para gerar o hash() dos tipos cobertos pela aleatorização do hash.</p>
+<p>Sua finalidade é permitir hash repetível, como autotestes do próprio interpretador, ou permitir que um cluster de processos Python compartilhe valores de hash.</p>
+<p>O número inteiro deve ser um número decimal no intervalo [0,4294967295]. Especificar o valor 0 desabilitará a aleatorização de hash.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.2.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONIOENCODING">
+<code class="sig-name descname">PYTHONIOENCODING</code><a class="headerlink" href="#envvar-PYTHONIOENCODING" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se for definido antes de executar o interpretador, ele substitui a codificação usada para stdin/stdout/stderr, na sintaxe <code class="docutils literal notranslate"><span class="pre">encodingname:errorhandler</span></code>. Ambas as partes <code class="docutils literal notranslate"><span class="pre">encodingname</span></code> e <code class="docutils literal notranslate"><span class="pre">:errorhandler</span></code> são opcionais e têm o mesmo significado que em <a class="reference internal" href="../library/stdtypes.html#str.encode" title="str.encode"><code class="xref py py-func docutils literal notranslate"><span class="pre">str.encode()</span></code></a>.</p>
+<p>Para stderr, a parte <code class="docutils literal notranslate"><span class="pre">:errorhandler</span></code> é ignorada; o tratador sempre será <code class="docutils literal notranslate"><span class="pre">'backslashreplace'</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.4: </span>A parte <code class="docutils literal notranslate"><span class="pre">encodingname</span></code> é agora opcional.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.6: </span>No Windows, a codificação especificada por esta variável é ignorada para buffers de console interativo, a menos que <span class="target" id="index-115"></span><a class="reference internal" href="#envvar-PYTHONLEGACYWINDOWSSTDIO"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONLEGACYWINDOWSSTDIO</span></code></a> também seja especificado. Arquivos e canais redirecionados por meio de fluxos padrão não são afetados.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONNOUSERSITE">
+<code class="sig-name descname">PYTHONNOUSERSITE</code><a class="headerlink" href="#envvar-PYTHONNOUSERSITE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se estiver definido, o Python não adicionará o <a class="reference internal" href="../library/site.html#site.USER_SITE" title="site.USER_SITE"><code class="xref py py-data docutils literal notranslate"><span class="pre">diretório</span> <span class="pre">site-packages</span> <span class="pre">de</span> <span class="pre">usuário</span></code></a> a <a class="reference internal" href="../library/sys.html#sys.path" title="sys.path"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.path</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><span class="target" id="index-116"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0370"><strong>PEP 370</strong></a> – Diretório site-packages por usuário.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONUSERBASE">
+<code class="sig-name descname">PYTHONUSERBASE</code><a class="headerlink" href="#envvar-PYTHONUSERBASE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Define o <code class="xref py py-data docutils literal notranslate"><span class="pre">diretório</span> <span class="pre">base</span> <span class="pre">do</span> <span class="pre">usuário</span></code>, que é usado para calcular o caminho do <code class="xref py py-data docutils literal notranslate"><span class="pre">diretório</span> <span class="pre">site-packages</span> <span class="pre">do</span> <span class="pre">usuário</span></code> e <a class="reference internal" href="../install/index.html#inst-alt-install-user"><span class="std std-ref">caminhos de instalação do Distutils</span></a> para <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span> <span class="pre">--user</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p><span class="target" id="index-117"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0370"><strong>PEP 370</strong></a> – Diretório site-packages por usuário.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONEXECUTABLE">
+<code class="sig-name descname">PYTHONEXECUTABLE</code><a class="headerlink" href="#envvar-PYTHONEXECUTABLE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>If this environment variable is set, <code class="docutils literal notranslate"><span class="pre">sys.argv[0]</span></code> will be set to its
+value instead of the value got through the C runtime.  Only works on
+macOS.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONWARNINGS">
+<code class="sig-name descname">PYTHONWARNINGS</code><a class="headerlink" href="#envvar-PYTHONWARNINGS" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Isso é equivalente à opção <a class="reference internal" href="#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a>. Se definido como uma string separada por vírgulas, é equivalente a especificar <a class="reference internal" href="#cmdoption-W"><code class="xref std std-option docutils literal notranslate"><span class="pre">-W</span></code></a> várias vezes, com os filtros posteriores na lista tendo precedência sobre os anteriores na lista.</p>
+<p>As configurações mais simples aplicam uma determinada ação incondicionalmente a todos os avisos emitidos por um processo (mesmo aqueles que são ignorados por padrão):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">PYTHONWARNINGS</span><span class="o">=</span>default  <span class="c1"># Warn once per call location</span>
+<span class="nv">PYTHONWARNINGS</span><span class="o">=</span>error    <span class="c1"># Convert to exceptions</span>
+<span class="nv">PYTHONWARNINGS</span><span class="o">=</span>always   <span class="c1"># Warn every time</span>
+<span class="nv">PYTHONWARNINGS</span><span class="o">=</span>module   <span class="c1"># Warn once per calling module</span>
+<span class="nv">PYTHONWARNINGS</span><span class="o">=</span>once     <span class="c1"># Warn once per Python process</span>
+<span class="nv">PYTHONWARNINGS</span><span class="o">=</span>ignore   <span class="c1"># Never warn</span>
+</pre></div>
+</div>
+<p>Veja <a class="reference internal" href="../library/warnings.html#warning-filter"><span class="std std-ref">O filtro de avisos</span></a> e <a class="reference internal" href="../library/warnings.html#describing-warning-filters"><span class="std std-ref">Describing Warning Filters</span></a> para mais detalhes.</p>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONFAULTHANDLER">
+<code class="sig-name descname">PYTHONFAULTHANDLER</code><a class="headerlink" href="#envvar-PYTHONFAULTHANDLER" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, <a class="reference internal" href="../library/faulthandler.html#faulthandler.enable" title="faulthandler.enable"><code class="xref py py-func docutils literal notranslate"><span class="pre">faulthandler.enable()</span></code></a> é chamado na inicialização: instale um tratador para os sinais <code class="xref py py-const docutils literal notranslate"><span class="pre">SIGSEGV</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">SIGFPE</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">SIGABRT</span></code>, <code class="xref py py-const docutils literal notranslate"><span class="pre">SIGBUS</span></code> and <code class="xref py py-const docutils literal notranslate"><span class="pre">SIGILL</span></code> para despejar o traceback (situação da pilha de execução) do Python. Isso é equivalente à opção <a class="reference internal" href="#cmdoption-X"><code class="xref std std-option docutils literal notranslate"><span class="pre">-X</span></code></a> <code class="docutils literal notranslate"><span class="pre">faulthandler</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.3.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONTRACEMALLOC">
+<code class="sig-name descname">PYTHONTRACEMALLOC</code><a class="headerlink" href="#envvar-PYTHONTRACEMALLOC" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, começa a rastrear as alocações de memória Python usando o módulo <a class="reference internal" href="../library/tracemalloc.html#module-tracemalloc" title="tracemalloc: Trace memory allocations."><code class="xref py py-mod docutils literal notranslate"><span class="pre">tracemalloc</span></code></a>. O valor da variável é o número máximo de quadros armazenados em um traceback de um rastreamento. Por exemplo, <code class="docutils literal notranslate"><span class="pre">PYTHONTRACEMALLOC=1</span></code> armazena apenas o quadro mais recente. Veja o <a class="reference internal" href="../library/tracemalloc.html#tracemalloc.start" title="tracemalloc.start"><code class="xref py py-func docutils literal notranslate"><span class="pre">tracemalloc.start()</span></code></a> para mais informações.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONPROFILEIMPORTTIME">
+<code class="sig-name descname">PYTHONPROFILEIMPORTTIME</code><a class="headerlink" href="#envvar-PYTHONPROFILEIMPORTTIME" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, o Python mostrará quanto tempo leva cada importação. Isso é exatamente equivalente a definir <code class="docutils literal notranslate"><span class="pre">-X</span> <span class="pre">importtime</span></code> na linha de comando.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONASYNCIODEBUG">
+<code class="sig-name descname">PYTHONASYNCIODEBUG</code><a class="headerlink" href="#envvar-PYTHONASYNCIODEBUG" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, habilita o <a class="reference internal" href="../library/asyncio-dev.html#asyncio-debug-mode"><span class="std std-ref">modo de depuração</span></a> do módulo <a class="reference internal" href="../library/asyncio.html#module-asyncio" title="asyncio: Asynchronous I/O."><code class="xref py py-mod docutils literal notranslate"><span class="pre">asyncio</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONMALLOC">
+<code class="sig-name descname">PYTHONMALLOC</code><a class="headerlink" href="#envvar-PYTHONMALLOC" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Define os alocadores de memória Python e/ou instale ganchos de depuração.</p>
+<p>Define a família de alocadores de memória usados ​​pelo Python:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">default</span></code>: usa os <a class="reference internal" href="../c-api/memory.html#default-memory-allocators"><span class="std std-ref">alocadores padrão de memória</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">malloc</span></code>: usa a função <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> da biblioteca C para todos os domínios (<code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_RAW</span></code>, <code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_MEM</span></code>, <code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_OBJ</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pymalloc</span></code>: usa o <a class="reference internal" href="../c-api/memory.html#pymalloc"><span class="std std-ref">alocador pymalloc</span></a> para domínios <code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_MEM</span></code> e <code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_OBJ</span></code> e usa a função <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> para o domínio <code class="xref c c-data docutils literal notranslate"><span class="pre">PYMEM_DOMAIN_RAW</span></code>.</p></li>
+</ul>
+<p>Instala <a class="reference internal" href="../c-api/memory.html#pymem-debug-hooks"><span class="std std-ref">ganchos de depuração</span></a>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">debug</span></code>: instala os ganchos de depuração sobre os <a class="reference internal" href="../c-api/memory.html#default-memory-allocators"><span class="std std-ref">alocadores padrão de memória</span></a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">malloc_debug</span></code>: o mesmo que <code class="docutils literal notranslate"><span class="pre">malloc</span></code>, mas também instala ganchos de depuração.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pymalloc_debug</span></code>: o mesmo que <code class="docutils literal notranslate"><span class="pre">pymalloc</span></code>, mas também instala ganchos de depuração.</p></li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.7: </span>Adicionado o alocador <code class="docutils literal notranslate"><span class="pre">&quot;default&quot;</span></code>.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONMALLOCSTATS">
+<code class="sig-name descname">PYTHONMALLOCSTATS</code><a class="headerlink" href="#envvar-PYTHONMALLOCSTATS" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido como uma string não vazia, o Python exibe estatísticas do <a class="reference internal" href="../c-api/memory.html#pymalloc"><span class="std std-ref">alocador de memória pymalloc</span></a> toda vez que uma nova arena de objeto pymalloc for criada e ao no desligamento.</p>
+<p>Esta variável é ignorada se a variável de ambiente <span class="target" id="index-118"></span><a class="reference internal" href="#envvar-PYTHONMALLOC"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONMALLOC</span></code></a> é usada para forçar o alocador <code class="xref c c-func docutils literal notranslate"><span class="pre">malloc()</span></code> da biblioteca C, ou se Python está configurado sem suporte a <code class="docutils literal notranslate"><span class="pre">pymalloc</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.6: </span>Esta variável agora também pode ser usada em Python compilado no modo de lançamento. Agora não tem efeito se definido como uma string vazia.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONLEGACYWINDOWSFSENCODING">
+<code class="sig-name descname">PYTHONLEGACYWINDOWSFSENCODING</code><a class="headerlink" href="#envvar-PYTHONLEGACYWINDOWSFSENCODING" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido como uma string não vazia, o modo padrão do <a class="reference internal" href="../glossary.html#term-filesystem-encoding-and-error-handler"><span class="xref std std-term">tratador de erros e codificação do sistema de arquivos</span></a> irá reverter para seus valores pré-3.6 de “mbcs” e “replace”, respectivamente. Caso contrário, os novos padrões “utf-8” e “surrogatepass” serão usados.</p>
+<p>Isso também pode ser habilitado em tempo de execução com <a class="reference internal" href="../library/sys.html#sys._enablelegacywindowsfsencoding" title="sys._enablelegacywindowsfsencoding"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys._enablelegacywindowsfsencoding()</span></code></a>.</p>
+<p class="availability"><a class="reference internal" href="../library/intro.html#availability"><span class="std std-ref">Disponibilidade</span></a>: Windows.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6: </span>Veja <span class="target" id="index-119"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0529"><strong>PEP 529</strong></a> para mais detalhes.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONLEGACYWINDOWSSTDIO">
+<code class="sig-name descname">PYTHONLEGACYWINDOWSSTDIO</code><a class="headerlink" href="#envvar-PYTHONLEGACYWINDOWSSTDIO" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido como uma string não vazia, não usa o novo leitor e escritor de console. Isso significa que os caracteres Unicode serão codificados de acordo com a página de código do console ativo, em vez de usar utf-8.</p>
+<p>Esta variável é ignorada se os fluxos padrão forem redirecionados (para arquivos ou canais) em vez de se referir aos buffers do console.</p>
+<p class="availability"><a class="reference internal" href="../library/intro.html#availability"><span class="std std-ref">Disponibilidade</span></a>: Windows.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONCOERCECLOCALE">
+<code class="sig-name descname">PYTHONCOERCECLOCALE</code><a class="headerlink" href="#envvar-PYTHONCOERCECLOCALE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido com o valor <code class="docutils literal notranslate"><span class="pre">0</span></code>, faz com que a aplicação principal de linha de comando Python ignore a coerção dos códigos de idioma legados C e POSIX baseados em ASCII para uma alternativa baseada em UTF-8 mais capaz.</p>
+<p>Se esta variável <em>não</em> estiver definida (ou estiver definida para um valor diferente de <code class="docutils literal notranslate"><span class="pre">0</span></code>), a variável de ambiente de substituição de localidade <code class="docutils literal notranslate"><span class="pre">LC_ALL</span></code> também não será definida, e a localidade atual relatada para a categoria <code class="docutils literal notranslate"><span class="pre">LC_CTYPE</span></code> é a localidade <code class="docutils literal notranslate"><span class="pre">C</span></code> padrão, ou então a localidade <code class="docutils literal notranslate"><span class="pre">POSIX</span></code> explicitamente baseada em ASCII, então a CLI do Python tentará configurar as seguintes localidades para a categoria <code class="docutils literal notranslate"><span class="pre">LC_CTYPE</span></code> na ordem listada antes de carregar o tempo de execução do interpretador:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C.UTF-8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">C.utf8</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">UTF-8</span></code></p></li>
+</ul>
+<p>Se a configuração de uma dessas categorias de local for bem-sucedida, a variável de ambiente <code class="docutils literal notranslate"><span class="pre">LC_CTYPE</span></code> também será configurada de acordo no ambiente de processo atual antes que o tempo de execução do Python seja inicializado. Isso garante que, além de ser visto pelo próprio interpretador e outros componentes com reconhecimento de localidade em execução no mesmo processo (como a biblioteca GNU <code class="docutils literal notranslate"><span class="pre">readline</span></code>), a configuração atualizada também é vista em subprocessos (independentemente de ou não esses processos estão executando um interpretador Python), bem como em operações que consultam o ambiente em vez da localidade C atual (como o <a class="reference internal" href="../library/locale.html#locale.getdefaultlocale" title="locale.getdefaultlocale"><code class="xref py py-func docutils literal notranslate"><span class="pre">locale.getdefaultlocale()</span></code></a> do próprio Python).</p>
+<p>Configurar uma dessas localidades (explicitamente ou por meio da coerção de localidade implícita acima) habilita automaticamente o <a class="reference internal" href="../library/codecs.html#error-handlers"><span class="std std-ref">tratador de erros</span></a> <code class="docutils literal notranslate"><span class="pre">surrogateescape</span></code> para <a class="reference internal" href="../library/sys.html#sys.stdin" title="sys.stdin"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stdin</span></code></a> e <a class="reference internal" href="../library/sys.html#sys.stdout" title="sys.stdout"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stdout</span></code></a> (<a class="reference internal" href="../library/sys.html#sys.stderr" title="sys.stderr"><code class="xref py py-data docutils literal notranslate"><span class="pre">sys.stderr</span></code></a> continua a usar <code class="docutils literal notranslate"><span class="pre">backslashreplace</span></code> como faz em qualquer outra localidade). Este comportamento de tratamento de fluxo pode ser substituído usando <span class="target" id="index-120"></span><a class="reference internal" href="#envvar-PYTHONIOENCODING"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONIOENCODING</span></code></a> como de costume.</p>
+<p>Para fins de depuração, definir <code class="docutils literal notranslate"><span class="pre">PYTHONCOERCECLOCALE=warn</span></code> fará com que o Python emita mensagens de aviso em <code class="docutils literal notranslate"><span class="pre">stderr</span></code> se a coerção de localidade for ativada ou se uma localidade que <em>teria</em> acionado a coerção ainda estiver ativa quando o Python o tempo de execução é inicializado.</p>
+<p>Observe também que mesmo quando a coerção de localidade está desabilitada, ou quando não consegue encontrar uma localidade de destino adequada, <span class="target" id="index-121"></span><a class="reference internal" href="#envvar-PYTHONUTF8"><code class="xref std std-envvar docutils literal notranslate"><span class="pre">PYTHONUTF8</span></code></a> ainda será ativado por padrão em localidades baseadas em ASCII legadas. Ambos os recursos devem ser desabilitados para forçar o interpretador a usar <code class="docutils literal notranslate"><span class="pre">ASCII</span></code> ao invés de <code class="docutils literal notranslate"><span class="pre">UTF-8</span></code> para interfaces de sistema.</p>
+<p class="availability"><a class="reference internal" href="../library/intro.html#availability"><span class="std std-ref">Disponível</span></a>: *nix.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7: </span>Veja <span class="target" id="index-122"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0538"><strong>PEP 538</strong></a> para mais detalhes.</p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONDEVMODE">
+<code class="sig-name descname">PYTHONDEVMODE</code><a class="headerlink" href="#envvar-PYTHONDEVMODE" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, habilita <a class="reference internal" href="../library/devmode.html#devmode"><span class="std std-ref">Modo de Desenvolvimento do Python</span></a>, introduzindo verificações adicionais de tempo de execução que são muito caras para serem habilitadas por padrão.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONUTF8">
+<code class="sig-name descname">PYTHONUTF8</code><a class="headerlink" href="#envvar-PYTHONUTF8" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido para <code class="docutils literal notranslate"><span class="pre">1</span></code>, habilita o <a class="reference internal" href="../library/os.html#utf8-mode"><span class="std std-ref">modo UTF-8 do Python</span></a>.</p>
+<p>Se definido para <code class="docutils literal notranslate"><span class="pre">0</span></code>, desabilita o <a class="reference internal" href="../library/os.html#utf8-mode"><span class="std std-ref">modo UTF-8 do Python</span></a>.</p>
+<p>Definir qualquer outra string não vazia causa um erro durante a inicialização do interpretador.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONWARNDEFAULTENCODING">
+<code class="sig-name descname">PYTHONWARNDEFAULTENCODING</code><a class="headerlink" href="#envvar-PYTHONWARNDEFAULTENCODING" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se esta variável de ambiente for definida como uma string não vazia, emite uma <a class="reference internal" href="../library/exceptions.html#EncodingWarning" title="EncodingWarning"><code class="xref py py-class docutils literal notranslate"><span class="pre">EncodingWarning</span></code></a> quando a codificação padrão específica da localidade é usada.</p>
+<p>Veja <a class="reference internal" href="../library/io.html#io-encoding-warning"><span class="std std-ref">Opt-in EncodingWarning</span></a> para detalhes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<section id="debug-mode-variables">
+<h3><span class="section-number">1.2.1. </span>Variáveis de modo de depuração<a class="headerlink" href="#debug-mode-variables" title="Link permanente para este título">¶</a></h3>
+<dl class="std envvar">
+<dt id="envvar-PYTHONTHREADDEBUG">
+<code class="sig-name descname">PYTHONTHREADDEBUG</code><a class="headerlink" href="#envvar-PYTHONTHREADDEBUG" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido, Python exibe informações de depuração de threading no stdout.</p>
+<p>Necessita de uma <a class="reference internal" href="configure.html#debug-build"><span class="std std-ref">construção de depuração do Python</span></a>.</p>
+<div class="deprecated-removed">
+<p><span class="versionmodified">Deprecated since version 3.10, will be removed in version 3.12.</span></p>
+</div>
+</dd></dl>
+
+<dl class="std envvar">
+<dt id="envvar-PYTHONDUMPREFS">
+<code class="sig-name descname">PYTHONDUMPREFS</code><a class="headerlink" href="#envvar-PYTHONDUMPREFS" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Se definido, Python irá despejar objetos e contagens de referências ainda vivas após desligar o interpretador.</p>
+<p>Necessita do Python configurado com a opção de construção <a class="reference internal" href="configure.html#cmdoption-with-trace-refs"><code class="xref std std-option docutils literal notranslate"><span class="pre">--with-trace-refs</span></code></a>.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1. Linha de comando e ambiente</a><ul>
+<li><a class="reference internal" href="#command-line">1.1. Linha de comando</a><ul>
+<li><a class="reference internal" href="#interface-options">1.1.1. Opções de interface</a></li>
+<li><a class="reference internal" href="#generic-options">1.1.2. Opções genéricas</a></li>
+<li><a class="reference internal" href="#miscellaneous-options">1.1.3. Opções diversas</a></li>
+<li><a class="reference internal" href="#options-you-shouldn-t-use">1.1.4. Opções que você não deve usar</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#environment-variables">1.2. Variáveis de ambiente</a><ul>
+<li><a class="reference internal" href="#debug-mode-variables">1.2.1. Variáveis de modo de depuração</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="index.html"
+                        title="capítulo anterior">Configurações e Uso do Python</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="unix.html"
+                        title="próximo capítulo"><span class="section-number">2. </span>Utilizando Python em plataformas Unix</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/using/cmdline.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="unix.html" title="2. Utilizando Python em plataformas Unix"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Configurações e Uso do Python"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Configurações e Uso do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>Linha de comando e ambiente</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

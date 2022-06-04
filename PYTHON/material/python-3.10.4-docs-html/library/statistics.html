@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>statistics — Funções estatísticas &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Módulos de Programção Funcional" href="functional.html" />
+    <link rel="prev" title="random — Gera números pseudoaleatórios" href="random.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/statistics.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">statistics</span></code> — Funções estatísticas</a><ul>
+<li><a class="reference internal" href="#averages-and-measures-of-central-location">Médias e medidas de valor central</a></li>
+<li><a class="reference internal" href="#measures-of-spread">Medidas de espalhamento</a></li>
+<li><a class="reference internal" href="#statistics-for-relations-between-two-inputs">Statistics for relations between two inputs</a></li>
+<li><a class="reference internal" href="#function-details">Detalhes das funções</a></li>
+<li><a class="reference internal" href="#exceptions">Exceções</a></li>
+<li><a class="reference internal" href="#normaldist-objects">Objetos <code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a><ul>
+<li><a class="reference internal" href="#normaldist-examples-and-recipes">Exemplos e receitas com <code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="random.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code> — Gera números pseudoaleatórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="functional.html"
+                        title="próximo capítulo">Módulos de Programção Funcional</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/statistics.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="functional.html" title="Módulos de Programção Funcional"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="random.html" title="random — Gera números pseudoaleatórios"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="numeric.html" accesskey="U">Módulos Matemáticos e Numéricos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">statistics</span></code> — Funções estatísticas</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-statistics">
+<span id="statistics-mathematical-statistics-functions"></span><h1><a class="reference internal" href="#module-statistics" title="statistics: Mathematical statistics functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">statistics</span></code></a> — Funções estatísticas<a class="headerlink" href="#module-statistics" title="Link permanente para este título">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/statistics.py">Lib/statistics.py</a></p>
+<hr class="docutils" />
+<p>Esse módulo fornece funções para o cálculo de estatísticas matemáticas de dados numéricos (para valores do tipo <a class="reference internal" href="numbers.html#numbers.Real" title="numbers.Real"><code class="xref py py-class docutils literal notranslate"><span class="pre">Real</span></code></a>).</p>
+<p>O módulo não tem a intenção de competir com bibliotecas de terceiros como <a class="reference external" href="https://numpy.org">NumPy</a>, <a class="reference external" href="https://www.scipy.org/">SciPy</a>, ou pacotes proprietários de estatísticas com todos os recursos destinados a estatísticos profissionais como Minitab, SAS e Matlab. Ela destina-se ao nível de calculadoras gráficas e científicas.</p>
+<p>A menos que seja explicitamente indicado, essas funções suportam <a class="reference internal" href="functions.html#int" title="int"><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code></a>, <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>, <a class="reference internal" href="decimal.html#decimal.Decimal" title="decimal.Decimal"><code class="xref py py-class docutils literal notranslate"><span class="pre">Decimal</span></code></a> e <a class="reference internal" href="fractions.html#fractions.Fraction" title="fractions.Fraction"><code class="xref py py-class docutils literal notranslate"><span class="pre">Fraction</span></code></a>. O uso com outros tipos (sejam numéricos ou não) não é atualmente suportado. Coleções com uma mistura de tipos também são indefinidas e dependentes da implementação. Se os seus dados de entrada consistem de tipos misturados, você pode usar <a class="reference internal" href="functions.html#map" title="map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> para garantir um resultado consistente, por exemplo <code class="docutils literal notranslate"><span class="pre">map(float,</span> <span class="pre">dado_entrada)</span></code>.</p>
+<section id="averages-and-measures-of-central-location">
+<h2>Médias e medidas de valor central<a class="headerlink" href="#averages-and-measures-of-central-location" title="Link permanente para este título">¶</a></h2>
+<p>Essas funções calculam a média ou o valor típico de uma população ou amostra.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.mean" title="statistics.mean"><code class="xref py py-func docutils literal notranslate"><span class="pre">mean()</span></code></a></p></td>
+<td><p>Média aritmética dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.fmean" title="statistics.fmean"><code class="xref py py-func docutils literal notranslate"><span class="pre">fmean()</span></code></a></p></td>
+<td><p>Média arimética de ponto flutuante rápida.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.geometric_mean" title="statistics.geometric_mean"><code class="xref py py-func docutils literal notranslate"><span class="pre">geometric_mean()</span></code></a></p></td>
+<td><p>Média geométrica dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.harmonic_mean" title="statistics.harmonic_mean"><code class="xref py py-func docutils literal notranslate"><span class="pre">harmonic_mean()</span></code></a></p></td>
+<td><p>Média harmônica dos dados.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.median" title="statistics.median"><code class="xref py py-func docutils literal notranslate"><span class="pre">median()</span></code></a></p></td>
+<td><p>Mediana (valor do meio) dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.median_low" title="statistics.median_low"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_low()</span></code></a></p></td>
+<td><p>Mediana inferior dos dados.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.median_high" title="statistics.median_high"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_high()</span></code></a></p></td>
+<td><p>Mediana superior dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.median_grouped" title="statistics.median_grouped"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_grouped()</span></code></a></p></td>
+<td><p>Mediana, ou o 50º percentil dos dados agrupados.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.mode" title="statistics.mode"><code class="xref py py-func docutils literal notranslate"><span class="pre">mode()</span></code></a></p></td>
+<td><p>Moda (valor mais comum) de dados discretos ou nominais.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.multimode" title="statistics.multimode"><code class="xref py py-func docutils literal notranslate"><span class="pre">multimode()</span></code></a></p></td>
+<td><p>List of modes (most common values) of discrete or nominal data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.quantiles" title="statistics.quantiles"><code class="xref py py-func docutils literal notranslate"><span class="pre">quantiles()</span></code></a></p></td>
+<td><p>Divide os dados em intervalos com probabilidade igual.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="measures-of-spread">
+<h2>Medidas de espalhamento<a class="headerlink" href="#measures-of-spread" title="Link permanente para este título">¶</a></h2>
+<p>Essas funções calculam o quanto a população ou amostra tendem a desviar dos valores típicos ou médios.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 66%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.pstdev" title="statistics.pstdev"><code class="xref py py-func docutils literal notranslate"><span class="pre">pstdev()</span></code></a></p></td>
+<td><p>Desvio padrão populacional dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.pvariance" title="statistics.pvariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">pvariance()</span></code></a></p></td>
+<td><p>Variância populacional dos dados.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.stdev" title="statistics.stdev"><code class="xref py py-func docutils literal notranslate"><span class="pre">stdev()</span></code></a></p></td>
+<td><p>Desvio padrão amostral dos dados.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.variance" title="statistics.variance"><code class="xref py py-func docutils literal notranslate"><span class="pre">variance()</span></code></a></p></td>
+<td><p>Variância amostral dos dados.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="statistics-for-relations-between-two-inputs">
+<h2>Statistics for relations between two inputs<a class="headerlink" href="#statistics-for-relations-between-two-inputs" title="Link permanente para este título">¶</a></h2>
+<p>These functions calculate statistics regarding relations between two inputs.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.covariance" title="statistics.covariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">covariance()</span></code></a></p></td>
+<td><p>Sample covariance for two variables.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#statistics.correlation" title="statistics.correlation"><code class="xref py py-func docutils literal notranslate"><span class="pre">correlation()</span></code></a></p></td>
+<td><p>Pearson’s correlation coefficient for two variables.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#statistics.linear_regression" title="statistics.linear_regression"><code class="xref py py-func docutils literal notranslate"><span class="pre">linear_regression()</span></code></a></p></td>
+<td><p>Slope and intercept for simple linear regression.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="function-details">
+<h2>Detalhes das funções<a class="headerlink" href="#function-details" title="Link permanente para este título">¶</a></h2>
+<p>Nota: as funções não exigem que os dados estejam ordenados. No entanto, para conveniência do leitor, a maioria dos exemplos mostrará sequências ordenadas.</p>
+<dl class="py function">
+<dt id="statistics.mean">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.mean" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a média aritmética amostral de <em>data</em> que pode ser uma sequência ou iterável.</p>
+<p>A média aritmética é a soma dos dados dividida pela quantidade de dados. É comumente chamada apenas de “média”, apesar de ser uma das diversas médias matemáticas. Ela representa uma medida da localização central dos dados.</p>
+<p>Se <em>data</em> for vazio, uma exceção do tipo <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> será levantada.</p>
+<p>Alguns exemplos de uso:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">2.8</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">,</span> <span class="mf">5.75</span><span class="p">])</span>
+<span class="go">2.625</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span> <span class="k">as</span> <span class="n">F</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">([</span><span class="n">F</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="go">Fraction(13, 21)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span> <span class="k">as</span> <span class="n">D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">([</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;0.5&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;0.75&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;0.625&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;0.375&quot;</span><span class="p">)])</span>
+<span class="go">Decimal(&#39;0.5625&#39;)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>The mean is strongly affected by <a class="reference external" href="https://en.wikipedia.org/wiki/Outlier">outliers</a> and is not necessarily a
+typical example of the data points. For a more robust, although less
+efficient, measure of <a class="reference external" href="https://en.wikipedia.org/wiki/Central_tendency">central tendency</a>, see <a class="reference internal" href="#statistics.median" title="statistics.median"><code class="xref py py-func docutils literal notranslate"><span class="pre">median()</span></code></a>.</p>
+<p>A média amostral fornece uma estimativa não enviesada da média populacional verdadeira, ou seja, quando a média é obtida para todas as possíveis amostras, <code class="docutils literal notranslate"><span class="pre">mean(sample)</span></code> converge para a média verdadeira de toda população. Se <em>data</em> representa toda população ao invés de uma amostra, então <code class="docutils literal notranslate"><span class="pre">mean(data)</span></code> é equivalente a calcular a verdadeira média populacional μ.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.fmean">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">fmean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.fmean" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Converte valores em <em>data</em> para ponto flutuante e calcula a média aritmética.</p>
+<p>Essa função executa mais rapidamente do que a função <a class="reference internal" href="#statistics.mean" title="statistics.mean"><code class="xref py py-func docutils literal notranslate"><span class="pre">mean()</span></code></a> e sempre retorna um <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>. <em>data</em> pode ser uma sequência ou iterável. Se o conjunto de dados de entrada estiver vazio, levanta uma exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a>.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fmean</span><span class="p">([</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">])</span>
+<span class="go">4.25</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.geometric_mean">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">geometric_mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.geometric_mean" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Converte valores em <em>data</em> para ponto flutuante e calcula a média geométrica.</p>
+<p>A média geométrica indica a tendência central ou valor típico de <em>data</em> usando o produto dos valores (em oposição à média aritmética que usa a soma deles).</p>
+<p>Levanta uma exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> se a entrada do conjunto de dados for vazia, contiver um zero ou um valor negativo. <em>data</em> pode ser uma sequência ou iterável.</p>
+<p>Nenhum esforço especial é feito para alcançar resultados exatos. (Mas, isso pode mudar no futuro).</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">geometric_mean</span><span class="p">([</span><span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">36</span><span class="p">]),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">36.0</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.harmonic_mean">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">harmonic_mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">weights</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.harmonic_mean" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Return the harmonic mean of <em>data</em>, a sequence or iterable of
+real-valued numbers.  If <em>weights</em> is omitted or <em>None</em>, then
+equal weighting is assumed.</p>
+<p>The harmonic mean is the reciprocal of the arithmetic <a class="reference internal" href="#statistics.mean" title="statistics.mean"><code class="xref py py-func docutils literal notranslate"><span class="pre">mean()</span></code></a> of the
+reciprocals of the data. For example, the harmonic mean of three values <em>a</em>,
+<em>b</em> and <em>c</em> will be equivalent to <code class="docutils literal notranslate"><span class="pre">3/(1/a</span> <span class="pre">+</span> <span class="pre">1/b</span> <span class="pre">+</span> <span class="pre">1/c)</span></code>.  If one of the
+values is zero, the result will be zero.</p>
+<p>The harmonic mean is a type of average, a measure of the central
+location of the data.  It is often appropriate when averaging
+ratios or rates, for example speeds.</p>
+<p>Suponha que um carro viaje 10 km a 40 km/h, e em seguida viaje mais 10 km a 60 km/h. Qual é a velocidade média?</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">harmonic_mean</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
+<span class="go">48.0</span>
+</pre></div>
+</div>
+<p>Suppose a car travels 40 km/hr for 5 km, and when traffic clears,
+speeds-up to 60 km/hr for the remaining 30 km of the journey. What
+is the average speed?</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">harmonic_mean</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<span class="go">56.0</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> is raised if <em>data</em> is empty, any element
+is less than zero, or if the weighted sum isn’t positive.</p>
+<p>O algoritmo atual tem uma saída antecipada quando encontra um zero na entrada. Isso significa que as entradas subsequentes não tem a validade testada. (Esse comportamento pode mudar no futuro.)</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.6.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>Added support for <em>weights</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.median">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">median</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.median" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a mediana (o valor do meio) de dados numéricos, usando o método comum de “média entre os dois do meio”. Se <em>data</em> for vazio, é levantada uma exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a>. <em>data</em> pode ser uma sequência ou um iterável.</p>
+<p>A mediana é uma medida robusta de localização central e é menos afetada por valores discrepantes. Quando a quantidade de pontos de dados for ímpar, o valor de meio é retornado:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>Quando o número de elementos for par, a mediana é calculada tomando-se a média entre os dois valores no meio:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="go">4.0</span>
+</pre></div>
+</div>
+<p>Isso serve quando seus dados forem discretos e você não se importa que a média possa não ser um valor que de fato ocorre nos seus dados.</p>
+<p>Caso os dados sejam ordinais (oferecem suporte para operações de ordenação) mas não são numéricos (não oferecem suporte para adição), considere usar a função <a class="reference internal" href="#statistics.median_low" title="statistics.median_low"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_low()</span></code></a> ou <a class="reference internal" href="#statistics.median_high" title="statistics.median_high"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_high()</span></code></a> no lugar.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.median_low">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">median_low</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.median_low" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a mediana inferior de dados numéricos. Se <em>data</em> for vazio, a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> é levantada. <em>data</em> pode ser uma sequência ou um iterável.</p>
+<p>A mediana inferior sempre é um membro do conjunto de dados. Quando o número de elementos for ímpar, o valor intermediário é retornado. Se houver um número par de elementos, o menor entre os dois valores centrais é retornado.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median_low</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">median_low</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>Use a mediana inferior caso seus dados forem discretos e você prefira que a mediana seja um valor que de fato existe nos seus dados ao invés de um valor interpolado.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.median_high">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">median_high</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.median_high" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a mediana superior de dados numéricos. Se <em>data</em> for vazio, a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> é levantada. <em>data</em> pode ser uma sequência ou um iterável.</p>
+<p>A mediana superior sempre é um membro do conjunto de dados. Quando o número de elementos for ímpar, o valor intermediário é retornado. Se houver um número par de elementos, o maior entre os dois valores centrais é retornado.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median_high</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">median_high</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
+<span class="go">5</span>
+</pre></div>
+</div>
+<p>Use a mediana superior caso seus dados forem discretos e você prefira que a mediana seja um valor que de fato existe nos seus dados ao invés de um valor interpolado.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.median_grouped">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">median_grouped</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">interval</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.median_grouped" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a mediana de dados contínuos agrupados, calculada como o 50º percentil, usando interpolação. Se <em>data</em> for vazio, a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> é levantada. <em>data</em> pode ser uma sequência ou um iterável.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median_grouped</span><span class="p">([</span><span class="mi">52</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">54</span><span class="p">])</span>
+<span class="go">52.5</span>
+</pre></div>
+</div>
+<p>No exemplo a seguir, os dados estão arredondados de forma que cada valor representa o ponto intermediário de classes de dados. Isto é, 1 é o meio da classe 0.5–1.5, 2 é o meio de 1.5–2.5, 3 é o meio de 2.5–3.5, etc. Com os dados oferecidos, o valor do meio cai em algum ponto na classe 3.5–4.5 e interpolação é usada para estimá-lo:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median_grouped</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="go">3.7</span>
+</pre></div>
+</div>
+<p>O argumento opcional <em>interval</em> representa o intervalo da classe e tem como valor padrão 1. Mudar o intervalo da classe irá mudar a interpolação:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">median_grouped</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">3.25</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">median_grouped</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="n">interval</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">3.5</span>
+</pre></div>
+</div>
+<p>Essa função não checa se os pontos de dados estão separados por uma distância que seja maior ou igual a <em>interval</em>.</p>
+<div class="impl-detail compound">
+<p><strong>CPython implementation detail:</strong> Em algumas circunstâncias <a class="reference internal" href="#statistics.median_grouped" title="statistics.median_grouped"><code class="xref py py-func docutils literal notranslate"><span class="pre">median_grouped()</span></code></a> pode converter os pontos de dados para pontos flutuantes. Esse comportamento provavelmente irá mudar no futuro.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<ul class="simple">
+<li><p>“Statistics for the Behavioral Sciences”, Frederick J Gravetter and
+Larry B Wallnau (8th Edition).</p></li>
+<li><p>A função <a class="reference external" href="https://help.gnome.org/users/gnumeric/stable/gnumeric.html#gnumeric-function-SSMEDIAN">SSMEDIAN</a> na planilha Gnome Gnumeric, incluindo <a class="reference external" href="https://mail.gnome.org/archives/gnumeric-list/2011-April/msg00018.html">essa discussão</a>.</p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.mode">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">mode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.mode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o valor mais comum dos dados discretos ou nominais em <em>data</em>. A moda (quando existe) é o valor mais típico e serve como uma medida de localização central.</p>
+<p>Se existirem múltiplas modas com a mesma frequência, retorna a primeira encontrada em <em>data</em>. Se ao invés disso se desejar a menor ou a maior dentre elas, use <code class="docutils literal notranslate"><span class="pre">min(multimode(data))</span></code> ou <code class="docutils literal notranslate"><span class="pre">max(multimode(data))</span></code>. Se a entrada <em>data</em> é vazia, a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> é levantada.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mode</span></code> assume que os dados são discretos e retorna um único valor. Esse é o tratamento padrão do conceito de moda normalmente ensinado nas escolas:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mode</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="go">3</span>
+</pre></div>
+</div>
+<p>A moda é única no sentido que é a única medida estatística nesse módulo que também se aplica a dados nominais (não-numéricos):</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mode</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">])</span>
+<span class="go">&#39;red&#39;</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.8: </span>Agora lida com conjunto de dados multimodais retornando a primeira moda encontrada. Anteriormente, ela levantava a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> quando mais do que uma moda era encontrada.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.multimode">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">multimode</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.multimode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma lista dos valores mais frequentes na ordem em que eles foram encontrados em <em>data</em>. Irá retornar mais do que um resultado se houver múltiplas modas ou uma lista vazia se <em>data</em> for vazio.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">multimode</span><span class="p">(</span><span class="s1">&#39;aabbbbccddddeeffffgg&#39;</span><span class="p">)</span>
+<span class="go">[&#39;b&#39;, &#39;d&#39;, &#39;f&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multimode</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="go">[]</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.pstdev">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">pstdev</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.pstdev" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o desvio padrão populacional (a raiz quadrada da variância populacional). Veja os argumentos e outros detalhes em <a class="reference internal" href="#statistics.pvariance" title="statistics.pvariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">pvariance()</span></code></a>.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pstdev</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">,</span> <span class="mf">4.75</span><span class="p">])</span>
+<span class="go">0.986893273527251</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.pvariance">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">pvariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.pvariance" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a variância populacional de <em>data</em>, que deve ser uma sequência ou iterável não-vazio de números reais. A variância, o segundo momento estatístico a partir da média, é uma medida da variabilidade (espalhamento ou dispersão) dos dados. Uma variância grande indica que os dados são espalhados; uma variância menor indica que os dados estão agrupado em volta da média.</p>
+<p>Se o segundo argumento opcional <em>mu</em> for dado, ele é tipicamente a média de <em>data</em>. Ele também pode ser usado para calcular o segundo momento em volta de um ponto que não é a média. Se ele não estiver presente ou for <code class="docutils literal notranslate"><span class="pre">None</span></code> (o padrão), a média aritmética será automaticamente calculada.</p>
+<p>Use essa função para calcular a variância de toda a população. Para estimar a variância de uma amostra, a função <a class="reference internal" href="#statistics.variance" title="statistics.variance"><code class="xref py py-func docutils literal notranslate"><span class="pre">variance()</span></code></a> costuma ser uma escolha melhor.</p>
+<p>Levanta <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> se <em>data</em> for vazio.</p>
+<p>Exemplos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvariance</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">1.25</span>
+</pre></div>
+</div>
+<p>Se você já calculou a média dos seus dados, você pode passar o valor no segundo argumento opcional <em>mu</em> para evitar recálculos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvariance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<span class="go">1.25</span>
+</pre></div>
+</div>
+<p>Decimais e frações são suportadas:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span> <span class="k">as</span> <span class="n">D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvariance</span><span class="p">([</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;27.5&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;30.25&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;30.25&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;34.5&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;41.75&quot;</span><span class="p">)])</span>
+<span class="go">Decimal(&#39;24.815&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span> <span class="k">as</span> <span class="n">F</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pvariance</span><span class="p">([</span><span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="go">Fraction(13, 72)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Quando os dados de entrada representarem toda a população, ele retorna a variância populacional σ². Se em vez disso, amostras forem usadas, então a variância amostral enviesada s², também conhecida como variância com N graus de liberdade é retornada.</p>
+<p>Se de alguma forma você souber a verdadeira média populacional μ, você pode usar essa função para calcular a variância de uma amostra, fornecendo a média populacional conhecida como segundo argumento. Caso seja fornecido um conjunto de amostras aleatórias da população, o resultado será um estimador não enviesado da variância populacional.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.stdev">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">stdev</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">xbar</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.stdev" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna o desvio padrão amostral (a raiz quadrada da variância amostral). Veja <a class="reference internal" href="#statistics.variance" title="statistics.variance"><code class="xref py py-func docutils literal notranslate"><span class="pre">variance()</span></code></a> para argumentos e outros detalhes.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">stdev</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">,</span> <span class="mf">3.25</span><span class="p">,</span> <span class="mf">4.75</span><span class="p">])</span>
+<span class="go">1.0810874155219827</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.variance">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">variance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">xbar</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.variance" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna a variância amostral de <em>data</em>, que deve ser um iterável com pelo menos dois números reais. Variância, ou o segundo momento estatístico a partir da média, é uma medida de variabilidade (espalhamento ou dispersão) dos dados. Uma variância grande indica que os dados são espalhados, uma variância menor indica que os dados estão agrupados em volta da média.</p>
+<p>Se o segundo argumento opcional <em>xbar</em> for dado, ele deve representar a média de <em>data</em>. Se ele não estiver presente ou for <code class="docutils literal notranslate"><span class="pre">None</span></code> (valor padrão), a média é automaticamente calculada.</p>
+<p>Use essa função quando seus dados representarem uma amostra da população. Para calcular a variância de toda população veja <a class="reference internal" href="#statistics.pvariance" title="statistics.pvariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">pvariance()</span></code></a>.</p>
+<p>Levanta a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> se <em>data</em> tiver menos do que dois valores.</p>
+<p>Exemplos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.75</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variance</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">1.3720238095238095</span>
+</pre></div>
+</div>
+<p>Se você já calculou a média dos seus dados, você pode passar o valor no segundo argumento opcional <em>xbar</em> para evitar recálculos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="go">1.3720238095238095</span>
+</pre></div>
+</div>
+<p>Essa função não verifica se você passou a média verdadeira como <em>xbar</em>. Usar valores arbitrários para <em>xbar</em> pode levar a resultados inválidos ou impossíveis.</p>
+<p>Decimais e frações são suportados.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span> <span class="k">as</span> <span class="n">D</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variance</span><span class="p">([</span><span class="n">D</span><span class="p">(</span><span class="s2">&quot;27.5&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;30.25&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;30.25&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;34.5&quot;</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="s2">&quot;41.75&quot;</span><span class="p">)])</span>
+<span class="go">Decimal(&#39;31.01875&#39;)</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span> <span class="k">as</span> <span class="n">F</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">variance</span><span class="p">([</span><span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">F</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)])</span>
+<span class="go">Fraction(67, 108)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Essa é a variância amostral s² com a correção de Bessel, também conhecida como variância com N-1 graus de liberdade. Desde que os pontos de dados sejam representativos (por exemplo, independentes e distribuídos de forma idêntica), o resultado deve ser uma estimativa não enviesada da verdadeira variação populacional.</p>
+<p>Caso você de alguma forma saiba a verdadeira média populacional μ você deveria passar para a função <a class="reference internal" href="#statistics.pvariance" title="statistics.pvariance"><code class="xref py py-func docutils literal notranslate"><span class="pre">pvariance()</span></code></a> como o parâmetro <em>mu</em> para obter a variância da amostra.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.quantiles">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">quantiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'exclusive'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.quantiles" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Divide <em>data</em> em <em>n</em> intervalos contínuos com igual probabilidade. Retorna uma lista de <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code> pontos de corte separando os intervalos.</p>
+<p>Defina <em>n</em> como 4 para quartis (o padrão). Defina <em>n</em> como 10 para decis. Defina <em>n</em> como 100 para percentis, o que fornece os 99 pontos de corte que separam <em>data</em> em 100 grupos de tamanhos iguais. Levanta a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> se <em>n</em> não for pelo menos 1.</p>
+<p><em>data</em> pode ser qualquer iterável contendo dados amostrais. Para resultados significativos, a quantidade de dados em <em>data</em> deve ser maior do que <em>n</em>. Levanta a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> se não houver pelo menos dois pontos de dados.</p>
+<p>Os pontos de corte são linearmente interpolados a partir dos dois pontos mais próximos. Por exemplo, se um ponto de corte cair em um terço da distância entre dois valores, <code class="docutils literal notranslate"><span class="pre">100</span></code> e <code class="docutils literal notranslate"><span class="pre">112</span></code>, o ponto de corte será avaliado como <code class="docutils literal notranslate"><span class="pre">104</span></code>.</p>
+<p>O <em>method</em> para computar quantis pode variar dependendo se <em>data</em> incluir ou excluir os menores e maiores valores possíveis da população.</p>
+<p>O valor padrão do parâmetro <em>method</em> é “exclusive” e é usado para dados amostrados de uma população que pode ter valores mais extremos do que os encontrados nas amostras. A porção da população que fica abaixo do <em>i-ésimo</em> item de <em>m</em> pontos ordenados é calculada como <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">/</span> <span class="pre">(m</span> <span class="pre">+</span> <span class="pre">1)</span></code>. Dados nove valores, o método os ordena e atribui a eles os seguintes percentis: 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%.</p>
+<p>Definimos o parâmetro <em>method</em> para “inclusive” para descrever dados da população ou para amostras que são conhecidas por incluir os valores mais extremos da população. O mínimo valor em <em>data</em> é tratado como o percentil 0 e o máximo valor é tratado como percentil 100. A porção da população que fica abaixo do <em>i-ésimo</em> item de <em>m</em> pontos ordenados é calculada como <code class="docutils literal notranslate"><span class="pre">(i</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">/</span> <span class="pre">(m</span> <span class="pre">-</span> <span class="pre">1)</span></code>. Dados 11 valores, o método os ordena e atribui a eles os seguintes percentis: 0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100%.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="go"># Decile cut points for empirically sampled data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">105</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">108</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">100</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">105</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">76</span><span class="p">,</span> <span class="mi">119</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">129</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">106</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">84</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">111</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">111</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">106</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="mi">103</span><span class="p">,</span> <span class="mi">107</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">109</span><span class="p">,</span> <span class="mi">104</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">quantiles</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)]</span>
+<span class="go">[81.0, 86.2, 89.0, 99.4, 102.5, 103.6, 106.0, 109.8, 111.0]</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.covariance">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">covariance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.covariance" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Return the sample covariance of two inputs <em>x</em> and <em>y</em>. Covariance
+is a measure of the joint variability of two inputs.</p>
+<p>Both inputs must be of the same length (no less than two), otherwise
+<a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> is raised.</p>
+<p>Exemplos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">covariance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">0.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">covariance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="go">-7.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">covariance</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">-7.5</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.correlation">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">correlation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.correlation" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Return the <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">Pearson’s correlation coefficient</a>
+for two inputs. Pearson’s correlation coefficient <em>r</em> takes values
+between -1 and +1. It measures the strength and direction of the linear
+relationship, where +1 means very strong, positive linear relationship,
+-1 very strong, negative linear relationship, and 0 no linear relationship.</p>
+<p>Both inputs must be of the same length (no less than two), and need
+not to be constant, otherwise <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> is raised.</p>
+<p>Exemplos:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">-1.0</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="statistics.linear_regression">
+<code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">linear_regression</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="o">/</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.linear_regression" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Return the slope and intercept of <a class="reference external" href="https://en.wikipedia.org/wiki/Simple_linear_regression">simple linear regression</a>
+parameters estimated using ordinary least squares. Simple linear
+regression describes the relationship between an independent variable <em>x</em> and
+a dependent variable <em>y</em> in terms of this linear function:</p>
+<blockquote>
+<div><p><em>y = slope * x + intercept + noise</em></p>
+</div></blockquote>
+<p>where <code class="docutils literal notranslate"><span class="pre">slope</span></code> and <code class="docutils literal notranslate"><span class="pre">intercept</span></code> are the regression parameters that are
+estimated, and <code class="docutils literal notranslate"><span class="pre">noise</span></code> represents the
+variability of the data that was not explained by the linear regression
+(it is equal to the difference between predicted and actual values
+of the dependent variable).</p>
+<p>Both inputs must be of the same length (no less than two), and
+the independent variable <em>x</em> cannot be constant;
+otherwise a <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> is raised.</p>
+<p>For example, we can use the <a class="reference external" href="https://en.wikipedia.org/wiki/Monty_Python#Films">release dates of the Monty
+Python films</a>
+to predict the cumulative number of Monty Python films
+that would have been produced by 2019
+assuming that they had kept the pace.</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">year</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1971</span><span class="p">,</span> <span class="mi">1975</span><span class="p">,</span> <span class="mi">1979</span><span class="p">,</span> <span class="mi">1982</span><span class="p">,</span> <span class="mi">1983</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">films_total</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">linear_regression</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">films_total</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">slope</span> <span class="o">*</span> <span class="mi">2019</span> <span class="o">+</span> <span class="n">intercept</span><span class="p">)</span>
+<span class="go">16</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.10.</span></p>
+</div>
+</dd></dl>
+
+</section>
+<section id="exceptions">
+<h2>Exceções<a class="headerlink" href="#exceptions" title="Link permanente para este título">¶</a></h2>
+<p>Uma única exceção é definida:</p>
+<dl class="py exception">
+<dt id="statistics.StatisticsError">
+<em class="property">exception </em><code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">StatisticsError</code><a class="headerlink" href="#statistics.StatisticsError" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Subclasse de <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> para exceções relacionadas a estatísticas.</p>
+</dd></dl>
+
+</section>
+<section id="normaldist-objects">
+<h2>Objetos <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a><a class="headerlink" href="#normaldist-objects" title="Link permanente para este título">¶</a></h2>
+<p><a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a> é uma ferramenta para criar e manipular distribuições normais de uma <a class="reference external" href="https://pt.wikipedia.org/wiki/Vari%C3%A1vel_aleat%C3%B3ria">variável aleatória</a>. É uma classe que trata a média e o desvio padrão das medições de dados como uma entidade única.</p>
+<p>Distribuições normais surgem do <a class="reference external" href="https://pt.wikipedia.org/wiki/Teorema_central_do_limite">Teorema Central do Limite</a> e possuem uma gama de aplicações em estatísticas.</p>
+<dl class="py class">
+<dt id="statistics.NormalDist">
+<em class="property">class </em><code class="sig-prename descclassname">statistics.</code><code class="sig-name descname">NormalDist</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mu</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um novo objeto <em>NormalDist</em> onde <em>mu</em> representa a <a class="reference external" href="https://pt.wikipedia.org/wiki/M%C3%A9dia_aritm%C3%A9tica">média aritmética</a> e <em>sigma</em> representa o <a class="reference external" href="https://pt.wikipedia.org/wiki/Desvio_padr%C3%A3o">desvio padrão</a>.</p>
+<p>Se <em>sigma</em> for negativo, levanta a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a>.</p>
+<dl class="py attribute">
+<dt id="statistics.NormalDist.mean">
+<code class="sig-name descname">mean</code><a class="headerlink" href="#statistics.NormalDist.mean" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma propriedade somente leitura para a <a class="reference external" href="https://pt.wikipedia.org/wiki/M%C3%A9dia_aritm%C3%A9tica">média aritmética</a> de uma distribuição normal.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="statistics.NormalDist.median">
+<code class="sig-name descname">median</code><a class="headerlink" href="#statistics.NormalDist.median" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma propriedade somente leitura para a <a class="reference external" href="https://pt.wikipedia.org/wiki/Mediana_%28estat%C3%ADstica%29">mediana</a> de uma distribuição normal.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="statistics.NormalDist.mode">
+<code class="sig-name descname">mode</code><a class="headerlink" href="#statistics.NormalDist.mode" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma propriedade somente leitura para a <a class="reference external" href="https://pt.wikipedia.org/wiki/Moda_%28estat%C3%ADstica%29">moda</a> de uma distribuição normal.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="statistics.NormalDist.stdev">
+<code class="sig-name descname">stdev</code><a class="headerlink" href="#statistics.NormalDist.stdev" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma propriedade somente leitura para o <a class="reference external" href="https://pt.wikipedia.org/wiki/Desvio_padr%C3%A3o">desvio padrão</a> de uma distribuição normal.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="statistics.NormalDist.variance">
+<code class="sig-name descname">variance</code><a class="headerlink" href="#statistics.NormalDist.variance" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Uma propriedade somente leitura para a <a class="reference external" href="https://pt.wikipedia.org/wiki/Vari%C3%A2ncia">variância</a> de uma distribuição normal. Igual ao quadrado do desvio padrão.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.from_samples">
+<em class="property">classmethod </em><code class="sig-name descname">from_samples</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.from_samples" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Faz uma instância da distribuição normal com os parâmetros <em>mu</em> e <em>sigma</em> estimados a partir de <em>data</em> usando <a class="reference internal" href="#statistics.fmean" title="statistics.fmean"><code class="xref py py-func docutils literal notranslate"><span class="pre">fmean()</span></code></a> e <a class="reference internal" href="#statistics.stdev" title="statistics.stdev"><code class="xref py py-func docutils literal notranslate"><span class="pre">stdev()</span></code></a>.</p>
+<p><em>data</em> pode ser qualquer <a class="reference internal" href="../glossary.html#term-iterable"><span class="xref std std-term">iterável</span></a> e deve consistir de valores que pode ser convertidos para o tipo <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>. Se <em>data</em> não contém pelo menos dois elementos, levanta a exceção <a class="reference internal" href="#statistics.StatisticsError" title="statistics.StatisticsError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">StatisticsError</span></code></a> porque é preciso pelo menos um ponto para estimar um valor central e pelo menos dois pontos para estimar a dispersão.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.samples">
+<code class="sig-name descname">samples</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">seed</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.samples" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Gera <em>n</em> amostras aleatórias para uma dada média e desvio padrão. Retorna uma <a class="reference internal" href="stdtypes.html#list" title="list"><code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></a> de valores <a class="reference internal" href="functions.html#float" title="float"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></a>.</p>
+<p>Se o parâmetro <em>seed</em> for fornecido, cria uma nova instância do gerador de número aleatório subjacente. Isso é útil para criar resultados reproduzíveis, mesmo em um contexto multithreading.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.pdf">
+<code class="sig-name descname">pdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.pdf" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Usando uma <a class="reference external" href="https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_densidade">função densidade de probabilidade (fdp)</a>, calcula a probabilidade relativa que uma variável aleatória <em>X</em> estará perto do valor dado <em>x</em>. Matematicamente, é o limite da razão <code class="docutils literal notranslate"><span class="pre">P(x</span> <span class="pre">&lt;=</span> <span class="pre">X</span> <span class="pre">&lt;</span> <span class="pre">x+dx)</span> <span class="pre">/</span> <span class="pre">dx</span></code> quando <em>dx</em> se aproxima de zero.</p>
+<p>A probabilidade relativa é calculada como a probabilidade de uma amostra ocorrer em um intervalo estreito dividida pela largura do intervalo (daí a palavra “densidade”). Como a probabilidade é relativa a outros pontos, seu valor pode ser maior que <cite>1,0</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.cdf">
+<code class="sig-name descname">cdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.cdf" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Usando uma <cite>função distribuição acumulada (fda) &lt;https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3o_distribui%C3%A7%C3%A3o_acumulada&gt;</cite> _, calcula a probabilidade de que uma variável aleatória <em>X</em> seja menor ou igual a <em>x</em>. Matematicamente, é representada da seguinte maneira: <code class="docutils literal notranslate"><span class="pre">P(X</span> <span class="pre">&lt;=</span> <span class="pre">x)</span></code>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.inv_cdf">
+<code class="sig-name descname">inv_cdf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.inv_cdf" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula a função distribuição acumulada inversa, também conhecida como <cite>função quantil &lt;https://pt.wikipedia.org/wiki/Quantil&gt;</cite> _ ou o <a class="reference external" href="https://www.statisticshowto.datasciencecentral.com/inverse-distribution-function/">função ponto percentual</a>. Matematicamente, é representada como <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">:</span> <span class="pre">P(X</span> <span class="pre">&lt;=</span> <span class="pre">x)</span> <span class="pre">=</span> <span class="pre">p</span></code>.</p>
+<p>Encontra o valor <em>x</em> da variável aleatória <em>X</em> de tal forma que a probabilidade da variável ser menor ou igual a esse valor seja igual à probabilidade dada <em>p</em>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.overlap">
+<code class="sig-name descname">overlap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">other</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.overlap" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Mede a concordância entre duas distribuições de probabilidade normais. Retorna um valor entre 0,0 e 1,0 fornecendo <a class="reference external" href="https://www.rasch.org/rmt/rmt101r.htm">a área de sobreposição para as duas funções de densidade de probabilidade</a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.quantiles">
+<code class="sig-name descname">quantiles</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">n</span><span class="o">=</span><span class="default_value">4</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.quantiles" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Divide a distribuição normal em <em>n</em> intervalos contínuos com probabilidade igual. Retorna uma lista de (n - 1) pontos de corte separando os intervalos.</p>
+<p>Defina <em>n</em> como 4 para quartis (o padrão). Defina <em>n</em> como 10 para decis. Defina <em>n</em> como 100 para percentis, o que dá os 99 pontos de corte que separam a distribuição normal em 100 grupos de tamanhos iguais.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="statistics.NormalDist.zscore">
+<code class="sig-name descname">zscore</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#statistics.NormalDist.zscore" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Calcula a <a class="reference external" href="https://www.statisticshowto.com/probability-and-statistics/z-score/">Pontuação Padrão (z-score)</a> descrevendo <em>x</em> em termos do número de desvios padrão acima ou abaixo da média da distribuição normal: <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">-</span> <span class="pre">mean)</span> <span class="pre">/</span> <span class="pre">stdev</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.9.</span></p>
+</div>
+</dd></dl>
+
+<p>Instâncias de <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a> suportam adição, subtração, multiplicação e divisão por uma constante. Essas operações são usadas para translação e dimensionamento. Por exemplo:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_february</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>             <span class="c1"># Celsius</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature_february</span> <span class="o">*</span> <span class="p">(</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>                     <span class="c1"># Fahrenheit</span>
+<span class="go">NormalDist(mu=41.0, sigma=4.5)</span>
+</pre></div>
+</div>
+<p>A divisão de uma constante por uma instância de <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a> não é suportada porque o resultado não seria distribuído normalmente.</p>
+<p>Uma vez que distribuições normais surgem de efeitos aditivos de variáveis independentes, é possível <cite>adicionar e subtrair duas variáveis aleatórias independentes normalmente distribuídas &lt;https://en.wikipedia.org/wiki/Sum_of_normally_distributed_random_variables&gt;</cite> _ representadas como instâncias de <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a>. Por exemplo:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">birth_weights</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">drug_effects</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.15</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">combined</span> <span class="o">=</span> <span class="n">birth_weights</span> <span class="o">+</span> <span class="n">drug_effects</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">combined</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">3.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">combined</span><span class="o">.</span><span class="n">stdev</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">0.5</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.8.</span></p>
+</div>
+</dd></dl>
+
+<section id="normaldist-examples-and-recipes">
+<h3>Exemplos e receitas com <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a><a class="headerlink" href="#normaldist-examples-and-recipes" title="Link permanente para este título">¶</a></h3>
+<p><a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a> facilmente resolve problemas de probabilidade clássicos.</p>
+<p>Por exemplo, considerando os <a class="reference external" href="https://nces.ed.gov/programs/digest/d17/tables/dt17_226.40.asp">dados históricos para exames SAT</a> mostrando que as pontuações são normalmente distribuídas com média de 1060 e desvio padrão de 195, determine o percentual de alunos com pontuações de teste entre 1100 e 1200, após arredondar para o número inteiro mais próximo:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sat</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mi">1060</span><span class="p">,</span> <span class="mi">195</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fraction</span> <span class="o">=</span> <span class="n">sat</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">1200</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">-</span> <span class="n">sat</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">1100</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">fraction</span> <span class="o">*</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="go">18.4</span>
+</pre></div>
+</div>
+<p>Encontrar os <a class="reference external" href="https://pt.wikipedia.org/wiki/Quartil">quartis</a> e <a class="reference external" href="https://pt.wikipedia.org/wiki/Decil">decis</a> para as pontuações SAT:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">round</span><span class="p">,</span> <span class="n">sat</span><span class="o">.</span><span class="n">quantiles</span><span class="p">()))</span>
+<span class="go">[928, 1060, 1192]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">round</span><span class="p">,</span> <span class="n">sat</span><span class="o">.</span><span class="n">quantiles</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">)))</span>
+<span class="go">[810, 896, 958, 1011, 1060, 1109, 1162, 1224, 1310]</span>
+</pre></div>
+</div>
+<p>Para estimar a distribuição de um modelo que não seja fácil de resolver analiticamente, <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a> pode gerar amostras de entrada para uma <a class="reference external" href="https://pt.wikipedia.org/wiki/Método_de_Monte_Carlo">simulação Monte Carlo</a>:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">-</span> <span class="mi">5</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">11</span> <span class="o">*</span> <span class="n">z</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100_000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">samples</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">3652260728</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Y</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">1.75</span><span class="p">)</span><span class="o">.</span><span class="n">samples</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">4582495471</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Z</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span><span class="o">.</span><span class="n">samples</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">6582483453</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">quantiles</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">))</span>       
+<span class="go">[1.4591308524824727, 1.8035946855390597, 2.175091447274739]</span>
+</pre></div>
+</div>
+<p>As distribuições normais podem ser usadas para aproximar <a class="reference external" href="https://pt.wikipedia.org/wiki/Distribui%C3%A7%C3%A3o_binomial">distribuições binomiais</a> quando o tamanho da amostra é grande e quando a probabilidade de um teste bem-sucedido é próximo a 50%.</p>
+<p>Por exemplo, uma conferência de código aberto tem 750 participantes e duas salas com capacidade para 500 pessoas. Há uma palestra sobre Python e outra sobre Ruby. Em conferências anteriores, 65% dos participantes preferiram ouvir palestras sobre Python. Supondo que as preferências da população não tenham mudado, qual é a probabilidade da sala de Python permanecer dentro de seus limites de capacidade?</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">n</span> <span class="o">=</span> <span class="mi">750</span>             <span class="c1"># Sample size</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="mf">0.65</span>            <span class="c1"># Preference for Python</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="n">p</span>         <span class="c1"># Preference for Ruby</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="mi">500</span>             <span class="c1"># Room capacity</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Approximation using the cumulative normal distribution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">NormalDist</span><span class="p">(</span><span class="n">mu</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="n">q</span><span class="p">))</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">0.8402</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Solution using the cumulative binomial distribution</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span><span class="p">,</span> <span class="n">fsum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">round</span><span class="p">(</span><span class="n">fsum</span><span class="p">(</span><span class="n">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">**</span><span class="n">r</span> <span class="o">*</span> <span class="n">q</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">)),</span> <span class="mi">4</span><span class="p">)</span>
+<span class="go">0.8402</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Approximation using a simulation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">seed</span><span class="p">,</span> <span class="n">choices</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">seed</span><span class="p">(</span><span class="mi">8675309</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">trial</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">choices</span><span class="p">((</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;Ruby&#39;</span><span class="p">),</span> <span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">),</span> <span class="n">k</span><span class="o">=</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mean</span><span class="p">(</span><span class="n">trial</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10_000</span><span class="p">))</span>
+<span class="go">0.8398</span>
+</pre></div>
+</div>
+<p>Distribuições normais geralmente surgem em problemas de aprendizado de máquina.</p>
+<p>A Wikipedia tem um <a class="reference external" href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier#Sex_classification">bom exemplo de um Classificador Bayesiano Ingênuo</a>. O desafio é prever o sexo de uma pessoa a partir de medidas de características normalmente distribuídas, incluindo altura, peso e tamanho do pé.</p>
+<p>Recebemos um conjunto de dados de treinamento com medições para oito pessoas. As medidas são consideradas normalmente distribuídas, então resumimos os dados com <a class="reference internal" href="#statistics.NormalDist" title="statistics.NormalDist"><code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a>:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">height_male</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mf">5.92</span><span class="p">,</span> <span class="mf">5.58</span><span class="p">,</span> <span class="mf">5.92</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height_female</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">5.42</span><span class="p">,</span> <span class="mf">5.75</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weight_male</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">180</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">165</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">weight_female</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">150</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foot_size_male</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">foot_size_female</span> <span class="o">=</span> <span class="n">NormalDist</span><span class="o">.</span><span class="n">from_samples</span><span class="p">([</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Em seguida, encontramos uma nova pessoa cujas características de medidas são conhecidas, mas cujo gênero é desconhecido:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ht</span> <span class="o">=</span> <span class="mf">6.0</span>        <span class="c1"># height</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wt</span> <span class="o">=</span> <span class="mi">130</span>        <span class="c1"># weight</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fs</span> <span class="o">=</span> <span class="mi">8</span>          <span class="c1"># foot size</span>
+</pre></div>
+</div>
+<p>Começando com uma probabilidade a priori de 50% &lt;<a class="reference external" href="https://pt.wikipedia.org/wiki/Probabilidade_a_priori">https://pt.wikipedia.org/wiki/Probabilidade_a_priori</a>&gt;`_ de ser homem ou mulher, calculamos a posteriori como a priori vezes o produto das probabilidade para as características de medidas dado o gênero:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">prior_male</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prior_female</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">posterior_male</span> <span class="o">=</span> <span class="p">(</span><span class="n">prior_male</span> <span class="o">*</span> <span class="n">height_male</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span> <span class="o">*</span>
+<span class="gp">... </span>                  <span class="n">weight_male</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">wt</span><span class="p">)</span> <span class="o">*</span> <span class="n">foot_size_male</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">fs</span><span class="p">))</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">posterior_female</span> <span class="o">=</span> <span class="p">(</span><span class="n">prior_female</span> <span class="o">*</span> <span class="n">height_female</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">ht</span><span class="p">)</span> <span class="o">*</span>
+<span class="gp">... </span>                    <span class="n">weight_female</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">wt</span><span class="p">)</span> <span class="o">*</span> <span class="n">foot_size_female</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">fs</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A previsão final vai para a probabilidade posterior maior. Isso é conhecido como <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation">máximo a posteriori</a>  ou MAP:</p>
+<div class="highlight-pycon3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;male&#39;</span> <span class="k">if</span> <span class="n">posterior_male</span> <span class="o">&gt;</span> <span class="n">posterior_female</span> <span class="k">else</span> <span class="s1">&#39;female&#39;</span>
+<span class="go">&#39;female&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">statistics</span></code> — Funções estatísticas</a><ul>
+<li><a class="reference internal" href="#averages-and-measures-of-central-location">Médias e medidas de valor central</a></li>
+<li><a class="reference internal" href="#measures-of-spread">Medidas de espalhamento</a></li>
+<li><a class="reference internal" href="#statistics-for-relations-between-two-inputs">Statistics for relations between two inputs</a></li>
+<li><a class="reference internal" href="#function-details">Detalhes das funções</a></li>
+<li><a class="reference internal" href="#exceptions">Exceções</a></li>
+<li><a class="reference internal" href="#normaldist-objects">Objetos <code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a><ul>
+<li><a class="reference internal" href="#normaldist-examples-and-recipes">Exemplos e receitas com <code class="xref py py-class docutils literal notranslate"><span class="pre">NormalDist</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="random.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">random</span></code> — Gera números pseudoaleatórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="functional.html"
+                        title="próximo capítulo">Módulos de Programção Funcional</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/statistics.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="functional.html" title="Módulos de Programção Funcional"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="random.html" title="random — Gera números pseudoaleatórios"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="numeric.html" >Módulos Matemáticos e Numéricos</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">statistics</span></code> — Funções estatísticas</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

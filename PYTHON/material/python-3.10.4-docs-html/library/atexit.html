@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>atexit — Manipuladores de Saída &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="traceback — Print or retrieve a stack traceback" href="traceback.html" />
+    <link rel="prev" title="abc — Classes Base Abstratas" href="abc.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/atexit.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> — Manipuladores de Saída</a><ul>
+<li><a class="reference internal" href="#atexit-example">Exemplo do <code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="abc.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code> — Classes Base Abstratas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="traceback.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">traceback</span></code> — Print or retrieve a stack traceback</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/atexit.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="traceback.html" title="traceback — Print or retrieve a stack traceback"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="abc.html" title="abc — Classes Base Abstratas"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python.html" accesskey="U">Serviços de Tempo de Execução Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> — Manipuladores de Saída</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-atexit">
+<span id="atexit-exit-handlers"></span><h1><a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a> — Manipuladores de Saída<a class="headerlink" href="#module-atexit" title="Link permanente para este título">¶</a></h1>
+<hr class="docutils" />
+<p>O módulo <a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a> define funções para registrar e cancelar o registro de funções de limpeza. As funções assim registradas são executadas automaticamente após a conclusão normal do interpretador. O módulo <a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a> executa essas funções na ordem <em>reversa</em> na qual foram registradas; se você inscrever <code class="docutils literal notranslate"><span class="pre">A</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code> e <code class="docutils literal notranslate"><span class="pre">C</span></code>, no momento do término do interpretador, eles serão executados na ordem <code class="docutils literal notranslate"><span class="pre">C</span></code>, <code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">A</span></code> .</p>
+<p><strong>Nota:</strong> As funções registradas através deste módulo não são invocadas quando o programa é morto por um sinal não tratado pelo Python, quando um erro interno fatal do Python é detectado ou quando a função <a class="reference internal" href="os.html#os._exit" title="os._exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">os._exit()</span></code></a> é invocada.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.7: </span>Quando usadas com os subinterpretadores de C-API, as funções registradas são locais para o interpretador em que foram registradas.</p>
+</div>
+<dl class="py function">
+<dt id="atexit.register">
+<code class="sig-prename descclassname">atexit.</code><code class="sig-name descname">register</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atexit.register" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Registre <em>func</em> como uma função a ser executada no término. Qualquer o argumento opcional que deve ser passado para <em>func</em> for passado como argumento para <a class="reference internal" href="#atexit.register" title="atexit.register"><code class="xref py py-func docutils literal notranslate"><span class="pre">register()</span></code></a>. É possível registrar mais ou menos a mesma função e argumentos.</p>
+<p>Na terminação normal do programa (por exemplo, se <a class="reference internal" href="sys.html#sys.exit" title="sys.exit"><code class="xref py py-func docutils literal notranslate"><span class="pre">sys.exit()</span></code></a> for chamado ou a execução do módulo principal for concluída), todas as funções registradas serão chamadas por último, pela primeira ordem. A suposição é que os módulos de nível inferior normalmente serão importados antes dos módulos de nível superior e, portanto, devem ser limpos posteriormente.</p>
+<p>Se uma exceção é levantada durante a execução dos manipuladores de saída, um traceback é impresso (a menos que <a class="reference internal" href="exceptions.html#SystemExit" title="SystemExit"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SystemExit</span></code></a> seja levantada) e as informações de exceção sejam salvas. Depois de todos os manipuladores de saída terem tido a chance de executar a última exceção a ser levantada, é levantada novamente.</p>
+<p>Esta função retorna <em>func</em>, o que torna possível usá-la como um decorador.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="atexit.unregister">
+<code class="sig-prename descclassname">atexit.</code><code class="sig-name descname">unregister</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#atexit.unregister" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Remove <em>func</em> da lista de funções a serem executadas no desligamento do interpretador. <a class="reference internal" href="#atexit.unregister" title="atexit.unregister"><code class="xref py py-func docutils literal notranslate"><span class="pre">unregister()</span></code></a> silenciosamente não faz nada se <em>func</em> não foi registrado anteriormente. Se <em>func</em> foi registrado mais de uma vez, cada ocorrência dessa função na pilha de chamada <a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a> será removida. Comparações de igualdade (<code class="docutils literal notranslate"><span class="pre">==</span></code>) são usadas internamente durante o cancelamento do registro, portanto, as referências de função não precisam ter identidades correspondentes.</p>
+</dd></dl>
+
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt>Módulo <a class="reference internal" href="readline.html#module-readline" title="readline: GNU readline support for Python. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">readline</span></code></a></dt><dd><p>Exemplo útil de <a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a> para ler e escrever arquivos de histórico de <a class="reference internal" href="readline.html#module-readline" title="readline: GNU readline support for Python. (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">readline</span></code></a>.</p>
+</dd>
+</dl>
+</div>
+<section id="atexit-example">
+<span id="id1"></span><h2>Exemplo do <a class="reference internal" href="#module-atexit" title="atexit: Register and execute cleanup functions."><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a><a class="headerlink" href="#atexit-example" title="Link permanente para este título">¶</a></h2>
+<p>O exemplo simples a seguir demonstra como um módulo pode inicializar um contador de um arquivo quando ele é importado e salvar automaticamente o valor atualizado do contador quando o programa termina, sem depender que a aplicação faça uma chamada explícita nesse módulo na finalização.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;counterfile&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">infile</span><span class="p">:</span>
+        <span class="n">_count</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">infile</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+    <span class="n">_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">incrcounter</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_count</span>
+    <span class="n">_count</span> <span class="o">=</span> <span class="n">_count</span> <span class="o">+</span> <span class="n">n</span>
+
+<span class="k">def</span> <span class="nf">savecounter</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;counterfile&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+        <span class="n">outfile</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">_count</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">atexit</span>
+
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">savecounter</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Os argumentos posicional e de palavra reservada também podem ser passados para <a class="reference internal" href="#atexit.register" title="atexit.register"><code class="xref py py-func docutils literal notranslate"><span class="pre">register()</span></code></a> para ser passada para a função registrada quando é chamada</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">goodbye</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">adjective</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Goodbye </span><span class="si">%s</span><span class="s1">, it was </span><span class="si">%s</span><span class="s1"> to meet you.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">adjective</span><span class="p">))</span>
+
+<span class="kn">import</span> <span class="nn">atexit</span>
+
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">goodbye</span><span class="p">,</span> <span class="s1">&#39;Donny&#39;</span><span class="p">,</span> <span class="s1">&#39;nice&#39;</span><span class="p">)</span>
+<span class="c1"># or:</span>
+<span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">goodbye</span><span class="p">,</span> <span class="n">adjective</span><span class="o">=</span><span class="s1">&#39;nice&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;Donny&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Utilizado como um <a class="reference internal" href="../glossary.html#term-decorator"><span class="xref std std-term">decorador</span></a>:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">atexit</span>
+
+<span class="nd">@atexit</span><span class="o">.</span><span class="n">register</span>
+<span class="k">def</span> <span class="nf">goodbye</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;You are now leaving the Python sector.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Isso só funciona com funções que podem ser invocadas sem argumentos.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../contents.html">Tabela de Conteúdo</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> — Manipuladores de Saída</a><ul>
+<li><a class="reference internal" href="#atexit-example">Exemplo do <code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="abc.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">abc</span></code> — Classes Base Abstratas</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="traceback.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">traceback</span></code> — Print or retrieve a stack traceback</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/atexit.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="traceback.html" title="traceback — Print or retrieve a stack traceback"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="abc.html" title="abc — Classes Base Abstratas"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="python.html" >Serviços de Tempo de Execução Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">atexit</span></code> — Manipuladores de Saída</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

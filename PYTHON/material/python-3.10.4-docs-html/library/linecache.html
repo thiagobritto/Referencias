@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>linecache — Acesso aleatório a linhas de texto &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="shutil — Operações de arquivo de alto nível" href="shutil.html" />
+    <link rel="prev" title="fnmatch — Correspondência de padrões de nome de arquivo Unix" href="fnmatch.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/linecache.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="fnmatch.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code> — Correspondência de padrões de nome de arquivo Unix</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="shutil.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shutil</span></code> — Operações de arquivo de alto nível</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/linecache.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="shutil.html" title="shutil — Operações de arquivo de alto nível"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="fnmatch.html" title="fnmatch — Correspondência de padrões de nome de arquivo Unix"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" accesskey="U">Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">linecache</span></code> — Acesso aleatório a linhas de texto</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-linecache">
+<span id="linecache-random-access-to-text-lines"></span><h1><a class="reference internal" href="#module-linecache" title="linecache: Provides random access to individual lines from text files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">linecache</span></code></a> — Acesso aleatório a linhas de texto<a class="headerlink" href="#module-linecache" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/linecache.py">Lib/linecache.py</a></p>
+<hr class="docutils" />
+<p>O módulo <a class="reference internal" href="#module-linecache" title="linecache: Provides random access to individual lines from text files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">linecache</span></code></a> permite obter qualquer linha de um arquivo fonte Python, enquanto tenta otimizar internamente, usando um cache, o caso comum em que muitas linhas são lidas em um único arquivo. Isso é usado pelo módulo <a class="reference internal" href="traceback.html#module-traceback" title="traceback: Print or retrieve a stack traceback."><code class="xref py py-mod docutils literal notranslate"><span class="pre">traceback</span></code></a> para recuperar as linhas de origem para inclusão no traceback (situação da pilha de execução) formatado.</p>
+<p>A função <a class="reference internal" href="tokenize.html#tokenize.open" title="tokenize.open"><code class="xref py py-func docutils literal notranslate"><span class="pre">tokenize.open()</span></code></a> é usada para abrir arquivos. Esta função usa <a class="reference internal" href="tokenize.html#tokenize.detect_encoding" title="tokenize.detect_encoding"><code class="xref py py-func docutils literal notranslate"><span class="pre">tokenize.detect_encoding()</span></code></a> para obter a codificação do arquivo; na ausência de um token de codificação, o padrão de codificação do arquivo é UTF-8.</p>
+<p>O módulo <a class="reference internal" href="#module-linecache" title="linecache: Provides random access to individual lines from text files."><code class="xref py py-mod docutils literal notranslate"><span class="pre">linecache</span></code></a> define as seguintes funções:</p>
+<dl class="py function">
+<dt id="linecache.getline">
+<code class="sig-prename descclassname">linecache.</code><code class="sig-name descname">getline</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">lineno</span></em>, <em class="sig-param"><span class="n">module_globals</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#linecache.getline" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Obtém a linha <em>lineno</em> do arquivo chamado <em>filename</em>. Essa função nunca levanta uma exceção — ela retornará <code class="docutils literal notranslate"><span class="pre">''</span></code> em erros (o caractere de nova linha final será incluído para as linhas encontradas).</p>
+<p id="index-0">Se um arquivo chamado <em>filename</em> não for encontrado, a função primeiro verifica por um <code class="docutils literal notranslate"><span class="pre">__loader__</span></code> da <span class="target" id="index-3"></span><a class="pep reference external" href="https://www.python.org/dev/peps/pep-0302"><strong>PEP 302</strong></a> em <em>module_globals</em>. Se existe um carregador e ele define um método <code class="docutils literal notranslate"><span class="pre">get_source</span></code>, isso determina as linhas fonte (se <code class="docutils literal notranslate"><span class="pre">get_source()</span></code> retornar <code class="docutils literal notranslate"><span class="pre">None</span></code>, então <code class="docutils literal notranslate"><span class="pre">''</span></code> será retornado). Por fim, se <em>filename</em> for um nome de arquivo relativo, ele será procurado em relação às entradas no caminho de pesquisa do módulo, <code class="docutils literal notranslate"><span class="pre">sys.path</span></code>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="linecache.clearcache">
+<code class="sig-prename descclassname">linecache.</code><code class="sig-name descname">clearcache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#linecache.clearcache" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Limpa o cache. Use esta função se você não precisar mais de linhas de arquivos lidos anteriormente usando <a class="reference internal" href="#linecache.getline" title="linecache.getline"><code class="xref py py-func docutils literal notranslate"><span class="pre">getline()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="linecache.checkcache">
+<code class="sig-prename descclassname">linecache.</code><code class="sig-name descname">checkcache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#linecache.checkcache" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Verifica a validade do cache. Use esta função se os arquivos no cache tiverem sido alterados no disco e você precisar da versão atualizada. Se <em>filename</em> for omitido, ele verificará todas as entradas no cache.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="linecache.lazycache">
+<code class="sig-prename descclassname">linecache.</code><code class="sig-name descname">lazycache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">module_globals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#linecache.lazycache" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Captura detalhes suficientes sobre um módulo não baseado em arquivo para permitir obter suas linhas posteriormente via <a class="reference internal" href="#linecache.getline" title="linecache.getline"><code class="xref py py-func docutils literal notranslate"><span class="pre">getline()</span></code></a> mesmo se <em>module_globals</em> for <code class="docutils literal notranslate"><span class="pre">None</span></code> na chamada posterior. Isso evita a execução de E/S até que uma linha seja realmente necessária, sem ter que carregar o módulo global indefinidamente.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.5.</span></p>
+</div>
+</dd></dl>
+
+<p>Exemplo:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">linecache</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">linecache</span><span class="o">.</span><span class="n">getline</span><span class="p">(</span><span class="n">linecache</span><span class="o">.</span><span class="vm">__file__</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="go">&#39;import sys\n&#39;</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="fnmatch.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code> — Correspondência de padrões de nome de arquivo Unix</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="shutil.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">shutil</span></code> — Operações de arquivo de alto nível</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/linecache.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="shutil.html" title="shutil — Operações de arquivo de alto nível"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="fnmatch.html" title="fnmatch — Correspondência de padrões de nome de arquivo Unix"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" >Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">linecache</span></code> — Acesso aleatório a linhas de texto</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

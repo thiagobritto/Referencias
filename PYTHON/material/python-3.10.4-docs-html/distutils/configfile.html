@@ -1,0 +1,319 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>3. Escrevendo o arquivo de configuração de instalação &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="4. Criando uma Distribuição Fonte" href="sourcedist.html" />
+    <link rel="prev" title="2. Escrevendo o Script de Configuração" href="setupscript.html" />
+    <link rel="canonical" href="https://docs.python.org/3/distutils/configfile.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="setupscript.html"
+                        title="capítulo anterior"><span class="section-number">2. </span>Escrevendo o Script de Configuração</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="sourcedist.html"
+                        title="próximo capítulo"><span class="section-number">4. </span>Criando uma Distribuição Fonte</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/distutils/configfile.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="sourcedist.html" title="4. Criando uma Distribuição Fonte"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="setupscript.html" title="2. Escrevendo o Script de Configuração"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Distribuindo Módulos Python (Versão legada)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Escrevendo o arquivo de configuração de instalação</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="writing-the-setup-configuration-file">
+<span id="setup-config"></span><h1><span class="section-number">3. </span>Escrevendo o arquivo de configuração de instalação<a class="headerlink" href="#writing-the-setup-configuration-file" title="Link permanente para este título">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Este documento está sendo mantido apenas até que a documentação do <code class="docutils literal notranslate"><span class="pre">setuptools</span></code> em <a class="reference external" href="https://setuptools.readthedocs.io/en/latest/setuptools.html">https://setuptools.readthedocs.io/en/latest/setuptools.html</a> cubra independentemente todas as informações relevantes atualmente incluídas aqui.</p>
+</div>
+<p>Frequentemente, não é possível escrever tudo o que é necessário para construir uma distribuição <em>a priori</em>: você pode precisar obter algumas informações do usuário, ou do sistema do usuário, para prosseguir. Contanto que essa informação seja bastante simples – uma lista de diretórios para pesquisar arquivos de cabeçalho C ou bibliotecas, por exemplo – então fornecer um arquivo de configuração, <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code>, para os usuários editarem é um maneira pouco custosa e fácil de solicitá-la. Os arquivos de configuração também permitem fornecer valores padrão para qualquer opção de comando, que o instalador pode então substituir na linha de comando ou editando o arquivo de configuração.</p>
+<p>O arquivo de configuração de instalação é um meio-termo útil entre o script de instalação – que, idealmente, deveria ser utilizado sem que os instaladores se preocupem com seu conteúdo <a class="footnote-reference brackets" href="#id2" id="id1">1</a> – e a linha de comando para o script de instalação, que está fora do seu controle e inteiramente a cargo do instalador. Na verdade, <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code> (e quaisquer outros arquivos de configuração Distutils presentes no sistema de destino) são processados após o conteúdo do script de instalação, mas antes da linha de comando. Isso tem várias consequências úteis:</p>
+<ul class="simple">
+<li><p>os instaladores podem substituir parte do que você colocou em <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code> editando <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code></p></li>
+<li><p>você pode fornecer valores iniciais fora do padrão para opções que não são facilmente definidas em <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code></p></li>
+<li><p>os instaladores podem substituir qualquer coisa em <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code> usando as opções de linha de comando para <code class="file docutils literal notranslate"><span class="pre">setup.py</span></code></p></li>
+</ul>
+<p>A sintaxe básica do arquivo de configuração é simples:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[command]</span><span class="w"></span>
+<span class="na">option</span><span class="o">=</span><span class="s">value</span><span class="w"></span>
+<span class="na">...</span><span class="w"></span>
+</pre></div>
+</div>
+<p>sendo <em>command</em> um dos comandos Distutils (por exemplo <strong class="command">build_py</strong>, <strong class="command">install</strong>) e <em>option</em> uma das opções as quais o comando tem suporte. Qualquer número de opções pode ser fornecido para cada comando e qualquer número de seções de comando pode ser incluído no arquivo. As linhas em branco são ignoradas, assim como os comentários, que vão de um caractere <code class="docutils literal notranslate"><span class="pre">'#'</span></code> até o final da linha. Valores de opção longas podem ser divididos em várias linhas simplesmente indentando as linhas de continuação.</p>
+<p>Você pode descobrir a lista de opções suportadas por um comando específico com a opção universal <code class="xref std std-option docutils literal notranslate"><span class="pre">--help</span></code>, por exemplo.</p>
+<div class="highlight-shell-session notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python setup.py --help build_ext
+<span class="go">[...]</span>
+<span class="go">Options for &#39;build_ext&#39; command:</span>
+<span class="go">  --build-lib (-b)     directory for compiled extension modules</span>
+<span class="go">  --build-temp (-t)    directory for temporary files (build by-products)</span>
+<span class="go">  --inplace (-i)       ignore build-lib and put compiled extensions into the</span>
+<span class="go">                       source directory alongside your pure Python modules</span>
+<span class="go">  --include-dirs (-I)  list of directories to search for header files</span>
+<span class="go">  --define (-D)        C preprocessor macros to define</span>
+<span class="go">  --undef (-U)         C preprocessor macros to undefine</span>
+<span class="go">  --swig-opts          list of SWIG command line options</span>
+<span class="go">[...]</span>
+</pre></div>
+</div>
+<p>Note que uma opção escrita <code class="xref std std-option docutils literal notranslate"><span class="pre">--foo-bar</span></code> na linha de comando é escrita <code class="docutils literal notranslate"><span class="pre">foo_bar</span></code> nos arquivos de configuração.</p>
+<p id="distutils-build-ext-inplace">Por exemplo, digamos que você queira que suas extensões sejam construídas “localmente” – isto é, você tem uma extensão <code class="xref py py-mod docutils literal notranslate"><span class="pre">pkg.ext</span></code>, e deseja o arquivo de extensão compilado (<code class="file docutils literal notranslate"><span class="pre">ext.so</span></code> no Unix, digamos) para serem colocados no mesmo diretório fonte de seus módulos Python puros <code class="xref py py-mod docutils literal notranslate"><span class="pre">pkg.mod1</span></code> e <code class="xref py py-mod docutils literal notranslate"><span class="pre">pkg.mod2</span></code>. Você sempre pode usar a opção <code class="xref std std-option docutils literal notranslate"><span class="pre">--inplace</span></code> na linha de comando para garantir isso:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python setup.py build_ext --inplace
+</pre></div>
+</div>
+<p>Mas isso requer que você sempre especifique o comando <strong class="command">build_ext</strong> explicitamente, e que lembre-se de fornecer <code class="xref std std-option docutils literal notranslate"><span class="pre">--inplace</span></code>. Uma maneira mais fácil é “definir e esquecer” esta opção, codificando-a em <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code>, o arquivo de configuração para esta distribuição:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[build_ext]</span><span class="w"></span>
+<span class="na">inplace</span><span class="o">=</span><span class="s">1</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Isso afetará todas as construções desta distribuição de módulo, quer você especifique explicitamente ou não <strong class="command">build_ext</strong>. Se você incluir um <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code> em sua distribuição fonte, isso também afetará as construções do usuário final – o que provavelmente é uma má ideia para esta opção, já que sempre construir extensões localmente interromperia a instalação da distribuição de módulo. Em certos casos peculiares, porém, os módulos são construídos diretamente em seu diretório de instalação, portanto, esta é uma capacidade útil. (Distribuir extensões que esperam ser construídas em seu diretório de instalação é quase sempre uma má ideia, no entanto.)</p>
+<p>Outro exemplo: certos comandos aceitam muitas opções que não mudam de execução para execução; por exemplo, <strong class="command">bdist_rpm</strong> precisa saber tudo o que é necessário para gerar um arquivo “spec” para criar uma distribuição RPM. Algumas dessas informações vêm do script de configuração e outras são geradas automaticamente pelo Distutils (como a lista de arquivos instalados). Mas algumas delas devem ser fornecidas como opções para <strong class="command">bdist_rpm</strong>, o que seria muito tedioso de fazer na linha de comando para cada execução. Portanto, aqui está um trecho de código do <code class="file docutils literal notranslate"><span class="pre">setup.cfg</span></code> do próprio Distutils:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[bdist_rpm]</span><span class="w"></span>
+<span class="na">release</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1</span><span class="w"></span>
+<span class="na">packager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Greg Ward &lt;gward@python.net&gt;</span><span class="w"></span>
+<span class="na">doc_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">CHANGES.txt</span><span class="w"></span>
+<span class="w">            </span><span class="na">README.txt</span><span class="w"></span>
+<span class="w">            </span><span class="na">USAGE.txt</span><span class="w"></span>
+<span class="w">            </span><span class="na">doc/</span><span class="w"></span>
+<span class="w">            </span><span class="na">examples/</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Note que a opção <code class="docutils literal notranslate"><span class="pre">doc_files</span></code> é simplesmente uma string separada por espaços em branco dividida em várias linhas para facilitar a leitura.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../install/index.html#inst-config-syntax"><span class="std std-ref">Sintaxe dos arquivos de configuração</span></a> em “Instalando Módulos Python”</dt><dd><p>Mais informações sobre os arquivos de configuração estão disponíveis no manual para administradores de sistema.</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Notas de rodapé</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Este ideal provavelmente não será alcançado até que a configuração automática seja totalmente suportada pelo Distutils.</p>
+</dd>
+</dl>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="setupscript.html"
+                        title="capítulo anterior"><span class="section-number">2. </span>Escrevendo o Script de Configuração</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="sourcedist.html"
+                        title="próximo capítulo"><span class="section-number">4. </span>Criando uma Distribuição Fonte</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/distutils/configfile.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="sourcedist.html" title="4. Criando uma Distribuição Fonte"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="setupscript.html" title="2. Escrevendo o Script de Configuração"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >Distribuindo Módulos Python (Versão legada)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Escrevendo o arquivo de configuração de instalação</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

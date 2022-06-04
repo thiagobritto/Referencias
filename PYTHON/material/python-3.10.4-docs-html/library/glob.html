@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>:mod:glob — Expansão de padrão de nome de arquivo no estilo Unix &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="fnmatch — Correspondência de padrões de nome de arquivo Unix" href="fnmatch.html" />
+    <link rel="prev" title="tempfile — Gerar arquivos temporários e diretórios" href="tempfile.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/glob.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tempfile.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code> — Gerar arquivos temporários e diretórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="fnmatch.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code> — Correspondência de padrões de nome de arquivo Unix</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/glob.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="fnmatch.html" title="fnmatch — Correspondência de padrões de nome de arquivo Unix"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="tempfile.html" title="tempfile — Gerar arquivos temporários e diretórios"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" accesskey="U">Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">:mod:glob — Expansão de padrão de nome de arquivo no estilo Unix</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-glob">
+<span id="glob-unix-style-pathname-pattern-expansion"></span><h1>:mod:glob — Expansão de padrão de nome de arquivo no estilo Unix<a class="headerlink" href="#module-glob" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/glob.py">Lib/glob.py</a></p>
+<hr class="docutils" id="index-0" />
+<p id="index-1">The <a class="reference internal" href="#module-glob" title="glob: Unix shell style pathname pattern expansion."><code class="xref py py-mod docutils literal notranslate"><span class="pre">glob</span></code></a> module finds all the pathnames matching a specified pattern
+according to the rules used by the Unix shell, although results are returned in
+arbitrary order.  No tilde expansion is done, but <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">?</span></code>, and character
+ranges expressed with <code class="docutils literal notranslate"><span class="pre">[]</span></code> will be correctly matched.  This is done by using
+the <a class="reference internal" href="os.html#os.scandir" title="os.scandir"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.scandir()</span></code></a> and <a class="reference internal" href="fnmatch.html#fnmatch.fnmatch" title="fnmatch.fnmatch"><code class="xref py py-func docutils literal notranslate"><span class="pre">fnmatch.fnmatch()</span></code></a> functions in concert, and
+not by actually invoking a subshell.</p>
+<p>Note that files beginning with a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>) can only be matched by
+patterns that also start with a dot,
+unlike <a class="reference internal" href="fnmatch.html#fnmatch.fnmatch" title="fnmatch.fnmatch"><code class="xref py py-func docutils literal notranslate"><span class="pre">fnmatch.fnmatch()</span></code></a> or <a class="reference internal" href="pathlib.html#pathlib.Path.glob" title="pathlib.Path.glob"><code class="xref py py-func docutils literal notranslate"><span class="pre">pathlib.Path.glob()</span></code></a>.
+(For tilde and shell variable expansion, use <a class="reference internal" href="os.path.html#os.path.expanduser" title="os.path.expanduser"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.expanduser()</span></code></a> and
+<a class="reference internal" href="os.path.html#os.path.expandvars" title="os.path.expandvars"><code class="xref py py-func docutils literal notranslate"><span class="pre">os.path.expandvars()</span></code></a>.)</p>
+<p>Para uma correspondência literal, coloque os metacaracteres entre colchetes. Por exemplo, <code class="docutils literal notranslate"><span class="pre">'[?]'</span></code> corresponde ao caractere <code class="docutils literal notranslate"><span class="pre">'?'</span></code>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<p>O módulo <a class="reference internal" href="pathlib.html#module-pathlib" title="pathlib: Object-oriented filesystem paths"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pathlib</span></code></a> oferece objetos de caminho de alto nível.</p>
+</div>
+<dl class="py function">
+<dt id="glob.glob">
+<code class="sig-prename descclassname">glob.</code><code class="sig-name descname">glob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pathname</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dir_fd</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#glob.glob" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna uma lista possivelmente vazia de nomes de caminho que correspondem a <em>pathname</em>, que deve ser uma string contendo uma especificação de caminho. <em>pathname</em> pode ser absoluto (como <code class="file docutils literal notranslate"><span class="pre">/usr/src/Python-1.5/Makefile</span></code>) ou relativo (como <code class="file docutils literal notranslate"><span class="pre">../../Tools/*/*.gif</span></code>) e pode conter curingas no estilo shell. Links simbólicos quebrados são incluídos nos resultados (como no shell). Se os resultados são classificados ou não depende do sistema de arquivos. Se um arquivo que satisfaz as condições for removido ou adicionado durante a chamada desta função, não é especificado se um nome de caminho para esse arquivo ser incluído.</p>
+<p>Se <em>root_dir</em> não for <code class="docutils literal notranslate"><span class="pre">None</span></code>, deve ser um <a class="reference internal" href="../glossary.html#term-path-like-object"><span class="xref std std-term">objeto caminho ou similar</span></a> especificando o diretório raiz para pesquisa. Tem o mesmo efeito em <a class="reference internal" href="#module-glob" title="glob: Unix shell style pathname pattern expansion."><code class="xref py py-func docutils literal notranslate"><span class="pre">glob()</span></code></a> que alterar o diretório atual antes de chamá-lo. Se <em>pathname</em> for relativo, o resultado conterá caminhos relativos a <em>root_dir</em>.</p>
+<p>Esta função pode suportar <a class="reference internal" href="os.html#dir-fd"><span class="std std-ref">paths relative to directory descriptors</span></a> com o parâmetro <em>dir_fd</em>.</p>
+<p id="index-2">Se <em>recursive</em> for verdadeiro, o padrão “<code class="docutils literal notranslate"><span class="pre">**</span></code>” corresponderá a qualquer arquivo e zero ou mais diretórios, subdiretórios e links simbólicos para diretórios. Se o padrão for seguido por um <a class="reference internal" href="os.html#os.sep" title="os.sep"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.sep</span></code></a> ou <a class="reference internal" href="os.html#os.altsep" title="os.altsep"><code class="xref py py-data docutils literal notranslate"><span class="pre">os.altsep</span></code></a>, então os arquivos não irão corresponder.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">glob.glob</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">pathname</span></code>, <code class="docutils literal notranslate"><span class="pre">recursive</span></code>.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">glob.glob/2</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">pathname</span></code>, <code class="docutils literal notranslate"><span class="pre">recursive</span></code>, <code class="docutils literal notranslate"><span class="pre">root_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">dir_fd</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Usar o padrão “<code class="docutils literal notranslate"><span class="pre">**</span></code>” em grandes árvores de diretório pode consumir uma quantidade excessiva de tempo.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>Suporte a globs recursivos usando “<code class="docutils literal notranslate"><span class="pre">**</span></code>”.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>Adicionados os parâmetros <em>root_dir</em> e <em>dir_fd</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="glob.iglob">
+<code class="sig-prename descclassname">glob.</code><code class="sig-name descname">iglob</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pathname</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">root_dir</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dir_fd</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">recursive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#glob.iglob" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Retorna um <a class="reference internal" href="../glossary.html#term-iterator"><span class="xref std std-term">iterador</span></a> que produz os mesmos valores que <a class="reference internal" href="#module-glob" title="glob: Unix shell style pathname pattern expansion."><code class="xref py py-func docutils literal notranslate"><span class="pre">glob()</span></code></a> sem realmente armazená-los todos simultaneamente.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">glob.glob</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">pathname</span></code>, <code class="docutils literal notranslate"><span class="pre">recursive</span></code>.</p>
+<p class="audit-hook">Levanta um <a class="reference internal" href="sys.html#auditing"><span class="std std-ref">evento de auditoria</span></a> <code class="docutils literal notranslate"><span class="pre">glob.glob/2</span></code> com argumentos <code class="docutils literal notranslate"><span class="pre">pathname</span></code>, <code class="docutils literal notranslate"><span class="pre">recursive</span></code>, <code class="docutils literal notranslate"><span class="pre">root_dir</span></code>, <code class="docutils literal notranslate"><span class="pre">dir_fd</span></code>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.5: </span>Suporte a globs recursivos usando “<code class="docutils literal notranslate"><span class="pre">**</span></code>”.</p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Alterado na versão 3.10: </span>Adicionados os parâmetros <em>root_dir</em> e <em>dir_fd</em>.</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="glob.escape">
+<code class="sig-prename descclassname">glob.</code><code class="sig-name descname">escape</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">pathname</span></em><span class="sig-paren">)</span><a class="headerlink" href="#glob.escape" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Escapa todos os caracteres especiais (<code class="docutils literal notranslate"><span class="pre">'?'</span></code>, <code class="docutils literal notranslate"><span class="pre">'*'</span></code> e <code class="docutils literal notranslate"><span class="pre">'['</span></code>). Isso é útil se você deseja corresponder a uma string literal arbitrária que pode conter caracteres especiais. Os caracteres especiais nos pontos de compartilhamento de unidade/UNC não têm escape, por exemplo, no Windows  <code class="docutils literal notranslate"><span class="pre">escape('//?/c:/Quo</span> <span class="pre">vadis?.txt')</span></code> retorna <code class="docutils literal notranslate"><span class="pre">'//?/c:/Quo</span> <span class="pre">vadis[?].txt'</span></code>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">Novo na versão 3.4.</span></p>
+</div>
+</dd></dl>
+
+<p>Por exemplo, considere um diretório contendo os seguintes arquivos: <code class="file docutils literal notranslate"><span class="pre">1.gif</span></code>, <code class="file docutils literal notranslate"><span class="pre">2.txt</span></code>, <code class="file docutils literal notranslate"><span class="pre">card.gif</span></code> e um subdiretório <code class="file docutils literal notranslate"><span class="pre">sub</span></code> que contém apenas o arquivo <code class="file docutils literal notranslate"><span class="pre">3.txt</span></code>. <a class="reference internal" href="#module-glob" title="glob: Unix shell style pathname pattern expansion."><code class="xref py py-func docutils literal notranslate"><span class="pre">glob()</span></code></a> produzirá os seguintes resultados. Observe como todos os componentes principais do caminho são preservados.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./[0-9].*&#39;</span><span class="p">)</span>
+<span class="go">[&#39;./1.gif&#39;, &#39;./2.txt&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.gif&#39;</span><span class="p">)</span>
+<span class="go">[&#39;1.gif&#39;, &#39;card.gif&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;?.gif&#39;</span><span class="p">)</span>
+<span class="go">[&#39;1.gif&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;**/*.txt&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[&#39;2.txt&#39;, &#39;sub/3.txt&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;./**/&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="go">[&#39;./&#39;, &#39;./sub/&#39;]</span>
+</pre></div>
+</div>
+<p>Se o diretório contém arquivos começando com <code class="docutils literal notranslate"><span class="pre">.</span></code> eles não serão correspondidos por padrão. Por exemplo, considere um diretório contendo <code class="file docutils literal notranslate"><span class="pre">card.gif</span></code> e <code class="file docutils literal notranslate"><span class="pre">.card.gif</span></code></p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">glob</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.gif&#39;</span><span class="p">)</span>
+<span class="go">[&#39;card.gif&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;.c*&#39;</span><span class="p">)</span>
+<span class="go">[&#39;.card.gif&#39;]</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Ver também</p>
+<dl class="simple">
+<dt>Módulo <a class="reference internal" href="fnmatch.html#module-fnmatch" title="fnmatch: Unix shell style filename pattern matching."><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code></a></dt><dd><p>Expansão de nome de arquivo no estilo shell (não caminho)</p>
+</dd>
+</dl>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="tempfile.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tempfile</span></code> — Gerar arquivos temporários e diretórios</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="fnmatch.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">fnmatch</span></code> — Correspondência de padrões de nome de arquivo Unix</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/glob.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="fnmatch.html" title="fnmatch — Correspondência de padrões de nome de arquivo Unix"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="tempfile.html" title="tempfile — Gerar arquivos temporários e diretórios"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="filesys.html" >Acesso a arquivos e diretórios</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">:mod:glob — Expansão de padrão de nome de arquivo no estilo Unix</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

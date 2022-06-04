@@ -1,0 +1,286 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>codeop — Compila código Python &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="Importando módulos" href="modules.html" />
+    <link rel="prev" title="code — Classes Bases do Interpretador" href="code.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/codeop.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="code.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code> — Classes Bases do Interpretador</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="modules.html"
+                        title="próximo capítulo">Importando módulos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/codeop.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importando módulos"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="code — Classes Bases do Interpretador"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="custominterp.html" accesskey="U">Interpretadores Python Personalizados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code> — Compila código Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="module-codeop">
+<span id="codeop-compile-python-code"></span><h1><a class="reference internal" href="#module-codeop" title="codeop: Compile (possibly incomplete) Python code."><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code></a> — Compila código Python<a class="headerlink" href="#module-codeop" title="Link permanente para este título">¶</a></h1>
+<p><strong>Código-fonte:</strong> <a class="reference external" href="https://github.com/python/cpython/tree/3.10/Lib/codeop.py">Lib/codeop.py</a></p>
+<hr class="docutils" />
+<p>O módulo <a class="reference internal" href="#module-codeop" title="codeop: Compile (possibly incomplete) Python code."><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code></a> fornece utilitários sobre os quais o loop de leitura-execução-exibição do Python pode ser emulado, como é feito no módulo <a class="reference internal" href="code.html#module-code" title="code: Facilities to implement read-eval-print loops."><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code></a>. Como resultado, você provavelmente não deseja usar o módulo diretamente; se você deseja incluir tal loop em seu programa, você provavelmente deseja usar o módulo <a class="reference internal" href="code.html#module-code" title="code: Facilities to implement read-eval-print loops."><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code></a>.</p>
+<p>Há duas partes para esta tarefa:</p>
+<ol class="arabic simple">
+<li><p>Ser capaz de dizer se uma linha de entrada completa uma instrução Python: em suma, dizer se deve exibir ‘<code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code>’ ou ‘<code class="docutils literal notranslate"><span class="pre">...</span></code>’ em seguida.</p></li>
+<li><p>Lembrar quais instruções futuras o usuário inseriu, para que as entradas subsequentes possam ser compiladas com essas declarações em vigor.</p></li>
+</ol>
+<p>O módulo <a class="reference internal" href="#module-codeop" title="codeop: Compile (possibly incomplete) Python code."><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code></a> fornece uma maneira de fazer cada uma dessas coisas e uma maneira de fazer as duas coisas.</p>
+<p>Para fazer apenas a primeira:</p>
+<dl class="py function">
+<dt id="codeop.compile_command">
+<code class="sig-prename descclassname">codeop.</code><code class="sig-name descname">compile_command</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">source</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'&lt;input&gt;'</span></em>, <em class="sig-param"><span class="n">symbol</span><span class="o">=</span><span class="default_value">'single'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#codeop.compile_command" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Tenta compilar <em>source</em>, que deve ser uma string de código Python e retornar um objeto código se <em>source</em> for um código Python válido. Nesse caso, o atributo de nome de arquivo do objeto código será <em>filename</em>, cujo padrão é <code class="docutils literal notranslate"><span class="pre">'&lt;input&gt;'</span></code>. Retorna <code class="docutils literal notranslate"><span class="pre">None</span></code> se <em>source</em> <em>não</em> é um código Python válido, mas é um prefixo de código Python válido.</p>
+<p>Se houver um problema com <em>source</em>, uma exceção será levantada. <a class="reference internal" href="exceptions.html#SyntaxError" title="SyntaxError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">SyntaxError</span></code></a> é levantada se houver sintaxe Python inválida, e <a class="reference internal" href="exceptions.html#OverflowError" title="OverflowError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">OverflowError</span></code></a> ou <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> se houver um literal inválido.</p>
+<p>O argumento <em>symbol</em> determina se <em>source</em> é compilado como uma instrução (<code class="docutils literal notranslate"><span class="pre">'single'</span></code>, o padrão), como uma sequência de instruções (<code class="docutils literal notranslate"><span class="pre">'exec'</span></code>) ou como uma <a class="reference internal" href="../glossary.html#term-expression"><span class="xref std std-term">expressão</span></a> (<code class="docutils literal notranslate"><span class="pre">'eval'</span></code>). Qualquer outro valor fará com que <a class="reference internal" href="exceptions.html#ValueError" title="ValueError"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> seja levantada.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>É possível (mas não provável) que o analisador sintático pare de analisar com um resultado bem-sucedido antes de chegar ao final da fonte; neste caso, os símbolos finais podem ser ignorados em vez de causar um erro. Por exemplo, uma barra invertida seguida por duas novas linhas pode ser seguida por lixo arbitrário. Isso será corrigido quando a API para o analisador for melhor.</p>
+</div>
+</dd></dl>
+
+<dl class="py class">
+<dt id="codeop.Compile">
+<em class="property">class </em><code class="sig-prename descclassname">codeop.</code><code class="sig-name descname">Compile</code><a class="headerlink" href="#codeop.Compile" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Instâncias desta classe têm métodos <code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code> idênticos em assinatura à função embutida <a class="reference internal" href="functions.html#compile" title="compile"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile()</span></code></a>, mas com a diferença de que se a instância compilar o texto do programa contendo uma instrução <a class="reference internal" href="__future__.html#module-__future__" title="__future__: Future statement definitions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">__future__</span></code></a>, a instância se “lembra” e compila todos os textos de programa subsequentes com a instrução em vigor.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="codeop.CommandCompiler">
+<em class="property">class </em><code class="sig-prename descclassname">codeop.</code><code class="sig-name descname">CommandCompiler</code><a class="headerlink" href="#codeop.CommandCompiler" title="Link permanente para esta definição">¶</a></dt>
+<dd><p>Instâncias desta classe têm métodos <code class="xref py py-meth docutils literal notranslate"><span class="pre">__call__()</span></code> idênticos em assinatura a <a class="reference internal" href="#codeop.compile_command" title="codeop.compile_command"><code class="xref py py-func docutils literal notranslate"><span class="pre">compile_command()</span></code></a>; a diferença é que se a instância compila o texto do programa contendo uma instrução <code class="docutils literal notranslate"><span class="pre">__future__</span></code>, a instância se “lembra” e compila todos os textos do programa subsequentes com a instrução em vigor.</p>
+</dd></dl>
+
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="code.html"
+                        title="capítulo anterior"><code class="xref py py-mod docutils literal notranslate"><span class="pre">code</span></code> — Classes Bases do Interpretador</a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="modules.html"
+                        title="próximo capítulo">Importando módulos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/codeop.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Importando módulos"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="code.html" title="code — Classes Bases do Interpretador"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="custominterp.html" >Interpretadores Python Personalizados</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><code class="xref py py-mod docutils literal notranslate"><span class="pre">codeop</span></code> — Compila código Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>

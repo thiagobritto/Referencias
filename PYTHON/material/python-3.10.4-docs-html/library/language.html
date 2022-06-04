@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+
+<html lang="pt_BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17: http://docutils.sourceforge.net/" />
+
+    <title>Serviços da Linguagem Python &#8212; documentação Python 3.10.4</title><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pydoctheme.css?2022.1" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    
+    <script src="../_static/sidebar.js"></script>
+    
+    <link rel="search" type="application/opensearchdescription+xml"
+          title="Pesquisar dentro de documentação Python 3.10.4"
+          href="../_static/opensearch.xml"/>
+    <link rel="author" title="Sobre esses documentos" href="../about.html" />
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Buscar" href="../search.html" />
+    <link rel="copyright" title="Direitos autorais" href="../copyright.html" />
+    <link rel="next" title="ast — Árvores de Sintaxe Abstrata" href="ast.html" />
+    <link rel="prev" title="Using importlib.metadata" href="importlib.metadata.html" />
+    <link rel="canonical" href="https://docs.python.org/3/library/language.html" />
+    
+      
+    
+
+    
+    <style>
+      @media only screen {
+        table.full-width-table {
+            width: 100%;
+        }
+      }
+    </style>
+<link rel="shortcut icon" type="image/png" href="../_static/py.svg" />
+            <script type="text/javascript" src="../_static/copybutton.js"></script>
+            <script type="text/javascript" src="../_static/menu.js"></script> 
+
+  </head>
+<body>
+<div class="mobile-nav">
+    <input type="checkbox" id="menuToggler" class="toggler__input" aria-controls="navigation"
+           aria-pressed="false" aria-expanded="false" role="button" aria-label="Menu" />
+    <label for="menuToggler" class="toggler__label">
+        <span></span>
+    </label>
+    <nav class="nav-content" role="navigation">
+         <a href="https://www.python.org/" class="nav-logo">
+             <img src="../_static/py.svg" alt="Logo"/>
+         </a>
+        <div class="version_switcher_placeholder"></div>
+        <form role="search" class="search" action="../search.html" method="get">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="search-icon">
+                <path fill-rule="nonzero"
+                        d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 001.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 00-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 005.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" fill="#444"></path>
+            </svg>
+            <input type="text" name="q" aria-label="Busca rápida"/>
+            <input type="submit" value="Ir"/>
+        </form>
+    </nav>
+    <div class="menu-wrapper">
+        <nav class="menu" role="navigation" aria-label="main navigation">
+            <div class="language_switcher_placeholder"></div>
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="importlib.metadata.html"
+                        title="capítulo anterior">Using <code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.metadata</span></code></a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="ast.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code> — Árvores de Sintaxe Abstrata</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/language.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </nav>
+    </div>
+</div>
+
+  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="ast.html" title="ast — Árvores de Sintaxe Abstrata"
+             accesskey="N">próximo</a> |</li>
+        <li class="right" >
+          <a href="importlib.metadata.html" title="Using importlib.metadata"
+             accesskey="P">anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Serviços da Linguagem Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>    
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="python-language-services">
+<span id="language"></span><h1>Serviços da Linguagem Python<a class="headerlink" href="#python-language-services" title="Link permanente para este título">¶</a></h1>
+<p>O Python fornece vários módulos para ajudar a trabalhar com a linguagem Python. Estes módulos suportam tokenizing, parsing, análise de sintaxe, disassembly de bytecode e várias outras facilidades.</p>
+<p>Esses módulos incluem:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ast.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code> — Árvores de Sintaxe Abstrata</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ast.html#abstract-grammar">Gramática Abstrata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ast.html#node-classes">Classes de nó</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#literals">Literais</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#expressions">Expressões</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ast.html#subscripting">Subscripting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ast.html#comprehensions">Comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#statements">Instruções</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ast.html#imports">Imports</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#control-flow">Control flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#pattern-matching">Pattern matching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#function-and-class-definitions">Function and class definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ast.html#async-and-await">Async and await</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ast.html#ast-helpers">Auxiliares de <code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ast.html#compiler-flags">Compiler Flags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ast.html#command-line-usage">Uso da linha de comando</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="symtable.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">symtable</span></code> — Acesso a tabela de símbolos do compilador</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="symtable.html#generating-symbol-tables">Generating Symbol Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="symtable.html#examining-symbol-tables">Examining Symbol Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="token.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">token</span></code> — Constantes usadas com árvores de análises do Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyword.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">keyword</span></code> — Testando palavras reservadas do Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tokenize.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tokenize</span></code> — Tokenizer for Python source</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tokenize.html#tokenizing-input">Tokenizando entradas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenize.html#command-line-usage">Uso da linha de comando</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tokenize.html#examples">Exemplos</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tabnanny.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tabnanny</span></code> — Detecção de recuo ambíguo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyclbr.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pyclbr</span></code> — Suporte a navegador de módulos do Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyclbr.html#function-objects">Objetos Função</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyclbr.html#class-objects">Objetos de Class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="py_compile.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">py_compile</span></code> — Compila arquivos fonte do Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="py_compile.html#command-line-interface">Interface de Linha de Comando</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compileall.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">compileall</span></code> — Compilar bibliotecas do Python para bytecode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compileall.html#command-line-use">Uso na linha de comando</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compileall.html#public-functions">Funções públicas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dis.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dis</span></code> — Disassembler do bytecode do Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dis.html#bytecode-analysis">Analise do Bytecode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dis.html#analysis-functions">Analysis functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dis.html#python-bytecode-instructions">Python Bytecode Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dis.html#opcode-collections">Opcode collections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pickletools.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">pickletools</span></code> — Ferramentas para desenvolvedores pickle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pickletools.html#command-line-usage">Uso na linha de comando</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pickletools.html#command-line-options">Opções da linha de comando</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pickletools.html#programmatic-interface">Interface programática</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Tópico anterior</h4>
+  <p class="topless"><a href="importlib.metadata.html"
+                        title="capítulo anterior">Using <code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.metadata</span></code></a></p>
+  <h4>Próximo tópico</h4>
+  <p class="topless"><a href="ast.html"
+                        title="próximo capítulo"><code class="xref py py-mod docutils literal notranslate"><span class="pre">ast</span></code> — Árvores de Sintaxe Abstrata</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../bugs.html">Relatar um erro</a></li>
+      <li>
+        <a href="https://github.com/python/cpython/blob/3.10/Doc/library/language.rst"
+            rel="nofollow">Exibir código-fonte
+        </a>
+      </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegação</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice geral"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="ast.html" title="ast — Árvores de Sintaxe Abstrata"
+             >próximo</a> |</li>
+        <li class="right" >
+          <a href="importlib.metadata.html" title="Using importlib.metadata"
+             >anterior</a> |</li>
+
+          <li><img src="../_static/py.svg" alt="python logo" style="vertical-align: middle; margin-top: -1px"/></li>
+          <li><a href="https://www.python.org/">Python</a> &#187;</li>
+          <li class="switchers">
+            <div class="language_switcher_placeholder"></div>
+            <div class="version_switcher_placeholder"></div>
+          </li>
+          <li>
+              
+          </li>
+    <li id="cpython-language-and-version">
+      <a href="../index.html">3.10.4 Documentation</a> &#187;
+    </li>
+
+          <li class="nav-item nav-item-1"><a href="index.html" >A Biblioteca Padrão do Python</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Serviços da Linguagem Python</a></li>
+                <li class="right">
+                    
+
+    <div class="inline-search" role="search">
+        <form class="inline-search" action="../search.html" method="get">
+          <input placeholder="Busca rápida" aria-label="Busca rápida" type="text" name="q" />
+          <input type="submit" value="Ir" />
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </form>
+    </div>
+                     |
+                </li>
+            
+      </ul>
+    </div>  
+    <div class="footer">
+    &copy; <a href="../copyright.html">Direitos autorais</a> 2001-2022, Python Software Foundation.
+    <br />
+    This page is licensed under the Python Software Foundation License Version 2.
+    <br />
+    Examples, recipes, and other code in the documentation are additionally licensed under the Zero Clause BSD License.
+    <br />
+    See <a href="/license.html">History and License</a> for more information.<br />
+    <br />
+
+    The Python Software Foundation is a non-profit corporation.
+<a href="https://www.python.org/psf/donations/">Please donate.</a>
+<br />
+    <br />
+
+    Última atualização em jun. 04, 2022.
+    <a href="/bugs.html">Found a bug</a>?
+    <br />
+
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+
+  </body>
+</html>
