@@ -9,4 +9,9 @@
 - [x] 2.1. Chamando o interpretador¶
 - [x] 2.1.1. Passagem de argumentos¶
 - [x] 2.1.2. Modo interativo¶
-- [ ] 2.2. O interpretador e seu ambiente
+
+## 2.2. O interpretador e seu ambiente
+
+- [x] 2.2.1. Edição de código-fonte
+
+## 3. Uma introdução informal ao Python¶
