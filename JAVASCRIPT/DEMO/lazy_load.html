@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazy Load</title>
+  <style>
+    article {
+      height: 300vh;
+      border: 1px solid #333;
+    }
+
+    .an {
+      height: 150vh;
+    }
+  </style>
+</head>
+
+<body>
+  <article>
+    <div class="an">a</div>
+    <img id="my" src="" data-url="https://via.placeholder.com/728x90.png?text=IMG" alt="">
+  </article>
+  <script>
+    document.onscroll = () => {
+      if (isVisible(my)) {
+        my.src = my.getAttribute('data-url')
+      }
+    }
+    function isVisible(element) {
+      const screenTop = window.scrollY
+      const screenBottom = screenTop + window.screen.height
+
+      const elementTop = element.offsetTop
+      const elementBotton = elementTop + element.offsetHeight
+
+      if (
+        elementTop > screenTop && elementTop < screenBottom ||
+        elementBotton > screenTop && elementBotton < screenBottom
+      ) return true
+
+      return false
+
+    }
+
+// outerHeight: 728
+// outerWidth: 1366
+// pageXOffset: 0
+// pageYOffset: 40
+  </script>
+</body>
+
+</html>

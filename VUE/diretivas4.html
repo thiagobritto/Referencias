@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            background: red;
+        }
+
+        .blue {
+            background: blue;
+        }
+
+        .green {
+            background: green;
+        }
+
+        .yellow {
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <!--
+            // v-on:submit="alteraNome('brito', $event)"
+            <form v-on:submit.prevent="alteraNome('brito')">
+                <input type="text" v-model="textoDigitado">
+                <button type="submit">
+                    Add
+                </button>
+            </form>
+        -->
+        <input type="text" v-model="textoDigitado" v-on:keyup.enter="alteraNome()">
+
+        <ul>
+            <li style="background: white;" v-for="(item) in array" v-on:click="alerta($event)">
+                {{ item }}
+            </li>
+        </ul>
+
+        red
+        <input @click="corP($event.target.value)" type="radio" name="cor" value="red" checked>
+        green
+        <input @click="corP($event.target.value)" type="radio" name="cor" value="green">
+        blue
+        <input @click="corP($event.target.value)" type="radio" name="cor" value="blue">
+        yellow
+        <input @click="corP($event.target.value)" type="radio" name="cor" value="yellow">
+        <br>
+        <button v-on:click="vermelho()">vermelho</button>
+        <button v-on:click="verde()">verde</button>
+        <button v-on:click="incolor()">incolor</button>
+        <p v-bind:class="{ green: colors.green, red: colors.red }">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id, blanditiis! Tempore optio autem quia
+            inventore, ad perspiciatis, ducimus repellendus minus voluptas culpa expedita beatae, voluptates fugiat
+            assumenda eum nulla commodi!
+        </p>
+    </div>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                textoDigitado: '',
+                array: [],
+                classParagrafo: 'red',
+                colors: {
+                    red: true,
+                    green: false,
+                }
+            },
+            methods: {
+                alteraNome() {
+                    this.array.push(this.textoDigitado)
+                    this.textoDigitado = '';
+                },
+                alerta(event) {
+                    //alert(event.target.textContent.trim())
+                    element = event.target
+
+                    if (element.style.background == 'white')
+                        element.style.background = "red";
+                    else
+                        element.style.background = "white";
+                },
+                corP(cor) {
+                    this.classParagrafo = cor
+                },
+                vermelho() {
+                    this.colors.red = true;
+                    this.colors.green = false;
+                },
+                verde() {
+                    this.colors.red = false;
+                    this.colors.green = true;
+                },
+                incolor() {
+                    this.colors.red = false;
+                    this.colors.green = false;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

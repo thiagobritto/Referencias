@@ -1,0 +1,19 @@
+
+# Configurações de rede
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets: 
+    wlo1:
+      dhcp4: on
+      dhcp6: on
+      addresses: [192.168.1.2/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [189.124.132.33,189.124.132.32]
+
+
+
+
+# renderer: NetworkManager / para interfaces graficas
+# renderer: networkd / para servidores
