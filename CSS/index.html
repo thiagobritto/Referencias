@@ -26,42 +26,59 @@
       font-size: 16px;
     }
 
-    sup, sub{
+    sup,
+    sub {
       font-size: 12px;
     }
 
-    h1, h2, h3, h4, h5, h6,
-    .h1, .h2, .h3, .h4, .h5, .h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
       letter-spacing: -1px;
       font-weight: bold;
     }
 
-    h1, .h1 {
+    h1,
+    .h1 {
       font-size: 48px;
       line-height: 56px;
     }
 
-    h2, .h2 {
+    h2,
+    .h2 {
       font-size: 36px;
       line-height: 42px;
     }
 
-    h3, .h3 {
+    h3,
+    .h3 {
       font-size: 28px;
       line-height: 32px;
     }
 
-    h4, .h4 {
+    h4,
+    .h4 {
       font-size: 24px;
       line-height: 28px;
     }
 
-    h5, .h5 {
+    h5,
+    .h5 {
       font-size: 20px;
       line-height: 24px;
     }
 
-    h6, .h6 {
+    h6,
+    .h6 {
       font-size: 16px;
       line-height: 20px;
     }
@@ -93,7 +110,7 @@
     }
 
     body {
-      background-color: #fff;
+      background-color: var(--color--255);
     }
   </style>
 </head>
@@ -122,6 +139,32 @@
     32 - 100
     48 - 150
   </p>
+
+  <script>
+    //document.documentElement.style.setProperty('--color--0', 'red')
+    //element.style.setProperty('--color', '#FFF')
+    //https://api.themoviedb.org/3/movie/76341?api_key=<<api_key>>&language=pt-BR
+
+    //https://api.themoviedb.org/3/configuration?api_key=019e8f375549e0bbd4a4191862ebc88f
+
+    // To se the latest configuration fetch it from https://api.themoviedb.org/3/configuration?api_key=019e8f375549e0bbd4a4191862ebc88f
+    var API_URL = 'https://api.themoviedb.org/3/'; var API_KEY = '844dba0bfd8f3a4f3799f6130ef9e335';// Images
+    var IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';//Sizes: w300, w780, w1280, original
+    var BACKDROP_SIZE = 'w1280';// w92, w154, w185, w342, w500, w780, original
+    var POSTER_SIZE = 'w500';
+    // An image URL looks like this example:
+    // http://image.tmdb.org/t/p/w780/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg
+    //http://image.tmdb.org/t/p/w500/7PzJdsLGlR7oW4J0J5Xcd0pHGRg.png
+    //https://api.themoviedb.org/3/discover/movie?api_key=844dba0bfd8f3a4f3799f6130ef9e335&language=pt-BR&region=BR&release_date.gte=2016-11-16&release_date.lte=2016-12-02&with_release_type=2|3
+
+    /*
+      Methodo de pesquisa: https://api.themoviedb.org/3/search/movie?api_key={api_key}&query=Jack+Reacher
+      Methodo de detalhes do filme: https://api.themoviedb.org/3/movie/{id}?api_key={api_key}
+      Methodo de subsolicitações em uma: https://api.themoviedb.org/3/movie/343611?api_key={api_key}&append_to_response=videos,images
+      
+    */
+
+  </script>
 </body>
 
 </html>
