@@ -10,8 +10,8 @@ O nodejs permite que você execute javascript no servidor
 - [x] Http module
 - [x] File System
 - [x] URL modules
-- [ ] NPM
-- [ ] Events
+- [x] NPM
+- [x] Events
 - [ ] Upload files
 - [ ] Email
 
