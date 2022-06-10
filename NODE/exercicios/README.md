@@ -12,7 +12,7 @@ O nodejs permite que você execute javascript no servidor
 - [x] URL modules
 - [x] NPM
 - [x] Events
-- [ ] Upload files
+- [x] Upload files
 - [ ] Email
 
 ## Node Mysql
