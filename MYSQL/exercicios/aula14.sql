@@ -17,7 +17,6 @@ SELECT * FROM tb_funcionarios WHERE nome LIKE '%a';
 -- selecione tudo de tb_funcionarios onde nome tem 'a' na terceira letra 
 SELECT * FROM tb_funcionarios WHERE nome LIKE '__a%';
 
-
 -- selecione tudo de tb_funcionarios onde salario esteja entre 1000 e 2000 
 SELECT * FROM tb_funcionarios WHERE salario BETWEEN 1000 AND 2000;
 
