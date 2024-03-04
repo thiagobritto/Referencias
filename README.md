@@ -3,7 +3,7 @@
 
 # Eclipse IDE
 
-Resolve `Error: JavaFX runtime components are missing, and are required to run this application` para eclipse/JavaFX.
+Resolve `Error: JavaFX runtime components are missing, and are required to run this application` para Windows/Eclipse/JavaFX.
 
 ```bach
 --module-path "C:\path\to\javafx-sdk-21.0.2\lib" --add-modules javafx.controls,javafx.fxml
